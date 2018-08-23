@@ -1,0 +1,134 @@
+swagger: "2.0"
+info:
+  description: "This mock represents messages format of Tuboleta, for project PICA - Esp AES. Universidad Javeriana."
+  version: "1.0.0"
+  title: "Tu Boleta"
+  contact:
+    email: "barriosan@javeriana.edu.co"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "127.0.0.1"
+basePath: "/tuboleta"
+schemes:
+- "http"
+paths:
+  /reserve:
+    post:
+      tags:
+      - "reserve"
+      summary: "Reserve ticket"
+      description: "Reserve ticket"
+      operationId: "reserve"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Reserve object that needs to be reserved"
+        required: true
+        schema:
+          $ref: "#/definitions/ReserveRQ"
+      responses:
+        200:
+          description: "SUCCESS"
+          schema:
+            $ref: "#/definitions/ReserveRS"  
+    put:
+      tags:
+      - "cancel"
+      summary: "Cancel reserve"
+      description: "Cancel reserve"
+      operationId: "cancel"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Object that needs to be canceled"
+        required: true
+        schema:
+          $ref: "#/definitions/CancelRQ"
+      responses:
+        200:
+          description: "SUCCESS"
+          schema:
+            $ref: "#/definitions/CancelRS"
+definitions:
+  ReserveRQ:
+    type: "object"
+    required:
+    - "clientID"
+    - "eventId"
+    - "totalTickets"
+    - "category"
+    properties:
+      clientID:
+        type: "string"
+        example: "10818042395"
+      eventId:
+        type: "string"
+        example: "LST-1234"
+      totalTickets:
+        type: "integer"
+        format: "int64"
+        example: 2
+      category:
+        type: "string"
+        example: VIP
+  ReserveRS:
+    type: "object"
+    properties:
+      timestamp:
+        type: "string"
+        example: "2018-08-12T18:14:42.203"
+      transactionID:
+        type: "string"
+        example: "07a792c3-eaac-4967-a7aa-baa2d511544f"
+      clientID:
+        type: "string"
+        example: "1018234989"
+      status:
+        type: "string"
+        example: "RESERVED"
+      price:
+        type: "integer"
+        format: "int64"
+        example: 1000000
+      event:
+        type: "string"
+        example: "World cup"
+      eventDate:
+        type: "string"
+        example: "2018-11-03T18:14:42.203"
+      category:
+        type: "string"
+        example: VIP
+      totalTickets:
+        type: "integer"
+        format: "int64"
+        example: 2
+  CancelRQ:
+    type: "object"
+    required:
+    - "transactionID"
+    properties:
+      transactionID:
+        type: "string"
+        example: "07a792c3-eaac-4967-a7aa-baa2d511544f"
+  CancelRS:
+    type: "object"
+    properties:
+      timestamp:
+        type: "string"
+        example: "2018-08-12T18:14:42.203"
+      transactionID:
+        type: "string"
+        example: "07a792c3-eaac-4967-a7aa-baa2d511544f"
+      status:
+        type: "string"
+        example: "CANCELLED"

@@ -1,0 +1,10 @@
+
+#Environment Variable
+app:
+   fixedRate: ${FTP_CLIENT_RATE}
+   ftp:
+      hostname: ${FTP_HOST}
+      port: ${FTP_PORT}
+      username: ${FTP_USERNAME}
+      password: ${FTP_PASSWORD}
+      
