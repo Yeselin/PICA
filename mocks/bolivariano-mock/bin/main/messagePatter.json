@@ -1,0 +1,76 @@
+{
+	"fileName": "request.txt",
+	"lineLength": 160,
+	"fields":[
+		{
+			"fieldName" :"tipoIdentificacion",
+			"length": 2,
+			"dataType": "S",
+			"indexStart": 0,
+			"indexEnd": 2
+		},
+		{
+			"fieldName" :"identificacion",
+			"length": 10,
+			"dataType": "S",
+			"indexStart": 2,
+			"indexEnd": 12
+		},
+		{
+			"fieldName" :"nombreCompleto",
+			"length": 50,
+			"dataType": "S",
+			"indexStart": 12,
+			"indexEnd": 62
+		},
+		{
+			"fieldName" :"email",
+			"length": 30,
+			"dataType": "S",
+			"indexStart": 62,
+			"indexEnd": 92
+		},
+		{
+			"fieldName" :"celular",
+			"length": 14,
+			"dataType": "S",
+			"indexStart": 92,
+			"indexEnd": 106
+		},
+		{
+			"fieldName" :"fromCity",
+			"length": 20,
+			"dataType": "S",
+			"indexStart": 106,
+			"indexEnd": 126
+		},
+		{
+			"fieldName" :"toCity",
+			"length": 20,
+			"dataType": "S",
+			"indexStart": 126,
+			"indexEnd": 146
+		},
+		{
+			"fieldName" :"fecha",
+			"length": 10,
+			"dataType": "S",
+			"indexStart": 146,
+			"indexEnd": 156
+		},
+		{
+			"fieldName" :"tickets",
+			"length": 2,
+			"dataType": "N",
+			"indexStart": 156,
+			"indexEnd": 158
+		},
+		{
+			"fieldName" :"categoria",
+			"length": 1,
+			"dataType": "S",
+			"indexStart": 158,
+			"indexEnd": 159
+		}
+	]
+}
