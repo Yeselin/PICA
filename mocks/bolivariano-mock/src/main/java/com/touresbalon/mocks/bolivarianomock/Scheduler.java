@@ -13,6 +13,7 @@ import javax.annotation.PreDestroy;
 import org.apache.commons.net.PrintCommandListener;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +29,7 @@ import com.touresbalon.mocks.bolivarianomock.message.MessageRQ;
 public class Scheduler {
 
 	private static final Logger logger = LoggerFactory.getLogger(Scheduler.class);
-	private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+	private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 
 	@Value("${app.ftp.hostname}")
 	private String hostname;
@@ -75,30 +76,47 @@ public class Scheduler {
 		List<MessageRQ> listMessageRQ = null;
 		try {
 
-			if (!ftpClient.isConnected()) {
-				connect();
-			}
+			connect();
 
-			inputStream = ftpClient.retrieveFileStream("request.csv");
-			ftpClient.completePendingCommand();
-			if (FTPReply.CANNOT_OPEN_DATA_CONNECTION != ftpClient.getReplyCode()
-					&& FTPReply.FILE_UNAVAILABLE != ftpClient.getReplyCode()) {
-				if (inputStream != null) {
-					listMessageRQ = this.reader.read(inputStream);
-					inputStreamRS = this.writer.write(listMessageRQ);					
-					boolean bool = ftpClient.storeFile("nombre.csv", inputStreamRS);
-					if(bool) {
-						logger.info("Archivo transferido con éxito");
-					}else {
-						logger.error("No se logró transferir el archivo");
+			FTPFile[] requestList = ftpClient.listFiles("request/");
+			String currentFile = null;
+			String targetFile = null;
+			for (FTPFile ftpFile : requestList) {
+				currentFile = String.format("request/%s", ftpFile.getName());
+				targetFile = String.format("response/%s_%s", ftpFile.getName(),
+						dateTimeFormatter.format(LocalDateTime.now()));
+
+				logger.info("Reading file {} :: Execution Time - {}", currentFile,
+						dateTimeFormatter.format(LocalDateTime.now()));
+
+				inputStream = ftpClient.retrieveFileStream(currentFile);
+				ftpClient.completePendingCommand();
+				if (FTPReply.CANNOT_OPEN_DATA_CONNECTION != ftpClient.getReplyCode()
+						&& FTPReply.FILE_UNAVAILABLE != ftpClient.getReplyCode()) {
+					if (inputStream != null) {
+						listMessageRQ = this.reader.read(inputStream);
+						inputStreamRS = this.writer.write(listMessageRQ);
+						boolean bool = ftpClient.storeFile(targetFile, inputStreamRS);
+						if (bool) {
+							logger.info("File transfered :: Execution Time - {}", targetFile,
+									dateTimeFormatter.format(LocalDateTime.now()));
+							ftpClient.rename(currentFile, String.format("processed/%s", ftpFile.getName()));
+							logger.info("Rename file to :: Execution Time - {}",
+									String.format("processed/%s", ftpFile.getName()),
+									dateTimeFormatter.format(LocalDateTime.now()));
+						} else {
+							logger.info("File not transfered :: Execution Time - {}", targetFile,
+									dateTimeFormatter.format(LocalDateTime.now()));
+						}
 					}
 				}
 			}
+
 			ftpClient.completePendingCommand();
 		} catch (Exception ex) {
 			logger.error("error", ex);
 		} finally {
-			try {				
+			try {
 				if (null != inputStream) {
 					inputStream.close();
 				}
