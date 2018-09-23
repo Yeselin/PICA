@@ -18,7 +18,7 @@ public class Writer {
 	 * @return
 	 */
 	public InputStream write(List<MessageRQ> listMessageRQ) {
-		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-mm-dd hh:mm");
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm");
 		MessageRS messageRS = null;
 		InputStream inputStream = null;
 		StringBuffer buffer = new StringBuffer();
