@@ -7,6 +7,8 @@ import { CartComponent } from './cart/cart.component';
 import { ProductComponent } from './product/product.component';
 import { UserComponent } from './user/user.component';
 import { ResultListComponent } from './result-list/result-list.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -15,10 +17,12 @@ import { ResultListComponent } from './result-list/result-list.component';
     CartComponent,
     ProductComponent,
     UserComponent,
-    ResultListComponent
+    ResultListComponent,
+    CarouselComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
