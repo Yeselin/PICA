@@ -1,0 +1,46 @@
+version: '2.2'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.1
+    container_name: elasticsearch_
+    environment:
+      - cluster.name=elasticsearch-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      mem_limit: 2g
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - esnet
+  elasticsearch2:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.1
+    container_name: elasticsearch2_
+    environment:
+      - cluster.name=elasticsearch-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.zen.ping.unicast.hosts=elasticsearch"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      mem_limit: 2g
+    networks:
+      - esnet
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.4.1
+    container_name: kibana_
+    ports:
+      - 5601:5601
+    networks:
+      - esnet
+    depends_on: 
+      - elasticsearch
+networks:
+  esnet:
+    driver: bridge
