@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://universalbank.com/message/general"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://universalbank.com/message/general">	
+	
+	<complexType name="RequestHeaderType">
+		<sequence>
+			<element name="ID" type="integer" minOccurs="1" maxOccurs="1"></element>			
+			<element name="requestContext" type="tns:RequestContext" minOccurs="1" maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="RequestContext">
+		<sequence>
+			<element name="userAgent" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="resource" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="httpMethod" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="sourceIP" type="string" minOccurs="1" maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="ResponseHeaderType">
+		<sequence>
+			<element name="uuid" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="status" type="tns:StatusType" minOccurs="1" maxOccurs="1"></element>
+		</sequence>
+	</complexType>		
+	
+	<complexType name="StatusType">
+		<sequence>
+			<element name="code" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="message" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="detail" type="string" minOccurs="1" maxOccurs="1"></element>
+		</sequence>
+	</complexType>	
+	
+	
+	<complexType name="OrderItemsType">
+		<sequence>
+			<element name="id" type="integer" minOccurs="1" maxOccurs="1"></element>
+			<element name="productId" type="integer" minOccurs="1" maxOccurs="1"></element>
+			<element name="productName" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="partNum" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="price" type="integer" minOccurs="1" maxOccurs="1"></element>
+			<element name="quantity" type="integer" minOccurs="1" maxOccurs="1"></element>			
+		</sequence>
+	</complexType>	
+
+	<complexType name="SalesOrderType">
+		<sequence>
+			<element name="id" type="integer" minOccurs="1" maxOccurs="1"></element>
+			<element name="orderDate" type="date" minOccurs="1" maxOccurs="1"></element>
+			<element name="price" type="integer" minOccurs="1" maxOccurs="1"></element>
+			<element name="status" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="comments" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="custDocumentNumber" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="custDocumentType" type="string" minOccurs="1" maxOccurs="1"></element>			
+		</sequence>
+	</complexType>	
+	
+	<complexType name="CountryCityType">
+		<sequence>
+			<element name="id" type="integer" minOccurs="1" maxOccurs="1"></element>
+			<element name="name" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="cost" type="decimal" minOccurs="1" maxOccurs="1"></element>
+			<element name="countryShortName" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="countryName" type="string" minOccurs="1" maxOccurs="1"></element>			
+		</sequence>
+	</complexType>
+	
+	<complexType name="LodgingType">
+		<sequence>
+			<element name="id" type="integer" minOccurs="1" maxOccurs="1"></element>
+			<element name="name" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="cost" type="decimal" minOccurs="1" maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="SpectacleType">
+		<sequence>
+			<element name="id" type="integer" minOccurs="1" maxOccurs="1"></element>
+			<element name="name" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="cost" type="decimal" minOccurs="1" maxOccurs="1"></element>
+		</sequence>
+	</complexType>	
+	
+	<complexType name="TransportType">
+		<sequence>
+			<element name="id" type="integer" minOccurs="1" maxOccurs="1"></element>
+			<element name="name" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="cost" type="decimal" minOccurs="1" maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="ProductType">
+		<sequence>
+			<element name="id" type="integer" minOccurs="1" maxOccurs="1"></element>
+			<element name="name" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="spectacleDate" type="date" minOccurs="1" maxOccurs="1"></element>
+			<element name="arrivalDate" type="date" minOccurs="1" maxOccurs="1"></element>
+			<element name="departureDate" type="date" minOccurs="1" maxOccurs="1"></element>			
+			<element name="transport" type="tns:TransportType" minOccurs="1" maxOccurs="1"></element>	
+			<element name="spectacle" type="tns:SpectacleType" minOccurs="1" maxOccurs="1"></element>	
+			<element name="lodging" type="tns:LodgingType" minOccurs="1" maxOccurs="1"></element>	
+			<element name="description" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="code" type="string" minOccurs="1" maxOccurs="1"></element>		
+			<element name="imageRef" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="sourceCity" type="tns:CountryCityType" minOccurs="1" maxOccurs="1"></element>			
+			<element name="targetCity" type="tns:CountryCityType" minOccurs="1" maxOccurs="1"></element>	
+			</sequence>
+	</complexType>	
+	
+</schema>
