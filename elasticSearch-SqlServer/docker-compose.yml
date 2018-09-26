@@ -11,7 +11,7 @@ services:
       memlock:
         soft: -1
         hard: -1
-      mem_limit: 2g
+      mem_limit: 1g
     ports:
       - 9200:9200
       - 9300:9300
@@ -29,7 +29,7 @@ services:
       memlock:
         soft: -1
         hard: -1
-      mem_limit: 2g
+      mem_limit: 1g
     networks:
       - esnet
   kibana:
