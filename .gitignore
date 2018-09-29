@@ -11,7 +11,7 @@
 .mtj.tmp/
 
 # Package Files #
-# *.jar
+**/FTPServer/
 *.war
 *.nar
 *.ear
