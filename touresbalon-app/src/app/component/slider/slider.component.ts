@@ -11,15 +11,12 @@ import { Product } from '../../model/Product';
 })
 export class SliderComponent implements OnInit {
 
-  public products: Product[];
-  //public products$: Observable<Product[]>;
+  public products$: Observable<Product[]>;
 
   constructor(private productService: ProductService) { }
 
   ngOnInit() {  
-    this.productService.getSlider$()
-        .subscribe(products  => this.products = products,
-          error => console.error('Error getSlider: ' + error.message));
+    this.products$ = this.productService.getSlider$().pipe(map(products => products));
   }
 
 }

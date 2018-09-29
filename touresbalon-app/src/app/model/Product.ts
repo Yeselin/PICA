@@ -12,6 +12,7 @@ export interface Product{
     "transport": Transport,
     "spectacle": Spectacle,
     "lodging":Lodging,
+    "name": string,
     "description": string,
     "image": string,
     "sourceCity": City,

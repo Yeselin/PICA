@@ -1,9 +1,9 @@
 <div class="slider">
     <ul class="slides">
-        <li *ngFor="let product of products | async">
+        <li *ngFor="let product of products$ | async">
             <img src={{product.image}}  class="activator responsive-img">
             <div class="caption center-align">
-                <h3 cla>This is our big Tagline!</h3>
+                <h3 cla>{{product.name}}</h3>
                 <h5 class="light grey-text text-lighten-3">{{product.description}}</h5>
             </div>
         </li>      

@@ -6,8 +6,9 @@ import { hostname } from "os";
 
 export const environment = {
   production: false,
-  API_PRODUCTS: 'http://jsonplaceholder.typicode.com/posts',
-  API_ORDERS: 'http://jsonplaceholder.typicode.com/posts'
+  API_PRODUCTS: 'http://127.0.0.1:8080/api/products',
+  API_ORDERS: 'http://127.0.0.1:8080/api/orders',
+  API_CUSTOMERS: 'http://127.0.0.1:8080/api/customers',
 };
 
 /*
