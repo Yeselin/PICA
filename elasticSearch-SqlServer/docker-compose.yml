@@ -49,14 +49,16 @@ services:
     depends_on:
       - elasticsearch
     environment:
-      - DB_HOST=172.18.0.2
+      - TZ: "America/Bogota"
+      - DB_HOST=192.168.43.155
       - DB_PORT=1433
-      - DB_NAME=Touresbalon
-      - DB_USER=SA
-      - DB_PASSWORD=Ingeniero3118.
-      - "DB_STATEMENT=SELECT * FROM Users WHERE CREATION_DATE >= :sql_last_value"
-      - TRACKING_COLUMN=CREATION_DATE
-      - ES_INDEX=cs_users
+      - DB_NAME=DB_PRODUCT
+      - DB_USER=sa
+      - DB_PASSWORD=adminadmin123
+      #- "DB_STATEMENT=SELECT * FROM Users WHERE CREATION_DATE >= :sql_last_value"
+      - "DB_STATEMENT=SELECT p.id, p.spectacle_date as spactacleDate, p.arrival_date as arrivalDate, p.departure_date as departureDate, t.name as transport,  s.name as spactacle,  l.name as lodging,  p.description,  p.image_ref as image,  co.name_city as sourceCity,  cd.name_city as targetCity FROM product p ,city co ,city cd ,spectacle s, transport T, lodging l WHERE p.target_city = cd.id and p.source_city = co.id and p.spectacle_type = s.id and P.transport_type = T.id and p.lodging_type = l.id and (p.create_date >= :sql_last_value or p.update_date >= :sql_last_value) ORDER BY p.id"
+      - TRACKING_COLUMN=update_date
+      - ES_INDEX=products
       - "CRON_PATTERN=*/5 * * * *"
     networks:
       - esnet
