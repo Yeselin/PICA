@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { ProductService } from '../../service/product.service';
-import { Observable } from 'rxjs';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Product } from '../../model/Product';
+import { LocalStorageService } from '../../service/local-storage.service';
 
 @Component({
   selector: 'slider-products',
@@ -11,12 +9,12 @@ import { Product } from '../../model/Product';
 })
 export class SliderComponent implements OnInit {
 
-  public products$: Observable<Product[]>;
+  public products: Product[];
 
-  constructor(private productService: ProductService) { }
+  constructor(@Inject(LocalStorageService) private storage: LocalStorageService) { }
 
-  ngOnInit() {  
-    this.products$ = this.productService.getSlider$().pipe(map(products => products));
+  ngOnInit() {
+      this.products = this.storage.getLocalSlide();
   }
 
 }

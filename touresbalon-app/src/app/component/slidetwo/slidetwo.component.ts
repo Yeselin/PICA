@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { LocalStorageService } from '../../service/local-storage.service';
+import { Product } from '../../model/Product';
 
 @Component({
   selector: 'slide-two',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SlidetwoComponent implements OnInit {
 
-  constructor() { }
+  public products: Product[];
+
+  constructor(@Inject(LocalStorageService) private storage: LocalStorageService) { }
 
   ngOnInit() {
+    this.products = this.storage.getLocalSlide();
   }
 
 }
