@@ -1,10 +1,20 @@
-
-<form class=" hide-on-med-and-down" style="margin-left:200px;">
-  <div class="input-field center" style="max-width: 400pt;">        
-    <input id="search" type="search" required>
-    <label class="label-icon" placeholder="buscar" for="search">
-      <i class="material-icons">search</i>
-    </label>
-    <i class="material-icons">close</i>
+<div class="search hide-on-med-and-down">
+  <div class="search-left">
+    <div class="search-list">
+      <div class="search-facade">
+        <span class="search-label" style="width: auto;">{{selectedObj.label}}</span>
+        <i class="material-icons">arrow_drop_down</i>
+      </div>
+      <select #selectType class="search-select blue-grey darken-4" (change)="changeSelectType(selectType.value)">
+        <option *ngFor="let type of listTypes" value={{type.id}} label={{type.label}}></option>
+      </select>
+    </div>
   </div>
-</form>
+  <div class="search-center">
+    <div class="search-input">
+      <input #search (keyup.enter)="onEnter(search.value)" type="text" 
+            required class="search-field-input" autocomplete="off" >
+    </div>
+  </div>
+</div>
+

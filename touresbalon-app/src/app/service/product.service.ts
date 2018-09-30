@@ -16,10 +16,7 @@ export class ProductService {
     return this.httpClient.get<Product[]>(environment.API_PRODUCTS + '/slider');
   }
 
-  getSlideTwo$() : Observable<Product[]> {
-    return this.httpClient.get<Product[]>(environment.API_PRODUCTS + '/sliderTwo');
-  }
-
+  
   /**
    * 
    * @param productId This method search top five products
