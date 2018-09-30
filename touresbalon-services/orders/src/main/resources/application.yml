@@ -1,0 +1,5 @@
+#Server
+server:
+  port: ${SERVER_PORT:8082}
+  servlet:
+    contextPath: /orders
