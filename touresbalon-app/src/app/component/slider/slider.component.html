@@ -1,18 +1,54 @@
-<div class="slider">
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper blue-grey">
+            <a href="#!" class="brand-logo" style="text-decoration:none">TouresBalón</a>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="sidenav">
+                <li><a href="#">Carrito</a></li>
+            </ul>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#"><i class="material-icons">account_circle</i></a></li>
+                <li><a href="#"><i class="material-icons">shopping_cart</i></a></li>
+            </ul>
+            
+            <div class="search hide-on-med-and-down">
+                <div class="search-left">
+                    <div class="search-list">
+                    <div class="search-facade">
+                        <span class="search-label" style="width: auto;">{{selectedObj.label}}</span>
+                        <i class="material-icons">arrow_drop_down</i>
+                    </div>
+                    <select #selectType class="search-select blue-grey darken-4" (change)="changeSelectType(selectType.value)">
+                        <option *ngFor="let type of listTypes" value={{type.id}} label={{type.label}}></option>
+                    </select>
+                    </div>
+                </div>
+                <div class="search-center">
+                    <div class="search-input">
+                    <input #search (keyup.enter)="onEnter(search.value)" type="text" 
+                            required class="search-field-input" autocomplete="off" required >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="slider" *ngIf="sliderEnable">
     <ul class="slides">
         <li *ngFor="let product of products">
-            <img src={{product.image}}  class="activator responsive-img">
+            <img src={{product.image}} class="activator responsive-img">
             <div class="caption center-align">
                 <h3 cla>{{product.name}}</h3>
                 <h5 class="light grey-text text-lighten-3">{{product.description}}</h5>
             </div>
-        </li>    
+        </li>
     </ul>
 </div>
 <div class="container">
     <div class="section">
         <!--   Icon Section   -->
-        <div class="row">      
+        <div class="row">
             <div class="col s12 m4" *ngFor="let product of products">
                 <card-product [product]="product"></card-product>
             </div>
