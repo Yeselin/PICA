@@ -49,14 +49,16 @@ services:
     depends_on:
       - elasticsearch
     environment:
-      - TZ: "America/Bogota"
       - DB_HOST=192.168.43.155
       - DB_PORT=1433
       - DB_NAME=DB_PRODUCT
       - DB_USER=sa
       - DB_PASSWORD=adminadmin123
       #- "DB_STATEMENT=SELECT * FROM Users WHERE CREATION_DATE >= :sql_last_value"
-      - "DB_STATEMENT=SELECT p.id, p.spectacle_date as spactacleDate, p.arrival_date as arrivalDate, p.departure_date as departureDate, t.name as transport,  s.name as spactacle,  l.name as lodging,  p.description,  p.image_ref as image,  co.name_city as sourceCity,  cd.name_city as targetCity FROM product p ,city co ,city cd ,spectacle s, transport T, lodging l WHERE p.target_city = cd.id and p.source_city = co.id and p.spectacle_type = s.id and P.transport_type = T.id and p.lodging_type = l.id and (p.create_date >= :sql_last_value or p.update_date >= :sql_last_value) ORDER BY p.id"
+      #- "DB_STATEMENT=SELECT TOP (5) p.id, p.spectacle_date, arrival_date, departure_date, CONCAT (char(123),char(34), 'name',char(34),
+': ',char(34), t.name, char(34),',',char(34), 'cost',char(34),': ',t.cost, char(125))as transport 
+FROM product p ,city co,city cd,spectacle s,transport T,lodging l WHERE p.target_city = cd.id and p.source_city = co.id and p.spectacle_type = s.id and P.transport_type = T.id and p.lodging_type = l.id ORDER BY p.id"
+      - "DB_STATEMENT=SELECT p.id, p.spectacle_date, p.arrival_date, p.departure_date, t.name as transport_name, t.cost as transport_cost, s.name as spectacle_name, s.cost as spectacle_cost, l.name as lodging_name,l.cost as lodging_cost, p.name, p.description, p.image_ref as image, co.name_city as source_city_name, co.country_name as source_country_name, co.cost as source_city_cost, cd.name_city as target_city_name, cd.country_name as target_country_name, cd.cost as target_city_cost FROM product p ,city co,city cd,spectacle s,transport T,lodging l WHERE p.target_city = cd.id and p.source_city = co.id and p.spectacle_type = s.id and P.transport_type = T.id and p.lodging_type = l.id and (p.create_date >= :sql_last_value or p.update_date >= :sql_last_value) ORDER BY p.id"
       - TRACKING_COLUMN=update_date
       - ES_INDEX=products
       - "CRON_PATTERN=*/5 * * * *"
