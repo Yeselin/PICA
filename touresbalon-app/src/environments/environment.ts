@@ -10,7 +10,8 @@ export const environment = {
   API_ORDERS: 'http://127.0.0.1:8080/api/orders',
   API_CUSTOMERS: 'http://127.0.0.1:8080/api/customers',
 
-  STORAGE_KEY_SLIDER:'slider'
+  STORAGE_KEY_SLIDER:'slider',
+  SHOPPING_CART:'shopping_cart'
 };
 
 /*

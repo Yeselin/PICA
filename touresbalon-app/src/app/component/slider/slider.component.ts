@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ProductService } from './../../service/product.service';
 import { Product } from '../../model/Product';
 import { LocalStorageService } from '../../service/local-storage.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'slider-products',
@@ -18,7 +19,9 @@ export class SliderComponent implements OnInit {
 
   public sliderEnable = true;
 
-  constructor(@Inject(LocalStorageService) private storage: LocalStorageService, @Inject(ProductService) private productService: ProductService) { }
+  constructor(@Inject(LocalStorageService) private storage: LocalStorageService, 
+      @Inject(ProductService) private productService: ProductService,
+      private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.products = this.storage.getLocalSlide();
@@ -42,11 +45,14 @@ export class SliderComponent implements OnInit {
         if (response.length > 0) {
           this.sliderEnable = false;
           this.products = response;
+        }else{
+          this.toastrService.info('Sin resultados','Mensaje!');
         }
       }, (error) => {
         console.error(error);
       });
+    }else{
+      this.toastrService.warning('Indique un valor', 'Mesaje!');
     }
-
   }
 }

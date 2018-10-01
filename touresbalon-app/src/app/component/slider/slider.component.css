@@ -27,9 +27,9 @@
 }
 
 .search-right{
-    min-width: 0;
-    position: relative;
+    min-width: 0;   
     height: 35px;
+    position: relative;
     float: right;
     width: auto;
     display: inline-block;

@@ -11,24 +11,33 @@ import { ProductService } from './service/product.service';
 import { CustomerService } from './service/customer.service';
 import { OrderService } from './service/order.service';
 import { CardProductComponent } from './component/card-product/card-product.component';
-import { ResultListComponent } from './component/result-list/result-list.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
+import { ToastrModule } from 'ngx-toastr';
+import { ShoppingCartComponent } from './component/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SliderComponent,
     CardProductComponent,
-    ResultListComponent
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     StorageServiceModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     RouterModule.forRoot([
       {
         path: '',
         component: SliderComponent
+      },
+      {
+        path: 'shopping-cart',
+        component: ShoppingCartComponent
       }
     ])
   ],
