@@ -3,3 +3,8 @@ server:
   port: ${SERVER_PORT:8081}
   servlet:
     contextPath: /products
+elasticParameters:
+  server: 52.71.119.146
+  port: 9200
+  index: produc*
+  searchSize: 50
