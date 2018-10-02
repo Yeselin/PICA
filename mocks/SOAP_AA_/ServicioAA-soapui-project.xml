@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+-<con:soapui-project xmlns:con="http://eviware.com/soapui/config" runType="SEQUENTIAL" abortOnError="false" soapui-version="5.4.0" name="ServicioAA" activeEnvironment="Default" id="5dc8cff4-bfff-4949-bfc5-11d0f0547462">
+
+<con:settings/>
+
+
+-<con:interface name="BasicHttpBinding_IAAFlightsService" id="5a72a147-d767-430f-8248-66b75b408459" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" definition="http://localhost/ServicioSoapAA/ServicioAA.svc?wsdl" anonymous="optional" soapVersion="1_1" bindingName="{http://tempuri.org/}BasicHttpBinding_IAAFlightsService" type="wsdl" xsi:type="con:WsdlInterface" wsaVersion="NONE">
+
+<con:settings/>
+
+
+-<con:definitionCache type="TEXT" rootPart="http://localhost/ServicioSoapAA/ServicioAA.svc?wsdl">
+
+
+-<con:part>
+
+<con:url>http://localhost/ServicioSoapAA/ServicioAA.svc?wsdl</con:url>
+
+
+-<con:content>
+
+-<![CDATA[<wsdl:definitions name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost/ServicioSoapAA/ServicioAA.svc?xsd=xsd0" namespace="http://tempuri.org/"/>
+      <xsd:import schemaLocation="http://localhost/ServicioSoapAA/ServicioAA.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAAFlightsService_CancelFlight_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelFlight"/>
+  </wsdl:message>
+  <wsdl:message name="IAAFlightsService_CancelFlight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelFlightResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IAAFlightsService_RegistryFlight_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistryFlight"/>
+  </wsdl:message>
+  <wsdl:message name="IAAFlightsService_RegistryFlight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistryFlightResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="IAAFlightsService">
+    <wsdl:operation name="CancelFlight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAAFlightsService/CancelFlight" message="tns:IAAFlightsService_CancelFlight_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IAAFlightsService/CancelFlightResponse" message="tns:IAAFlightsService_CancelFlight_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegistryFlight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAAFlightsService/RegistryFlight" message="tns:IAAFlightsService_RegistryFlight_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/IAAFlightsService/RegistryFlightResponse" message="tns:IAAFlightsService_RegistryFlight_OutputMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAAFlightsService" type="tns:IAAFlightsService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CancelFlight">
+      <soap:operation soapAction="http://tempuri.org/IAAFlightsService/CancelFlight" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistryFlight">
+      <soap:operation soapAction="http://tempuri.org/IAAFlightsService/RegistryFlight" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IAAFlightsService" binding="tns:BasicHttpBinding_IAAFlightsService">
+      <soap:address location="http://localhost/ServicioSoapAA/ServicioAA.svc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]>
+</con:content>
+
+<con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+
+</con:part>
+
+
+-<con:part>
+
+<con:url>http://localhost/ServicioSoapAA/ServicioAA.svc?xsd=xsd0</con:url>
+
+
+-<con:content>
+
+-<![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/">
+  <xs:element name="CancelFlight">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="value" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelFlightResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CancelFlightResult" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistryFlight">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="composite" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistryFlightResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegistryFlightResult" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>]]>
+</con:content>
+
+<con:type>http://www.w3.org/2001/XMLSchema</con:type>
+
+</con:part>
+
+
+-<con:part>
+
+<con:url>http://localhost/ServicioSoapAA/ServicioAA.svc?xsd=xsd1</con:url>
+
+
+-<con:content>
+
+-<![CDATA[<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+  <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+  <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+  <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+  <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+  <xs:element name="byte" nillable="true" type="xs:byte"/>
+  <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+  <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+  <xs:element name="double" nillable="true" type="xs:double"/>
+  <xs:element name="float" nillable="true" type="xs:float"/>
+  <xs:element name="int" nillable="true" type="xs:int"/>
+  <xs:element name="long" nillable="true" type="xs:long"/>
+  <xs:element name="QName" nillable="true" type="xs:QName"/>
+  <xs:element name="short" nillable="true" type="xs:short"/>
+  <xs:element name="string" nillable="true" type="xs:string"/>
+  <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+  <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+  <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+  <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+  <xs:element name="char" nillable="true" type="tns:char"/>
+  <xs:simpleType name="char">
+    <xs:restriction base="xs:int"/>
+  </xs:simpleType>
+  <xs:element name="duration" nillable="true" type="tns:duration"/>
+  <xs:simpleType name="duration">
+    <xs:restriction base="xs:duration">
+      <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+      <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+      <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="guid" nillable="true" type="tns:guid"/>
+  <xs:simpleType name="guid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="FactoryType" type="xs:QName"/>
+  <xs:attribute name="Id" type="xs:ID"/>
+  <xs:attribute name="Ref" type="xs:IDREF"/>
+</xs:schema>]]>
+</con:content>
+
+<con:type>http://www.w3.org/2001/XMLSchema</con:type>
+
+</con:part>
+
+</con:definitionCache>
+
+
+-<con:endpoints>
+
+<con:endpoint>http://localhost/ServicioSoapAA/ServicioAA.svc</con:endpoint>
+
+</con:endpoints>
+
+
+-<con:operation name="CancelFlight" id="932bc62e-0f32-4d0d-9e4a-2f4274147950" anonymous="optional" type="Request-Response" sendsAttachments="false" receivesAttachments="false" inputName="" bindingOperationName="CancelFlight" action="http://tempuri.org/IAAFlightsService/CancelFlight" isOneWay="false">
+
+<con:settings/>
+
+
+-<con:call name="Request 1" id="9696229f-af8e-40d8-8d80-8b147984d072">
+
+
+-<con:settings>
+
+<con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers"><xml-fragment/></con:setting>
+
+</con:settings>
+
+<con:encoding>UTF-8</con:encoding>
+
+<con:endpoint/>
+
+
+-<con:request>
+
+-<![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:CancelFlight>
+         <!--Optional:-->
+         <tem:value>1</tem:value>
+      </tem:CancelFlight>
+   </soapenv:Body>
+</soapenv:Envelope>]]>
+</con:request>
+
+
+-<con:credentials>
+
+<con:authType>No Authorization</con:authType>
+
+</con:credentials>
+
+<con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+
+<con:jmsPropertyConfig/>
+
+<con:wsaConfig action="http://tempuri.org/IAAFlightsService/CancelFlight" version="200508" mustUnderstand="NONE"/>
+
+<con:wsrmConfig version="1.2"/>
+
+</con:call>
+
+</con:operation>
+
+
+-<con:operation name="RegistryFlight" id="bdf9fffb-59f4-4548-a7d4-f95e200e8eac" anonymous="optional" type="Request-Response" sendsAttachments="false" receivesAttachments="false" inputName="" bindingOperationName="RegistryFlight" action="http://tempuri.org/IAAFlightsService/RegistryFlight" isOneWay="false">
+
+<con:settings/>
+
+
+-<con:call name="Request 1" id="0d6f586b-68aa-4215-bb23-f4934574efb0">
+
+<con:settings/>
+
+<con:encoding>UTF-8</con:encoding>
+
+<con:endpoint>http://localhost/ServicioSoapAA/ServicioAA.svc</con:endpoint>
+
+
+-<con:request>
+
+-<![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:RegistryFlight>\r
+         <!--Optional:-->\r
+         <tem:composite>?</tem:composite>\r
+      </tem:RegistryFlight>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]>
+</con:request>
+
+
+-<con:credentials>
+
+<con:authType>No Authorization</con:authType>
+
+</con:credentials>
+
+<con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+
+<con:jmsPropertyConfig/>
+
+<con:wsaConfig action="http://tempuri.org/IAAFlightsService/RegistryFlight" version="200508" mustUnderstand="NONE"/>
+
+<con:wsrmConfig version="1.2"/>
+
+</con:call>
+
+</con:operation>
+
+</con:interface>
+
+
+-<con:testSuite name="BasicHttpBinding_IAAFlightsService TestSuite" id="6a93259d-42bf-4ff8-9f3a-6de1bb3a81b9">
+
+<con:settings/>
+
+<con:runType>SEQUENTIAL</con:runType>
+
+
+-<con:testCase name="CancelFlight TestCase" id="4901e704-478a-404c-8e03-aeecfe34a5d6" searchProperties="true" maxResults="0" keepSession="false" failTestCaseOnErrors="true" failOnError="true">
+
+<con:settings/>
+
+
+-<con:testStep name="CancelFlight" id="f8c0d0ed-8955-4d9e-8fc5-fd8e324b1aae" type="request">
+
+<con:settings/>
+
+
+-<con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:RequestStep">
+
+<con:interface>BasicHttpBinding_IAAFlightsService</con:interface>
+
+<con:operation>CancelFlight</con:operation>
+
+
+-<con:request name="CancelFlight" id="a124832f-ff3b-45bc-a2d3-7f1e01f10a8f">
+
+<con:settings/>
+
+<con:encoding>UTF-8</con:encoding>
+
+<con:endpoint>http://localhost/ServicioSoapAA/ServicioAA.svc</con:endpoint>
+
+
+-<con:request>
+
+-<![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:CancelFlight>\r
+         <!--Optional:-->\r
+         <tem:value>?</tem:value>\r
+      </tem:CancelFlight>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]>
+</con:request>
+
+
+-<con:credentials>
+
+<con:authType>No Authorization</con:authType>
+
+</con:credentials>
+
+<con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+
+<con:jmsPropertyConfig/>
+
+<con:wsaConfig action="http://tempuri.org/IAAFlightsService/CancelFlight" version="200508" mustUnderstand="NONE"/>
+
+<con:wsrmConfig version="1.2"/>
+
+</con:request>
+
+</con:config>
+
+</con:testStep>
+
+<con:properties/>
+
+</con:testCase>
+
+
+-<con:testCase name="RegistryFlight TestCase" id="abc2d071-26c3-48d3-b057-6ae312dc674b" searchProperties="true" maxResults="0" keepSession="false" failTestCaseOnErrors="true" failOnError="true">
+
+<con:settings/>
+
+
+-<con:testStep name="RegistryFlight" id="7a27ea1f-3ec3-4461-b73a-bc09ff635527" type="request">
+
+<con:settings/>
+
+
+-<con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:RequestStep">
+
+<con:interface>BasicHttpBinding_IAAFlightsService</con:interface>
+
+<con:operation>RegistryFlight</con:operation>
+
+
+-<con:request name="RegistryFlight" id="8bc4ce25-9639-4bc5-a435-dc25c3db888c">
+
+<con:settings/>
+
+<con:encoding>UTF-8</con:encoding>
+
+<con:endpoint>http://localhost/ServicioSoapAA/ServicioAA.svc</con:endpoint>
+
+
+-<con:request>
+
+-<![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:RegistryFlight>\r
+         <!--Optional:-->\r
+         <tem:composite>?</tem:composite>\r
+      </tem:RegistryFlight>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]>
+</con:request>
+
+
+-<con:credentials>
+
+<con:authType>No Authorization</con:authType>
+
+</con:credentials>
+
+<con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+
+<con:jmsPropertyConfig/>
+
+<con:wsaConfig action="http://tempuri.org/IAAFlightsService/RegistryFlight" version="200508" mustUnderstand="NONE"/>
+
+<con:wsrmConfig version="1.2"/>
+
+</con:request>
+
+</con:config>
+
+</con:testStep>
+
+<con:properties/>
+
+</con:testCase>
+
+<con:properties/>
+
+</con:testSuite>
+
+
+-<con:mockService name="Mock_ServiceAA" id="965034ea-8ae0-45ea-8504-504955c3384a" faultMockOperation="CancelFlight" docroot="" bindToHostOnly="false" host="localhost" path="/cancelVuelo" port="8080">
+
+
+-<con:settings>
+
+<con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting>
+
+</con:settings>
+
+<con:properties/>
+
+
+-<con:mockOperation name="CancelFlight" id="4fe814f5-27e9-4c64-b4a6-d59fd8e467f1" operation="CancelFlight" interface="BasicHttpBinding_IAAFlightsService">
+
+<con:settings/>
+
+<con:defaultResponse>Response 1</con:defaultResponse>
+
+<con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+
+
+-<con:response name="Response 1" id="e6957fd0-8577-44d8-a798-53a0571d0833" encoding="UTF-8" httpResponseStatus="200">
+
+<con:settings/>
+
+
+-<con:responseContent>
+
+-<![CDATA[<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+   <s:Body>
+      <CancelFlightResponse xmlns="http://tempuri.org/">
+         <CancelFlightResult>Vuelo Cancelado numero 1</CancelFlightResult>
+          <CancelFlightResult>otro 1</CancelFlightResult>
+      </CancelFlightResponse>
+   </s:Body>
+</s:Envelope>]]>
+</con:responseContent>
+
+<con:wsaConfig action="http://tempuri.org/IAAFlightsService/CancelFlight" version="200508" mustUnderstand="NONE"/>
+
+</con:response>
+
+<con:dispatchConfig/>
+
+</con:mockOperation>
+
+</con:mockService>
+
+<con:properties/>
+
+<con:wssContainer/>
+
+<con:oAuth2ProfileContainer/>
+
+<con:oAuth1ProfileContainer/>
+
+<con:sensitiveInformation/>
+
+</con:soapui-project>
