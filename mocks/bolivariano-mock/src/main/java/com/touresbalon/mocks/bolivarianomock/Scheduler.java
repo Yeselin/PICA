@@ -58,14 +58,7 @@ public class Scheduler {
 
 	@PreDestroy
 	public void destroy() {
-		try {
-			if (ftpClient.isConnected()) {
-				ftpClient.logout();
-				ftpClient.disconnect();
-			}
-		} catch (IOException ex) {
-			logger.error("destroy", ex);
-		}
+		desconnect();
 	}
 
 	@Scheduled(fixedRateString = "${app.fixedRate}")
@@ -126,6 +119,7 @@ public class Scheduler {
 			} catch (IOException ex) {
 				logger.error("finally", ex);
 			}
+			desconnect();
 		}
 		logger.info("FINISHED :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
 	}
@@ -143,4 +137,14 @@ public class Scheduler {
 		ftpClient.setFileTransferMode(FTP.BINARY_FILE_TYPE);
 	}
 
+	private void desconnect() {
+		try {
+			if (ftpClient.isConnected()) {
+				ftpClient.logout();
+				ftpClient.disconnect();
+			}
+		} catch (IOException ex) {
+			logger.error("destroy", ex);
+		}
+	}
 }
