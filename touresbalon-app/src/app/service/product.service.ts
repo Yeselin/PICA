@@ -12,8 +12,8 @@ export class ProductService {
   
   constructor(private httpClient: HttpClient) { }
 
-  getSlider$() : Observable<Product[]> {
-    return this.httpClient.get<Product[]>(environment.API_PRODUCTS + '/slider');
+  getCampana$() : Observable<Product[]> {
+    return this.httpClient.get<Product[]>(environment.API_PRODUCTS + '/campanas');
   }
 
   

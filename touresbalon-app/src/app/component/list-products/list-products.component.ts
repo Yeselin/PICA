@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'list-products',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-products.component.css']
 })
 export class ListProductsComponent implements OnInit {
+
+  @Input() findBy: string;
+  @Input() findValue: string;
 
   constructor() { }
 

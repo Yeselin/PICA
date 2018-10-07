@@ -18,7 +18,7 @@ export class LocalStorageService {
   public getLocalSlide(): Product[] {
     this.products = this.storage.get(environment.STORAGE_KEY_SLIDER);
     if (this.products === null) {
-      this.productService.getSlider$().subscribe((response) => {
+      this.productService.getCampana$().subscribe((response) => {
         this.products = response;
         this.storage.set(environment.STORAGE_KEY_SLIDER, this.products);
       },
