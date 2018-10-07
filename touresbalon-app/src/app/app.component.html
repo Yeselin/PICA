@@ -1,4 +1,63 @@
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper blue-grey">
+            <a href="#!" class="brand-logo" style="text-decoration:none">TouresBalón</a>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="sidenav">
+                <li><a routerLink="/orders" routerLinkActive="active">Ordenes</a></li>
+                <li><a routerLink="/login" routerLinkActive="active">Ingresar</a></li>
+                <li><a routerLink="/shopping-cart" routerLinkActive="active">Carrito</a></li>
+            </ul>
 
-
-
+            <ul class="right hide-on-med-and-down">
+                <li><a routerLink="/orders" routerLinkActive="active">Ordenes</a></li>
+                <li><a routerLink="/login" routerLinkActive="active"><i class="material-icons">account_circle</i></a></li>
+                <li><a routerLink="/shopping-cart" routerLinkActive="active"><i class="material-icons">shopping_cart</i></a></li>
+            </ul>
+            <search-bar></search-bar>
+        </div>
+    </nav>
+</div>
 <router-outlet></router-outlet>
+
+<footer class="page-footer orange">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">TouresBalón</h5>
+                <p class="grey-text text-lighten-4">Cuando quieras asistir a un espectáculo deportivo, sabrás que con
+                    TouresBalón encontrarás una solución ágil, con precio justo y confiable.</p>
+                <ul>
+                    <li><a href="#" class="white-text"><i class="Tiny material-icons">location_on</i>Avenida siempre
+                            viva,calle falsa 123</a></li>
+                    <li><a href="#" class="white-text"><i class="Tiny material-icons">phone</i>+57 300 111 2233</a></li>
+                    <li><a href="#" class="white-text"><i class="Tiny material-icons">email</i>clientes@touresbalon.com</a></li>
+                </ul>
+
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Categorías</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">Futbol</a></li>
+                    <li><a class="white-text" href="#!">Baseball</a></li>
+                    <li><a class="white-text" href="#!">Ciclismo</a></li>
+                    <li><a class="white-text" href="#!">Formula Uno</a></li>
+                </ul>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Servicios</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">Calendario deportivo</a></li>
+                    <li><a class="white-text" href="#!">Lista de deseos</a></li>
+                    <li><a class="white-text" href="#!">Mi Cuenta</a></li>
+                    <li><a class="white-text" href="#!">Ayuda</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+        </div>
+    </div>
+</footer>
