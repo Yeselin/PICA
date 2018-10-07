@@ -3,46 +3,46 @@
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AAFlightsService"
-	targetNamespace="http://americanAirlines.com/schema/avainca/AAFlightsService"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:ns2="http://americanAirlines.com/schema/avainca/AAFlightsService">
+	xmlns:ns2="http://americanAirlines.com/AAFlightsService"
+	targetNamespace="http://americanAirlines.com/AAFlightsService"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<wsdl:types>
-		<xsd:schema xmlns:tns="http://americanAirlines.com/schema/avainca/AAFlightsService">
-			<xsd:import namespace="http://americanAirlines.com/schema/avainca/AAFlightsService"
+		<xsd:schema xmlns:tns="http://americanAirlines.com/AAFlightsService">
+			<xsd:import namespace="http://americanAirlines.com/AAFlightsService"
 				schemaLocation="AmericanAirlines.xsd" />
 		</xsd:schema>
 	</wsdl:types>
-	<wsdl:message name="CreateBooking">
-		<wsdl:part element="ns2:CreateBooking" name="parameters" />
+	<wsdl:message name="createBookingRequest">
+		<wsdl:part element="ns2:createBookingRequest" name="parameters" />
 	</wsdl:message>
-	<wsdl:message name="CreateBookingResponse">
-		<wsdl:part element="ns2:CreateBookingResponse"
+	<wsdl:message name="createBookingResponse">
+		<wsdl:part element="ns2:createBookingResponse"
 			name="parameters" />
 	</wsdl:message>
-	<wsdl:message name="CancelBooking">
-		<wsdl:part element="ns2:CancelBooking" name="parameters" />
+	<wsdl:message name="cancelBookingRequest">
+		<wsdl:part element="ns2:cancelBookingRequest" name="parameters" />
 	</wsdl:message>
-	<wsdl:message name="CancelBookingResponse">
-		<wsdl:part element="ns2:CancelBookingResponse"
+	<wsdl:message name="cancelBookingResponse">
+		<wsdl:part element="ns2:cancelBookingResponse"
 			name="parameters" />
 	</wsdl:message>
 	<wsdl:portType name="AAFlightsService">
-		<wsdl:operation name="CreateBooking">
-			<wsdl:input message="ns2:CreateBooking" />
-			<wsdl:output message="ns2:CreateBookingResponse" />
+		<wsdl:operation name="createBooking">
+			<wsdl:input message="ns2:createBookingRequest" />
+			<wsdl:output message="ns2:createBookingResponse" />
 		</wsdl:operation>
-		<wsdl:operation name="CancelBooking">
-			<wsdl:input message="ns2:CancelBooking" />
-			<wsdl:output message="ns2:CancelBookingResponse" />
+		<wsdl:operation name="cancelBooking">
+			<wsdl:input message="ns2:cancelBookingRequest" />
+			<wsdl:output message="ns2:cancelBookingResponse" />
 		</wsdl:operation>
 	</wsdl:portType>
 	<wsdl:binding name="AAFlightsServiceSOAP"
 		type="ns2:AAFlightsService">
 		<soap:binding style="document"
 			transport="http://schemas.xmlsoap.org/soap/http" />
-		<wsdl:operation name="CreateBooking">
+		<wsdl:operation name="createBooking">
 			<soap:operation
-				soapAction="http://americanAirlines.com/schema/avainca/AAFlightsService/CreateBooking" />
+				soapAction="http://americanAirlines.com/AAFlightsService" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -50,9 +50,9 @@
 				<soap:body use="literal" />
 			</wsdl:output>
 		</wsdl:operation>
-		<wsdl:operation name="CancelBooking">
+		<wsdl:operation name="cancelBooking">
 			<soap:operation
-				soapAction="http://americanAirlines.com/schema/avainca/AAFlightsService/CancelBooking" />
+				soapAction="http://americanAirlines.com/AAFlightsService" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -64,7 +64,7 @@
 	<wsdl:service name="AAFlightsService">
 		<wsdl:port binding="ns2:AAFlightsServiceSOAP"
 			name="AAFlightsServiceSOAP">
-			<soap:address location="http://americanAirlines.com/schema/avainca/AAFlightsService" />
+			<soap:address location="http://localhost:7001/AAFlightsService" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

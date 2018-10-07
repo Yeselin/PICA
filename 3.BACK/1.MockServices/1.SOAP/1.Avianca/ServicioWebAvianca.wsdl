@@ -3,46 +3,46 @@
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServicioWebAvianca"
-	targetNamespace="http://avianca.com/schema/avainca/ServicioWebAvianca"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:ns2="http://avianca.com/schema/avainca/ServicioWebAvianca">
+	xmlns:ns2="http://avianca.com/ServicioWebAvianca"
+	targetNamespace="http://avianca.com/ServicioWebAvianca"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<wsdl:types>
-		<xsd:schema xmlns:tns="http://avianca.com/schema/avainca/ServicioWebAvianca">
-			<xsd:import namespace="http://avianca.com/schema/avainca/ServicioWebAvianca"
+		<xsd:schema xmlns:tns="http://avianca.com/ServicioWebAvianca">
+			<xsd:import namespace="http://avianca.com/ServicioWebAvianca"
 				schemaLocation="AviancaOperations.xsd" />
 		</xsd:schema>
 	</wsdl:types>
-	<wsdl:message name="CreateBooking">
-		<wsdl:part element="ns2:CreateBooking" name="parameters" />
+	<wsdl:message name="createBookingRequest">
+		<wsdl:part element="ns2:createBookingRequest" name="parameters" />
 	</wsdl:message>
-	<wsdl:message name="CreateBookingResponse">
-		<wsdl:part element="ns2:CreateBookingResponse"
+	<wsdl:message name="createBookingResponse">
+		<wsdl:part element="ns2:createBookingResponse"
 			name="parameters" />
 	</wsdl:message>
-	<wsdl:message name="CancelBooking">
-		<wsdl:part element="ns2:CancelBooking" name="parameters" />
+	<wsdl:message name="cancelBookingRequest">
+		<wsdl:part element="ns2:cancelBookingRequest" name="parameters" />
 	</wsdl:message>
-	<wsdl:message name="CancelBookingResponse">
-		<wsdl:part element="ns2:CancelBookingResponse"
+	<wsdl:message name="cancelBookingResponse">
+		<wsdl:part element="ns2:cancelBookingResponse"
 			name="parameters" />
 	</wsdl:message>
 	<wsdl:portType name="ServicioWebAvianca">
-		<wsdl:operation name="CreateBooking">
-			<wsdl:input message="ns2:CreateBooking" />
-			<wsdl:output message="ns2:CreateBookingResponse" />
+		<wsdl:operation name="createBooking">
+			<wsdl:input message="ns2:createBookingRequest" />
+			<wsdl:output message="ns2:createBookingResponse" />
 		</wsdl:operation>
-		<wsdl:operation name="CancelBooking">
-			<wsdl:input message="ns2:CancelBooking" />
-			<wsdl:output message="ns2:CancelBookingResponse" />
+		<wsdl:operation name="cancelBooking">
+			<wsdl:input message="ns2:cancelBookingRequest" />
+			<wsdl:output message="ns2:cancelBookingResponse" />
 		</wsdl:operation>
 	</wsdl:portType>
 	<wsdl:binding name="ServicioWebAviancaSOAP"
 		type="ns2:ServicioWebAvianca">
 		<soap:binding style="document"
 			transport="http://schemas.xmlsoap.org/soap/http" />
-		<wsdl:operation name="CreateBooking">
+		<wsdl:operation name="createBooking">
 			<soap:operation
-				soapAction="http://avianca.com/schema/avainca/ServicioWebAvianca/CreateBooking" />
+				soapAction="http://avianca.com/ServicioWebcreateBooking" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -50,9 +50,9 @@
 				<soap:body use="literal" />
 			</wsdl:output>
 		</wsdl:operation>
-		<wsdl:operation name="CancelBooking">
+		<wsdl:operation name="cancelBooking">
 			<soap:operation
-				soapAction="http://avianca.com/schema/avainca/ServicioWebAvianca/CancelBooking" />
+				soapAction="http://avianca.com/ServicioWebcancelBooking" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -64,7 +64,7 @@
 	<wsdl:service name="ServicioWebAvianca">
 		<wsdl:port binding="ns2:ServicioWebAviancaSOAP"
 			name="ServicioWebAviancaSOAP">
-			<soap:address location="http://avianca.com/schema/avainca/ServicioWebAvianca" />
+			<soap:address location="http://localhost:7001/ServicioWebAvianca" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

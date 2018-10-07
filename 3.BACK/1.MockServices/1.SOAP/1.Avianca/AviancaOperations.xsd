@@ -1,101 +1,92 @@
-<xsd:schema
-	targetNamespace="http://avianca.com/schema/avainca/ServicioWebAvianca"
-	elementFormDefault="qualified"
-	xmlns:tns="http://avianca.com/schema/avainca/ServicioWebAvianca"
+<xsd:schema targetNamespace="http://avianca.com/ServicioWebAvianca"
+	elementFormDefault="qualified" xmlns:ns2="http://avianca.com/ServicioWebAvianca"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-	<xsd:element name="CreateBooking">
+	<xsd:element name="createBookingRequest">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="customer" type="CustomerType"
+				<xsd:element name="customer" type="ns2:CustomerType"
 					minOccurs="1" maxOccurs="1" />
-				<xsd:element name="booking" type="BookingType"
+				<xsd:element name="booking" type="ns2:BookingType"
 					minOccurs="1" maxOccurs="1" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
 
-	<xsd:element name="CancelBooking">
+	<xsd:element name="cancelBookingRequest">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="customer" type="CustomerType"
+				<xsd:element name="customer" type="ns2:CustomerType"
 					minOccurs="1" maxOccurs="1" />
-				<xsd:element name="booking" type="BookingType"
+				<xsd:element name="booking" type="ns2:BookingType"
 					minOccurs="1" maxOccurs="1" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
 
-	<xsd:element name="CreateBookingResponse">
+	<xsd:element name="createBookingResponse">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="status" type="ResponseStatusType"
+				<xsd:element name="status" type="ns2:ResponseStatusType"
 					minOccurs="1" maxOccurs="1" />
-				<xsd:element name="booking" type="ResponseBookingCreation"
+				<xsd:element name="booking" type="ns2:ResponseBookingCreation"
 					minOccurs="1" maxOccurs="1" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
 
-	<xsd:element name="CancelBookingResponse">
+	<xsd:element name="cancelBookingResponse">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="status" type="ResponseStatusType"
+				<xsd:element name="status" type="ns2:ResponseStatusType"
 					minOccurs="1" maxOccurs="1" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
 
-	<xsd:element name="CustomerType">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element name="name" type="xsd:string" minOccurs="1"
-					maxOccurs="1" />
-				<xsd:element name="lastName" type="xsd:string"
-					minOccurs="1" maxOccurs="1" />
-				<xsd:element name="id" type="xsd:string" minOccurs="1"
-					maxOccurs="1" />
-				<xsd:element name="idType" type="xsd:string" minOccurs="1"
-					maxOccurs="1" />
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="CustomerType">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" minOccurs="1"
+				maxOccurs="1" />
+			<xsd:element name="lastName" type="xsd:string" minOccurs="1"
+				maxOccurs="1" />
+			<xsd:element name="id" type="xsd:string" minOccurs="1"
+				maxOccurs="1" />
+			<xsd:element name="idType" type="xsd:string" minOccurs="1"
+				maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
 
-	<xsd:element name="BookingType">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element name="bookingNumber" type="xsd:string"
-					minOccurs="1" maxOccurs="1" />
-				<xsd:element name="bookingReference" type="xsd:string"
+	<xsd:complexType name="BookingType">
+		<xsd:sequence>
+				<xsd:element name="flightType" type="xsd:string"
 					minOccurs="1" maxOccurs="1" />
 				<xsd:element name="flightDate" type="xsd:dateTime"
 					minOccurs="1" maxOccurs="1" />
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+				<xsd:element name="cabinClass" type="xsd:dateTime"
+					minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
 
-	<xsd:element name="ResponseBookingCreation">
-		<xsd:complexType>
-			<xsd:sequence>
+	<xsd:complexType name="ResponseBookingCreation">
+		<xsd:sequence>
 
-				<xsd:element name="bookingNumber" type="xsd:string"
-					minOccurs="1" maxOccurs="1" />
-				<xsd:element name="bookingReference" type="xsd:string"
-					minOccurs="1" maxOccurs="1" />
-				<xsd:element name="flightDate" type="xsd:dateTime"
-					minOccurs="1" maxOccurs="1" />
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+			<xsd:element name="bookingNumber" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="bookingReference" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="flightDate" type="xsd:dateTime"
+				minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
 
-	<xsd:element name="ResponseStatusType">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element name="statusCode" type="xsd:string"
-					minOccurs="1" maxOccurs="1" />
-				<xsd:element name="description" type="xsd:string"
-					minOccurs="1" maxOccurs="1" />
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+
+	<xsd:complexType name="ResponseStatusType">
+		<xsd:sequence>
+			<xsd:element name="statusCode" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="description" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
 </xsd:schema>

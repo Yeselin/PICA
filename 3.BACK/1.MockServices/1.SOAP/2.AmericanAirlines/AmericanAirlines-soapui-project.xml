@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="2961a77f-7ada-4042-bb60-bf84b019c3b8" activeEnvironment="Default" name="AmericanAirlines" resourceRoot="" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="70197b8b-26aa-495b-8831-25bc2e1e9bcd" wsaVersion="NONE" name="AAFlightsServiceSOAP" type="wsdl" bindingName="{http://americanAirlines.com/AAFlightsService}AAFlightsServiceSOAP" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/Felipe/Documents/PICA/PICA_TouresBalon/3.BACK/1.MockServices/1.SOAP/2.AmericanAirlines/AAFlightsService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\Felipe\Documents\PICA\PICA_TouresBalon\3.BACK\1.MockServices\1.SOAP\2.AmericanAirlines\AAFlightsService.wsdl"><con:part><con:url>file:\C:\Users\Felipe\Documents\PICA\PICA_TouresBalon\3.BACK\1.MockServices\1.SOAP\2.AmericanAirlines\AAFlightsService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="AAFlightsService" targetNamespace="http://americanAirlines.com/AAFlightsService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://americanAirlines.com/AAFlightsService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema xmlns:tns="http://americanAirlines.com/AAFlightsService">
+      <xsd:import namespace="http://americanAirlines.com/AAFlightsService" schemaLocation="AmericanAirlines.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="createBookingRequest">
+    <wsdl:part element="ns2:createBookingRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="createBookingResponse">
+    <wsdl:part element="ns2:createBookingResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="cancelBookingRequest">
+    <wsdl:part element="ns2:cancelBookingRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="cancelBookingResponse">
+    <wsdl:part element="ns2:cancelBookingResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="AAFlightsService">
+    <wsdl:operation name="createBooking">
+      <wsdl:input message="ns2:createBookingRequest"/>
+      <wsdl:output message="ns2:createBookingResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="cancelBooking">
+      <wsdl:input message="ns2:cancelBookingRequest"/>
+      <wsdl:output message="ns2:cancelBookingResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AAFlightsServiceSOAP" type="ns2:AAFlightsService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createBooking">
+      <soap:operation soapAction="http://americanAirlines.com/AAFlightsService"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelBooking">
+      <soap:operation soapAction="http://americanAirlines.com/AAFlightsService"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AAFlightsService">
+    <wsdl:port binding="ns2:AAFlightsServiceSOAP" name="AAFlightsServiceSOAP">
+      <soap:address location="http://localhost:7001/AAFlightsService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\Users\Felipe\Documents\PICA\PICA_TouresBalon\3.BACK\1.MockServices\1.SOAP\2.AmericanAirlines\AmericanAirlines.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://americanAirlines.com/AAFlightsService" elementFormDefault="qualified" xmlns:ns2="http://americanAirlines.com/AAFlightsService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="createBookingRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="customer" type="ns2:CustomerType" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="booking" type="ns2:BookingType" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="cancelBookingRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="customer" type="ns2:CustomerType" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="booking" type="ns2:BookingType" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="createBookingResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="status" type="ns2:ResponseStatusType" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="booking" type="ns2:ResponseBookingCreation" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="cancelBookingResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="status" type="ns2:ResponseStatusType" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="CustomerType">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="lastName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="id" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="idType" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BookingType">
+    <xsd:sequence>
+      <xsd:element name="flightType" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="flightDate" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="cabinClass" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResponseBookingCreation">
+    <xsd:sequence>
+      <xsd:element name="bookingId" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="bookingNumber" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="bookingReference" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="flightDate" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResponseStatusType">
+    <xsd:sequence>
+      <xsd:element name="statusCode" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="description" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://Felipe-PC:9085/AAFlightsService</con:endpoint><con:endpoint>http://localhost:7001/AAFlightsService</con:endpoint></con:endpoints><con:operation id="bafb255b-89c2-4baa-92da-e31c52a088c4" isOneWay="false" action="http://americanAirlines.com/AAFlightsService" name="cancelBooking" bindingOperationName="cancelBooking" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="01c06928-3d66-406f-b8e4-18ac850f1a54" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7001/AAFlightsService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:aaf="http://americanAirlines.com/AAFlightsService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <aaf:cancelBookingRequest>\r
+         <aaf:customer>\r
+            <aaf:name>?</aaf:name>\r
+            <aaf:lastName>?</aaf:lastName>\r
+            <aaf:id>?</aaf:id>\r
+            <aaf:idType>?</aaf:idType>\r
+         </aaf:customer>\r
+         <aaf:booking>\r
+            <aaf:flightType>?</aaf:flightType>\r
+            <aaf:flightDate>?</aaf:flightDate>\r
+            <aaf:cabinClass>?</aaf:cabinClass>\r
+         </aaf:booking>\r
+      </aaf:cancelBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://americanAirlines.com/AAFlightsService"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="b5e4b091-900e-4edb-abc0-9768030612ea" isOneWay="false" action="http://americanAirlines.com/AAFlightsService" name="createBooking" bindingOperationName="createBooking" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="64dfc83b-7882-4baa-8710-7f167e4b56c8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7001/AAFlightsService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:aaf="http://americanAirlines.com/AAFlightsService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <aaf:createBookingRequest>\r
+         <aaf:customer>\r
+            <aaf:name>?</aaf:name>\r
+            <aaf:lastName>?</aaf:lastName>\r
+            <aaf:id>?</aaf:id>\r
+            <aaf:idType>?</aaf:idType>\r
+         </aaf:customer>\r
+         <aaf:booking>\r
+            <aaf:flightType>?</aaf:flightType>\r
+            <aaf:flightDate>?</aaf:flightDate>\r
+            <aaf:cabinClass>?</aaf:cabinClass>\r
+         </aaf:booking>\r
+      </aaf:createBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://americanAirlines.com/AAFlightsService"/></con:call></con:operation></con:interface><con:mockService id="d5585df0-4881-4c0d-ba61-299154ec8e74" port="9085" path="/AAFlightsService" host="Felipe-PC" name="AAFlightsServiceSOAP MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="cancelBooking" id="7a297248-1f5d-4e75-a328-cea43c1309de" interface="AAFlightsServiceSOAP" operation="cancelBooking"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="c8b17675-8f55-46cb-baa4-9f0a31d249c9" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:aaf="http://americanAirlines.com/AAFlightsService">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <aaf:cancelBookingResponse>
+         <aaf:status>
+            <aaf:statusCode>0</aaf:statusCode>
+            <aaf:description>CANCELATION DONE</aaf:description>
+         </aaf:status>
+      </aaf:cancelBookingResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://americanAirlines.com/AAFlightsService"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="createBooking" id="71df0316-a6b4-450d-94a9-398e448ce731" interface="AAFlightsServiceSOAP" operation="createBooking"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="97e4dc4e-9280-400b-aef8-5db697244d55" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:aaf="http://americanAirlines.com/AAFlightsService">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <aaf:createBookingResponse>
+         <aaf:status>
+            <aaf:statusCode>0</aaf:statusCode>
+            <aaf:description>BOOKING CONFIRM</aaf:description>
+         </aaf:status>
+         <aaf:booking>
+            <aaf:bookingId>1312312</aaf:bookingId>
+            <aaf:bookingNumber>AA31321</aaf:bookingNumber>
+            <aaf:bookingReference>AA31321</aaf:bookingReference>
+            <aaf:flightDate>2019-12-20</aaf:flightDate>
+         </aaf:booking>
+      </aaf:createBookingResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://americanAirlines.com/AAFlightsService"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
