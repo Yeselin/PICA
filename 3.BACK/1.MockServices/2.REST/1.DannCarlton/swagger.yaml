@@ -1,0 +1,156 @@
+---
+swagger: "2.0"
+info:
+  description: |
+    Booking documentaion contract api.
+  version: 1.0.0
+  title: Dann Carlton Booking Documentation
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: pujtest@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+# host: dannCarlton.com
+# basePath: /BookingService/1.0.0
+tags:
+- name: booking
+  description: Book reservations
+schemes:
+- https
+- http
+paths:
+  /createBooking:
+    post:
+      tags:
+      - booking
+      summary: book a new entry at the hotel
+      operationId: bookRoom
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Books a room
+        required: true
+        schema:
+          $ref: '#/definitions/Book'
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/BookResponse'
+        405:
+          description: Invalid input
+  /cancelBooking:
+    post:
+      tags:
+      - booking
+      summary: Finds Book by  id Reservation
+      description: Find by booking id Reservation
+      operationId: cancelBooking
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: cancel a book
+        required: true
+        schema:
+          $ref: '#/definitions/CancelBooking'
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BookResponse'
+        400:
+          description: Invalid status value
+  /getBooking:
+    get:
+      tags:
+      - booking
+      summary: Finds Book by  id Reservation
+      description: Find by booking id Reservation
+      operationId: findBoodByIdReservation
+      produces:
+      - application/json
+      parameters:
+      - name: idReservation
+        in: query
+        description: Id Reservation is need to be considered for filter
+        required: true
+        type: array
+        items:
+          type: string
+          default: available
+        collectionFormat: multi
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BookResponse'
+        400:
+          description: Invalid status value
+    
+definitions:
+  Book:
+    type: object
+    properties:
+      bookingCode:
+        type: integer
+        format: int64
+      bookingDate:
+        type: string
+      numberOfRooms:
+        type: integer
+        format: int64
+      numberOfPeople:
+        type: integer
+        format: int64
+      requireBreakfast:
+        type: boolean
+    example:
+      requireBreakfast: true
+      bookingDate: bookingDate
+      numberOfRooms: 6
+      bookingCode: 0
+      numberOfPeople: 1
+  BookResponse:
+    type: object
+    properties:
+      statusCode:
+        type: integer
+        format: int64
+      statusDescription:
+        type: string
+      bookingCode:
+        type: integer
+        format: int64
+    example:
+      statusCode: 0
+      statusDescription: message
+      bookingCode: 0
+  CancelBooking:
+    type: object
+    properties:
+      bookingCode:
+        type: integer
+        format: int64
+      cancelReason:
+        type: string
+    example:
+      bookingCode: 0
+      cancelReason: message
+
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+# Added by API Auto Mocking Plugin
+host: dannCarlton.com
+basePath: /BookingService/v1.0
