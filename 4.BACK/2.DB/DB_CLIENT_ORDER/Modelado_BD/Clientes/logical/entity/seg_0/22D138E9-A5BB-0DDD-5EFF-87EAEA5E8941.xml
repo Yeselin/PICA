@@ -1,0 +1,195 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="22D138E9-A5BB-0DDD-5EFF-87EAEA5E8941" name="order_item">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:25:53 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="790A41D5-0DD5-FD8D-AACD-71380BF31747">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:30:20 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<structuredType>47E390DE-0671-C4B1-8428-0F45CBEE18F8</structuredType>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="product_id" id="8B9DD380-7901-510A-0ADF-407D68042958">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:30:25 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="product_name" id="258D7E07-9819-8733-DF9A-8C5A81286263">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:30:30 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="partnum" id="223E8573-B78A-3CFD-5857-B1AA1126BAB1">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:30:34 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="price" id="E72702E3-EAE4-0F15-F687-39FC3B161F06">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:30:38 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="quantity" id="CD4BEE61-DFEE-F0E0-A898-0B91B4529C2D">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:30:42 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="order_id" id="00E9D06F-AD83-0C62-2306-D12839BAF99C">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:32:59 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="create_date" id="8AEDACDD-EE81-CE23-6223-948F78A6487C">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:33:45 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="update_date" id="B602724C-9D6E-A1EA-A941-4FE793054F2E">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:33:49 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id1" id="2A362EFC-6F7A-B5A0-DE10-0E4929747BB3">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:41:27 UTC</createdTime>
+<generatorID>83F9B53E-41D6-2F02-A9A7-A4891AE20523</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<referedAttribute>90BCEF91-44EA-90ED-A08E-A05038E315D6</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="document_type_id" id="EA5FB7A3-244A-43D9-0117-B79CCF895069">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:42:22 UTC</createdTime>
+<generatorID>83F9B53E-41D6-2F02-A9A7-A4891AE20523</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<referedAttribute>D1F6315D-4D65-512C-753E-E89551DB1414</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="document_id" id="A0B46112-27CA-B060-971D-CA60E592AC26">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:42:22 UTC</createdTime>
+<generatorID>83F9B53E-41D6-2F02-A9A7-A4891AE20523</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<referedAttribute>CB4843D7-5DEA-EE15-4C84-38304B160DF5</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="78067AD4-CD67-D9B8-097E-6C7F7BDEF64C" name="order_item PK">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:39:43 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>790A41D5-0DD5-FD8D-AACD-71380BF31747</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,265 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="074C49D6-0BEC-4D12-B118-A84EAF281FF4" name="customer">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:11:59 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="document_type_id" id="C77E4DFA-1802-E668-1C7F-F68539F7C610">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:12:16 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="document_id" id="A24FBDD3-FFC3-E041-FCC8-73DE7B4A8500">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:16:59 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="first_name" id="40E54C07-D1C3-80AD-95C6-6773ED3DAB5D">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:12:55 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="last_name" id="ADACB343-29A8-7EA8-D183-095BC9E7C702">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:13:09 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="phone_number" id="B465E6BA-F844-838C-6F1C-B5E61403CEF8">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:13:15 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="email" id="3DBA58EE-0D6D-0A4F-9089-5FC6C6A3538D">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:13:29 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="password" id="DF65A19B-A9EB-8FEB-E53D-24E81B949FD7">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:13:44 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="customer_category_id" id="9B47E19A-4BCF-65AA-69D1-3605EE6009AB">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-08 03:16:51 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="creditcard_type_id" id="E48A515E-2B24-BA7B-F3DB-F2E9F80CCF03">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:14:33 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="creditcard_number" id="78D5395F-8F98-B871-8565-BDA5705E9CAF">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:14:16 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="status" id="095834D7-8FCB-A39C-F52D-2965C6D17882">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:15:02 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="create_date" id="B2892B1F-E255-217F-67B2-34527C53FCFD">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:17:42 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="update_date" id="C9B0D2C1-911A-AC3B-5DA1-CB3CA1ECF70C">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:17:58 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id" id="F921A8DD-82D1-D941-7B95-DB5EDCADCA84">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:59:38 UTC</createdTime>
+<generatorID>815BD60F-3E7D-6D39-8463-6F237783EB5D</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<referedAttribute>76746F5D-E673-E52C-E5E5-FED91F98668A</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id1" id="01DBD72C-D820-B901-3A98-0B1CC621151F">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:59:45 UTC</createdTime>
+<generatorID>86809E1F-14F7-F000-082F-5B2D2D60750C</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<referedAttribute>C52365AB-468E-543A-E8DC-529EACB81B3B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id2" id="FF79844A-08D6-949F-BB93-F7573A24DAE9">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-08 03:19:43 UTC</createdTime>
+<generatorID>26D2ACC1-E368-CE52-2005-F8FF68EDF92F</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<referedAttribute>901D18F4-08FE-3095-D17F-0DBDD6E378B3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id3" id="5506D361-0C8F-2AB1-9A16-632C425FD137">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-08 03:49:33 UTC</createdTime>
+<generatorID>94A5AEE7-4660-8C6A-06A7-A56380E343ED</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<referedAttribute>25F5F9EC-A37C-2BA6-3A6F-94EB19A7D020</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="AE4FE2C4-323C-742E-1C70-F7DFEEE06F95" name="customer PK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:12:39 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>C77E4DFA-1802-E668-1C7F-F68539F7C610</attributeRef>
+<attributeRef>A24FBDD3-FFC3-E041-FCC8-73DE7B4A8500</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

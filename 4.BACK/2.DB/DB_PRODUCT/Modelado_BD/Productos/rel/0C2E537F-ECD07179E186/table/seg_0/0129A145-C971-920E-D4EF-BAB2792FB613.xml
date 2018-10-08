@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0129A145-C971-920E-D4EF-BAB2792FB613" name="lodging">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>39ACFB77-8859-2794-25B5-ADA5FC3BA882</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="39A67251-9F45-8538-82BA-2CBD0CDDF8DB">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>86D12FC6-6704-9158-EDE8-16BDA14B66CE</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="A771516A-3A4F-D4B8-4E4F-470FAF2B945B">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>385FDE47-B914-4893-5430-402CE9923C64</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cost" id="8CC4B8EC-E619-01C0-A48F-0F639A2EB1C5">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>4DBA676D-04C3-92EB-56B2-199492BB5A01</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>18</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,18,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="74BDB8D6-3701-C9B3-5138-A00800F6ACE4" name="lodging_PK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>B475400E-C71E-A75D-8346-63952ABCD0B7</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="39A67251-9F45-8538-82BA-2CBD0CDDF8DB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

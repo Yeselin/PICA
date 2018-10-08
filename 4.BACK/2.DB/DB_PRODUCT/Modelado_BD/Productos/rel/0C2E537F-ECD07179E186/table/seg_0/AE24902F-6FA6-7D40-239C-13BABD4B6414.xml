@@ -1,0 +1,317 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AE24902F-6FA6-7D40-239C-13BABD4B6414" name="product">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>81A973A2-F227-0535-057F-A26403168680</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="4E8A392E-808B-7B60-E3FC-DDED0D7125EE">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>7C4895CA-211F-A079-D10E-3B114E4B2B7F</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="769A46DF-4D07-A0F9-9D67-68C3B37C7ACA">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>FCFBC8B4-4908-C611-1C5D-05124086AAED</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="spectacle_date" id="CBB808A9-40EC-E588-EE80-A7631E8DF411">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>4074BF53-0A83-534F-95C8-55BAE9F67EBE</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="arrival_date" id="6D3C0377-71A4-8B9F-75BD-5CC2A5EEEFB0">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>B7DACA6A-5A38-68CC-DE0C-CD8DCCCE7A4E</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="departure_date" id="37EA8778-2C4F-93ED-6C90-90A0345C7955">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>E6BA385F-3237-2F42-E3E8-C3E4BD39439C</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="transport_type" id="546FF241-090E-D57B-A74D-A040554AA29A">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>2928692E-EEB4-859E-271D-89D8CAF87845</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="spectacle_type" id="1F0B5964-C014-76E8-006D-F13D0883527D">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>2DAD2A7A-8AFA-5F94-F317-5DF82BA64C1A</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="lodging_type" id="A0088EC4-65A5-F61B-F96C-0631544E35D1">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>E1DACFAA-8FE8-C71A-F646-62E87D6D4C7C</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="description" id="C9C51698-EE5E-502F-3411-472B3483260C">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>C9973483-1616-918F-CED3-84E80F24B76A</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="code" id="E976F798-FF93-20C8-6DF3-C33048FFFE69">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>D62DFB62-6DBD-6E9E-A500-E42845F5B6E5</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="image_ref" id="3CB34E77-3294-E885-880A-0D9AD1FBB573">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>162E3D05-ACB9-494E-DCDF-B84BA38D9691</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>500</dataTypeSize>
+<ownDataTypeParameters>500,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="source_city" id="104B01E6-FD60-E3B1-8B3F-5A64CA534566">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>56659C55-6C21-7A0F-BAD6-FE0ECD7B7352</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="target_city" id="11BC47C2-3603-023C-67C3-B9C81E75905D">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>C778AF7F-D40F-611E-67BF-9F9845D3B150</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="transport_id" id="1398AE06-34EF-789C-2904-60C01F7F2950">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:49:53 UTC</createdTime>
+<generatorID>6ADEE6DD-9915-5E07-C3E8-847ED61A22E3</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6EA6C7D3-321E-58F0-355D-3FA25DA28905" referredColumn="8E75D0DC-AA99-18D6-4717-50597EA6EF26"/>
+</associations>
+</Column>
+<Column name="lodging_id" id="7D15D510-1282-3322-23A1-8CC419B5C92D">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:49:53 UTC</createdTime>
+<generatorID>F16B8EFC-8FC7-780F-3D09-E33FF2336125</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A6E166EC-C4F0-5325-47BE-CD5AF800EDDC" referredColumn="39A67251-9F45-8538-82BA-2CBD0CDDF8DB"/>
+</associations>
+</Column>
+<Column name="spectacle_id" id="673F2B73-6E21-C8BD-B5A1-11A4D4EE4B00">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:49:53 UTC</createdTime>
+<generatorID>324A44EC-3EBA-A04E-5BD3-23F1814AC57D</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E1458F58-8C7A-0E6E-1220-B6F6EB515015" referredColumn="FFE2EFAD-6C73-BF14-7299-A9FB54E2C7A6"/>
+</associations>
+</Column>
+<Column name="city_id" id="DF5896C5-FE57-843E-B1E3-0DB580CF6935">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 05:12:44 UTC</createdTime>
+<generatorID>DD6B1433-E58B-D0C4-4A46-3FCF46A606EB</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3C1F63DB-B2BD-B4B2-1123-6E02CF9CB138" referredColumn="AA56263E-842F-497B-ED39-222461626686"/>
+</associations>
+</Column>
+<Column name="city_id2" id="0407EF1D-2084-1C45-CC57-72EE75F487AE">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 05:12:44 UTC</createdTime>
+<generatorID>6AB8BCC5-A0F0-10C9-E724-DF7FE3E75143</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="543C9245-8C17-1F71-454F-43FD05E04947" referredColumn="AA56263E-842F-497B-ED39-222461626686"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2024A4B8-8AC4-67C5-5A02-1D333A8CF080" name="product_PK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:23:30 UTC</createdTime>
+<generatorID>BF0A094E-6ACE-F35A-DF5A-8F7E71013AA0</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4E8A392E-808B-7B60-E3FC-DDED0D7125EE"/>
+<colUsage columnID="DF5896C5-FE57-843E-B1E3-0DB580CF6935"/>
+<colUsage columnID="0407EF1D-2084-1C45-CC57-72EE75F487AE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B098273A-7D93-7443-1552-6EC8678AFBAE" name="product_transport_FK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:49:53 UTC</createdTime>
+<generatorID>2977CA08-5A81-4BCF-1783-FC73B2081070</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1398AE06-34EF-789C-2904-60C01F7F2950"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="930A5DFF-B711-EA05-893F-EDA552B62E64" name="product_lodging_FK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:49:53 UTC</createdTime>
+<generatorID>079E9025-02A9-8CB8-139F-2A0A2E62B9F8</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7D15D510-1282-3322-23A1-8CC419B5C92D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4FFAD7B8-D81F-8BAA-A702-71B99BD97B21" name="product_spectacle_FK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:49:53 UTC</createdTime>
+<generatorID>4B753A23-3AE5-2F47-B7FD-2FFC2B057C6B</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="673F2B73-6E21-C8BD-B5A1-11A4D4EE4B00"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8C76DC44-7F1B-14B1-02B0-8A7913926638" name="product_city_FK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 05:12:44 UTC</createdTime>
+<generatorID>89B48728-933A-38BD-5808-7FBDD626CC21</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0407EF1D-2084-1C45-CC57-72EE75F487AE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C9B312BA-1379-AED7-D115-D9907927E4D7" name="product_city_FKv2">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 05:12:44 UTC</createdTime>
+<generatorID>F17E395D-126A-5F36-649F-9578B45A88BF</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DF5896C5-FE57-843E-B1E3-0DB580CF6935"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

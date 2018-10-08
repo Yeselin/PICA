@@ -1,0 +1,100 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A53A7094-B95C-16AC-D5AE-CD11F515E92A" name="spectacle">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:17:43 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="A1B89F25-ABAE-AC59-A10B-F6E54283089B">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:18:18 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="968E46E8-452A-962B-F912-218BB3010A90">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:18:26 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cost" id="34B45E02-0341-E5BC-E6E9-1CE4CC0FDF60">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:18:31 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>18</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,18,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="create_date" id="C96EC451-F9E0-30D5-4DFC-D3FBE49E7E1F">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-28 05:41:03 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="update_date" id="B1C1231C-2923-56E4-2F19-B816FA56B0EF">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-28 05:41:09 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="61F2855F-A644-F357-510B-9C5F07C7A6EB" name="spectacle PK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:19:21 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>A1B89F25-ABAE-AC59-A10B-F6E54283089B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

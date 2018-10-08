@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Productos" id="57B2D63C-0F21-8E73-D25F-8713E223E4A8" version="3.5">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:54:26 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>57B2D63C-0F21-8E73-D25F-8713E223E4A8</designId>
+</OSDM_Design>

@@ -1,0 +1,167 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FD53F2F6-F66D-0856-2C08-19F420E1B1D5" name="sales_order">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>40595E0D-3B6B-697A-14A2-E58B12F09F20</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="2FE81AC5-BCE4-FF1F-27C9-089949BCFB50">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>90BCEF91-44EA-90ED-A08E-A05038E315D6</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="order_date" id="2D1ECA16-A421-02BC-513E-72D8FA19CEB5">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>2D7B5BBA-0E77-8479-F375-994CF7E538EC</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="price" id="7A41CFEB-9512-50FC-CE81-0B119057EEAA">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>9894867F-7756-2E58-D060-107EED8B04E4</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="status" id="5F794AA8-C43B-4226-536E-8EEBA74DB135">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>B89DB783-2FE7-F08D-048E-C39210870AAF</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="comments" id="536F2FE0-717E-638A-53AA-61DF6AC7ED50">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>F0854CC6-433B-DF48-4934-C409A09A815D</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>40000</dataTypeSize>
+<ownDataTypeParameters>40000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cust_document_type" id="C59CB513-365A-E227-78D3-5AADF8F78CC8">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>7D4B3B00-EF60-394C-47A3-14F8DF398606</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cust_document_id" id="1D4F75E8-F8F6-BE06-A59D-7AE464D974D5">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>0E4FF900-5BEE-316B-7B22-AB3D8BD9D2D5</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="update_date" id="B984FD68-8D9A-BB40-2A09-ADEE200A6F9A">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>1CEF0DE0-47A5-F4B0-5705-0103A8D31F2F</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customer_document_type_id" id="8E5B0F93-CD18-6435-C08B-6E5098646DC0">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>D1F6315D-4D65-512C-753E-E89551DB1414</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3124533C-C8D0-1A54-7359-2D975C0E842E" referredColumn="DBF0B67B-C3E7-1A3C-7B5A-99A9D634F4F3"/>
+</associations>
+</Column>
+<Column name="customer_document_id" id="FFB70B8E-CF02-A9B2-D332-2F48ED79E8E9">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>CB4843D7-5DEA-EE15-4C84-38304B160DF5</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3124533C-C8D0-1A54-7359-2D975C0E842E" referredColumn="556F2392-C108-23F1-12F0-151B0CF5997E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="ACAE4A17-2467-5216-0E94-367279A9487F" name="sales_order_PK">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>FDBB170E-75F5-039B-08D3-9C9FE5C5D12A</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2FE81AC5-BCE4-FF1F-27C9-089949BCFB50"/>
+<colUsage columnID="8E5B0F93-CD18-6435-C08B-6E5098646DC0"/>
+<colUsage columnID="FFB70B8E-CF02-A9B2-D332-2F48ED79E8E9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2F5423D6-3ACF-A826-8D35-A5B3E7F8D7CC" name="sales_order_customer_FK">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>A8E213B9-FA76-CBC5-B5FC-A2D4EC744AF7</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8E5B0F93-CD18-6435-C08B-6E5098646DC0"/>
+<colUsage columnID="FFB70B8E-CF02-A9B2-D332-2F48ED79E8E9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

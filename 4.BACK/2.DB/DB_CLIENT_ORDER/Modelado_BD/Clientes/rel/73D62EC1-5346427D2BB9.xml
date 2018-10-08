@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="Modelo_ER" id="73D62EC1-EACF-5767-8A2E-5346427D2BB9" mainViewID="8D85B25F-B5AF-4336-FE5D-E695B96AA9EF">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:49:41 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<shouldBeOpen>true</shouldBeOpen>
+<selectedRDBMSSite>32076570-2523-435C-2E92-BF29817DFF70</selectedRDBMSSite>
+</relationalModel>

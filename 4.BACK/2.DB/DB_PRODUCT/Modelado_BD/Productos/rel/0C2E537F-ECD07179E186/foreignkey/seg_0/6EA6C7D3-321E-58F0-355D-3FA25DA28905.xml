@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="6EA6C7D3-321E-58F0-355D-3FA25DA28905" containerWithKeyObject="AE24902F-6FA6-7D40-239C-13BABD4B6414" localFKIndex="B098273A-7D93-7443-1552-6EC8678AFBAE" name="product_transport_FK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-26 04:49:53 UTC</createdTime>
+<generatorID>2977CA08-5A81-4BCF-1783-FC73B2081070</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<referredTableLongName>transport</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>B84CB7C7-FE36-179D-D360-922E955D1546</referredTableID>
+<keyObject>05DE3883-5B79-AEA9-D8A1-EBDF2990766D</keyObject>
+<referredKeyID>05DE3883-5B79-AEA9-D8A1-EBDF2990766D</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
