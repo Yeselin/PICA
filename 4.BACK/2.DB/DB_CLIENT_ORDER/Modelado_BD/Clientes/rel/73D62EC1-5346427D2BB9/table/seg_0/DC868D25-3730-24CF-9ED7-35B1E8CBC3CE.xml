@@ -1,0 +1,119 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DC868D25-3730-24CF-9ED7-35B1E8CBC3CE" name="customer_address">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:50:07 UTC</createdTime>
+<generatorID>B6D8D686-0C0A-3296-5372-D18C9FC0A99C</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="address_id" id="18814479-987C-2F85-5208-46D0853EC538">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:50:07 UTC</createdTime>
+<generatorID>99CA2455-5895-1BCA-1F96-75FECC81A304</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FC993879-CC62-6E39-C88D-E42C46197C0C" referredColumn="18888195-23CD-ACF2-2B89-DAC349F07F4C"/>
+</associations>
+</Column>
+<Column name="customer_document_type_id" id="A856F918-9A14-B49A-5CB1-558DB4F5A90B">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:50:07 UTC</createdTime>
+<generatorID>00023E1A-3E92-FB8D-8445-FC8BEC64F8AD</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9013F36A-CA60-4295-8730-E1B88E0BB35B" referredColumn="DBF0B67B-C3E7-1A3C-7B5A-99A9D634F4F3"/>
+</associations>
+</Column>
+<Column name="customer_document_id" id="38D1934C-75A9-082C-A830-9FD352487D71">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>74A0BB3B-2C09-3E69-B87F-CF71F1661976</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9013F36A-CA60-4295-8730-E1B88E0BB35B" referredColumn="556F2392-C108-23F1-12F0-151B0CF5997E"/>
+</associations>
+</Column>
+<Column name="id" id="5FFA9408-2BE9-6F16-7D5A-8486EE0A92E0">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>98CEAEC0-3FBB-C350-AEB9-F81A25B220AB</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="create_date" id="829B6797-3E94-BF59-4249-B12650921C17">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>65A5B06F-583E-3550-A78E-8711BD1E9F0B</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="update_date" id="17C1B650-648C-92C1-CDB6-15BB8AA6151C">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>387FB12F-04C4-4AC9-E218-B7B26BD16792</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9241223F-BD39-3C17-2E07-945B9B0F6B98" name="customer_address_address_FK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:50:07 UTC</createdTime>
+<generatorID>078F5400-2B0B-A01F-CC59-933A3B500C01</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="18814479-987C-2F85-5208-46D0853EC538"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D32806EB-F1C7-6733-0C73-8E2D95587B3C" name="customer_address_customer_FK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:50:07 UTC</createdTime>
+<generatorID>95745A36-3532-9A1A-30D6-0E447A9FF1F7</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A856F918-9A14-B49A-5CB1-558DB4F5A90B"/>
+<colUsage columnID="38D1934C-75A9-082C-A830-9FD352487D71"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
