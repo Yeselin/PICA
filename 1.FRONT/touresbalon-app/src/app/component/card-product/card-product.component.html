@@ -1,18 +1,23 @@
 <div class="card darken-1">
-    <div class="card-image waves-effect waves-block waves-light">
+    <div class="card-image">
         <img class="activator responsive-img" src={{product.image_ref}}>
     </div>
     <div class="card-content">
         <span class="card-title activator grey-text text-darken-4">{{product.name}}<i class="material-icons right">more_vert</i></span>
         <p>{{product.description}}</p>
-        <p><a href="#">This is a link</a></p>
+        <p><a href="#">Ver detalle</a></p>
     </div>
     <div class="card-action">
-            <a class="btn-floating btn-small waves-effect waves-light orange accent-2" (click)="addProductToCart()"><i class="material-icons">add</i></a>
-            <input #quantityInput type="number" value={{quantity}} (change)="onChangeQuantity(quantityInput.value)" min="0" max="999" style="width: 20%;"/>
+        <a style="cursor: pointer;" class="waves-effect waves-light" (click)="addProductToCart()">Agregar</a>
+        <input #quantityInput type="number" value={{quantity}} (change)="onChangeQuantity(quantityInput.value)" min="0"
+            max="999" style="width: 20%;" />
     </div>
     <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">{{product.name}}<i class="material-icons right">close</i></span>
-        <p>{{product.description}}</p>
+        <p><i class="product-desc">Evento</i>     {{product.spectacle_name}}</p>
+        <p><i class="product-desc">Hospedaje</i>  {{product.lodging_name}}</p>
+        <p><i class="product-desc">Transporte</i> {{product.transport_name}}</p>
+        <p><i class="product-desc">Origen</i>     {{product.source_city_name}}, {{product.source_country_name}}</p>
+        <p><i class="product-desc">Destino</i>    {{product.target_city_name}}, {{product.target_country_name}}</p>
     </div>
 </div>

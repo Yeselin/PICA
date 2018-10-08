@@ -36,7 +36,13 @@ export class LocalStorageService {
 
   public putShoppingCart(item: Item): void {
     let items = this.storage.get(environment.SHOPPING_CART) || [];
-    items.push(item);
+    let itemSelected = items.find(i => i.product.id === item.product.id);
+
+    if (itemSelected) {
+      itemSelected.quantity += item.quantity;
+    } else {
+      items.push(item);
+    }
     this.storage.set(environment.SHOPPING_CART, items);
   }
 
