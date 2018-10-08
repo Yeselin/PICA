@@ -13,28 +13,19 @@ export class CampaingComponent implements OnInit {
  
   public products: Product[];
 
+  /**
+   * 
+   * @param storage 
+   * @param productService 
+   * @param toastrService 
+   */
   constructor(@Inject(LocalStorageService) private storage: LocalStorageService, 
       @Inject(ProductService) private productService: ProductService,
       private toastrService: ToastrService) { }
 
   ngOnInit() {
-    this.products = this.storage.getLocalSlide();
+    this.products = this.storage.getCampaigns();
   }
 
-  onEnter(by: string, param: string): void {
-    if (param !== '') {
-      this.productService.getFindProduct$(by, param).subscribe((response) => {
-        if (response.length > 0) {
-          this.products = response;
-        }else{
-          this.toastrService.info('Sin resultados','Mensaje!');
-        }
-      }, (error) => {
-        console.error(error);
-      });
-    }else{
-      this.toastrService.warning('Indique un valor', 'Mesaje!');
-    }
-  }
 
 }

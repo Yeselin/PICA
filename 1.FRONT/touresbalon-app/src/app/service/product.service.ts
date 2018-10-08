@@ -12,8 +12,11 @@ export class ProductService {
   
   constructor(private httpClient: HttpClient) { }
 
-  getCampana$() : Observable<Product[]> {
-    return this.httpClient.get<Product[]>(environment.API_PRODUCTS + '/campanas');
+  /**
+   * This method get campaings current campaigns
+   */
+  getCampaigns$() : Observable<Product[]> {
+    return this.httpClient.get<Product[]>(environment.API_PRODUCTS + '/campaigns');
   }
 
   
@@ -30,7 +33,7 @@ export class ProductService {
    * @param findBy 
    * @param value 
    */
-  getFindProduct$(findBy: string, value: string): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(environment.API_PRODUCTS + '/find?by=' + findBy + '&value=' + value);
+  getFindProduct$(parameterType: string, parameterValue: string): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(environment.API_PRODUCTS + '/find?parameterType=' + parameterType + '&parameterValue=' + parameterValue);
   }
 }

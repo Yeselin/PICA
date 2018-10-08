@@ -15,12 +15,12 @@ export class LocalStorageService {
 
   private products: Product[];
 
-  public getLocalSlide(): Product[] {
-    this.products = this.storage.get(environment.STORAGE_KEY_SLIDER);
+  public getCampaigns(): Product[] {
+    this.products = this.storage.get(environment.STORAGE_KEY_CAMPAINGS);
     if (this.products === null) {
-      this.productService.getCampana$().subscribe((response) => {
+      this.productService.getCampaigns$().subscribe((response) => {
         this.products = response;
-        this.storage.set(environment.STORAGE_KEY_SLIDER, this.products);
+        this.storage.set(environment.STORAGE_KEY_CAMPAINGS, this.products);
       },
         (error) => {
           console.error(error);
