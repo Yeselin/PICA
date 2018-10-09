@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+    <con:coreEntry>
+        <con:binding type="Any XML"/>
+        <con:xqConfiguration>
+            <con:snippetVersion>1.0</con:snippetVersion>
+        </con:xqConfiguration>
+    </con:coreEntry>
+    <con:router>
+        <con:pipeline type="request" name="request-N3f57fe4a.3ddc0b1e.0.1665646bf86.N7f24">
+            <con:stage id="_StageId-N3f57fe4a.3ddc0b1e.0.1665646bf86.N7f22" name="Stage1">
+                <con:context/>
+                <con:actions>
+                    <con1:javaCallout>
+                        <con2:id>_ActionId-N3f57fe4a.3ddc0b1e.0.1665646bf86.N7f1e</con2:id>
+                        <con1:archive ref="ESB_COMMONS/Logging/Resources/Java/OSB_LOG-jar-with-dependencies"/>
+                        <con1:className>com.esb.component.LogUtils4Error</con1:className>
+                        <con1:method>public static void logError(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)</con1:method>
+                        <con1:expr>
+                            <con2:xqueryText>$body/*:transactionId</con2:xqueryText>
+                        </con1:expr>
+                        <con1:expr>
+                            <con2:xqueryText>$body/*:operation</con2:xqueryText>
+                        </con1:expr>
+                        <con1:expr>
+                            <con2:xqueryText>$body/*:header</con2:xqueryText>
+                        </con1:expr>
+                        <con1:expr>
+                            <con2:xqueryText>$body/*:body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:expr>
+                            <con2:xqueryText>$body/*:fault</con2:xqueryText>
+                        </con1:expr>
+                    </con1:javaCallout>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-N3f57fe4a.3ddc0b1e.0.1665646bf86.N7f23">
+            <con:stage id="_StageId-N3f57fe4a.3ddc0b1e.0.1665646bf86.N7f21" name="Stage1">
+                <con:context/>
+                <con:actions/>
+            </con:stage>
+        </con:pipeline>
+        <con:flow>
+            <con:pipeline-node name="Pipeline Pair Node1">
+                <con:request>request-N3f57fe4a.3ddc0b1e.0.1665646bf86.N7f24</con:request>
+                <con:response>response-N3f57fe4a.3ddc0b1e.0.1665646bf86.N7f23</con:response>
+            </con:pipeline-node>
+        </con:flow>
+    </con:router>
+</con:pipelineEntry>

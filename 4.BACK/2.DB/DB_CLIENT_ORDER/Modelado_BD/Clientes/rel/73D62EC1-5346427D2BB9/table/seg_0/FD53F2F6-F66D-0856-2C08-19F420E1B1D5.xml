@@ -51,9 +51,8 @@
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT037</logicalDatatype>
-<dataTypeSize>4</dataTypeSize>
-<ownDataTypeParameters>4,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="comments" id="536F2FE0-717E-638A-53AA-61DF6AC7ED50">
@@ -135,6 +134,21 @@
 <colAssociation fkAssociation="3124533C-C8D0-1A54-7359-2D975C0E842E" referredColumn="556F2392-C108-23F1-12F0-151B0CF5997E"/>
 </associations>
 </Column>
+<Column name="order_status_id" id="6BB8A43C-2FF7-1D31-F386-02F0FA4CC0FB">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-09 01:52:19 UTC</createdTime>
+<generatorID>3874C096-F5AB-A140-B4E9-5A55E731E645</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E396E69E-DA1D-D8FB-E4CF-3B29BCF8F1A4" referredColumn="51375522-DDF1-7A61-501C-878E179B4FD0"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="ACAE4A17-2467-5216-0E94-367279A9487F" name="sales_order_PK">
@@ -151,6 +165,17 @@
 <colUsage columnID="FFB70B8E-CF02-A9B2-D332-2F48ED79E8E9"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="3F10D593-0CAD-7472-3318-4CC69B664A4C" name="sales_order__IDX">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-09 01:52:19 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>A387FF27-9545-5945-1FBC-8ED506FA441B</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="6BB8A43C-2FF7-1D31-F386-02F0FA4CC0FB"/>
+</indexColumnUsage>
+</ind_PK_UK>
 <ind_PK_UK id="2F5423D6-3ACF-A826-8D35-A5B3E7F8D7CC" name="sales_order_customer_FK">
 <createdBy>gherrers</createdBy>
 <createdTime>2018-10-01 18:50:00 UTC</createdTime>
@@ -161,6 +186,17 @@
 <indexColumnUsage>
 <colUsage columnID="8E5B0F93-CD18-6435-C08B-6E5098646DC0"/>
 <colUsage columnID="FFB70B8E-CF02-A9B2-D332-2F48ED79E8E9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3E4FF2BE-C52C-0417-6F94-BC4180993669" name="sales_order_order_status_FK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-09 01:52:19 UTC</createdTime>
+<generatorID>A387FF27-9545-5945-1FBC-8ED506FA441B</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6BB8A43C-2FF7-1D31-F386-02F0FA4CC0FB"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

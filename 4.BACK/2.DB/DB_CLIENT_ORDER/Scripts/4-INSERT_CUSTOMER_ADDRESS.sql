@@ -1,6 +1,7 @@
 BEGIN
+--execute immediate ('truncate table customer_address');
+
 DELETE FROM customer_address;
-COMMIT;
 
 Insert /*+ Append */ INTO customer_address
 SELECT
