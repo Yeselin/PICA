@@ -93,7 +93,7 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="customer_document_type_id1" id="E01A1C69-DFEF-4A85-EFF5-7068F1E4D093">
+<Column name="customer_document_type_id2" id="E01A1C69-DFEF-4A85-EFF5-7068F1E4D093">
 <createdBy>gherrers</createdBy>
 <createdTime>2018-10-01 19:01:39 UTC</createdTime>
 <generatorID>C728F814-0EB8-EB87-1B53-AF7084E16E0E</generatorID>
@@ -104,11 +104,8 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="2938889D-EC43-0811-B09B-884EB48F43BD" referredColumn="DBF0B67B-C3E7-1A3C-7B5A-99A9D634F4F3"/>
-</associations>
 </Column>
-<Column name="customer_document_id1" id="A4100F42-7C48-4329-81F3-79184222C29E">
+<Column name="customer_document_id2" id="A4100F42-7C48-4329-81F3-79184222C29E">
 <createdBy>gherrers</createdBy>
 <createdTime>2018-10-01 19:01:39 UTC</createdTime>
 <generatorID>7787C02F-2267-78BE-D05E-920063CD47CE</generatorID>
@@ -120,9 +117,6 @@
 <ownDataTypeParameters>20,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="2938889D-EC43-0811-B09B-884EB48F43BD" referredColumn="556F2392-C108-23F1-12F0-151B0CF5997E"/>
-</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -157,18 +151,6 @@
 <indexState>Unique Plain Index</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <relationGeneratorID>86809E1F-14F7-F000-082F-5B2D2D60750C</relationGeneratorID>
-<indexColumnUsage>
-<colUsage columnID="E01A1C69-DFEF-4A85-EFF5-7068F1E4D093"/>
-<colUsage columnID="A4100F42-7C48-4329-81F3-79184222C29E"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="64819909-1437-2474-C24E-7CD801ECF2A5" name="document_type_customer_FK">
-<createdBy>gnsoft</createdBy>
-<createdTime>2018-10-08 03:22:17 UTC</createdTime>
-<generatorID>86809E1F-14F7-F000-082F-5B2D2D60750C</generatorID>
-<ownerDesignName>Clientes</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="E01A1C69-DFEF-4A85-EFF5-7068F1E4D093"/>
 <colUsage columnID="A4100F42-7C48-4329-81F3-79184222C29E"/>

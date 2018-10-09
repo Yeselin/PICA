@@ -2,8 +2,11 @@
 
 --DROP TABLE order_item;
 --DROP TABLE sales_order;
+--DROP TABLE order_status;
 --DROP TABLE customer_address;
 --DROP TABLE customer;
+--DROP TABLE customer_status;
+--DROP TABLE customer_category;
 --DROP TABLE address;
 --DROP TABLE document_type;
 --DROP TABLE creditcard_type;
@@ -108,13 +111,11 @@ CREATE TABLE sales_order (
     price                       NUMBER,
     status_id                   INTEGER,
     comments                    VARCHAR2(4000 BYTE),
-    cust_document_type          INTEGER NOT NULL,
-    cust_document_id            VARCHAR2(20 BYTE) NOT NULL,
-    update_date                 DATE, 
-    customer_document_type_id   INTEGER NOT NULL,
+	customer_document_type_id   INTEGER NOT NULL,
     customer_document_id        VARCHAR2(20) NOT NULL,
+    update_date                 DATE, 
 	CONSTRAINT sales_order_pk PRIMARY KEY ( id ),
-	CONSTRAINT customer_sales_fk FOREIGN KEY (cust_document_type,cust_document_id) REFERENCES customer(document_type_id,document_id),
+	CONSTRAINT customer_sales_fk FOREIGN KEY (customer_document_type_id,customer_document_id) REFERENCES customer(document_type_id,document_id),
 	CONSTRAINT order_status_fk  FOREIGN KEY (status_id)  REFERENCES order_status(id)
 );
 
@@ -125,10 +126,9 @@ CREATE TABLE order_item (
     partnum                                 VARCHAR2(20 BYTE),
     price                                   NUMBER,
     quantity                                NUMBER,
-    order_id                                NUMBER,
+	sales_order_id                          NUMBER NOT NULL,
     create_date                             DATE,
     update_date                             DATE,
-    sales_order_id                          NUMBER NOT NULL,
 	CONSTRAINT order_item_pk  PRIMARY KEY ( id ),
 	CONSTRAINT order_item_fk  FOREIGN KEY (sales_order_id)  REFERENCES sales_order(id)
 );
