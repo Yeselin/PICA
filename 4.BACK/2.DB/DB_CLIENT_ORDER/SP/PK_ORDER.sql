@@ -41,13 +41,9 @@ CREATE OR REPLACE PACKAGE PK_ORDER Is
      08-OCT-2018 GERARDO HERRERA     Creacion del procedimiento
      ----------- --------- ---------------------------------------------------------
     ============================================================================= */
-    PROCEDURE PR_CREATE(P_USER                        IN VARCHAR2 DEFAULT USER,
-	                    P_ORDER_DATE                  IN DATE,
-                        P_PRICE                       IN NUMBER,
-                        P_STATUS_ID                   IN INTEGER,
+    PROCEDURE PR_CREATE(P_PRICE                       IN NUMBER,
 	                    P_ORDER_STATUS_NAME           IN VARCHAR2,
                         P_COMMENTS                    IN VARCHAR2,
-                        P_CUSTOMER_DOCUMENT_TYPE_ID   IN INTEGER,
 	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                         P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
 	                    P_PRODUCT_ID                  IN NUMBER,
@@ -68,13 +64,9 @@ CREATE OR REPLACE PACKAGE PK_ORDER Is
      08-OCT-2018 GERARDO HERRERA     Creacion del procedimiento
      ----------- --------- ---------------------------------------------------------
     ============================================================================= */
-    PROCEDURE PR_READ(  P_USER                        IN VARCHAR2 DEFAULT USER,
-	                    P_ORDER_DATE                  IN DATE,
-                        P_PRICE                       IN NUMBER,
-                        P_STATUS_ID                   IN INTEGER,
+    PROCEDURE PR_READ(  P_PRICE                       IN NUMBER,
 	                    P_ORDER_STATUS_NAME           IN VARCHAR2,
                         P_COMMENTS                    IN VARCHAR2,
-                        P_CUSTOMER_DOCUMENT_TYPE_ID   IN INTEGER,
 	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                         P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
 	                    P_PRODUCT_ID                  IN NUMBER,
@@ -94,13 +86,9 @@ CREATE OR REPLACE PACKAGE PK_ORDER Is
      08-OCT-2018 GERARDO HERRERA     Creacion del procedimiento
      ----------- --------- ---------------------------------------------------------
     ============================================================================= */
-    PROCEDURE PR_UPDATE(P_USER                        IN VARCHAR2 DEFAULT USER,
-	                    P_ORDER_DATE                  IN DATE,
-                        P_PRICE                       IN NUMBER,
-                        P_STATUS_ID                   IN INTEGER,
+    PROCEDURE PR_UPDATE(P_PRICE                       IN NUMBER,
 	                    P_ORDER_STATUS_NAME           IN VARCHAR2,
                         P_COMMENTS                    IN VARCHAR2,
-                        P_CUSTOMER_DOCUMENT_TYPE_ID   IN INTEGER,
 	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                         P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
 	                    P_PRODUCT_ID                  IN NUMBER,
@@ -121,13 +109,9 @@ CREATE OR REPLACE PACKAGE PK_ORDER Is
      08-OCT-2018 GERARDO HERRERA     Creacion del procedimiento
      ----------- --------- ---------------------------------------------------------
     ============================================================================= */
-    PROCEDURE PR_DELETE(P_USER                        IN VARCHAR2 DEFAULT USER,
-	                    P_ORDER_DATE                  IN DATE,
-                        P_PRICE                       IN NUMBER,
-                        P_STATUS_ID                   IN INTEGER,
+    PROCEDURE PR_DELETE(P_PRICE                       IN NUMBER,
 	                    P_ORDER_STATUS_NAME           IN VARCHAR2,
                         P_COMMENTS                    IN VARCHAR2,
-                        P_CUSTOMER_DOCUMENT_TYPE_ID   IN INTEGER,
 	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                         P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
 	                    P_PRODUCT_ID                  IN NUMBER,
@@ -148,13 +132,9 @@ CREATE OR REPLACE PACKAGE PK_ORDER Is
      08-OCT-2018 GERARDO HERRERA     Creacion del procedimiento
      ----------- --------- ---------------------------------------------------------
     ============================================================================= */
-    PROCEDURE PR_CREATE_ITEM(P_USER                        IN VARCHAR2 DEFAULT USER,
-	                         P_ORDER_DATE                  IN DATE,
-                             P_PRICE                       IN NUMBER,
-                             P_STATUS_ID                   IN INTEGER,
+    PROCEDURE PR_CREATE_ITEM(P_PRICE                       IN NUMBER,
 	                         P_ORDER_STATUS_NAME           IN VARCHAR2,
                              P_COMMENTS                    IN VARCHAR2,
-                             P_CUSTOMER_DOCUMENT_TYPE_ID   IN INTEGER,
 	                         P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                              P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
 	                         P_PRODUCT_ID                  IN NUMBER,
@@ -175,13 +155,9 @@ CREATE OR REPLACE PACKAGE PK_ORDER Is
      08-OCT-2018 GERARDO HERRERA     Creacion del procedimiento
      ----------- --------- ---------------------------------------------------------
     ============================================================================= */
-    PROCEDURE PR_READ_ITEM(  P_USER                        IN VARCHAR2 DEFAULT USER,
-	                         P_ORDER_DATE                  IN DATE,
-                             P_PRICE                       IN NUMBER,
-                             P_STATUS_ID                   IN INTEGER,
+    PROCEDURE PR_READ_ITEM(  P_PRICE                       IN NUMBER,
 	                         P_ORDER_STATUS_NAME           IN VARCHAR2,
                              P_COMMENTS                    IN VARCHAR2,
-                             P_CUSTOMER_DOCUMENT_TYPE_ID   IN INTEGER,
 	                         P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                              P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
 	                         P_PRODUCT_ID                  IN NUMBER,
@@ -201,13 +177,9 @@ CREATE OR REPLACE PACKAGE PK_ORDER Is
      08-OCT-2018 GERARDO HERRERA     Creacion del procedimiento
      ----------- --------- ---------------------------------------------------------
     ============================================================================= */
-    PROCEDURE PR_UPDATE_ITEM(P_USER                        IN VARCHAR2 DEFAULT USER,
-	                         P_ORDER_DATE                  IN DATE,
-                             P_PRICE                       IN NUMBER,
-                             P_STATUS_ID                   IN INTEGER,
+    PROCEDURE PR_UPDATE_ITEM(P_PRICE                       IN NUMBER,
 	                         P_ORDER_STATUS_NAME           IN VARCHAR2,
                              P_COMMENTS                    IN VARCHAR2,
-                             P_CUSTOMER_DOCUMENT_TYPE_ID   IN INTEGER,
 	                         P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                              P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
 	                         P_PRODUCT_ID                  IN NUMBER,
@@ -228,13 +200,9 @@ CREATE OR REPLACE PACKAGE PK_ORDER Is
      08-OCT-2018 GERARDO HERRERA     Creacion del procedimiento
      ----------- --------- ---------------------------------------------------------
     ============================================================================= */
-    PROCEDURE PR_DELETE_ITEM(P_USER                        IN VARCHAR2 DEFAULT USER,
-	                         P_ORDER_DATE                  IN DATE,
-                             P_PRICE                       IN NUMBER,
-                             P_STATUS_ID                   IN INTEGER,
+    PROCEDURE PR_DELETE_ITEM(P_PRICE                       IN NUMBER,
 	                         P_ORDER_STATUS_NAME           IN VARCHAR2,
                              P_COMMENTS                    IN VARCHAR2,
-                             P_CUSTOMER_DOCUMENT_TYPE_ID   IN INTEGER,
 	                         P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                              P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
 	                         P_PRODUCT_ID                  IN NUMBER,
@@ -254,13 +222,9 @@ END PK_ORDER;
 
 CREATE OR REPLACE PACKAGE BODY PK_ORDER IS
 
-PROCEDURE PR_CREATE(    P_USER                        IN VARCHAR2 DEFAULT USER,
-	                    P_ORDER_DATE                  IN DATE,
-                        P_PRICE                       IN NUMBER,
-                        P_STATUS_ID                   IN INTEGER,
+PROCEDURE PR_CREATE(    P_PRICE                       IN NUMBER,
 	                    P_ORDER_STATUS_NAME           IN VARCHAR2,
                         P_COMMENTS                    IN VARCHAR2,
-                        P_CUSTOMER_DOCUMENT_TYPE_ID   IN INTEGER,
 	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                         P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
 	                    P_PRODUCT_ID                  IN NUMBER,
@@ -284,13 +248,9 @@ END PR_CREATE;
     
 	
 	
-PROCEDURE PR_READ(      P_USER                        IN VARCHAR2 DEFAULT USER,
-	                    P_ORDER_DATE                  IN DATE,
-                        P_PRICE                       IN NUMBER,
-                        P_STATUS_ID                   IN INTEGER,
+PROCEDURE PR_READ(      P_PRICE                       IN NUMBER,
 	                    P_ORDER_STATUS_NAME           IN VARCHAR2,
                         P_COMMENTS                    IN VARCHAR2,
-                        P_CUSTOMER_DOCUMENT_TYPE_ID   IN INTEGER,
 	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                         P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
 	                    P_PRODUCT_ID                  IN NUMBER,
@@ -315,13 +275,9 @@ End PR_READ;
 	
 	
 	
-PROCEDURE PR_UPDATE(    P_USER                        IN VARCHAR2 DEFAULT USER,
-	                    P_ORDER_DATE                  IN DATE,
-                        P_PRICE                       IN NUMBER,
-                        P_STATUS_ID                   IN INTEGER,
+PROCEDURE PR_UPDATE(    P_PRICE                       IN NUMBER,
 	                    P_ORDER_STATUS_NAME           IN VARCHAR2,
                         P_COMMENTS                    IN VARCHAR2,
-                        P_CUSTOMER_DOCUMENT_TYPE_ID   IN INTEGER,
 	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                         P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
 	                    P_PRODUCT_ID                  IN NUMBER,
@@ -345,13 +301,9 @@ BEGIN
 end PR_UPDATE;
 	
 	
-PROCEDURE PR_DELETE(    P_USER                        IN VARCHAR2 DEFAULT USER,
-	                    P_ORDER_DATE                  IN DATE,
-                        P_PRICE                       IN NUMBER,
-                        P_STATUS_ID                   IN INTEGER,
+PROCEDURE PR_DELETE(    P_PRICE                       IN NUMBER,
 	                    P_ORDER_STATUS_NAME           IN VARCHAR2,
                         P_COMMENTS                    IN VARCHAR2,
-                        P_CUSTOMER_DOCUMENT_TYPE_ID   IN INTEGER,
 	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                         P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
 	                    P_PRODUCT_ID                  IN NUMBER,
@@ -373,13 +325,12 @@ BEGIN
 END PR_DELETE;
 
 
-PROCEDURE PR_CREATE_ITEM(    P_USER                        IN VARCHAR2 DEFAULT USER,
-	                         P_ORDER_DATE                  IN DATE,
-                             P_PRICE                       IN NUMBER,
-                             P_STATUS_ID                   IN INTEGER,
+
+
+
+PROCEDURE PR_CREATE_ITEM(    P_PRICE                       IN NUMBER,
 	                         P_ORDER_STATUS_NAME           IN VARCHAR2,
                              P_COMMENTS                    IN VARCHAR2,
-                             P_CUSTOMER_DOCUMENT_TYPE_ID   IN INTEGER,
 	                         P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                              P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
 	                         P_PRODUCT_ID                  IN NUMBER,
@@ -403,13 +354,9 @@ END PR_CREATE_ITEM;
     
 	
 	
-PROCEDURE PR_READ_ITEM(      P_USER                        IN VARCHAR2 DEFAULT USER,
-	                         P_ORDER_DATE                  IN DATE,
-                             P_PRICE                       IN NUMBER,
-                             P_STATUS_ID                   IN INTEGER,
+PROCEDURE PR_READ_ITEM(      P_PRICE                       IN NUMBER,
 	                         P_ORDER_STATUS_NAME           IN VARCHAR2,
                              P_COMMENTS                    IN VARCHAR2,
-                             P_CUSTOMER_DOCUMENT_TYPE_ID   IN INTEGER,
 	                         P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                              P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
 	                         P_PRODUCT_ID                  IN NUMBER,
@@ -434,13 +381,9 @@ End PR_READ_ITEM;
 	
 	
 	
-PROCEDURE PR_UPDATE_ITEM(    P_USER                        IN VARCHAR2 DEFAULT USER,
-	                         P_ORDER_DATE                  IN DATE,
-                             P_PRICE                       IN NUMBER,
-                             P_STATUS_ID                   IN INTEGER,
+PROCEDURE PR_UPDATE_ITEM(    P_PRICE                       IN NUMBER,
 	                         P_ORDER_STATUS_NAME           IN VARCHAR2,
                              P_COMMENTS                    IN VARCHAR2,
-                             P_CUSTOMER_DOCUMENT_TYPE_ID   IN INTEGER,
 	                         P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                              P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
 	                         P_PRODUCT_ID                  IN NUMBER,
@@ -464,13 +407,9 @@ BEGIN
 end PR_UPDATE_ITEM;
 	
 	
-PROCEDURE PR_DELETE_ITEM(    P_USER                        IN VARCHAR2 DEFAULT USER,
-	                         P_ORDER_DATE                  IN DATE,
-                             P_PRICE                       IN NUMBER,
-                             P_STATUS_ID                   IN INTEGER,
+PROCEDURE PR_DELETE_ITEM(    P_PRICE                       IN NUMBER,
 	                         P_ORDER_STATUS_NAME           IN VARCHAR2,
                              P_COMMENTS                    IN VARCHAR2,
-                             P_CUSTOMER_DOCUMENT_TYPE_ID   IN INTEGER,
 	                         P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                              P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
 	                         P_PRODUCT_ID                  IN NUMBER,
