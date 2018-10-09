@@ -4,7 +4,9 @@ server:
   servlet:
     contextPath: /products
 elasticParameters:
-  server: 52.71.119.146
-  port: 9200
-  index: produc*
-  searchSize: 50
+  server: ${HOST:52.71.119.146}
+  port: ${PORT:9200}
+  index:
+    products: ${INDEX_PRODUCTS:products}
+    campaigns: ${INDEX_CAMPAIGNS:campaigns}
+  searchSize: ${SEARCH_SIZE:50}
