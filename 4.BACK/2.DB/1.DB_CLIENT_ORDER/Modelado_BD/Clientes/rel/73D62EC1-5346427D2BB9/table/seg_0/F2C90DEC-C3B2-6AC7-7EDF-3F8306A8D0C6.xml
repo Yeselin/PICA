@@ -1,0 +1,356 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F2C90DEC-C3B2-6AC7-7EDF-3F8306A8D0C6" name="customer">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:50:07 UTC</createdTime>
+<generatorID>074C49D6-0BEC-4D12-B118-A84EAF281FF4</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="document_type_id" id="DBF0B67B-C3E7-1A3C-7B5A-99A9D634F4F3">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:50:07 UTC</createdTime>
+<generatorID>C77E4DFA-1802-E668-1C7F-F68539F7C610</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="first_name" id="0B236F65-7363-B2D2-D77B-0E54194687EB">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:50:07 UTC</createdTime>
+<generatorID>40E54C07-D1C3-80AD-95C6-6773ED3DAB5D</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="last_name" id="8053566D-4573-7D18-858E-04E9949B10CC">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:50:07 UTC</createdTime>
+<generatorID>ADACB343-29A8-7EA8-D183-095BC9E7C702</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="phone_number" id="FD9302D8-9C20-1D97-5EC7-4F9C1C384097">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:50:07 UTC</createdTime>
+<generatorID>B465E6BA-F844-838C-6F1C-B5E61403CEF8</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="6A8634CA-BCC8-BBC4-8A6A-DAD807EB8C0A">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:50:07 UTC</createdTime>
+<generatorID>3DBA58EE-0D6D-0A4F-9089-5FC6C6A3538D</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="password" id="BB1A0C3C-728F-E22A-20ED-B9B50D68A852">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:50:07 UTC</createdTime>
+<generatorID>DF65A19B-A9EB-8FEB-E53D-24E81B949FD7</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="creditcard_type" id="C163BA65-7818-6D4F-87EC-416DDF9752C6">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:50:07 UTC</createdTime>
+<generatorID>E48A515E-2B24-BA7B-F3DB-F2E9F80CCF03</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="creditcard_number" id="D7892091-A1A9-BB9F-FB80-9EBB63E73336">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:50:07 UTC</createdTime>
+<generatorID>78D5395F-8F98-B871-8565-BDA5705E9CAF</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="status" id="2D8EF6CF-5760-F61B-CA7B-151A07CB6407">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:50:07 UTC</createdTime>
+<generatorID>095834D7-8FCB-A39C-F52D-2965C6D17882</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="document_id" id="556F2392-C108-23F1-12F0-151B0CF5997E">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>A24FBDD3-FFC3-E041-FCC8-73DE7B4A8500</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="create_date" id="E576E863-F8AF-437A-E349-24E12EE4B389">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>B2892B1F-E255-217F-67B2-34527C53FCFD</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="update_date" id="C900C00B-3B5A-FBD3-4B1F-9E71F8798F52">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>C9B0D2C1-911A-AC3B-5DA1-CB3CA1ECF70C</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="document_type_id2" id="2050B4E2-6357-507E-3335-1F0A6B16A694">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>1E3E75FD-0522-67DB-2683-AC0A2C5EBACC</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="creditcard_type_id" id="E0F9BCBB-F175-268A-378A-89A7A06E9C68">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<generatorID>7B8230EC-89DF-96B3-DE22-C632B49623F0</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id1" id="6DDE4886-A246-987D-8865-A6340EDEAF39">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:56:32 UTC</createdTime>
+<generatorID>43162850-597E-0964-D1C2-72FF6D93BA55</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="creditcard_type_id1" id="7E4FDBA9-37F5-6C57-BFAD-41CD0DD4809D">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 19:01:39 UTC</createdTime>
+<generatorID>F921A8DD-82D1-D941-7B95-DB5EDCADCA84</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="68D3B1F9-2726-77C1-26A3-33B6063616FB" referredColumn="69A7294A-FDEF-BEAF-1446-59B4DF403D34"/>
+</associations>
+</Column>
+<Column name="document_type_id1" id="1C8D67AF-1B50-C9FB-932C-E8C6D20C2365">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 19:01:39 UTC</createdTime>
+<generatorID>01DBD72C-D820-B901-3A98-0B1CC621151F</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AAD87670-434D-74BA-C941-D8B65B588277" referredColumn="60BE916E-A4D8-5586-4A2C-8F8A8E3EB4FC"/>
+</associations>
+</Column>
+<Column name="customer_category_id" id="ED258480-37C5-A04E-E53D-4F7C0C1CB016">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-08 03:22:17 UTC</createdTime>
+<generatorID>9B47E19A-4BCF-65AA-69D1-3605EE6009AB</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customer_category_id1" id="4F3C553F-8D4B-F591-561B-7FC253C3BB30">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-08 03:22:17 UTC</createdTime>
+<generatorID>FF79844A-08D6-949F-BB93-F7573A24DAE9</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F641A761-A2A3-F226-7DA8-9EEB1EE893B0" referredColumn="4F05B52F-CC51-A393-784E-3F4205BEDF8A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4C06AAAB-FE75-23BF-D568-62835245A444" name="customer_PK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-09-25 04:50:07 UTC</createdTime>
+<generatorID>AE4FE2C4-323C-742E-1C70-F7DFEEE06F95</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DBF0B67B-C3E7-1A3C-7B5A-99A9D634F4F3"/>
+<colUsage columnID="556F2392-C108-23F1-12F0-151B0CF5997E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="853EF002-3005-E044-D507-13E6593CBE7D" name="customer__IDX">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>B4E03C9A-BEC8-474E-119F-CD540E39D992</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="2050B4E2-6357-507E-3335-1F0A6B16A694"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="152AF948-A756-F769-D319-EE21A5B744C8" name="customer__IDXv1">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 18:50:00 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>CF5FEA76-A89B-9BBD-2B29-9E00ED12D893</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="E0F9BCBB-F175-268A-378A-89A7A06E9C68"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A7BC7C2F-3D5E-7F4B-1AAC-E9F9D2D0B7DB" name="customer__IDX">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 19:01:40 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>86809E1F-14F7-F000-082F-5B2D2D60750C</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="1C8D67AF-1B50-C9FB-932C-E8C6D20C2365"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="22AAD8A9-69BA-C0F3-B66D-D84AD12436EE" name="customer__IDXv2">
+<createdBy>gherrers</createdBy>
+<createdTime>2018-10-01 19:01:40 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>815BD60F-3E7D-6D39-8463-6F237783EB5D</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="7E4FDBA9-37F5-6C57-BFAD-41CD0DD4809D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="83122561-22C8-8DA1-2B49-3496D7430A8D" name="customer__IDX">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-08 03:22:17 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>26D2ACC1-E368-CE52-2005-F8FF68EDF92F</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="4F3C553F-8D4B-F591-561B-7FC253C3BB30"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4AB93803-42A6-6B6B-A96C-8AF20F111567" name="customer_document_type_FK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-08 03:22:17 UTC</createdTime>
+<generatorID>86809E1F-14F7-F000-082F-5B2D2D60750C</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1C8D67AF-1B50-C9FB-932C-E8C6D20C2365"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AE36A7AA-A0ED-85EA-165A-5940E6CD24F1" name="customer_creditcard_type_FK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-08 03:22:17 UTC</createdTime>
+<generatorID>815BD60F-3E7D-6D39-8463-6F237783EB5D</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7E4FDBA9-37F5-6C57-BFAD-41CD0DD4809D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="79E7D8C4-7F84-BFF3-2BE0-77EB104F1D47" name="customer_customer_category_FK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-08 03:22:17 UTC</createdTime>
+<generatorID>26D2ACC1-E368-CE52-2005-F8FF68EDF92F</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4F3C553F-8D4B-F591-561B-7FC253C3BB30"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
