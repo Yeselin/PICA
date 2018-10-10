@@ -102,7 +102,7 @@ definitions:
   Book:
     type: object
     properties:
-      bookingCode:
+      bookingCity:
         type: integer
         format: int64
       bookingDate:

@@ -59,10 +59,14 @@
 
 	<xsd:complexType name="BookingType">
 		<xsd:sequence>
-				<xsd:element name="flightType" type="xsd:string"
+				<xsd:element name="fromCity" type="xsd:string"
+					minOccurs="1" maxOccurs="1" />
+				<xsd:element name="toCity" type="xsd:string"
 					minOccurs="1" maxOccurs="1" />
 				<xsd:element name="flightDate" type="xsd:dateTime"
 					minOccurs="1" maxOccurs="1" />
+				<xsd:element name="numberOfTicekts" type="xsd:string"
+					minOccurs="1" maxOccurs="1" />					
 				<xsd:element name="cabinClass" type="xsd:dateTime"
 					minOccurs="1" maxOccurs="1" />
 		</xsd:sequence>
