@@ -1,5 +1,0 @@
-
-#Environment variables
-activemq:
-   broker-url: ${BROKER_URL}
-   queueName: ${BROKER_QUEUE_NAME}
