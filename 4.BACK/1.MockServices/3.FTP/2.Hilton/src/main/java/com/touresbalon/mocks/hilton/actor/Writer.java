@@ -1,4 +1,4 @@
-package com.touresbalon.mocks.bolivarianomock.actor;
+package com.touresbalon.mocks.hilton.actor;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -7,8 +7,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
-import com.touresbalon.mocks.bolivarianomock.message.MessageRQ;
-import com.touresbalon.mocks.bolivarianomock.message.MessageRS;
+import com.touresbalon.mocks.hilton.message.MessageRQ;
+import com.touresbalon.mocks.hilton.message.MessageRS;
 
 public class Writer {
 
@@ -25,27 +25,34 @@ public class Writer {
 		
 		for (MessageRQ rq : listMessageRQ) {
 			messageRS = new MessageRS();
+			
 			messageRS.setTimestamp(dateTimeFormatter.format(LocalDateTime.now()));
 			messageRS.setTransactionID(UUID.randomUUID().toString());
-			messageRS.setTipoIdentificacion(rq.getTipoIdentifiacion());
-			messageRS.setIdentificacion(rq.getIdentificacion());
-			messageRS.setStatus("RESERVED");
+			messageRS.setIdentificationType(rq.getIdentificationType());
+			messageRS.setIdentification(rq.getIdentification());
+			messageRS.setLogdingCity(rq.getLodgingCity());
+			messageRS.setCheckIn(rq.getCheckIn());
+			messageRS.setCheckOut(rq.getCheckout());
+			messageRS.setRooms(rq.getRooms());
+			messageRS.setGuest(rq.getGuests());
 			messageRS.setPrice(String.format("%d", (int)(Math.random() * 1000000)));
-			messageRS.setReserveDate(rq.getFecha());
-			messageRS.setCategory(rq.getCategoria());
-			messageRS.setTotalTickets(rq.getTickets());
+			messageRS.setCurrency("COP");			
+			messageRS.setStatus("RES");	
 					
 			buffer.append(messageRS.getTimestamp());
 			buffer.append(messageRS.getTransactionID());
-			buffer.append(messageRS.getTipoIdentificacion());
-			buffer.append(messageRS.getIdentificacion());
-			buffer.append(messageRS.getStatus());
+			buffer.append(messageRS.getIdentificationType());
+			buffer.append(messageRS.getIdentification());
+			buffer.append(messageRS.getLogdingCity());
+			buffer.append(messageRS.getCheckIn());
+			buffer.append(messageRS.getCheckOut());
+			buffer.append(messageRS.getRooms());
+			buffer.append(messageRS.getGuest());
 			buffer.append(messageRS.getPrice());
-			buffer.append(messageRS.getReserveDate());
-			buffer.append(messageRS.getCategory());
-			buffer.append(messageRS.getTotalTickets());
-			buffer.append("\n");
+			buffer.append(messageRS.getCurrency());
+			buffer.append(messageRS.getStatus());
 			
+			buffer.append("\n");			
 		}
 		
 		inputStream = new ByteArrayInputStream(buffer.toString().getBytes());
