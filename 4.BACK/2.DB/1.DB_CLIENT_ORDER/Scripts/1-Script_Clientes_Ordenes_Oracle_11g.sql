@@ -79,6 +79,7 @@ CREATE TABLE customer (
     create_date          DATE,
     update_date          DATE DEFAULT SYSDATE,
 	CONSTRAINT customer_pk PRIMARY KEY (document_type_id, document_id),
+	CONSTRAINT customer_document_type_fk  FOREIGN KEY (document_type_id)  REFERENCES document_type(id),
 	CONSTRAINT customer_category_fk  FOREIGN KEY (customer_category_id)  REFERENCES customer_category(id),
 	CONSTRAINT creditcard_type_fk  FOREIGN KEY (creditcard_type_id)  REFERENCES creditcard_type(id),
 	CONSTRAINT customer_status_fk  FOREIGN KEY (status_id)  REFERENCES customer_status(id)
@@ -132,6 +133,17 @@ CREATE TABLE order_item (
 	CONSTRAINT order_item_pk  PRIMARY KEY ( id ),
 	CONSTRAINT order_item_fk  FOREIGN KEY (sales_order_id)  REFERENCES sales_order(id)
 );
+
+
+--DROP SEQUENCE SEQ_CUSTOMER;
+-- CREATE SEQUENCE SEQ_CUSTOMER
+  -- START WITH 1
+  -- INCREMENT BY   1
+  -- MAXVALUE 9999999999999999999999999999
+  -- MINVALUE 1
+  -- NOCYCLE
+  -- CACHE 20
+  -- NOORDER;
 
 
 
