@@ -57,7 +57,9 @@ CREATE OR REPLACE PACKAGE TOURESBALON.PK_CUSTOMER Is
                         P_ZIP                    IN VARCHAR2,
                         P_COUNTRY                IN VARCHAR2,
                         P_ADDRESS_TYPE           IN VARCHAR2,
-                        P_CITY                   IN VARCHAR2
+                        P_CITY                   IN VARCHAR2,
+						P_RESPONSE_ID            OUT INTEGER,
+                        P_RESPONSE_DESC          OUT VARCHAR2
      ) ;
 	
 	
@@ -88,7 +90,10 @@ CREATE OR REPLACE PACKAGE TOURESBALON.PK_CUSTOMER Is
                         P_ZIP                    OUT VARCHAR2,
                         P_COUNTRY                OUT VARCHAR2,
                         P_ADDRESS_TYPE           OUT VARCHAR2,
-                        P_CITY                   OUT VARCHAR2);
+                        P_CITY                   OUT VARCHAR2,
+						P_RESPONSE_ID            OUT INTEGER,
+                        P_RESPONSE_DESC          OUT VARCHAR2
+						);
 	
 	
     /* =============================================================================
@@ -116,7 +121,9 @@ CREATE OR REPLACE PACKAGE TOURESBALON.PK_CUSTOMER Is
                         P_ZIP                    IN VARCHAR2,
                         P_COUNTRY                IN VARCHAR2,
                         P_ADDRESS_TYPE           IN VARCHAR2,
-                        P_CITY                   IN VARCHAR2
+                        P_CITY                   IN VARCHAR2,
+						P_RESPONSE_ID            OUT INTEGER,
+                        P_RESPONSE_DESC          OUT VARCHAR2
 						);
 	
 	
@@ -132,7 +139,10 @@ CREATE OR REPLACE PACKAGE TOURESBALON.PK_CUSTOMER Is
     ============================================================================= */
     PROCEDURE PR_DELETE(P_DOCUMENT_TYPE_NAME     IN VARCHAR2,
 	                    P_DOCUMENT_ID            IN VARCHAR2,
-					    P_CUSTOMER_STATUS_NAME   IN VARCHAR2);
+					    P_CUSTOMER_STATUS_NAME   IN VARCHAR2,
+						P_RESPONSE_ID            OUT INTEGER,
+                        P_RESPONSE_DESC          OUT VARCHAR2
+						);
 	
 	
 END PK_CUSTOMER;
@@ -162,14 +172,18 @@ PROCEDURE PR_CREATE(    P_DOCUMENT_TYPE_NAME     IN VARCHAR2,
                         P_ZIP                    IN VARCHAR2,
                         P_COUNTRY                IN VARCHAR2,
                         P_ADDRESS_TYPE           IN VARCHAR2,
-                        P_CITY                   IN VARCHAR2
+                        P_CITY                   IN VARCHAR2,
+						P_RESPONSE_ID            OUT INTEGER,
+                        P_RESPONSE_DESC          OUT VARCHAR2
      ) IS
 V_DOCUMENT_TYPE_ID INTEGER :=0;
 V_CUSTOMER_CATEGORY_ID INTEGER :=0;
 V_CREDITCARD_TYPE_ID INTEGER :=0;
 V_STATUS_ID INTEGER :=0;
 BEGIN
-
+     P_RESPONSE_ID:= -20001;
+	 P_RESPONSE_DESC:= 'KO';
+	 
      --OBTENIENDO EL ID DEL TIPO DE DOCUMENTO
      BEGIN
 		 SELECT ID INTO V_DOCUMENT_TYPE_ID
@@ -180,6 +194,8 @@ BEGIN
 		Lv_Successfull           := 'N';
 		Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '.' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
 		COMMIT;
+		P_RESPONSE_ID:= -20002;
+	    P_RESPONSE_DESC:= Lv_Comment_;
 		raise_application_error(-20002, Lv_Comment_);
 	 END;
 	 
@@ -194,6 +210,8 @@ BEGIN
 		Lv_Successfull           := 'N';
 		Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '.' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
 		COMMIT;
+		P_RESPONSE_ID:= -20003;
+	    P_RESPONSE_DESC:= Lv_Comment_;
 		raise_application_error(-20003, Lv_Comment_);
 	 END;
 
@@ -208,6 +226,8 @@ BEGIN
 		Lv_Successfull           := 'N';
 		Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '.' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
 		COMMIT;
+		P_RESPONSE_ID:= -20004;
+	    P_RESPONSE_DESC:= Lv_Comment_;
 		raise_application_error(-20004, Lv_Comment_);
 	 END;
 	 
@@ -222,7 +242,9 @@ BEGIN
 		Lv_Successfull           := 'N';
 		Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '.' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
 		COMMIT;
-		--raise_application_error(-20002, Lv_Comment_);
+		P_RESPONSE_ID:= -20005;
+	    P_RESPONSE_DESC:= Lv_Comment_;
+		--raise_application_error(-20005, Lv_Comment_);
 	 END;
 
 	 
@@ -245,7 +267,7 @@ BEGIN
 						   P_FIRST_NAME,
 						   P_LAST_NAME,
 						   P_PHONE_NUMBER,
-						   P_EMAIL,
+						   LOWER(P_EMAIL),
 						   P_PASSWORD,
 						   V_CUSTOMER_CATEGORY_ID,
 						   V_CREDITCARD_TYPE_ID,
@@ -256,10 +278,15 @@ BEGIN
   COMMIT;
   Lv_Successfull           := 'Y';
    
+  P_RESPONSE_ID:= 20100;
+  P_RESPONSE_DESC:= 'OK';
+   
    exception When Others Then
    Lv_Successfull           := 'N';
    Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '.' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
    COMMIT;
+   P_RESPONSE_ID:= -20001;
+   P_RESPONSE_DESC:= Lv_Comment_;
    raise_application_error(-20001, Lv_Comment_);
    --RAISE;
 END PR_CREATE;
@@ -284,11 +311,15 @@ PROCEDURE PR_READ(  P_DOCUMENT_TYPE_NAME     IN VARCHAR2,
                     P_ZIP                    OUT VARCHAR2,
                     P_COUNTRY                OUT VARCHAR2,
                     P_ADDRESS_TYPE           OUT VARCHAR2,
-                    P_CITY                   OUT VARCHAR2
+                    P_CITY                   OUT VARCHAR2,
+					P_RESPONSE_ID            OUT INTEGER,
+                    P_RESPONSE_DESC          OUT VARCHAR2
                   ) IS
 V_CONT NUMBER := 0;
   begin
-  
+     P_RESPONSE_ID:= -20001;
+	 P_RESPONSE_DESC:= 'KO';
+	 
       --OBTENIEDO INFORMACION DE UN CLIENTE
         SELECT A.FIRST_NAME,
                A.LAST_NAME,
@@ -320,10 +351,14 @@ V_CONT NUMBER := 0;
 		 WHERE A.DOCUMENT_ID = UPPER(P_DOCUMENT_ID);
 
    Lv_Successfull           := 'Y';
+   P_RESPONSE_ID:= 20100;
+   P_RESPONSE_DESC:= 'OK';
    exception When Others Then
    Lv_Successfull           := 'N';
    Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '. ' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
    COMMIT;
+   P_RESPONSE_ID:= -20001;
+   P_RESPONSE_DESC:= Lv_Comment_;
    raise_application_error(-20001, Lv_Comment_);
    --RAISE;
 End PR_READ;
@@ -346,14 +381,18 @@ PROCEDURE PR_UPDATE(    P_DOCUMENT_TYPE_NAME     IN VARCHAR2,
                         P_ZIP                    IN VARCHAR2,
                         P_COUNTRY                IN VARCHAR2,
                         P_ADDRESS_TYPE           IN VARCHAR2,
-                        P_CITY                   IN VARCHAR2
+                        P_CITY                   IN VARCHAR2,
+						P_RESPONSE_ID            OUT INTEGER,
+                        P_RESPONSE_DESC          OUT VARCHAR2
 				  ) IS
 V_CONT NUMBER := 0;
 V_CUSTOMER_CATEGORY_ID INTEGER :=0;
 V_CREDITCARD_TYPE_ID INTEGER :=0;
 V_STATUS_ID INTEGER :=0;
 BEGIN
-
+     P_RESPONSE_ID:= -20001;
+	 P_RESPONSE_DESC:= 'KO';
+	 
      --OBTENIENDO EL ID DEL TIPO DE CATEGORIA DEL CLIENTE
      BEGIN
 		 SELECT ID INTO V_CUSTOMER_CATEGORY_ID
@@ -363,6 +402,8 @@ BEGIN
 	 exception When Others Then
 		Lv_Successfull           := 'N';
 		Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '.' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
+	    P_RESPONSE_ID:= -20003;
+	    P_RESPONSE_DESC:= Lv_Comment_;
 		COMMIT;
 	 END;
 
@@ -376,6 +417,9 @@ BEGIN
 	 exception When Others Then
 		Lv_Successfull           := 'N';
 		Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '.' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
+		P_RESPONSE_ID:= -20004;
+	    P_RESPONSE_DESC:= Lv_Comment_;
+		--raise_application_error(-20004, Lv_Comment_);
 		COMMIT;
 	 END;
 
@@ -388,6 +432,9 @@ BEGIN
 	 exception When Others Then
 		Lv_Successfull           := 'N';
 		Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '.' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
+	    P_RESPONSE_ID:= -20005;
+	    P_RESPONSE_DESC:= Lv_Comment_;
+		--raise_application_error(-20005, Lv_Comment_);
 		COMMIT;
 	 END;
 
@@ -400,7 +447,7 @@ BEGIN
      A.FIRST_NAME = (CASE WHEN (P_FIRST_NAME = '' OR P_FIRST_NAME IS NULL) THEN A.FIRST_NAME ELSE P_FIRST_NAME END),
      A.LAST_NAME = (CASE WHEN (P_LAST_NAME = '' OR P_LAST_NAME IS NULL) THEN A.LAST_NAME ELSE P_LAST_NAME END),
      A.PHONE_NUMBER = (CASE WHEN (P_PHONE_NUMBER = '' OR P_PHONE_NUMBER IS NULL) THEN A.PHONE_NUMBER ELSE P_PHONE_NUMBER END),
-     A.EMAIL = (CASE WHEN (P_EMAIL = '' OR P_EMAIL IS NULL) THEN A.EMAIL ELSE P_EMAIL END),
+     A.EMAIL = (CASE WHEN (P_EMAIL = '' OR P_EMAIL IS NULL) THEN A.EMAIL ELSE LOWER(P_EMAIL) END),
      A.PASSWORD = (CASE WHEN (P_PASSWORD = '' OR P_PASSWORD IS NULL) THEN A.PASSWORD ELSE P_PASSWORD END),
      A.CUSTOMER_CATEGORY_ID = (CASE WHEN (V_CUSTOMER_CATEGORY_ID = 0 OR V_CUSTOMER_CATEGORY_ID IS NULL) THEN A.CUSTOMER_CATEGORY_ID ELSE V_CUSTOMER_CATEGORY_ID END),
      A.CREDITCARD_TYPE_ID = (CASE WHEN (V_CREDITCARD_TYPE_ID = 0 OR V_CREDITCARD_TYPE_ID IS NULL) THEN A.CREDITCARD_TYPE_ID ELSE V_CREDITCARD_TYPE_ID END),
@@ -414,11 +461,16 @@ BEGIN
 				    AND B.DOCUMENT_NAME = UPPER(P_DOCUMENT_TYPE_NAME)
 				 );
    COMMIT;
-   Lv_Successfull           := 'Y';
+   Lv_Successfull := 'Y';
+   P_RESPONSE_ID:= 20100;
+   P_RESPONSE_DESC:= 'OK';
+   
    exception When Others Then
    Lv_Successfull           := 'N';
    Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '. ' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
    COMMIT;
+   P_RESPONSE_ID:= -20001;
+   P_RESPONSE_DESC:= Lv_Comment_;
    raise_application_error(-20001, Lv_Comment_);
    --RAISE;
 end PR_UPDATE;
@@ -426,10 +478,14 @@ end PR_UPDATE;
 	
 PROCEDURE PR_DELETE( P_DOCUMENT_TYPE_NAME     IN VARCHAR2,
 	                 P_DOCUMENT_ID            IN VARCHAR2,
-					 P_CUSTOMER_STATUS_NAME   IN VARCHAR2
+					 P_CUSTOMER_STATUS_NAME   IN VARCHAR2,
+					 P_RESPONSE_ID            OUT INTEGER,
+                     P_RESPONSE_DESC          OUT VARCHAR2
 				     ) IS
 V_STATUS_ID INTEGER :=0;
 BEGIN
+     P_RESPONSE_ID:= -20001;
+	 P_RESPONSE_DESC:= 'KO';
 
      --OBTENIENDO EL ID DEL ESTATUS DEL CLIENTE
      BEGIN
@@ -441,7 +497,9 @@ BEGIN
 		Lv_Successfull           := 'N';
 		Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '.' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
 		COMMIT;
-		raise_application_error(-20002, Lv_Comment_);
+		P_RESPONSE_ID:= -20005;
+	    P_RESPONSE_DESC:= Lv_Comment_;
+		raise_application_error(-20005, Lv_Comment_);
 	 END;
 
 	 
@@ -457,10 +515,15 @@ BEGIN
 				 );
    COMMIT;
    Lv_Successfull           := 'Y';
+   P_RESPONSE_ID:= 20100;
+   P_RESPONSE_DESC:= 'OK';
+   
    exception When Others Then
    Lv_Successfull           := 'N';
    Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '. ' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
    COMMIT;
+   P_RESPONSE_ID:= -20001;
+   P_RESPONSE_DESC:= Lv_Comment_;
    raise_application_error(-20001, Lv_Comment_);
    --RAISE;
 END PR_DELETE;
