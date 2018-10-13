@@ -1,0 +1,10 @@
+#Server
+server:
+  port: ${SERVER_PORT:8081}
+  servlet:
+    contextPath: /products
+elasticParameters:
+  server: 192.168.43.20
+  port: 9200
+  index: products
+  searchSize: 50
