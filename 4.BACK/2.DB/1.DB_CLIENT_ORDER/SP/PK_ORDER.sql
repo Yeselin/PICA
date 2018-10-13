@@ -1,4 +1,4 @@
-CREATE OR REPLACE PACKAGE PK_ORDER Is
+CREATE OR REPLACE PACKAGE TOURESBALON.PK_ORDER Is
     /* =============================================================================
      Proposito:  Se Define Los Procedimientos CRUD para las ordenes
      ----------- --------- ------------------------------------------------------------
@@ -12,7 +12,7 @@ CREATE OR REPLACE PACKAGE PK_ORDER Is
     Lv_Job_Nm                       Constant Varchar2(100) := 'PK_ORDER';
     Ld_Population_Date              Constant Date          := Trunc(Sysdate);
     Ld_Effective_Date               Constant Date          := Trunc(Sysdate-1);
-    Lv_Usuario_Bd                   Constant Varchar2(30)  := 'SYSTEM';
+    Lv_Usuario_Bd                   Constant Varchar2(30)  := 'TOURESBALON';
     Lv_Job_Owner                    Constant Varchar2(30)  := 'GERARDO HERRERA';
     Lv_Job_Type                     Constant Varchar2(30)  := 'PL-SQL';
     Ld_Start_Date                   Date                   := Sysdate;
@@ -220,7 +220,7 @@ END PK_ORDER;
 
 
 
-CREATE OR REPLACE PACKAGE BODY PK_ORDER IS
+CREATE OR REPLACE PACKAGE BODY TOURESBALON.PK_ORDER IS
 
 PROCEDURE PR_CREATE(    P_PRICE                       IN NUMBER,
 	                    P_ORDER_STATUS_NAME           IN VARCHAR2,

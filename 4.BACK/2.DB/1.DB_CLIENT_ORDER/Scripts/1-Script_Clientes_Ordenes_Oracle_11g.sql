@@ -1,18 +1,18 @@
 --CREATE DATABASE DB_CLIENT_ORDER
 
---DROP TABLE order_item;
---DROP TABLE sales_order;
---DROP TABLE order_status;
---DROP TABLE customer_address;
---DROP TABLE customer;
---DROP TABLE customer_status;
---DROP TABLE customer_category;
---DROP TABLE address;
---DROP TABLE document_type;
---DROP TABLE creditcard_type;
+--DROP TABLE TOURESBALON.order_item;
+--DROP TABLE TOURESBALON.sales_order;
+--DROP TABLE TOURESBALON.order_status;
+--DROP TABLE TOURESBALON.customer_address;
+--DROP TABLE TOURESBALON.customer;
+--DROP TABLE TOURESBALON.customer_status;
+--DROP TABLE TOURESBALON.customer_category;
+--DROP TABLE TOURESBALON.address;
+--DROP TABLE TOURESBALON.document_type;
+--DROP TABLE TOURESBALON.creditcard_type;
 
 
-CREATE TABLE creditcard_type
+CREATE TABLE TOURESBALON.creditcard_type
 (
   id                     INTEGER DEFAULT -1 NOT NULL,
   creditcard_name        VARCHAR2(50 BYTE) NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE creditcard_type
   CONSTRAINT creditcard_type_pk PRIMARY KEY (id)
 );
 
-CREATE TABLE document_type
+CREATE TABLE TOURESBALON.document_type
 (
   id                     INTEGER DEFAULT -1 NOT NULL,
   document_name          VARCHAR2(20 BYTE) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE document_type
   CONSTRAINT document_type_pk PRIMARY KEY (id)
 );
 
-CREATE TABLE address (
+CREATE TABLE TOURESBALON.address (
     id             NUMBER NOT NULL,
     street         VARCHAR2(50 BYTE),
     state          VARCHAR2(50 BYTE),
@@ -45,7 +45,7 @@ CREATE TABLE address (
 	CONSTRAINT address_pk PRIMARY KEY (id)
 );
 
-CREATE TABLE customer_category (
+CREATE TABLE TOURESBALON.customer_category (
     id                          INTEGER DEFAULT -1 NOT NULL,
     category_name               VARCHAR2(50 BYTE) NOT NULL,
     category_description        VARCHAR2(200 BYTE) NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE customer_category (
     CONSTRAINT customer_category_pk PRIMARY KEY (id)
 );
 
-CREATE TABLE customer_status (
+CREATE TABLE TOURESBALON.customer_status (
     id                          INTEGER DEFAULT -1 NOT NULL,
     status_name                 VARCHAR2(50 BYTE) NOT NULL,
     status_description          VARCHAR2(200 BYTE) NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE customer_status (
 );
 
 
-CREATE TABLE customer (
+CREATE TABLE TOURESBALON.customer (
 	document_type_id     INTEGER DEFAULT 1 NOT NULL,
 	document_id          VARCHAR2(20 BYTE) NOT NULL,
     first_name           VARCHAR2(50 BYTE),
@@ -79,24 +79,24 @@ CREATE TABLE customer (
     create_date          DATE,
     update_date          DATE DEFAULT SYSDATE,
 	CONSTRAINT customer_pk PRIMARY KEY (document_type_id, document_id),
-	CONSTRAINT customer_document_type_fk  FOREIGN KEY (document_type_id)  REFERENCES document_type(id),
-	CONSTRAINT customer_category_fk  FOREIGN KEY (customer_category_id)  REFERENCES customer_category(id),
-	CONSTRAINT creditcard_type_fk  FOREIGN KEY (creditcard_type_id)  REFERENCES creditcard_type(id),
-	CONSTRAINT customer_status_fk  FOREIGN KEY (status_id)  REFERENCES customer_status(id)
+	CONSTRAINT customer_document_type_fk  FOREIGN KEY (document_type_id)  REFERENCES TOURESBALON.document_type(id),
+	CONSTRAINT customer_category_fk  FOREIGN KEY (customer_category_id)  REFERENCES TOURESBALON.customer_category(id),
+	CONSTRAINT creditcard_type_fk  FOREIGN KEY (creditcard_type_id)  REFERENCES TOURESBALON.creditcard_type(id),
+	CONSTRAINT customer_status_fk  FOREIGN KEY (status_id)  REFERENCES TOURESBALON.customer_status(id)
 );
 
-CREATE TABLE customer_address (
+CREATE TABLE TOURESBALON.customer_address (
     address_id    NUMBER NOT NULL,
     cust_document_type  INTEGER NOT NULL,
 	cust_document_id    VARCHAR2(20 BYTE) NOT NULL,
 	create_date         DATE,
     update_date         DATE DEFAULT SYSDATE,
-	CONSTRAINT address_fk  FOREIGN KEY (address_id)  REFERENCES address(id),
-	CONSTRAINT customer_fk FOREIGN KEY (cust_document_type,cust_document_id) REFERENCES customer(document_type_id,document_id)
+	CONSTRAINT address_fk  FOREIGN KEY (address_id)  REFERENCES TOURESBALON.address(id),
+	CONSTRAINT customer_fk FOREIGN KEY (cust_document_type,cust_document_id) REFERENCES TOURESBALON.customer(document_type_id,document_id)
 );
 
 
-CREATE TABLE order_status (
+CREATE TABLE TOURESBALON.order_status (
     id                          INTEGER DEFAULT -1 NOT NULL,
     status_name                 VARCHAR2(50 BYTE) NOT NULL,
     status_description          VARCHAR2(200 BYTE) NOT NULL,
@@ -106,7 +106,7 @@ CREATE TABLE order_status (
 );
 
 
-CREATE TABLE sales_order (
+CREATE TABLE TOURESBALON.sales_order (
     id                          NUMBER NOT NULL,
     order_date                  DATE,
     price                       NUMBER,
@@ -116,11 +116,11 @@ CREATE TABLE sales_order (
     customer_document_id        VARCHAR2(20 BYTE) NOT NULL,
     update_date                 DATE,
 	CONSTRAINT sales_order_pk PRIMARY KEY ( id ),
-	CONSTRAINT customer_sales_fk FOREIGN KEY (customer_document_type_id,customer_document_id) REFERENCES customer(document_type_id,document_id),
-	CONSTRAINT order_status_fk  FOREIGN KEY (status_id)  REFERENCES order_status(id)
+	CONSTRAINT customer_sales_fk FOREIGN KEY (customer_document_type_id,customer_document_id) REFERENCES TOURESBALON.customer(document_type_id,document_id),
+	CONSTRAINT order_status_fk  FOREIGN KEY (status_id)  REFERENCES TOURESBALON.order_status(id)
 );
 
-CREATE TABLE order_item (
+CREATE TABLE TOURESBALON.order_item (
     id                                      NUMBER NOT NULL,
     product_id                              NUMBER,
     product_name                            VARCHAR2(50 BYTE),
@@ -131,12 +131,12 @@ CREATE TABLE order_item (
     create_date                             DATE,
     update_date                             DATE,
 	CONSTRAINT order_item_pk  PRIMARY KEY ( id ),
-	CONSTRAINT order_item_fk  FOREIGN KEY (sales_order_id)  REFERENCES sales_order(id)
+	CONSTRAINT order_item_fk  FOREIGN KEY (sales_order_id)  REFERENCES TOURESBALON.sales_order(id)
 );
 
 
---DROP SEQUENCE SEQ_CUSTOMER;
--- CREATE SEQUENCE SEQ_CUSTOMER
+--DROP SEQUENCE TOURESBALON.SEQ_CUSTOMER;
+-- CREATE SEQUENCE TOURESBALON.SEQ_CUSTOMER
   -- START WITH 1
   -- INCREMENT BY   1
   -- MAXVALUE 9999999999999999999999999999

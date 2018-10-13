@@ -1,4 +1,4 @@
-CREATE OR REPLACE PACKAGE PK_CUSTOMER Is
+CREATE OR REPLACE PACKAGE TOURESBALON.PK_CUSTOMER Is
     /* =============================================================================
      Proposito:  Se Define Los Procedimientos CRUD para los clientes
      ----------- --------- ------------------------------------------------------------
@@ -12,7 +12,7 @@ CREATE OR REPLACE PACKAGE PK_CUSTOMER Is
     Lv_Job_Nm                       Constant Varchar2(100) := 'PK_CUSTOMER';
     Ld_Population_Date              Constant Date          := Trunc(Sysdate);
     Ld_Effective_Date               Constant Date          := Trunc(Sysdate-1);
-    Lv_Usuario_Bd                   Constant Varchar2(30)  := 'SYSTEM';
+    Lv_Usuario_Bd                   Constant Varchar2(30)  := 'TOURESBALON';
     Lv_Job_Owner                    Constant Varchar2(30)  := 'GERARDO HERRERA';
     Lv_Job_Type                     Constant Varchar2(30)  := 'PL-SQL';
     Ld_Start_Date                   Date                   := Sysdate;
@@ -144,7 +144,7 @@ END PK_CUSTOMER;
 
 
 
-CREATE OR REPLACE PACKAGE BODY PK_CUSTOMER IS
+CREATE OR REPLACE PACKAGE BODY TOURESBALON.PK_CUSTOMER IS
 
 PROCEDURE PR_CREATE(    P_DOCUMENT_TYPE_NAME     IN VARCHAR2,
 	                    P_DOCUMENT_ID            IN VARCHAR2,
@@ -173,7 +173,7 @@ BEGIN
      --OBTENIENDO EL ID DEL TIPO DE DOCUMENTO
      BEGIN
 		 SELECT ID INTO V_DOCUMENT_TYPE_ID
-		 FROM DOCUMENT_TYPE
+		 FROM TOURESBALON.DOCUMENT_TYPE
 		 WHERE DOCUMENT_NAME = UPPER(P_DOCUMENT_TYPE_NAME);
 	 
 	 exception When Others Then
@@ -187,7 +187,7 @@ BEGIN
 	 --OBTENIENDO EL ID DEL TIPO DE CATEGORIA DEL CLIENTE
      BEGIN
 		 SELECT ID INTO V_CUSTOMER_CATEGORY_ID
-		 FROM CUSTOMER_CATEGORY
+		 FROM TOURESBALON.CUSTOMER_CATEGORY
 		 WHERE CATEGORY_NAME = UPPER(P_CUSTOMER_CATEGORY_NAME);
 	 
 	 exception When Others Then
@@ -201,7 +201,7 @@ BEGIN
 	 --OBTENIENDO EL ID DEL TIPO DE TARJETA DE CREDITO DEL CLIENTE
      BEGIN
 		 SELECT ID INTO V_CREDITCARD_TYPE_ID
-		 FROM CREDITCARD_TYPE
+		 FROM TOURESBALON.CREDITCARD_TYPE
 		 WHERE CREDITCARD_NAME = UPPER(P_CREDITCARD_NAME);
 	 
 	 exception When Others Then
@@ -215,7 +215,7 @@ BEGIN
 	 --OBTENIENDO EL ID DEL ESTATUS DEL CLIENTE
      BEGIN
 		 SELECT ID INTO V_STATUS_ID
-		 FROM CUSTOMER_STATUS
+		 FROM TOURESBALON.CUSTOMER_STATUS
 		 WHERE STATUS_NAME = UPPER(P_CUSTOMER_STATUS_NAME);
 	 
 	 exception When Others Then
@@ -227,19 +227,19 @@ BEGIN
 
 	 
 	 --INSERTANDO EL NUEVO CLIENTE
-     INSERT INTO CUSTOMER (document_type_id,
-						   document_id,
-						   first_name,
-						   last_name,
-						   phone_number,
-						   email,
-						   password,
-						   customer_category_id,
-						   creditcard_type_id,
-						   creditcard_number,
-						   status_id,
-						   create_date,
-						   update_date) 
+     INSERT INTO TOURESBALON.CUSTOMER (document_type_id,
+						               document_id,
+						               first_name,
+						               last_name,
+						               phone_number,
+						               email,
+						               password,
+						               customer_category_id,
+						               creditcard_type_id,
+						               creditcard_number,
+						               status_id,
+						               create_date,
+						               update_date) 
                   VALUES ( V_DOCUMENT_TYPE_ID,
                            UPPER(P_DOCUMENT_ID),
 						   P_FIRST_NAME,
@@ -312,11 +312,11 @@ V_CONT NUMBER := 0;
               P_CUSTOMER_STATUS_NAME,
 			  P_CREATE_DATE,
 			  P_UPDATE_DATE
-		 FROM CUSTOMER A
-		 INNER JOIN DOCUMENT_TYPE B     ON (B.ID = A.DOCUMENT_TYPE_ID AND B.DOCUMENT_NAME = UPPER(P_DOCUMENT_TYPE_NAME))
-		 INNER JOIN CUSTOMER_CATEGORY C ON (C.ID = A.CUSTOMER_CATEGORY_ID)
-		 INNER JOIN CREDITCARD_TYPE D   ON (D.ID = A.CREDITCARD_TYPE_ID)
-		 INNER JOIN CUSTOMER_STATUS E   ON (E.ID = A.STATUS_ID)
+		 FROM TOURESBALON.CUSTOMER A
+		 INNER JOIN TOURESBALON.DOCUMENT_TYPE B     ON (B.ID = A.DOCUMENT_TYPE_ID AND B.DOCUMENT_NAME = UPPER(P_DOCUMENT_TYPE_NAME))
+		 INNER JOIN TOURESBALON.CUSTOMER_CATEGORY C ON (C.ID = A.CUSTOMER_CATEGORY_ID)
+		 INNER JOIN TOURESBALON.CREDITCARD_TYPE D   ON (D.ID = A.CREDITCARD_TYPE_ID)
+		 INNER JOIN TOURESBALON.CUSTOMER_STATUS E   ON (E.ID = A.STATUS_ID)
 		 WHERE A.DOCUMENT_ID = UPPER(P_DOCUMENT_ID);
 
    Lv_Successfull           := 'Y';
@@ -357,7 +357,7 @@ BEGIN
      --OBTENIENDO EL ID DEL TIPO DE CATEGORIA DEL CLIENTE
      BEGIN
 		 SELECT ID INTO V_CUSTOMER_CATEGORY_ID
-		 FROM CUSTOMER_CATEGORY
+		 FROM TOURESBALON.CUSTOMER_CATEGORY
 		 WHERE CATEGORY_NAME = UPPER(P_CUSTOMER_CATEGORY_NAME);
 	 
 	 exception When Others Then
@@ -370,7 +370,7 @@ BEGIN
 	 --OBTENIENDO EL ID DEL TIPO DE TARJETA DE CREDITO DEL CLIENTE
      BEGIN
 		 SELECT ID INTO V_CREDITCARD_TYPE_ID
-		 FROM CREDITCARD_TYPE
+		 FROM TOURESBALON.CREDITCARD_TYPE
 		 WHERE CREDITCARD_NAME = UPPER(P_CREDITCARD_NAME);
 	 
 	 exception When Others Then
@@ -382,7 +382,7 @@ BEGIN
      --OBTENIENDO EL ID DEL ESTATUS DEL CLIENTE
      BEGIN
 		 SELECT ID INTO V_STATUS_ID
-		 FROM CUSTOMER_STATUS
+		 FROM TOURESBALON.CUSTOMER_STATUS
 		 WHERE STATUS_NAME = UPPER(P_CUSTOMER_STATUS_NAME);
 	 
 	 exception When Others Then
@@ -395,7 +395,7 @@ BEGIN
 
   
   -- ACTUALIZANDO LA INFORMACION DEL CLIENTE
-     UPDATE CUSTOMER A
+     UPDATE TOURESBALON.CUSTOMER A
      SET
      A.FIRST_NAME = (CASE WHEN (P_FIRST_NAME = '' OR P_FIRST_NAME IS NULL) THEN A.FIRST_NAME ELSE P_FIRST_NAME END),
      A.LAST_NAME = (CASE WHEN (P_LAST_NAME = '' OR P_LAST_NAME IS NULL) THEN A.LAST_NAME ELSE P_LAST_NAME END),
@@ -409,7 +409,7 @@ BEGIN
      A.UPDATE_DATE = SYSDATE
      WHERE A.DOCUMENT_ID = UPPER(P_DOCUMENT_ID)
      AND EXISTS (SELECT UNIQUE 1 
-                   FROM DOCUMENT_TYPE B
+                   FROM TOURESBALON.DOCUMENT_TYPE B
 			      WHERE B.ID = A.DOCUMENT_TYPE_ID 
 				    AND B.DOCUMENT_NAME = UPPER(P_DOCUMENT_TYPE_NAME)
 				 );
@@ -434,7 +434,7 @@ BEGIN
      --OBTENIENDO EL ID DEL ESTATUS DEL CLIENTE
      BEGIN
 		 SELECT ID INTO V_STATUS_ID
-		 FROM CUSTOMER_STATUS
+		 FROM TOURESBALON.CUSTOMER_STATUS
 		 WHERE STATUS_NAME = UPPER(P_CUSTOMER_STATUS_NAME);
 	 
 	 exception When Others Then
@@ -447,11 +447,11 @@ BEGIN
 	 
 
    -- BORRADO LOGICO DE UN CLIENTE
-   UPDATE CUSTOMER A
+   UPDATE TOURESBALON.CUSTOMER A
    SET A.UPDATE_DATE = SYSDATE , A.STATUS_ID = (CASE WHEN (V_STATUS_ID = 0 OR V_STATUS_ID IS NULL) THEN A.STATUS_ID ELSE V_STATUS_ID END)
    WHERE A.DOCUMENT_ID = UPPER(P_DOCUMENT_ID)
    AND EXISTS ( SELECT UNIQUE 1 
-                  FROM DOCUMENT_TYPE B
+                  FROM TOURESBALON.DOCUMENT_TYPE B
 				 WHERE B.ID = A.DOCUMENT_TYPE_ID 
 				   AND B.DOCUMENT_NAME = UPPER(P_DOCUMENT_TYPE_NAME)
 				 );
