@@ -83,20 +83,6 @@
 <dataTypeSize>50</dataTypeSize>
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="address_type" id="C88C9402-B0E8-F211-627E-E1E26F1A5CEE">
-<createdBy>gnsoft</createdBy>
-<createdTime>2018-09-25 04:01:56 UTC</createdTime>
-<ownerDesignName>Productos</ownerDesignName>
-<engineerTo>
-<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT037</logicalDatatype>
-<dataTypeSize>4</dataTypeSize>
-<ownDataTypeParameters>4,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="city" id="24F29847-1AE1-792D-FD28-71681512FA88">
 <createdBy>gnsoft</createdBy>
 <createdTime>2018-09-25 04:02:07 UTC</createdTime>
