@@ -1,0 +1,15 @@
+<wsdl:definitions targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/OSB_BACK/TECH_ADAPTERS/dbCreateProduct" name="dbCreateProduct-concrete" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <wsdl:import location="dbCreateProduct.wsdl" namespace="http://xmlns.oracle.com/pcbpel/adapter/db/OSB_BACK/TECH_ADAPTERS/dbCreateProduct"/>
+    <wsdl:binding name="dbCreateProduct_ptt-binding" type="dbc:dbCreateProduct_ptt" xmlns:dbc="http://xmlns.oracle.com/pcbpel/adapter/db/OSB_BACK/TECH_ADAPTERS/dbCreateProduct">
+        <soap:binding style="document" transport="http://www.bea.com/wli/sb/transports/jca"/>
+        <wsdl:operation name="dbCreateProduct">
+            <soap:operation soapAction="dbCreateProduct"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+</wsdl:definitions>

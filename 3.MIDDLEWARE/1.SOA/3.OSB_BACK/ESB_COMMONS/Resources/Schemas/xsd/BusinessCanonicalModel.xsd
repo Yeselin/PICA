@@ -49,5 +49,5 @@
       <xsd:element name="status" type="xsd:string" minOccurs="1" maxOccurs="1"/>
       <xsd:element name="description" type="xsd:string" minOccurs="1" maxOccurs="1"/>
     </xsd:sequence>
-  </xsd:complexType>  
+  </xsd:complexType>
 </xsd:schema>
