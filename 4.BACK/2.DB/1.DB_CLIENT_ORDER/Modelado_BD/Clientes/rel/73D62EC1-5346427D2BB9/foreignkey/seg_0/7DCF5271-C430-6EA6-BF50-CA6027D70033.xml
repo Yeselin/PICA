@@ -1,8 +1,8 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="B0582100-00A7-C7BD-603D-C83A965E4C35" containerWithKeyObject="823A1A2D-78EA-988E-A7FA-F98E4408E072" localFKIndex="A9E4D654-9007-A7D2-AD56-EDD2E5E1F28C" name="creditcard_type_customer_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="7DCF5271-C430-6EA6-BF50-CA6027D70033" containerWithKeyObject="F5F708C9-A3AE-708D-34E6-8BA72D73E641" localFKIndex="6FC7B2AD-22A3-7CB8-12A5-594D82384685" name="customer_status_customer_FK">
 <createdBy>gnsoft</createdBy>
-<createdTime>2018-10-08 03:22:17 UTC</createdTime>
-<generatorID>815BD60F-3E7D-6D39-8463-6F237783EB5D</generatorID>
+<createdTime>2018-10-15 01:54:39 UTC</createdTime>
+<generatorID>94A5AEE7-4660-8C6A-06A7-A56380E343ED</generatorID>
 <ownerDesignName>Clientes</ownerDesignName>
 <referredTableLongName>customer</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>

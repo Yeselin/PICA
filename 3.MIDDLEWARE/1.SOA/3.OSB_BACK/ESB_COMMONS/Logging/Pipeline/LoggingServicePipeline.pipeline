@@ -17,25 +17,25 @@
                         <con1:className>com.esb.component.LogUitls4Tracking</con1:className>
                         <con1:method>public static void trackingLog(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)</con1:method>
                         <con1:expr>
-                            <con2:xqueryText>$body/*:transactionId</con2:xqueryText>
+                            <con2:xqueryText>if (empty($body//*:transactionId)) then "" else fn-bea:serialize(data($body//*:transactionId))</con2:xqueryText>
                         </con1:expr>
                         <con1:expr>
-                            <con2:xqueryText>$body/*:operation</con2:xqueryText>
+                            <con2:xqueryText>if (empty($body//*:operation)) then "" else fn-bea:serialize(data($body//*:operation))</con2:xqueryText>
                         </con1:expr>
                         <con1:expr>
-                            <con2:xqueryText>$body/*:header</con2:xqueryText>
+                            <con2:xqueryText>if (empty($body//*:header)) then "" else fn-bea:serialize(data($body//*:header))</con2:xqueryText>
                         </con1:expr>
                         <con1:expr>
-                            <con2:xqueryText>$body/*:body</con2:xqueryText>
+                            <con2:xqueryText>if (empty($body//*:body)) then "" else fn-bea:serialize(data($body//*:body))</con2:xqueryText>
                         </con1:expr>
                         <con1:expr>
-                            <con2:xqueryText>$body/*:attachment</con2:xqueryText>
+                            <con2:xqueryText>if (empty($body//*:attachment)) then ">" else fn-bea:serialize(data($body//*:attachment))</con2:xqueryText>
                         </con1:expr>
                         <con1:expr>
-                            <con2:xqueryText>$body/*:inbound</con2:xqueryText>
+                            <con2:xqueryText>if (empty($body//*:inbound)) then "" else fn-bea:serialize(data($body//*:inbound))</con2:xqueryText>
                         </con1:expr>
                         <con1:expr>
-                            <con2:xqueryText>$body/*:logSite</con2:xqueryText>
+                            <con2:xqueryText>if (empty($body//*:logSite)) then "" else fn-bea:serialize(data($body//*:logSite))</con2:xqueryText>
                         </con1:expr>
                     </con1:javaCallout>
                 </con:actions>

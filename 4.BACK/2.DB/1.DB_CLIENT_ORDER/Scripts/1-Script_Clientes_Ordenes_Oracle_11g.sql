@@ -1,5 +1,5 @@
 --CREATE DATABASE DB_CLIENT_ORDER
-
+--DROP TABLE TOURESBALON.order_item_status;
 --DROP TABLE TOURESBALON.order_item;
 --DROP TABLE TOURESBALON.sales_order;
 --DROP TABLE TOURESBALON.order_status;
@@ -39,8 +39,8 @@ CREATE TABLE TOURESBALON.address (
     zip            VARCHAR2(20 BYTE),
     country        VARCHAR2(50 BYTE),
     city           VARCHAR2(50 BYTE),
-    create_date         DATE,
-    update_date         DATE DEFAULT SYSDATE,
+    create_date    DATE,
+    update_date    DATE DEFAULT SYSDATE,
 	CONSTRAINT address_pk PRIMARY KEY (id)
 );
 
@@ -85,7 +85,7 @@ CREATE TABLE TOURESBALON.customer (
 );
 
 CREATE TABLE TOURESBALON.customer_address (
-    address_id    NUMBER NOT NULL,
+    address_id          NUMBER NOT NULL,
     cust_document_type  INTEGER NOT NULL,
 	cust_document_id    VARCHAR2(20 BYTE) NOT NULL,
 	create_date         DATE,
@@ -119,18 +119,30 @@ CREATE TABLE TOURESBALON.sales_order (
 	CONSTRAINT order_status_fk  FOREIGN KEY (status_id)  REFERENCES TOURESBALON.order_status(id)
 );
 
+CREATE TABLE TOURESBALON.order_item_status (
+    id                   INTEGER DEFAULT -1 NOT NULL,
+    status_name          VARCHAR2(50 BYTE) NOT NULL,
+    status_description   VARCHAR2(200 BYTE) NOT NULL,
+    create_date          DATE,
+    update_date          DATE DEFAULT SYSDATE,
+	CONSTRAINT order_item_status_pk PRIMARY KEY (id)
+);
+
+
 CREATE TABLE TOURESBALON.order_item (
-    id                                      NUMBER NOT NULL,
-    product_id                              NUMBER,
-    product_name                            VARCHAR2(50 BYTE),
-    partnum                                 VARCHAR2(20 BYTE),
-    price                                   NUMBER,
-    quantity                                NUMBER,
-    sales_order_id                          NUMBER NOT NULL,
-    create_date                             DATE,
-    update_date                             DATE,
+    id                        NUMBER NOT NULL,
+    product_id                NUMBER,
+    product_name              VARCHAR2(50 BYTE),
+    partnum                   VARCHAR2(20 BYTE),
+    price                     NUMBER,
+    quantity                  NUMBER,
+    sales_order_id            NUMBER NOT NULL,
+	status_item_id            INTEGER,
+    create_date               DATE,
+    update_date               DATE,
 	CONSTRAINT order_item_pk  PRIMARY KEY ( id ),
-	CONSTRAINT order_item_fk  FOREIGN KEY (sales_order_id)  REFERENCES TOURESBALON.sales_order(id)
+	CONSTRAINT order_item_fk  FOREIGN KEY (sales_order_id)  REFERENCES TOURESBALON.sales_order(id),
+	CONSTRAINT order_item_status_fk  FOREIGN KEY (status_item_id)  REFERENCES TOURESBALON.order_item_status(id)
 );
 
 --DROP SEQUENCE TOURESBALON.SEQ_ADDRESS;

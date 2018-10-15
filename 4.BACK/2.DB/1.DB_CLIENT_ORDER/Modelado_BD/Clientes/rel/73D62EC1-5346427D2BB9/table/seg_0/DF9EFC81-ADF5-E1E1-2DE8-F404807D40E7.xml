@@ -28,8 +28,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="category_description" id="8D3DBB1A-6E71-3CD5-121D-593F0AF2D344">
@@ -80,9 +80,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="E536AF75-40F7-143D-2CCF-78BDE17A9444" referredColumn="DBF0B67B-C3E7-1A3C-7B5A-99A9D634F4F3"/>
-</associations>
 </Column>
 <Column name="customer_document_id" id="C4D35179-229C-6FF2-1983-FB258400A231">
 <createdBy>gnsoft</createdBy>
@@ -93,12 +90,9 @@
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
 <dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="E536AF75-40F7-143D-2CCF-78BDE17A9444" referredColumn="556F2392-C108-23F1-12F0-151B0CF5997E"/>
-</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -121,18 +115,6 @@
 <indexState>Unique Plain Index</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <relationGeneratorID>26D2ACC1-E368-CE52-2005-F8FF68EDF92F</relationGeneratorID>
-<indexColumnUsage>
-<colUsage columnID="8BE50F06-5645-F913-539D-AE8B7C610340"/>
-<colUsage columnID="C4D35179-229C-6FF2-1983-FB258400A231"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="01EDA835-D544-741A-825E-C5AB6A5BBFD9" name="customer_category_customer_FK">
-<createdBy>gnsoft</createdBy>
-<createdTime>2018-10-08 03:22:17 UTC</createdTime>
-<generatorID>26D2ACC1-E368-CE52-2005-F8FF68EDF92F</generatorID>
-<ownerDesignName>Clientes</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="8BE50F06-5645-F913-539D-AE8B7C610340"/>
 <colUsage columnID="C4D35179-229C-6FF2-1983-FB258400A231"/>

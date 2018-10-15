@@ -17,7 +17,6 @@ TOURESBALON.PK_CUSTOMER.PR_CREATE(P_DOCUMENT_TYPE_NAME     =>'CE',
                                   P_STATE                  =>'BOGOTÁ, D. C.',
                                   P_ZIP                    =>'11001',
                                   P_COUNTRY                =>'COLOMBIA',
-                                  P_ADDRESS_TYPE           =>'1',
                                   P_CITY                   =>'BOGOTÁ, D.C.');
 COMMIT;
 END;
@@ -40,7 +39,6 @@ TOURESBALON.PK_CUSTOMER.PR_UPDATE(P_DOCUMENT_TYPE_NAME     =>'CE',
                                   P_STATE                  =>'BOGOTÁ, D. C.',
                                   P_ZIP                    =>'11001',
                                   P_COUNTRY                =>'COLOMBIA',
-                                  P_ADDRESS_TYPE           =>'1',
                                   P_CITY                   =>'BOGOTÁ, D.C.');
 COMMIT;
 END;

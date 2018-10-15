@@ -1,0 +1,142 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F5F708C9-A3AE-708D-34E6-8BA72D73E641" name="customer_status">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:38 UTC</createdTime>
+<generatorID>0D6FE7E0-64A3-3AE0-E9E6-9B841B758574</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="462B1C9D-5B3C-7A8F-3A97-05E6F05EA36E">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:38 UTC</createdTime>
+<generatorID>25F5F9EC-A37C-2BA6-3A6F-94EB19A7D020</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="status_name" id="1676AB5B-5841-CEEE-3AA8-4C331CD3EF24">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:38 UTC</createdTime>
+<generatorID>A819655D-528E-025B-19AA-E3E590C49156</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="status_description" id="983BE91A-88B7-BBA6-258B-D493A81CC1B8">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:38 UTC</createdTime>
+<generatorID>AD24B0D6-076A-9D93-3303-948144F5A7C1</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="create_date" id="C26AA3EF-FFE2-310F-89C4-6AF1E5C615C7">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:38 UTC</createdTime>
+<generatorID>2F137B64-691D-0BEE-4E8B-1A52AE3E3B5D</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="update_date" id="E868F0E8-6986-9DA6-8045-999977641302">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:38 UTC</createdTime>
+<generatorID>1B643412-7259-E467-F828-E07C8FFA4D79</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customer_document_type_id" id="54B002A9-9C7F-90E6-B52E-4F9445CB46E5">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:38 UTC</createdTime>
+<generatorID>43B624E1-3238-4340-8B64-B17B8DF6EA3D</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7DCF5271-C430-6EA6-BF50-CA6027D70033" referredColumn="DBF0B67B-C3E7-1A3C-7B5A-99A9D634F4F3"/>
+</associations>
+</Column>
+<Column name="customer_document_id" id="EF5677D6-4463-4F3F-D4FB-316D59C8750F">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:38 UTC</createdTime>
+<generatorID>C55307CD-048D-E04C-7A58-C4E375985B23</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7DCF5271-C430-6EA6-BF50-CA6027D70033" referredColumn="556F2392-C108-23F1-12F0-151B0CF5997E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E9225F3E-5FB2-7906-A876-94D5E221E95B" name="customer_status_PK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:38 UTC</createdTime>
+<generatorID>22FA8A27-55C1-625A-7EBF-7282B9F2D737</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="462B1C9D-5B3C-7A8F-3A97-05E6F05EA36E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="03CE6381-FCA1-7DA1-AC62-58DFF83622A7" name="customer_status__IDX">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:39 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>94A5AEE7-4660-8C6A-06A7-A56380E343ED</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="54B002A9-9C7F-90E6-B52E-4F9445CB46E5"/>
+<colUsage columnID="EF5677D6-4463-4F3F-D4FB-316D59C8750F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6FC7B2AD-22A3-7CB8-12A5-594D82384685" name="customer_status_customer_FK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:39 UTC</createdTime>
+<generatorID>94A5AEE7-4660-8C6A-06A7-A56380E343ED</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="54B002A9-9C7F-90E6-B52E-4F9445CB46E5"/>
+<colUsage columnID="EF5677D6-4463-4F3F-D4FB-316D59C8750F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
