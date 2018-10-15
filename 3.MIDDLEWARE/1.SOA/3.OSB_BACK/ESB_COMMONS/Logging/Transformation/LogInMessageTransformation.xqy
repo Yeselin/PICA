@@ -24,11 +24,11 @@ declare namespace log = "http://pps.org/log";
 : Funcion.
 :)
 declare function xf:ContructorLogEntrada($transactionId as xs:string,
-    $body as element(*),
-    $header as element(*),
-    $inbound as element(*),
+    $body as xs:string,
+    $header as xs:string,
+    $inbound as xs:string,
     $operation as xs:string,
-    $attachment as element(*),
+    $attachment as xs:string,
     $logSite as xs:string)
     as element(*) {
    <log:logdata>
@@ -38,7 +38,7 @@ declare function xf:ContructorLogEntrada($transactionId as xs:string,
 		<log:inbound>{ $inbound }</log:inbound>
 		<log:operation>{ $operation }</log:operation>
 		<log:attachment>{ $attachment }</log:attachment>
-                <log:attachment>{ $logSite }</log:attachment>
+                <log:logSite>{ $logSite }</log:logSite>
 	</log:logdata>
 };
 
@@ -46,11 +46,11 @@ declare function xf:ContructorLogEntrada($transactionId as xs:string,
 : Declaraciones de los parametros de entrada de la funcion.
 :)
 declare variable $transactionId as xs:string external;
-declare variable $body as element(*) external;
-declare variable $header as element(*) external;
-declare variable $inbound as element(*) external;
+declare variable $body as xs:string external;
+declare variable $header as xs:string external;
+declare variable $inbound as xs:string external;
 declare variable $operation as xs:string external;
-declare variable $attachment as element(*) external;
+declare variable $attachment as xs:string external;
 declare variable $logSite as xs:string external;
 
 (:
