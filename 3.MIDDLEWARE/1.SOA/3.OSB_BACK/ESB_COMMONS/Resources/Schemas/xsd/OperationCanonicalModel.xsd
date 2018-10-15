@@ -1,0 +1,66 @@
+<xsd:schema targetNamespace="http://touresBalon.com/schema/CustomerService" elementFormDefault="qualified"
+            xmlns:tns="http://touresBalon.com/schema/CustomerService" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ns1="http://touresBalon.com/schema/customer" xmlns:ns2="http://touresBalon.com/schema/orders">
+  <xsd:import namespace="http://touresBalon.com/schema/customer" schemaLocation="CustomerCanonicalModel.xsd"/>
+  <xsd:import namespace="http://touresBalon.com/schema/orders" schemaLocation="OrderCanonicalModel.xsd"/>
+  <xsd:element name="createCustomerRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="customer" type="ns1:CustomerType" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="paymentMethod" type="ns2:paymentTypeType" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="createCustomerResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="status" type="ns1:statusType" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getCustomerRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="customer" type="ns1:CustomerType" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getCustomerResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="customer" type="ns1:CustomerType" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="paymentMethod" type="ns2:paymentTypeType" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="status" type="ns1:statusType" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="updateCustomerRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="customer" type="ns1:CustomerType" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="paymentMethod" type="ns2:paymentTypeType" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="updateCustomerResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="status" type="ns1:statusType" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="deleteCustomerRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="customer" type="ns1:CustomerType" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="deleteCustomerResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="status" type="ns1:statusType" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

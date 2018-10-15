@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config">
     <con:coreEntry>
         <con:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType">
-            <con:wsdl ref="ESB_COMMONS/Resources/WSDL/ServicioWebAvianca"/>
+            <con:wsdl ref="ESB_COMMONS/Resources/WSDL/CustomerService"/>
             <con:binding>
-                <con:name>ProductsSOAP</con:name>
-                <con:namespace>http://touresBalon.com/schema/products</con:namespace>
+                <con:name>CustomerServiceSOAP</con:name>
+                <con:namespace>http://touresBalon.com/schema/CustomerService</con:namespace>
             </con:binding>
         </con:binding>
         <con:xqConfiguration>
@@ -15,9 +15,9 @@
     <con:router errorHandler="error-N3f57fe4a.2560f282.0.16650cbec1a.N7ffc">
         <con:pipeline name="error-N3f57fe4a.2560f282.0.16650cbec1a.N7ffc" type="error">
             <con:stage name="LogginError">
-                <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config"/>
+                <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config"/>
                 <con:actions>
-                    <con1:route xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config">
+                    <con1:route xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
                         <con2:id>_ActionId-N3f57fe4a.2560f282.0.16650cbec1a.N7f74</con2:id>
                         <con1:service ref="ESB_COMMONS/Error_Handling/Proxy_Services/LoggingErrorProxyService" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
                         <con1:outboundTransform>
@@ -49,19 +49,19 @@
                 </con:actions>
             </con:stage>
             <con:stage name="TransformError">
-                <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config"/>
+                <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config"/>
                 <con:actions>
-                    <con2:reply isError="false" xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config">
+                    <con2:reply isError="false" xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
                         <con2:id>_ActionId-N3f57fe4a.2560f282.0.16650cbec1a.N7f70</con2:id>
                     </con2:reply>
                 </con:actions>
             </con:stage>
         </con:pipeline>
         <con:pipeline name="request-N3f57fe4a.2560f282.0.16650cbec1a.N8000" type="request">
-            <con:stage name="LogginIn" id="_StageId-N3f57fff9.N39e388a5.0.1667430b6cd.N7f9b">
-                <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config"/>
+            <con:stage name="LogginIn" id="_StageId-N3f57fe81.N7adaaa2c.0.16675a55c9a.N7fed">
+                <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config"/>
                 <con:actions>
-                    <con1:route xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config">
+                    <con1:route xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
                         <con2:id>_ActionId-N3f57fe4a.2560f282.0.16650cbec1a.N7fef</con2:id>
                         <con1:service ref="ESB_COMMONS/Logging/Proxy_Services/LoggingServicePipelineProxyService" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
                         <con1:outboundTransform>
@@ -98,16 +98,33 @@
                     </con1:route>
                 </con:actions>
             </con:stage>
-            <con:stage name="TranformRequestStage" id="_StageId-N3f57fff9.N39e388a5.0.1667430b6cd.N7f9a">
-                <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config"/>
-                <con:actions/>
+            <con:stage name="TranformRequestStage" id="_StageId-N3f57fe81.N7adaaa2c.0.16675a55c9a.N7fec">
+                <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                    <con2:userNsDecl prefix="cus" namespace="http://touresBalon.com/schema/CustomerService"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-N3f57fe81.N7adaaa2c.0.16675a55c9a.N7e0b</con2:id>
+                        <con1:location>
+                            <con2:xpathText>.</con2:xpathText>
+                        </con1:location>
+                        <con1:expr>
+                            <con2:xqueryTransform>
+                                <con2:resource ref="TECH_ADAPTERS/DB_ADAPTERS/Oracle/Transformation/CustomerCanonical_To_CustomerBackSertive"/>
+                                <con2:param name="Input">
+                                    <con2:path>$body/cus:createCustomerRequest</con2:path>
+                                </con2:param>
+                            </con2:xqueryTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
             </con:stage>
         </con:pipeline>
         <con:pipeline name="response-N3f57fe4a.2560f282.0.16650cbec1a.N7fff" type="response">
-            <con:stage name="LogginOut" id="_StageId-N3f57fff9.N39e388a5.0.1667430b6cd.N7f99">
-                <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config"/>
+            <con:stage name="LogginOut" id="_StageId-N3f57fe81.N7adaaa2c.0.16675a55c9a.N7feb">
+                <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config"/>
                 <con:actions>
-                    <con1:route xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config">
+                    <con1:route xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
                         <con2:id>_ActionId-N3f57fe4a.2560f282.0.16650cbec1a.N7fec</con2:id>
                         <con1:service ref="ESB_COMMONS/Logging/Proxy_Services/LoggingServicePipelineProxyService" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
                         <con1:outboundTransform>
@@ -144,33 +161,49 @@
                     </con1:route>
                 </con:actions>
             </con:stage>
-            <con:stage name="TransformResponseStage" id="_StageId-N3f57fff9.N39e388a5.0.1667430b6cd.N7f98">
-                <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config"/>
-                <con:actions/>
+            <con:stage name="TransformResponseStage" id="_StageId-N3f57fe81.N7adaaa2c.0.16675a55c9a.N7fea">
+                <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                    <con2:userNsDecl prefix="cus" namespace="http://touresBalon.com/schema/CustomerService"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true">
+                        <con2:id>_ActionId-N3f57fe81.N7adaaa2c.0.16675a55c9a.N7e08</con2:id>
+                        <con1:location>
+                            <con2:xpathText>.</con2:xpathText>
+                        </con1:location>
+                        <con1:expr>
+                            <con2:xqueryTransform>
+                                <con2:resource ref="TECH_ADAPTERS/DB_ADAPTERS/Oracle/Transformation/CustomeBack_To_CustomerCanonical_Response"/>
+                                <con2:param name="Input">
+                                    <con2:path>$body/*</con2:path>
+                                </con2:param>
+                            </con2:xqueryTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
             </con:stage>
         </con:pipeline>
         <con:flow>
-            <con:branch-node type="operation" id="_FlowId-N3f57fff9.N39e388a5.0.1667430b6cd.N7fa4" name="BranchNode1">
+            <con:branch-node type="operation" id="_FlowId-N3f57fe81.N7adaaa2c.0.16675a55c9a.N7ff6" name="BranchNode1">
                 <con:context/>
                 <con:branch-table>
-                    <con:branch name="crateProduct">
+                    <con:branch name="createCustomer">
                         <con:operator>equals</con:operator>
                         <con:value/>
                         <con:flow>
-                            <con:pipeline-node name="PipelineCreateProduct">
+                            <con:pipeline-node name="CreateCustomerPipeline">
                                 <con:request>request-N3f57fe4a.2560f282.0.16650cbec1a.N8000</con:request>
                                 <con:response>response-N3f57fe4a.2560f282.0.16650cbec1a.N7fff</con:response>
                             </con:pipeline-node>
-                            <con:route-node name="RouteNode1">
-                                <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config"/>
+                            <con:route-node name="CreateCustomerRoute">
+                                <con:context/>
                                 <con:actions>
-                                    <con3:dynamic-route xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config">
-                                        <con2:id>_ActionId-N3f57fe4a.2560f282.0.16650cbec1a.N7fe7</con2:id>
-                                        <con3:service>
-                                            <con2:xqueryText>"bs"</con2:xqueryText>
-                                        </con3:service>
+                                    <con3:route>
+                                        <con2:id>_ActionId-N3f57fe81.N7adaaa2c.0.16675a55c9a.N7f11</con2:id>
+                                        <con3:service ref="TECH_ADAPTERS/DB_ADAPTERS/Oracle/Business_Services/bsCreateCustomer" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                                        <con3:operation>dbCreateCustomer</con3:operation>
                                         <con3:outboundTransform>
-                                            <con1:route>
+                                            <con1:route xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
                                                 <con2:id>_ActionId-N3f57fe4a.2560f282.0.16650cbec1a.N7f7c</con2:id>
                                                 <con1:service ref="ESB_COMMONS/Logging/Proxy_Services/LoggingServicePipelineProxyService" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
                                                 <con1:outboundTransform>
@@ -207,12 +240,12 @@
                                             </con1:route>
                                         </con3:outboundTransform>
                                         <con3:responseTransform>
-                                            <con1:route>
-                                                <con2:id>_ActionId-N3f57fe4a.2560f282.0.16650cbec1a.N7f7c</con2:id>
+                                            <con1:route xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                                                <con2:id>_ActionId-N3f57fe81.N7adaaa2c.0.16675a55c9a.N7e0f</con2:id>
                                                 <con1:service ref="ESB_COMMONS/Logging/Proxy_Services/LoggingServicePipelineProxyService" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
                                                 <con1:outboundTransform>
                                                     <con4:assign varName="body">
-                                                        <con2:id>_ActionId-N3f57fe4a.3ddc0b1e.0.1665646bf86.N7f59</con2:id>
+                                                        <con2:id>_ActionId-N3f57fe81.N7adaaa2c.0.16675a55c9a.N7e0e</con2:id>
                                                         <con4:expr>
                                                             <con2:xqueryTransform>
                                                                 <con2:resource ref="ESB_COMMONS/Logging/Transformation/LogInMessageTransformation"/>
@@ -243,25 +276,10 @@
                                                 </con1:outboundTransform>
                                             </con1:route>
                                         </con3:responseTransform>
-                                    </con3:dynamic-route>
+                                    </con3:route>
                                 </con:actions>
                             </con:route-node>
                         </con:flow>
-                    </con:branch>
-                    <con:branch name="updateProduct">
-                        <con:operator>equals</con:operator>
-                        <con:value/>
-                        <con:flow/>
-                    </con:branch>
-                    <con:branch name="deleteProduct">
-                        <con:operator>equals</con:operator>
-                        <con:value/>
-                        <con:flow/>
-                    </con:branch>
-                    <con:branch name="getProduct">
-                        <con:operator>equals</con:operator>
-                        <con:value/>
-                        <con:flow/>
                     </con:branch>
                     <con:default-branch>
                         <con:flow/>
