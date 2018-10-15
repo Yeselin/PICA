@@ -4,7 +4,7 @@
     <div class="search-list">
       <div class="search-facade">
         <span class="search-label" style="width: auto;">{{selectedObj.label}}</span>
-        <i class="material-icons">arrow_drop_down</i>
+        <i class="material-icons icon-arrow-search">arrow_drop_down</i>
       </div>
       <select #selectType class="search-select blue-grey darken-4" (change)="changeSelectType(selectType.value)">
         <option *ngFor="let type of listTypes" value={{type.id}} label={{type.label}}></option>
@@ -14,7 +14,7 @@
 
   <div class="search-right">
     <a #searchIcon (click)="findProducts(search.value)" class="waves-effect waves-light btn-small orange" style="height: 35px; position: relative; display: inherit;">
-      <i class="material-icons Small" style="font-size: 30px; position: fixed; top: 3px; margin-left: -15px;">search</i>
+      <i class="material-icons Small icon-search" >search</i>
     </a>
   </div>
 

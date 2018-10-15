@@ -23,5 +23,6 @@ export interface Product{
     "source_city_cost": number,
     "target_city_name": string,
     "target_country_name": string,
-    "target_city_cost": number
+    "target_city_cost": number,
+    "cost_total": number
 }

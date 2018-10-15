@@ -1,4 +1,21 @@
 .product-desc{
-    color: #039be5;
+    color: #ff9800;
     font-style: normal;
+}
+
+.column-shopping-cart{
+    color: #455a64;
+    font-style: normal;
+}
+.collection-item .row{
+    margin-bottom: 0px;
+}
+.collection .collection-item.avatar{
+    min-height: 70px;
+}
+.text-right{
+    text-align: right;
+}
+input[type=number]:not(.browser-default){
+    border-bottom: none;
 }
