@@ -17,6 +17,16 @@ INSERT INTO transport (id,name,cost,create_date,update_date)
 Values (3,'American Airlines', 70, GETDATE(),GETDATE());
 COMMIT;
 
+
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,is_active) Values (1, 'Campaña Especial', 25,  GETDATE(),GETDATE(),0);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,is_active) Values (2, 'Campaña Navidad', 10,  GETDATE(),GETDATE(),1);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,is_active) Values (3, 'Campaña Verano', 15,  GETDATE(),GETDATE(),0);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,is_active) Values (4, 'Campaña Descuentos', 20,  GETDATE(),GETDATE(),1);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,is_active) Values (5, 'Campaña Fidelizacion', 25,  GETDATE(),GETDATE(),0);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,is_active) Values (6, 'Campaña Clientes especiales', 30,  GETDATE(),GETDATE(),1);
+COMMIT;
+
+
 INSERT INTO spectacle (id,name,cost,create_date,update_date) Values(	1	,'R.C.D. Espanyol / Real Madrid C.F.',	100,	GETDATE(),GETDATE());
 INSERT INTO spectacle (id,name,cost,create_date,update_date) Values(	2	,'C.D. Europa / Real Racing Club',	100,	GETDATE(),GETDATE());
 INSERT INTO spectacle (id,name,cost,create_date,update_date) Values(	3	,'Real Unión Club / Arenas de Guecho',	100,	GETDATE(),GETDATE());

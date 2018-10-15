@@ -1,0 +1,17 @@
+{
+    "firstName": "Marco",
+    "lastName": "Mariquita",
+    "phoneNumber": "+573001112233",
+    "email": "marco.mariquita@gmail.com",
+    "creditCardType": "VISA",
+    "creditCardNumber": "1234567878909028",
+    "status": "ACTIVE",
+    "address": {
+        "country": "",
+        "city": "",
+        "state": "",
+        "street": "",
+        "zip": "",
+        "addressType": ""
+    }
+}

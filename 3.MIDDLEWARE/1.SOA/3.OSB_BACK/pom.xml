@@ -12,7 +12,6 @@
     <modules>
         <module>System</module>
         <module>TECH_ADAPTERS</module>
-        <module>ESB_COMMONS</module>
     </modules>
 
 </project>

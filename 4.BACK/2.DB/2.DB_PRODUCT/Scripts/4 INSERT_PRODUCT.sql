@@ -1,7 +1,7 @@
-TRUNCATE TABLE product;
+--TRUNCATE TABLE product;
 INSERT INTO product
 SELECT
-TOP 1000000
+TOP 10000
 Row_Number() Over (Order By C1.id,S.id, L.id, T.id, C2.id) id,
 S.name name  ,
 DATEADD(D, S.CONT, convert(datetime,'27-10-18 10:15:00 PM',5)) spectacle_date,
@@ -16,7 +16,8 @@ CONCAT (Row_Number() Over (Order By C1.id,S.id, L.id, T.id, C2.id),'.png') image
 C1.id source_city ,
 C2.id target_city ,
 GETDATE() create_date ,
-GETDATE() update_date
+GETDATE() update_date,
+2 cost_total
 FROM 
 CITY C1,
 CITY C2,
