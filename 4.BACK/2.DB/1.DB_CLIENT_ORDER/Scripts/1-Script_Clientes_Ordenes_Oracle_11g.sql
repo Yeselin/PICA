@@ -1,8 +1,12 @@
 --CREATE DATABASE DB_CLIENT_ORDER
---DROP TABLE TOURESBALON.order_item_status;
---DROP TABLE TOURESBALON.order_item;
---DROP TABLE TOURESBALON.sales_order;
---DROP TABLE TOURESBALON.order_status;
+--DROP TABLE ORDERTB.order_item_status;
+--DROP TABLE ORDERTB.order_item;
+--DROP TABLE ORDERTB.sales_order;
+--DROP TABLE ORDERTB.order_status;
+--DROP SEQUENCE ORDERTB.SEQ_SALES_ORDER;
+--DROP SEQUENCE ORDERTB.SEQ_ORDER_ITEM;
+
+--DROP SEQUENCE TOURESBALON.SEQ_ADDRESS;
 --DROP TABLE TOURESBALON.customer_address;
 --DROP TABLE TOURESBALON.customer;
 --DROP TABLE TOURESBALON.customer_status;
@@ -11,7 +15,9 @@
 --DROP TABLE TOURESBALON.document_type;
 --DROP TABLE TOURESBALON.creditcard_type;
 
-
+---------------------------------
+--TOURESBALON
+---------------------------------
 CREATE TABLE TOURESBALON.creditcard_type
 (
   id                     INTEGER DEFAULT -1 NOT NULL,
@@ -95,7 +101,23 @@ CREATE TABLE TOURESBALON.customer_address (
 );
 
 
-CREATE TABLE TOURESBALON.order_status (
+CREATE SEQUENCE TOURESBALON.SEQ_ADDRESS
+  START WITH 1200
+  INCREMENT BY   1
+  MAXVALUE 9999999999999999999999999999
+  MINVALUE 1
+  NOCYCLE
+  CACHE 20
+  NOORDER;
+
+GRANT SELECT ON TOURESBALON.CUSTOMER TO PUBLIC;
+GRANT SELECT ON TOURESBALON.DOCUMENT_TYPE TO PUBLIC;
+
+---------------------------------
+--ORDERTB
+---------------------------------
+
+CREATE TABLE ORDERTB.order_status (
     id                          INTEGER DEFAULT -1 NOT NULL,
     status_name                 VARCHAR2(50 BYTE) NOT NULL,
     status_description          VARCHAR2(200 BYTE) NOT NULL,
@@ -105,7 +127,7 @@ CREATE TABLE TOURESBALON.order_status (
 );
 
 
-CREATE TABLE TOURESBALON.sales_order (
+CREATE TABLE ORDERTB.sales_order (
     id                          NUMBER NOT NULL,
     order_date                  DATE,
     price                       NUMBER,
@@ -115,11 +137,11 @@ CREATE TABLE TOURESBALON.sales_order (
     customer_document_id        VARCHAR2(20 BYTE) NOT NULL,
     update_date                 DATE,
 	CONSTRAINT sales_order_pk PRIMARY KEY ( id ),
-	CONSTRAINT customer_sales_fk FOREIGN KEY (customer_document_type_id,customer_document_id) REFERENCES TOURESBALON.customer(document_type_id,document_id),
-	CONSTRAINT order_status_fk  FOREIGN KEY (status_id)  REFERENCES TOURESBALON.order_status(id)
+	--CONSTRAINT customer_sales_fk FOREIGN KEY (customer_document_type_id,customer_document_id) REFERENCES TOURESBALON.customer(document_type_id,document_id),
+	CONSTRAINT order_status_fk  FOREIGN KEY (status_id)  REFERENCES ORDERTB.order_status(id)
 );
 
-CREATE TABLE TOURESBALON.order_item_status (
+CREATE TABLE ORDERTB.order_item_status (
     id                   INTEGER DEFAULT -1 NOT NULL,
     status_name          VARCHAR2(50 BYTE) NOT NULL,
     status_description   VARCHAR2(200 BYTE) NOT NULL,
@@ -129,7 +151,7 @@ CREATE TABLE TOURESBALON.order_item_status (
 );
 
 
-CREATE TABLE TOURESBALON.order_item (
+CREATE TABLE ORDERTB.order_item (
     id                        NUMBER NOT NULL,
     product_id                NUMBER,
     product_name              VARCHAR2(50 BYTE),
@@ -141,22 +163,12 @@ CREATE TABLE TOURESBALON.order_item (
     create_date               DATE,
     update_date               DATE,
 	CONSTRAINT order_item_pk  PRIMARY KEY ( id ),
-	CONSTRAINT order_item_fk  FOREIGN KEY (sales_order_id)  REFERENCES TOURESBALON.sales_order(id),
-	CONSTRAINT order_item_status_fk  FOREIGN KEY (status_item_id)  REFERENCES TOURESBALON.order_item_status(id)
+	CONSTRAINT order_item_fk  FOREIGN KEY (sales_order_id)  REFERENCES ORDERTB.sales_order(id),
+	CONSTRAINT order_item_status_fk  FOREIGN KEY (status_item_id)  REFERENCES ORDERTB.order_item_status(id)
 );
 
---DROP SEQUENCE TOURESBALON.SEQ_ADDRESS;
-CREATE SEQUENCE TOURESBALON.SEQ_ADDRESS
-  START WITH 1200
-  INCREMENT BY   1
-  MAXVALUE 9999999999999999999999999999
-  MINVALUE 1
-  NOCYCLE
-  CACHE 20
-  NOORDER;
 
---DROP SEQUENCE TOURESBALON.SEQ_SALES_ORDER;
-CREATE SEQUENCE TOURESBALON.SEQ_SALES_ORDER
+CREATE SEQUENCE ORDERTB.SEQ_SALES_ORDER
   START WITH 1
   INCREMENT BY   1
   MAXVALUE 9999999999999999999999999999
@@ -165,8 +177,8 @@ CREATE SEQUENCE TOURESBALON.SEQ_SALES_ORDER
   CACHE 20
   NOORDER;
   
---DROP SEQUENCE TOURESBALON.SEQ_ORDER_ITEM;
-CREATE SEQUENCE TOURESBALON.SEQ_ORDER_ITEM
+
+CREATE SEQUENCE ORDERTB.SEQ_ORDER_ITEM
   START WITH 1
   INCREMENT BY   1
   MAXVALUE 9999999999999999999999999999

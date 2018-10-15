@@ -1,4 +1,4 @@
-CREATE OR REPLACE PACKAGE TOURESBALON.PK_ORDER Is
+CREATE OR REPLACE PACKAGE ORDERTB.PK_ORDER Is
     /* =============================================================================
      Proposito:  Se Define Los Procedimientos CRUD para las ordenes
      ----------- --------- ------------------------------------------------------------
@@ -12,7 +12,7 @@ CREATE OR REPLACE PACKAGE TOURESBALON.PK_ORDER Is
     Lv_Job_Nm                       Constant Varchar2(100) := 'PK_ORDER';
     Ld_Population_Date              Constant Date          := Trunc(Sysdate);
     Ld_Effective_Date               Constant Date          := Trunc(Sysdate-1);
-    Lv_Usuario_Bd                   Constant Varchar2(30)  := 'TOURESBALON';
+    Lv_Usuario_Bd                   Constant Varchar2(30)  := 'ORDERTB';
     Lv_Job_Owner                    Constant Varchar2(30)  := 'GERARDO HERRERA';
     Lv_Job_Type                     Constant Varchar2(30)  := 'PL-SQL';
     Ld_Start_Date                   Date                   := Sysdate;
@@ -69,6 +69,7 @@ CREATE OR REPLACE PACKAGE TOURESBALON.PK_ORDER Is
                         P_CUSTOMER_DOCUMENT_ID        OUT VARCHAR2,
                         P_ORDER_DATE                  OUT VARCHAR2,
 					    P_UPDATE_DATE                 OUT VARCHAR2,
+						P_OUT_SALES_ORDER_ID          OUT NUMBER,
 						P_RESPONSE_ID                 OUT INTEGER,
                         P_RESPONSE_DESC               OUT VARCHAR2
 						);
@@ -153,6 +154,7 @@ CREATE OR REPLACE PACKAGE TOURESBALON.PK_ORDER Is
 							 P_ITEM_STATUS_NAME            OUT VARCHAR2,
 							 P_CREATE_ITEM_DATE            OUT VARCHAR2,
 					         P_UPDATE_ITEM_DATE            OUT VARCHAR2,
+							 P_OUT_SALES_ORDER_ITEM_ID     OUT NUMBER,
 						     P_RESPONSE_ID                 OUT INTEGER,
                              P_RESPONSE_DESC               OUT VARCHAR2
 						);
@@ -203,7 +205,7 @@ END PK_ORDER;
 
 
 
-CREATE OR REPLACE PACKAGE BODY TOURESBALON.PK_ORDER IS
+CREATE OR REPLACE PACKAGE BODY ORDERTB.PK_ORDER IS
 
 PROCEDURE PR_CREATE(    P_PRICE                       IN NUMBER,
 	                    P_ORDER_STATUS_NAME           IN VARCHAR2,
@@ -241,7 +243,7 @@ BEGIN
 	-------------------------------------------------------------
     BEGIN
 		 SELECT ID INTO V_ORDER_STATUS_ID
-		 FROM TOURESBALON.ORDER_STATUS
+		 FROM ORDERTB.order_status
 		 WHERE STATUS_NAME = UPPER(P_ORDER_STATUS_NAME);
 	 
 	 exception When Others Then
@@ -256,7 +258,7 @@ BEGIN
    --INSERTANDO UNA NUEVA ORDEN
    -------------------------------------------------------------
    BEGIN
-     INSERT INTO TOURESBALON.SALES_ORDER (id,
+     INSERT INTO ORDERTB.sales_order (id,
                                           order_date,
                                           price,
                                           status_id,
@@ -264,7 +266,7 @@ BEGIN
                                           customer_document_type_id,
                                           customer_document_id,
                                           update_date) 
-                  VALUES ( TOURESBALON.SEQ_SALES_ORDER.nextval,
+                  VALUES ( ORDERTB.SEQ_SALES_ORDER.nextval,
 				           SYSDATE,
 						   P_PRICE,
 						   CASE WHEN (V_ORDER_STATUS_ID = 0 OR V_ORDER_STATUS_ID IS NULL) THEN 1 ELSE V_ORDER_STATUS_ID END,
@@ -301,6 +303,7 @@ PROCEDURE PR_READ(      P_SALES_ORDER_ID              IN NUMBER,
                         P_CUSTOMER_DOCUMENT_ID        OUT VARCHAR2,
                         P_ORDER_DATE                  OUT VARCHAR2,
 					    P_UPDATE_DATE                 OUT VARCHAR2,
+						P_OUT_SALES_ORDER_ID          OUT NUMBER,
 						P_RESPONSE_ID                 OUT INTEGER,
                         P_RESPONSE_DESC               OUT VARCHAR2
                   ) IS
@@ -319,7 +322,8 @@ V_CONT NUMBER := 0;
 		A.comments,
 		B.DOCUMENT_NAME,
 		A.customer_document_id,
-		TO_CHAR(A.UPDATE_DATE,'YYYYMMDD') update_date
+		TO_CHAR(A.UPDATE_DATE,'YYYYMMDD') update_date,
+		A.ID
 		INTO 
 		P_ORDER_DATE,
 		P_PRICE,
@@ -327,10 +331,11 @@ V_CONT NUMBER := 0;
 		P_COMMENTS,
 		P_CUSTOMER_DOCUMENT_TYPE_NAME,
 		P_CUSTOMER_DOCUMENT_ID,
-		P_UPDATE_DATE
-		FROM TOURESBALON.SALES_ORDER A
+		P_UPDATE_DATE,
+		P_OUT_SALES_ORDER_ID
+		FROM ORDERTB.sales_order A
 		INNER JOIN TOURESBALON.DOCUMENT_TYPE B ON (B.ID = A.CUSTOMER_DOCUMENT_TYPE_ID)
-		INNER JOIN TOURESBALON.ORDER_STATUS  C ON (C.ID = A.STATUS_ID)
+		INNER JOIN ORDERTB.order_status  C ON (C.ID = A.STATUS_ID)
 		WHERE A.ID = P_SALES_ORDER_ID;
   
       COMMIT;
@@ -391,7 +396,7 @@ BEGIN
 	-------------------------------------------------------------
     BEGIN
 		 SELECT ID INTO V_ORDER_STATUS_ID
-		 FROM TOURESBALON.ORDER_STATUS
+		 FROM ORDERTB.order_status
 		 WHERE STATUS_NAME = UPPER(P_ORDER_STATUS_NAME);
 	 
 	 exception When Others Then
@@ -406,7 +411,7 @@ BEGIN
      -- ACTUALIZANDO LOS DATOS DE LA ORDEN
 	 -------------------------------------------------------------
 	 BEGIN
-		 UPDATE TOURESBALON.SALES_ORDER A
+		 UPDATE ORDERTB.sales_order A
 		 SET
 		 A.PRICE = (CASE WHEN (P_PRICE = 0 OR P_PRICE IS NULL) THEN A.PRICE ELSE P_PRICE END),
 		 A.STATUS_ID = (CASE WHEN (V_ORDER_STATUS_ID = 0 OR V_ORDER_STATUS_ID IS NULL) THEN A.STATUS_ID ELSE V_ORDER_STATUS_ID END),
@@ -455,7 +460,7 @@ BEGIN
 	-------------------------------------------------------------
     BEGIN
 		 SELECT ID INTO V_ORDER_STATUS_ID
-		 FROM TOURESBALON.ORDER_STATUS
+		 FROM ORDERTB.order_status
 		 WHERE STATUS_NAME = UPPER(P_ORDER_STATUS_NAME);
 	 
 	 exception When Others Then
@@ -471,7 +476,7 @@ BEGIN
    -- BORRADO LOGICO DE UNA ORDEN
    -------------------------------------------------------------
    BEGIN 
-	     UPDATE TOURESBALON.SALES_ORDER A
+	     UPDATE ORDERTB.sales_order A
 		 SET
 		 A.STATUS_ID = (CASE WHEN (V_ORDER_STATUS_ID = 0 OR V_ORDER_STATUS_ID IS NULL) THEN A.STATUS_ID ELSE V_ORDER_STATUS_ID END),
 		 A.COMMENTS = (CASE WHEN (P_COMMENTS = '' OR P_COMMENTS IS NULL) THEN A.COMMENTS ELSE SUBSTR(P_COMMENTS||' ¤ '|| A.COMMENTS,1,3999) END),
@@ -524,7 +529,7 @@ BEGIN
 	-------------------------------------------------------------
     BEGIN
 		 SELECT ID INTO V_ITEM_STATUS_ID
-		 FROM TOURESBALON.order_item_status
+		 FROM ORDERTB.order_item_status
 		 WHERE STATUS_NAME = UPPER(P_ITEM_STATUS_NAME);
 	 
 	 exception When Others Then
@@ -539,7 +544,7 @@ BEGIN
    --INSERTANDO UNA NUEVO ITEM
    -------------------------------------------------------------
    BEGIN
-     INSERT INTO TOURESBALON.ORDER_ITEM (id,
+     INSERT INTO ORDERTB.order_item (id,
                                          product_id,
                                          product_name,
                                          partnum,
@@ -549,7 +554,7 @@ BEGIN
                                          status_item_id,
                                          create_date,
                                          update_date) 
-                  VALUES ( TOURESBALON.SEQ_ORDER_ITEM.nextval,
+                  VALUES ( ORDERTB.SEQ_ORDER_ITEM.nextval,
 				           P_PRODUCT_ID,
                            P_PRODUCT_NAME,
                            P_PARTNUM,
@@ -592,6 +597,7 @@ PROCEDURE PR_READ_ITEM(      P_SALES_ORDER_ITEM_ID          IN NUMBER,
 							 P_ITEM_STATUS_NAME            OUT VARCHAR2,
 							 P_CREATE_ITEM_DATE            OUT VARCHAR2,
 					         P_UPDATE_ITEM_DATE            OUT VARCHAR2,
+							 P_OUT_SALES_ORDER_ITEM_ID     OUT NUMBER,
 						     P_RESPONSE_ID                 OUT INTEGER,
                              P_RESPONSE_DESC               OUT VARCHAR2
                   ) IS
@@ -612,7 +618,8 @@ V_CONT NUMBER := 0;
 		A.SALES_ORDER_ID,
 		B.STATUS_NAME,
 		TO_CHAR(A.CREATE_DATE,'YYYYMMDD') CREATE_DATE,
-		TO_CHAR(A.UPDATE_DATE,'YYYYMMDD') update_date
+		TO_CHAR(A.UPDATE_DATE,'YYYYMMDD') UPDATE_DATE,
+        A.ID
 		INTO 
 		 P_PRODUCT_ID,
 		 P_PRODUCT_NAME,
@@ -622,9 +629,10 @@ V_CONT NUMBER := 0;
 		 P_SALES_ORDER_ID,
 		 P_ITEM_STATUS_NAME,
 		 P_CREATE_ITEM_DATE,
-		 P_UPDATE_ITEM_DATE
-		FROM TOURESBALON.ORDER_ITEM A
-		INNER JOIN TOURESBALON.ORDER_ITEM_STATUS  B ON (B.ID = A.STATUS_ITEM_ID)
+		 P_UPDATE_ITEM_DATE,
+		 P_OUT_SALES_ORDER_ITEM_ID
+		FROM ORDERTB.order_item A
+		INNER JOIN ORDERTB.order_item_STATUS  B ON (B.ID = A.STATUS_ITEM_ID)
 		WHERE A.ID = P_SALES_ORDER_ITEM_ID;
   
       COMMIT;
@@ -670,7 +678,7 @@ BEGIN
 	-------------------------------------------------------------
     BEGIN
 		 SELECT ID INTO V_ITEM_STATUS_ID
-		 FROM TOURESBALON.order_item_status
+		 FROM ORDERTB.order_item_status
 		 WHERE STATUS_NAME = UPPER(P_ITEM_STATUS_NAME);
 	 
 	 exception When Others Then
@@ -685,7 +693,7 @@ BEGIN
      -- ACTUALIZANDO LOS DATOS DEL ITEM
 	 -------------------------------------------------------------
 	 BEGIN
-		 UPDATE TOURESBALON.ORDER_ITEM A
+		 UPDATE ORDERTB.order_item A
 		 SET
 		 A.PRODUCT_ID = (CASE WHEN (P_PRODUCT_ID = 0 OR P_PRODUCT_ID IS NULL) THEN A.PRODUCT_ID ELSE P_PRODUCT_ID END),
 		 A.PRODUCT_NAME = (CASE WHEN (P_PRODUCT_NAME = '' OR P_PRODUCT_NAME IS NULL) THEN A.PRODUCT_NAME ELSE P_PRODUCT_NAME END),
@@ -733,7 +741,7 @@ BEGIN
 	-------------------------------------------------------------
     BEGIN
 		 SELECT ID INTO V_ITEM_STATUS_ID
-		 FROM TOURESBALON.order_item_status
+		 FROM ORDERTB.order_item_status
 		 WHERE STATUS_NAME = UPPER(P_ITEM_STATUS_NAME);
 	 
 	 exception When Others Then
@@ -749,7 +757,7 @@ BEGIN
    -- BORRADO LOGICO DE UN ITEM
    -------------------------------------------------------------
    BEGIN 
-	     UPDATE TOURESBALON.ORDER_ITEM A
+	     UPDATE ORDERTB.order_item A
 		 SET
 		 A.STATUS_ITEM_ID = (CASE WHEN (V_ITEM_STATUS_ID = 0 OR V_ITEM_STATUS_ID IS NULL) THEN A.STATUS_ITEM_ID ELSE V_ITEM_STATUS_ID END),
 		 A.UPDATE_DATE = SYSDATE
