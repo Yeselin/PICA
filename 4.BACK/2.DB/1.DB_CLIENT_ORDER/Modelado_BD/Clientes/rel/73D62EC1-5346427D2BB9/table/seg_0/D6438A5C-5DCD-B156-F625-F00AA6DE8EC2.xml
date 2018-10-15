@@ -157,11 +157,26 @@
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
 <dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="FBDEA213-B02E-810E-D17B-1C8FDA11B87C" referredColumn="FFB70B8E-CF02-A9B2-D332-2F48ED79E8E9"/>
+</associations>
+</Column>
+<Column name="order_item_status_id" id="C4FE22B2-F69A-B41B-BFA6-EDCE3DB8E162">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:38 UTC</createdTime>
+<generatorID>A85B3009-D7CA-7A34-6BD2-AAB1C655D35B</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2B17507C-867F-6389-8B8F-E07D2604DCC5" referredColumn="69862242-E413-FE3A-1249-6A76427D2324"/>
 </associations>
 </Column>
 </columns>
@@ -178,6 +193,17 @@
 <colUsage columnID="421B0938-CAC2-8365-C949-376DD943C50C"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="34D84417-B73D-07BB-D490-41C114B3E967" name="order_item__IDX">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:39 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>E7A45898-2FA4-515F-FFCC-D539EFA90CB3</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="C4FE22B2-F69A-B41B-BFA6-EDCE3DB8E162"/>
+</indexColumnUsage>
+</ind_PK_UK>
 <ind_PK_UK id="6B2DDBDD-2AAD-983B-01D9-5ECEA13400D2" name="order_item_sales_order_FK">
 <createdBy>gherrers</createdBy>
 <createdTime>2018-10-01 18:50:00 UTC</createdTime>
@@ -189,6 +215,17 @@
 <colUsage columnID="69AB3054-8665-C6CF-07AC-37C5D403AA37"/>
 <colUsage columnID="4A390323-B6AA-B0F6-627A-9A40608AC18F"/>
 <colUsage columnID="F7164415-FC15-78CD-F6B0-DC0A08C0C1DF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EFBE47FB-D0C2-00C5-398F-15671C78DA6E" name="order_item_order_item_status_FK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:39 UTC</createdTime>
+<generatorID>E7A45898-2FA4-515F-FFCC-D539EFA90CB3</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C4FE22B2-F69A-B41B-BFA6-EDCE3DB8E162"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

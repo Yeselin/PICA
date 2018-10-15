@@ -175,6 +175,20 @@
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
 <dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id2" id="A85B3009-D7CA-7A34-6BD2-AAB1C655D35B">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:53:52 UTC</createdTime>
+<generatorID>E7A45898-2FA4-515F-FFCC-D539EFA90CB3</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<referedAttribute>C3958A0F-F4CA-396D-5327-662F0CC07A78</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -183,8 +197,9 @@
 <createdBy>gherrers</createdBy>
 <createdTime>2018-10-01 18:39:43 UTC</createdTime>
 <ownerDesignName>Clientes</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
