@@ -223,7 +223,7 @@
                                                                     <con2:path>$inbound</con2:path>
                                                                 </con2:param>
                                                                 <con2:param name="logSite">
-                                                                    <con2:path>"REQ_OUT"</con2:path>
+                                                                    <con2:path>"RESP_IN"</con2:path>
                                                                 </con2:param>
                                                                 <con2:param name="header">
                                                                     <con2:path>$header</con2:path>
@@ -247,6 +247,21 @@
                                 </con:actions>
                             </con:route-node>
                         </con:flow>
+                    </con:branch>
+                    <con:branch name="updateProduct">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow/>
+                    </con:branch>
+                    <con:branch name="deleteProduct">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow/>
+                    </con:branch>
+                    <con:branch name="getProduct">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow/>
                     </con:branch>
                     <con:default-branch>
                         <con:flow/>
