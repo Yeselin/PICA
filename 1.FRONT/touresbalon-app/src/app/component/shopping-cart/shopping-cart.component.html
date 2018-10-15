@@ -1,11 +1,32 @@
-<ul class="collection with-header">
-  <li class="collection-header"><h4>Carrito de compras</h4></li>
+<h4 style="margin-left: 10px;">Carrito de compras</h4>
+<br/>
+<div class="row">
+    <h6><div class="col s6 column-shopping-cart">Producto</div></h6>
+    <h6><div class="col s2 column-shopping-cart">Cantidad</div></h6>
+    <h6><div class="col s2 column-shopping-cart text-right">Precio</div></h6>
+    <h6><div class="col s2 column-shopping-cart text-right" style="    padding-right: 32px;">Total</div></h6>
+</div>
+<ul class="collection">
   <li class="collection-item avatar" *ngFor="let item of items">
-    <img src={{item.product.image_ref}} alt="" class="circle">
-    <span class="title product-desc">{{item.product.name}}</span>
-    <p>{{item.product.description}}<br>
-       cantidad: {{item.quantity}}
-    </p>
-    <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
+      <div class="row">
+        <div class="col s6">
+          <img src={{item.product.image_ref}} alt="" class="circle">
+          <span class="title product-desc">{{item.product.name}}</span>
+          <p>{{item.product.description}}</p>
+        </div>
+        <div class="col s2">
+          <input #quantityInput type="number" value={{item.quantity}}  min="0" max="999" style="width: 20%;" />
+        </div>
+        <div class="col s2 text-right" >
+           {{ item.product.cost_total | currency:'COP ':true:'1.0-0'}}
+        </div>
+        <div class="col s2 text-right">
+            {{ item.product.cost_total * item.quantity | currency:'COP ':true:'1.0-0'}}          
+        </div>        
+      </div>
   </li>
 </ul>
+<div class="row">
+    <div class="col s10 text-right"><h5>Total: </h5></div>
+    <div class="col s2 text-right" style="padding-right: 32px;"><h5>$ 230.000</h5></div>
+</div>
