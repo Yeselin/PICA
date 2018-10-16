@@ -46,6 +46,7 @@ CREATE OR REPLACE PACKAGE ORDERTB.PK_ORDER Is
                         P_COMMENTS                    IN VARCHAR2,
 	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                         P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
+						P_OUT_SALES_ORDER_ID          OUT NUMBER,
 						P_RESPONSE_ID                 OUT INTEGER,
                         P_RESPONSE_DESC               OUT VARCHAR2
                        );
@@ -129,7 +130,8 @@ CREATE OR REPLACE PACKAGE ORDERTB.PK_ORDER Is
                              P_PRICE_ITEM                  IN NUMBER,
                              P_QUANTITY                    IN NUMBER,
 							 P_SALES_ORDER_ID              IN NUMBER,
-							 P_ITEM_STATUS_NAME            OUT VARCHAR2,
+							 P_ITEM_STATUS_NAME            IN VARCHAR2,
+							 P_OUT_ORDER_ITEM_ID           OUT NUMBER,
 						     P_RESPONSE_ID                 OUT INTEGER,
                              P_RESPONSE_DESC               OUT VARCHAR2
                        );
@@ -155,6 +157,7 @@ CREATE OR REPLACE PACKAGE ORDERTB.PK_ORDER Is
 							 P_CREATE_ITEM_DATE            OUT VARCHAR2,
 					         P_UPDATE_ITEM_DATE            OUT VARCHAR2,
 							 P_OUT_SALES_ORDER_ITEM_ID     OUT NUMBER,
+							 P_XML_DET                     OUT CLOB,
 						     P_RESPONSE_ID                 OUT INTEGER,
                              P_RESPONSE_DESC               OUT VARCHAR2
 						);
@@ -175,7 +178,7 @@ CREATE OR REPLACE PACKAGE ORDERTB.PK_ORDER Is
                              P_PARTNUM                     IN VARCHAR2,
                              P_PRICE_ITEM                  IN NUMBER,
                              P_QUANTITY                    IN NUMBER,
-							 P_ITEM_STATUS_NAME            OUT VARCHAR2,
+							 P_ITEM_STATUS_NAME            IN VARCHAR2,
 						     P_RESPONSE_ID                 OUT INTEGER,
                              P_RESPONSE_DESC               OUT VARCHAR2
 						);
@@ -192,7 +195,7 @@ CREATE OR REPLACE PACKAGE ORDERTB.PK_ORDER Is
      ----------- --------- ---------------------------------------------------------
     ============================================================================= */
     PROCEDURE PR_DELETE_ITEM(P_SALES_ORDER_ITEM_ID         IN NUMBER,
-                             P_ITEM_STATUS_NAME            OUT VARCHAR2,
+                             P_ITEM_STATUS_NAME            IN VARCHAR2,
 						     P_RESPONSE_ID                 OUT INTEGER,
                              P_RESPONSE_DESC               OUT VARCHAR2
 					    );
@@ -212,6 +215,7 @@ PROCEDURE PR_CREATE(    P_PRICE                       IN NUMBER,
                         P_COMMENTS                    IN VARCHAR2,
 	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                         P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
+						P_OUT_SALES_ORDER_ID          OUT NUMBER,
 						P_RESPONSE_ID                 OUT INTEGER,
                         P_RESPONSE_DESC               OUT VARCHAR2
      ) IS
@@ -258,6 +262,8 @@ BEGIN
    --INSERTANDO UNA NUEVA ORDEN
    -------------------------------------------------------------
    BEGIN
+     P_OUT_SALES_ORDER_ID := ORDERTB.SEQ_SALES_ORDER.nextval;
+	 
      INSERT INTO ORDERTB.sales_order (id,
                                           order_date,
                                           price,
@@ -266,7 +272,7 @@ BEGIN
                                           customer_document_type_id,
                                           customer_document_id,
                                           update_date) 
-                  VALUES ( ORDERTB.SEQ_SALES_ORDER.nextval,
+                  VALUES ( P_OUT_SALES_ORDER_ID,
 				           SYSDATE,
 						   P_PRICE,
 						   CASE WHEN (V_ORDER_STATUS_ID = 0 OR V_ORDER_STATUS_ID IS NULL) THEN 1 ELSE V_ORDER_STATUS_ID END,
@@ -514,7 +520,8 @@ PROCEDURE PR_CREATE_ITEM(    P_PRODUCT_ID                  IN NUMBER,
                              P_PRICE_ITEM                  IN NUMBER,
                              P_QUANTITY                    IN NUMBER,
 							 P_SALES_ORDER_ID              IN NUMBER,
-							 P_ITEM_STATUS_NAME            OUT VARCHAR2,
+							 P_ITEM_STATUS_NAME            IN VARCHAR2,
+							 P_OUT_ORDER_ITEM_ID           OUT NUMBER,
 						     P_RESPONSE_ID                 OUT INTEGER,
                              P_RESPONSE_DESC               OUT VARCHAR2
      ) IS
@@ -544,6 +551,7 @@ BEGIN
    --INSERTANDO UNA NUEVO ITEM
    -------------------------------------------------------------
    BEGIN
+     P_OUT_ORDER_ITEM_ID := ORDERTB.SEQ_ORDER_ITEM.nextval;
      INSERT INTO ORDERTB.order_item (id,
                                          product_id,
                                          product_name,
@@ -554,7 +562,7 @@ BEGIN
                                          status_item_id,
                                          create_date,
                                          update_date) 
-                  VALUES ( ORDERTB.SEQ_ORDER_ITEM.nextval,
+                  VALUES ( P_OUT_ORDER_ITEM_ID,
 				           P_PRODUCT_ID,
                            P_PRODUCT_NAME,
                            P_PARTNUM,
@@ -598,6 +606,7 @@ PROCEDURE PR_READ_ITEM(      P_SALES_ORDER_ITEM_ID          IN NUMBER,
 							 P_CREATE_ITEM_DATE            OUT VARCHAR2,
 					         P_UPDATE_ITEM_DATE            OUT VARCHAR2,
 							 P_OUT_SALES_ORDER_ITEM_ID     OUT NUMBER,
+							 P_XML_DET                     OUT CLOB,
 						     P_RESPONSE_ID                 OUT INTEGER,
                              P_RESPONSE_DESC               OUT VARCHAR2
                   ) IS
@@ -664,7 +673,7 @@ PROCEDURE PR_UPDATE_ITEM(    P_SALES_ORDER_ITEM_ID         IN NUMBER,
                              P_PARTNUM                     IN VARCHAR2,
                              P_PRICE_ITEM                  IN NUMBER,
                              P_QUANTITY                    IN NUMBER,
-							 P_ITEM_STATUS_NAME            OUT VARCHAR2,
+							 P_ITEM_STATUS_NAME            IN VARCHAR2,
 						     P_RESPONSE_ID                 OUT INTEGER,
                              P_RESPONSE_DESC               OUT VARCHAR2
 					) IS
@@ -726,7 +735,7 @@ end PR_UPDATE_ITEM;
 	
 	
 PROCEDURE PR_DELETE_ITEM(    P_SALES_ORDER_ITEM_ID         IN NUMBER,
-                             P_ITEM_STATUS_NAME            OUT VARCHAR2,
+                             P_ITEM_STATUS_NAME            IN VARCHAR2,
 						     P_RESPONSE_ID                 OUT INTEGER,
                              P_RESPONSE_DESC               OUT VARCHAR2
 					) IS
