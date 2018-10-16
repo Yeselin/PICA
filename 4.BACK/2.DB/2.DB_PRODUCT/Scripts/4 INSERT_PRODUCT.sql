@@ -1,8 +1,8 @@
---TRUNCATE TABLE product;
-INSERT INTO product
+BEGIN
+INSERT INTO product2
 SELECT
-TOP 10000
-Row_Number() Over (Order By C1.id,S.id, L.id, T.id, C2.id) id,
+TOP 1000000
+Row_Number() Over (Order By C1.id,S.id, L.id, T.id, C2.id) ,
 S.name name  ,
 DATEADD(D, S.CONT, convert(datetime,'27-10-18 10:15:00 PM',5)) spectacle_date,
 DATEADD(D, S.CONT, convert(datetime,'27-10-18 10:15:00 PM',5))-1 arrival_date,
@@ -17,7 +17,7 @@ C1.id source_city ,
 C2.id target_city ,
 GETDATE() create_date ,
 GETDATE() update_date,
-2 cost_total
+300 cost_total
 FROM 
 CITY C1,
 CITY C2,
@@ -32,4 +32,5 @@ AND C2.id = 861 --Madrid
 --AND S.id = 40 --F.C. Barcelona / Real Madrid C.F.
 --AND T.id = 3 -- American Airlines
 Order By C1.id,S.id, L.id, T.id;
-COMMIT;
+
+END
