@@ -146,18 +146,8 @@ CREATE OR REPLACE PACKAGE ORDERTB.PK_ORDER Is
      08-OCT-2018 GERARDO HERRERA     Creacion del procedimiento
      ----------- --------- ---------------------------------------------------------
     ============================================================================= */
-    PROCEDURE PR_READ_ITEM(  P_SALES_ORDER_ITEM_ID          IN NUMBER,
-	                         P_PRODUCT_ID                  OUT NUMBER,
-                             P_PRODUCT_NAME                OUT VARCHAR2,
-                             P_PARTNUM                     OUT VARCHAR2,
-                             P_PRICE_ITEM                  OUT NUMBER,
-                             P_QUANTITY                    OUT NUMBER,
-							 P_SALES_ORDER_ID              OUT NUMBER,
-							 P_ITEM_STATUS_NAME            OUT VARCHAR2,
-							 P_CREATE_ITEM_DATE            OUT VARCHAR2,
-					         P_UPDATE_ITEM_DATE            OUT VARCHAR2,
-							 P_OUT_SALES_ORDER_ITEM_ID     OUT NUMBER,
-							 P_XML_DET                     OUT CLOB,
+    PROCEDURE PR_READ_ITEM(  P_SALES_ORDER_ID              IN NUMBER,
+					         P_XML_DET                     OUT CLOB,
 						     P_RESPONSE_ID                 OUT INTEGER,
                              P_RESPONSE_DESC               OUT VARCHAR2
 						);
@@ -595,65 +585,116 @@ END PR_CREATE_ITEM;
     
 	
 	
-PROCEDURE PR_READ_ITEM(      P_SALES_ORDER_ITEM_ID          IN NUMBER,
-	                         P_PRODUCT_ID                  OUT NUMBER,
-                             P_PRODUCT_NAME                OUT VARCHAR2,
-                             P_PARTNUM                     OUT VARCHAR2,
-                             P_PRICE_ITEM                  OUT NUMBER,
-                             P_QUANTITY                    OUT NUMBER,
-							 P_SALES_ORDER_ID              OUT NUMBER,
-							 P_ITEM_STATUS_NAME            OUT VARCHAR2,
-							 P_CREATE_ITEM_DATE            OUT VARCHAR2,
-					         P_UPDATE_ITEM_DATE            OUT VARCHAR2,
-							 P_OUT_SALES_ORDER_ITEM_ID     OUT NUMBER,
-							 P_XML_DET                     OUT CLOB,
-						     P_RESPONSE_ID                 OUT INTEGER,
-                             P_RESPONSE_DESC               OUT VARCHAR2
+PROCEDURE PR_READ_ITEM(  P_SALES_ORDER_ID              IN NUMBER,
+					     P_XML_DET                     OUT CLOB,
+						 P_RESPONSE_ID                 OUT INTEGER,
+                         P_RESPONSE_DESC               OUT VARCHAR2
                   ) IS
 V_CONT NUMBER := 0;
+V_ID                          NUMBER:=0;
+V_ORDER_DATE                  VARCHAR2(10 BYTE):= '';
+V_PRICE                       NUMBER:=0;
+V_STATUS_NAME                 VARCHAR2(50 BYTE):= '';
+V_COMMENTS                    VARCHAR2(4000 BYTE):= '';
+V_CUSTOMER_DOCUMENT_TYPE_NAME VARCHAR2(20 BYTE):= '';
+V_CUSTOMER_DOCUMENT_ID        VARCHAR2(20 BYTE):= '';
+V_UPDATE_DATE                 VARCHAR2(10 BYTE):= '';
   begin
    P_RESPONSE_ID:= -20001;
    P_RESPONSE_DESC:= 'KO';
-  -------------------------------------------------------------
-   --OBTENIEDO INFORMACION DEL ITEM
+   -------------------------------------------------------------
+   --OBTENIEDO INFORMACION DE LA ORDEN
    -------------------------------------------------------------
    BEGIN
-		SELECT
-		A.PRODUCT_ID,
-		A.PRODUCT_NAME,
-		A.PARTNUM,
+		SELECT A.ID,
+		TO_CHAR(A.ORDER_DATE,'YYYYMMDD') ORDER_DATE,
 		A.PRICE,
-		A.QUANTITY,
-		A.SALES_ORDER_ID,
-		B.STATUS_NAME,
-		TO_CHAR(A.CREATE_DATE,'YYYYMMDD') CREATE_DATE,
-		TO_CHAR(A.UPDATE_DATE,'YYYYMMDD') UPDATE_DATE,
-        A.ID
-		INTO 
-		 P_PRODUCT_ID,
-		 P_PRODUCT_NAME,
-		 P_PARTNUM,
-		 P_PRICE_ITEM,
-		 P_QUANTITY,
-		 P_SALES_ORDER_ID,
-		 P_ITEM_STATUS_NAME,
-		 P_CREATE_ITEM_DATE,
-		 P_UPDATE_ITEM_DATE,
-		 P_OUT_SALES_ORDER_ITEM_ID
-		FROM ORDERTB.order_item A
-		INNER JOIN ORDERTB.order_item_STATUS  B ON (B.ID = A.STATUS_ITEM_ID)
-		WHERE A.ID = P_SALES_ORDER_ITEM_ID;
+		C.STATUS_NAME,
+		A.COMMENTS,
+		B.DOCUMENT_NAME,
+		A.CUSTOMER_DOCUMENT_ID,
+		TO_CHAR(A.UPDATE_DATE,'YYYYMMDD') UPDATE_DATE
+		INTO
+		V_ID,
+		V_ORDER_DATE,
+		V_PRICE,
+		V_STATUS_NAME,
+		V_COMMENTS,
+		V_CUSTOMER_DOCUMENT_TYPE_NAME,
+		V_CUSTOMER_DOCUMENT_ID,
+		V_UPDATE_DATE
+		FROM ORDERTB.SALES_ORDER A
+		INNER JOIN TOURESBALON.DOCUMENT_TYPE B ON (B.ID = A.CUSTOMER_DOCUMENT_TYPE_ID)
+		INNER JOIN ORDERTB.ORDER_STATUS  C ON (C.ID = A.STATUS_ID)
+		WHERE A.ID = P_SALES_ORDER_ID;
   
       COMMIT;
   exception When Others Then
 		Lv_Successfull           := 'N';
-		Lv_Comment_              := 'Error al consultar item '||P_SALES_ORDER_ITEM_ID;
+		Lv_Comment_              := 'Error al consultar la orden '||P_SALES_ORDER_ID;
 		COMMIT;
 		P_RESPONSE_ID:= -20001;
 	    P_RESPONSE_DESC:= Lv_Comment_;
 		--raise_application_error(-20001, Lv_Comment_);
 		RAISE;
   END;
+    p_xml_det := '<ORDER>' ||CHR(13);
+    p_xml_det := p_xml_det || '<ID>'                          || V_ID                          || '</ID>'||CHR(13);
+	p_xml_det := p_xml_det || '<ORDER_DATE>'                  || V_ORDER_DATE                  || '</ORDER_DATE>'||CHR(13);
+	p_xml_det := p_xml_det || '<PRICE>'                       || ROUND(V_PRICE, 2)             || '</PRICE>'||CHR(13);
+	p_xml_det := p_xml_det || '<STATUS_NAME>'                 || V_STATUS_NAME                 || '</STATUS_NAME>'||CHR(13);
+	p_xml_det := p_xml_det || '<COMMENTS>'                    || V_COMMENTS                    || '</COMMENTS>'||CHR(13);
+	p_xml_det := p_xml_det || '<CUSTOMER_DOCUMENT_TYPE_NAME>' || V_CUSTOMER_DOCUMENT_TYPE_NAME || '</CUSTOMER_DOCUMENT_TYPE_NAME>'||CHR(13);
+	p_xml_det := p_xml_det || '<CUSTOMER_DOCUMENT_ID>'        || V_CUSTOMER_DOCUMENT_ID        || '</CUSTOMER_DOCUMENT_ID>'||CHR(13);
+	p_xml_det := p_xml_det || '<UPDATE_DATE>'                 || V_UPDATE_DATE                 || '</UPDATE_DATE>'||CHR(13);
+   
+  -------------------------------------------------------------
+   --OBTENIEDO INFORMACION DEL ITEM
+   -------------------------------------------------------------
+   BEGIN
+   FOR C IN (
+		  SELECT
+          B.ID ID_ITEM,
+          B.PRODUCT_ID,
+          B.PRODUCT_NAME,
+          B.PARTNUM,
+          B.PRICE PRICE_ITEM,
+          B.QUANTITY,
+          B.SALES_ORDER_ID,
+          A.STATUS_NAME ITEM_STATUS_NAME,
+          TO_CHAR(B.CREATE_DATE,'YYYYMMDD') CREATE_DATE_ITEM,
+          TO_CHAR(B.UPDATE_DATE,'YYYYMMDD') UPDATE_DATE_ITEM
+          FROM ORDERTB.ORDER_ITEM B
+		  INNER JOIN ORDERTB.ORDER_ITEM_STATUS  A ON (A.ID = B.STATUS_ITEM_ID)
+          WHERE B.SALES_ORDER_ID = P_SALES_ORDER_ID
+		  ORDER BY B.ID
+        ) LOOP
+		
+		 p_xml_det := p_xml_det ||'<ITEM>' ||CHR(13);
+		 p_xml_det := p_xml_det || '<ID_ITEM>'         || C.ID_ITEM              || '</ID_ITEM>'||CHR(13);
+		 p_xml_det := p_xml_det || '<PRODUCT_ID>'      || C.PRODUCT_ID           || '</PRODUCT_ID>'||CHR(13);
+		 p_xml_det := p_xml_det || '<PRODUCT_NAME>'    || C.PRODUCT_NAME         || '</PRODUCT_NAME>'||CHR(13);
+		 p_xml_det := p_xml_det || '<PARTNUM>'         || C.PARTNUM              || '</PARTNUM>'||CHR(13);
+		 p_xml_det := p_xml_det || '<PRICE_ITEM>'      || ROUND(C.PRICE_ITEM, 2) || '</PRICE_ITEM>'||CHR(13);
+		 p_xml_det := p_xml_det || '<QUANTITY>'        || C.QUANTITY             || '</QUANTITY>'||CHR(13);
+		 p_xml_det := p_xml_det || '<ITEM_STATUS_NAME>'|| C.ITEM_STATUS_NAME     || '</ITEM_STATUS_NAME>'||CHR(13);
+		 p_xml_det := p_xml_det || '<CREATE_DATE_ITEM>'|| C.CREATE_DATE_ITEM     || '</CREATE_DATE_ITEM>'||CHR(13);
+		 p_xml_det := p_xml_det || '<UPDATE_DATE_ITEM>'|| C.UPDATE_DATE_ITEM     || '</UPDATE_DATE_ITEM>'||CHR(13);
+		 p_xml_det := p_xml_det ||'</ITEM>' ||CHR(13);
+		
+		END LOOP;
+
+  exception When Others Then
+		Lv_Successfull           := 'N';
+		Lv_Comment_              := 'Error al consultar los items de la orden '||P_SALES_ORDER_ID;
+		COMMIT;
+		P_RESPONSE_ID:= -20001;
+	    P_RESPONSE_DESC:= Lv_Comment_;
+		--raise_application_error(-20001, Lv_Comment_);
+		RAISE;
+  END;
+  
+  p_xml_det := p_xml_det ||'</ORDER>' ||CHR(13);
   
    COMMIT;
    Lv_Successfull := 'Y';
