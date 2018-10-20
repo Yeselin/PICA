@@ -1,22 +1,6 @@
-<<<<<<< HEAD
---USE DB_PRODUCT
---GO
-/****** Object:  Table [dbo].[city]    Script Date: 09/10/2018 18:10:23 ******/
---DROP TABLE PRODUCT;
---DROP TABLE CITY;
---DROP TABLE TRANSPORT;
---DROP TABLE SPECTACLE;
---DROP TABLE LODGING;
---DROP TABLE CAMPANA;
---GO
-
-CREATE TABLE city (
-    id          bigint NOT NULL,
-=======
 
 CREATE TABLE city (
     id          bigint ,
->>>>>>> e3891e3deccc4e19219335fab65c912a86d225c1
     name_city   nvarchar (50) , 
     cost NUMERIC (18,2) , 
     country_name NVARCHAR (100) ,
@@ -29,11 +13,7 @@ GO
 --268.832
 
 CREATE TABLE lodging (
-<<<<<<< HEAD
-    id     bigint NOT NULL,
-=======
     id     bigint ,
->>>>>>> e3891e3deccc4e19219335fab65c912a86d225c1
     name   nvarchar (50),
 	cost numeric(18,2),
 	create_date datetime,
@@ -43,11 +23,7 @@ CREATE TABLE lodging (
 GO
 
 CREATE TABLE spectacle (
-<<<<<<< HEAD
-    id     bigint NOT NULL,
-=======
     id     bigint ,
->>>>>>> e3891e3deccc4e19219335fab65c912a86d225c1
     name   nvarchar(50),
 	cost numeric(18,2),
 	create_date datetime,
@@ -57,11 +33,7 @@ CREATE TABLE spectacle (
 GO
 
 CREATE TABLE transport(
-<<<<<<< HEAD
-    id     bigint NOT NULL,
-=======
     id     bigint ,
->>>>>>> e3891e3deccc4e19219335fab65c912a86d225c1
     name   nvarchar(50),
 	cost numeric(18,2),
 	create_date datetime,
@@ -71,11 +43,7 @@ CREATE TABLE transport(
 GO
 
 CREATE TABLE campana(
-<<<<<<< HEAD
-    id     bigint NOT NULL,
-=======
     id     bigint ,
->>>>>>> e3891e3deccc4e19219335fab65c912a86d225c1
     name   nvarchar(50),
 	percentage numeric(18,2),
 	create_date datetime,
@@ -91,11 +59,7 @@ CREATE TABLE campana(
 GO
 
 CREATE TABLE product (
-<<<<<<< HEAD
-    id     bigint NOT NULL,
-=======
     id     bigint IDENTITY(1,1),
->>>>>>> e3891e3deccc4e19219335fab65c912a86d225c1
     name   nvarchar (50) , 
     spectacle_date DATE , 
     arrival_date DATE , 
@@ -122,9 +86,6 @@ GO
 
 ALTER TABLE campana 
 	ADD CONSTRAINT campana_product_fk FOREIGN KEY (product_id) REFERENCES product(id)
-<<<<<<< HEAD
-GO
-=======
 GO
 
 CREATE TABLE product2 (
@@ -146,4 +107,3 @@ CREATE TABLE product2 (
 	cost_total numeric(18,2)
 )
 GO
->>>>>>> e3891e3deccc4e19219335fab65c912a86d225c1
