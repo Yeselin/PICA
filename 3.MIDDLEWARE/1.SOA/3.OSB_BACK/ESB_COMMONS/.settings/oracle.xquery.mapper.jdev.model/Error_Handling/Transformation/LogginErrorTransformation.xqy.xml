@@ -1,6 +1,0 @@
-<view_states>
-   <function arity="7" name="ContructorLogEntrada">
-      <source_tree_view last.visible.row="6" last.visible.path="/sourceRoot[[0]]/logSite[[6]]" first.visible.path="/sourceRoot[[0]]/transactionId[[0]]" expanded.paths="" first.visible.row="0" selected.paths=""/>
-      <target_tree_view last.visible.row="0" last.visible.path="/TargetRoot[[0]]/logdata[[0]]" first.visible.path="/TargetRoot[[0]]/logdata[[0]]" expanded.paths="" first.visible.row="0" selected.paths=""/>
-   </function>
-</view_states>
