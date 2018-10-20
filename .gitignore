@@ -24,3 +24,7 @@ hs_err_pid*
 
 #Exclude
 !mocks/FTPServer/*
+
+**/.settings/
+**/.data/
+**./adf/
