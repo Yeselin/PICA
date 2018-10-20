@@ -15,7 +15,8 @@ source_city ,
 target_city ,
 create_date ,
 update_date,
-cost_total
+cost_total,
+status
 FROM product2
 GO
 DROP TABLE PRODUCT2

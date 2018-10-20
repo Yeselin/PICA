@@ -105,6 +105,7 @@ CREATE TABLE product2 (
     target_city BIGINT ,
     create_date datetime,
     update_date datetime,
-	cost_total numeric(18,2)
+	cost_total numeric(18,2),
+	status int
 )
 GO
