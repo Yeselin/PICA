@@ -1,25 +1,25 @@
 DROP PROCEDURE PR_READ_PRODUCT;
 GO
 CREATE PROCEDURE PR_READ_PRODUCT  
-    @P_NAME VARCHAR,  
-    @id VARCHAR OUTPUT,
-    @name VARCHAR OUTPUT,
-    @spectacle_date VARCHAR OUTPUT, 
-    @arrival_date VARCHAR OUTPUT,
-    @departure_date VARCHAR OUTPUT,
-    @transport_type VARCHAR OUTPUT,
-    @spectacle_type VARCHAR OUTPUT,
-    @lodging_type VARCHAR OUTPUT,
-    @description VARCHAR OUTPUT, 
-    @code VARCHAR OUTPUT,
-    @image_ref VARCHAR OUTPUT, 
-    @source_city VARCHAR OUTPUT,
-    @target_city VARCHAR OUTPUT,
-    @create_date VARCHAR OUTPUT,
-    @update_date VARCHAR OUTPUT,
-	@cost_total VARCHAR OUTPUT,
+    @P_ID VARCHAR(MAX),
+    @id VARCHAR(MAX) OUTPUT,
+    @name VARCHAR(MAX) OUTPUT,
+    @spectacle_date VARCHAR(MAX) OUTPUT, 
+    @arrival_date VARCHAR(MAX) OUTPUT,
+    @departure_date VARCHAR(MAX) OUTPUT,
+    @transport_type VARCHAR(MAX) OUTPUT,
+    @spectacle_type VARCHAR(MAX) OUTPUT,
+    @lodging_type VARCHAR(MAX) OUTPUT,
+    @description VARCHAR(MAX) OUTPUT, 
+    @code VARCHAR(MAX) OUTPUT,
+    @image_ref VARCHAR(MAX) OUTPUT, 
+    @source_city VARCHAR(MAX) OUTPUT,
+    @target_city VARCHAR(MAX) OUTPUT,
+    @create_date VARCHAR(MAX) OUTPUT,
+    @update_date VARCHAR(MAX) OUTPUT,
+	@cost_total VARCHAR(MAX) OUTPUT,
 	@ErrorSeverity INT OUTPUT,
-	@ErrorMessage VARCHAR OUTPUT
+	@ErrorMessage VARCHAR(MAX) OUTPUT
 AS  
 BEGIN TRY
    SELECT
@@ -40,13 +40,20 @@ BEGIN TRY
     @update_date = update_date,
 	@cost_total = cost_total
    FROM [dbo].[product]
-   WHERE NAME = UPPER(@P_NAME)  
- END TRY
+   WHERE id = @P_ID
+   
+    SELECT @id = @@ROWCOUNT
+   
+	IF @id = 0 
+	BEGIN
+		SELECT @ErrorSeverity = -20001, @ErrorMessage = CONCAT ('El producto ',@P_ID,' no existe');
+	END
+END TRY
  BEGIN CATCH  
    -- Retorna el error.
   --SELECT @ErrorMessage = ERROR_MESSAGE(),@ErrorSeverity = ERROR_SEVERITY();
   --RAISERROR(@ErrorMessage, @ErrorSeverity, 1);
-  SELECT @ErrorSeverity = -20001, @ErrorMessage = CONCAT ('Error al consultar el producto ',@P_NAME) ;
+  SELECT @ErrorSeverity = -20001, @ErrorMessage = CONCAT ('Error al consultar el producto ',@P_ID);
   
 END CATCH; 
 GO 
