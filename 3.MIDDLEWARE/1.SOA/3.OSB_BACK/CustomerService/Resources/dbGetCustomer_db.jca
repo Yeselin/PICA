@@ -1,0 +1,13 @@
+<adapter-config name="dbGetCustomer" adapter="db" wsdlLocation="dbGetCustomer.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="cn_SQL_Customer" location="eis/DB/cnSQLCustomer"/>
+  <endpoint-interaction portType="dbGetCustomer_ptt" operation="dbGetCustomer">
+    <interaction-spec className="oracle.tip.adapter.db.DBStoredProcedureInteractionSpec">
+      <property name="SchemaName" value="TOURESBALON"/>
+      <property name="PackageName" value="PK_CUSTOMER"/>
+      <property name="ProcedureName" value="PR_READ"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

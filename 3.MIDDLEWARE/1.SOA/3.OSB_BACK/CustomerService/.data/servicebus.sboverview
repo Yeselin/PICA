@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns:composite xmlns:ns="http://xmlns.oracle.com/sca/1.0">
+    <ns:reference>
+        <ns:interface src="BusinessService:CustomerService/Business_Services/bsCreateCustomer"/>
+    </ns:reference>
+    <ns:reference>
+        <ns:interface src="BusinessService:CustomerService/Business_Services/bsDeleteCustomer"/>
+    </ns:reference>
+    <ns:reference>
+        <ns:interface src="BusinessService:CustomerService/Business_Services/bsGetCustomer"/>
+    </ns:reference>
+    <ns:reference>
+        <ns:interface src="ProxyService:ESB_COMMONS/Logging/Proxy_Services/LoggingServicePipelineProxyService"/>
+    </ns:reference>
+    <ns:reference>
+        <ns:interface src="BusinessService:CustomerService/Business_Services/bsUpdateCustomer"/>
+    </ns:reference>
+</ns:composite>
