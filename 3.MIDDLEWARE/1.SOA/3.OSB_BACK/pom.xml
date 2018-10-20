@@ -12,6 +12,7 @@
     <modules>
         <module>System</module>
         <module>TECH_ADAPTERS</module>
+        <module>OrdersService</module>
     </modules>
 
 </project>

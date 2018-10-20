@@ -19,8 +19,8 @@ declare function local:func($Input as element() (:: schema-element(ns1:OutputPar
             <cus:name>{fn:data($Input/ns1:P_FIRST_NAME)}</cus:name>
             <cus:middle_name></cus:middle_name>
             <cus:lastname>{fn:data($Input/ns1:P_LAST_NAME)}</cus:lastname>
-            <cus:id></cus:id>
-            <cus:idType></cus:idType>
+            <cus:id>{fn:data($Input/ns1:P_OUT_DOCUMENT_ID)}</cus:id>
+            <cus:idType>{fn:data($Input/ns1:P_OUT_DOCUMENT_TYPE_ID)}</cus:idType>
             <cus:contact>
                 <cus:phoneNumber>{fn:data($Input/ns1:P_PHONE_NUMBER)}</cus:phoneNumber>
                 <cus:email>{fn:data($Input/ns1:P_EMAIL)}</cus:email>
@@ -37,9 +37,8 @@ declare function local:func($Input as element() (:: schema-element(ns1:OutputPar
             <cus:statusName></cus:statusName>
         </ns2:customer>
         <ns2:paymentMethod>
-            <ord:cardNumber>{fn:number(fn:data($Input/ns1:P_CREDITCARD_NUMBER))}</ord:cardNumber>
-            <ord:csv>{fn:number('0')}</ord:csv>
-            <ord:expirationDate>{fn:data('2018-09-20')}</ord:expirationDate>
+            <ord:cardNumber>{fn:data($Input/ns1:P_CREDITCARD_NUMBER)}</ord:cardNumber>
+            <ord:franchise>{fn:data($Input/ns1:P_CREDITCARD_NAME)}</ord:franchise>
         </ns2:paymentMethod>
         <ns2:status>
             <cus:code>{fn:data($Input/ns1:P_RESPONSE_ID)}</cus:code>
