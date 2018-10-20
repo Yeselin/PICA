@@ -24,7 +24,7 @@ declare function local:func($Insert as element() (:: schema-element(ns1:updateCu
         <ns2:P_PASSWORD>{fn:data($Insert/ns1:customer/cus:password)}</ns2:P_PASSWORD>
         <ns2:P_CUSTOMER_CATEGORY_NAME>{fn:data($Insert/ns1:customer/cus:category)}</ns2:P_CUSTOMER_CATEGORY_NAME>
         <ns2:P_CREDITCARD_NAME>{fn:data('VISA')}</ns2:P_CREDITCARD_NAME>
-        <ns2:P_CREDITCARD_NUMBER>{fn:data(string($Insert/ns1:paymentMethod/ord:cardNumber))}</ns2:P_CREDITCARD_NUMBER>
+        <ns2:P_CREDITCARD_NUMBER>{fn:data($Insert/ns1:paymentMethod/ord:franchise)}</ns2:P_CREDITCARD_NUMBER>
         <ns2:P_CUSTOMER_STATUS_NAME>{fn:data($Insert/ns1:customer/cus:statusName)}</ns2:P_CUSTOMER_STATUS_NAME>
         <ns2:P_STREET>{fn:data($Insert/ns1:customer/cus:contact/cus:location/cus:street)}</ns2:P_STREET>
         <ns2:P_STATE>{fn:data($Insert/ns1:customer/cus:contact/cus:location/cus:state)}</ns2:P_STATE>

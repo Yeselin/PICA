@@ -1,17 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
-    <dgm:gService name="ProductServicesProxyService">
-        <dgm:body borderWidth="2" arcRad="20" X="21" Y="69" width="137" height="54">
+    <dgm:gService name="CustomerServiceProxyService">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="249" width="137" height="54">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="11" Y="62" width="156" height="68">
+        <dgm:shadow arcRad="20" X="11" Y="242" width="156" height="68">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
-        <dgm:outputPort name="ProductServicesProxyService" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:outputPort name="CustomerServiceProxyService" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
         <dgm:nodeIcon URI="/oracle/sb/tooling/ide/sca/internal/icons/icon_transport_http_20x20.png" X="7" Y="4" width="20" height="20"/>
         <dgm:operations/>
     </dgm:gService>
+    <dgm:gReference name="bsDeleteCustomer">
+        <dgm:body borderWidth="2" arcRad="20" X="672" Y="112" width="136" height="54">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="662" Y="105" width="156" height="68">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="bsDeleteCustomer" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="14" Y="4" width="20" height="20"/>
+        <dgm:operations/>
+    </dgm:gReference>
+    <dgm:gReference name="bsCreateCustomer">
+        <dgm:body borderWidth="2" arcRad="20" X="672" Y="200" width="136" height="54">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="662" Y="193" width="156" height="68">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="bsCreateCustomer" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="14" Y="4" width="20" height="20"/>
+        <dgm:operations/>
+    </dgm:gReference>
+    <dgm:gReference name="bsGetCustomer">
+        <dgm:body borderWidth="2" arcRad="20" X="672" Y="288" width="136" height="54">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="662" Y="281" width="156" height="68">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="bsGetCustomer" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="14" Y="4" width="20" height="20"/>
+        <dgm:operations/>
+    </dgm:gReference>
+    <dgm:gReference name="bsUpdateCustomer">
+        <dgm:body borderWidth="2" arcRad="20" X="672" Y="376" width="136" height="54">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="662" Y="369" width="156" height="68">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="bsUpdateCustomer" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="14" Y="4" width="20" height="20"/>
+        <dgm:operations/>
+    </dgm:gReference>
+    <dgm:gReference name="LoggingServicePipelineProxyService">
+        <dgm:body borderWidth="2" arcRad="20" X="672" Y="464" width="136" height="54">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="662" Y="457" width="156" height="68">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="LoggingServicePipelineProxyService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:nodeIcon URI="/oracle/sb/tooling/ide/sca/internal/icons/icon_transport_local_20x20.png" X="14" Y="4" width="20" height="20"/>
+        <dgm:operations/>
+    </dgm:gReference>
     <dgm:gReference name="LoggingErrorProxyService">
         <dgm:body borderWidth="2" arcRad="20" X="672" Y="26" width="136" height="54">
             <dgm:borderColor r="153" g="153" b="153"/>
@@ -24,48 +84,60 @@
         <dgm:nodeIcon URI="/oracle/sb/tooling/ide/sca/internal/icons/icon_transport_local_20x20.png" X="14" Y="4" width="20" height="20"/>
         <dgm:operations/>
     </dgm:gReference>
-    <dgm:gReference name="LoggingServicePipelineProxyService">
-        <dgm:body borderWidth="2" arcRad="20" X="672" Y="114" width="136" height="54">
-            <dgm:borderColor r="153" g="153" b="153"/>
-            <dgm:bgColor r="255" g="255" b="255"/>
-        </dgm:body>
-        <dgm:shadow arcRad="20" X="662" Y="107" width="156" height="68">
-            <dgm:bgColor r="196" g="228" b="240"/>
-        </dgm:shadow>
-        <dgm:inputPort name="LoggingServicePipelineProxyService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:nodeIcon URI="/oracle/sb/tooling/ide/sca/internal/icons/icon_transport_local_20x20.png" X="14" Y="4" width="20" height="20"/>
-        <dgm:operations/>
-    </dgm:gReference>
-    <dgm:gComponent name="PipelineProductServices">
-        <dgm:body borderWidth="2" arcRad="20" X="350" Y="54" width="130" height="86">
+    <dgm:gComponent name="CustomerServicePipeline">
+        <dgm:body borderWidth="2" arcRad="20" X="350" Y="234" width="130" height="161">
             <dgm:borderColor r="109" g="136" b="65"/>
             <dgm:lightBgColor r="201" g="224" b="155"/>
             <dgm:darkBgColor r="157" g="195" b="93"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="340" Y="47" width="150" height="102">
+        <dgm:shadow arcRad="20" X="340" Y="227" width="150" height="177">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="__service__" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:outputPort name="proxyservice.-2067970672.LoggingErrorProxyService" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:outputPort name="proxyservice.-1956858223.LoggingServicePipelineProxyService" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:outputPort name="businessservice.1293404984.bsDeleteCustomer" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:outputPort name="businessservice.1293404984.bsCreateCustomer" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:outputPort name="businessservice.1293404984.bsGetCustomer" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:outputPort name="businessservice.1293404984.bsUpdateCustomer" X="120" Y="90" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:outputPort name="proxyservice.-1956858223.LoggingServicePipelineProxyService" X="120" Y="115" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
         <dgm:nodeIcon URI="/oracle/sb/tooling/ide/sca/internal/icons/icon_pipeline_20x20.gif" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
-    <dgm:gWireLink source="ProductServicesProxyService" target="PipelineProductServices/__service__" width="2">
-        <dgm:gSegment X1="168" Y1="79" X2="340" Y2="79"/>
+    <dgm:gWireLink source="CustomerServiceProxyService" target="CustomerServicePipeline/__service__" width="2">
+        <dgm:gSegment X1="168" Y1="259" X2="340" Y2="259"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
-    <dgm:gWireLink source="PipelineProductServices/proxyservice.-2067970672.LoggingErrorProxyService" target="LoggingErrorProxyService" width="2">
-        <dgm:gSegment X1="490" Y1="79" X2="514" Y2="79"/>
-        <dgm:gSegment X1="514" Y1="79" X2="514" Y2="36"/>
-        <dgm:gSegment X1="514" Y1="36" X2="662" Y2="36"/>
+    <dgm:gWireLink source="CustomerServicePipeline/businessservice.1293404984.bsDeleteCustomer" target="bsDeleteCustomer" width="2">
+        <dgm:gSegment X1="490" Y1="259" X2="514" Y2="259"/>
+        <dgm:gSegment X1="514" Y1="259" X2="514" Y2="122"/>
+        <dgm:gSegment X1="514" Y1="122" X2="662" Y2="122"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
-    <dgm:gWireLink source="PipelineProductServices/proxyservice.-1956858223.LoggingServicePipelineProxyService" target="LoggingServicePipelineProxyService" width="2">
-        <dgm:gSegment X1="490" Y1="104" X2="514" Y2="104"/>
-        <dgm:gSegment X1="514" Y1="104" X2="514" Y2="124"/>
-        <dgm:gSegment X1="514" Y1="124" X2="662" Y2="124"/>
+    <dgm:gWireLink source="CustomerServicePipeline/businessservice.1293404984.bsCreateCustomer" target="bsCreateCustomer" width="2">
+        <dgm:gSegment X1="490" Y1="284" X2="529" Y2="284"/>
+        <dgm:gSegment X1="529" Y1="284" X2="529" Y2="210"/>
+        <dgm:gSegment X1="529" Y1="210" X2="662" Y2="210"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CustomerServicePipeline/businessservice.1293404984.bsGetCustomer" target="bsGetCustomer" width="2">
+        <dgm:gSegment X1="490" Y1="309" X2="544" Y2="309"/>
+        <dgm:gSegment X1="544" Y1="309" X2="544" Y2="298"/>
+        <dgm:gSegment X1="544" Y1="298" X2="662" Y2="298"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CustomerServicePipeline/businessservice.1293404984.bsUpdateCustomer" target="bsUpdateCustomer" width="2">
+        <dgm:gSegment X1="490" Y1="334" X2="529" Y2="334"/>
+        <dgm:gSegment X1="529" Y1="334" X2="529" Y2="386"/>
+        <dgm:gSegment X1="529" Y1="386" X2="662" Y2="386"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CustomerServicePipeline/proxyservice.-1956858223.LoggingServicePipelineProxyService" target="LoggingServicePipelineProxyService" width="2">
+        <dgm:gSegment X1="490" Y1="359" X2="514" Y2="359"/>
+        <dgm:gSegment X1="514" Y1="359" X2="514" Y2="474"/>
+        <dgm:gSegment X1="514" Y1="474" X2="662" Y2="474"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
