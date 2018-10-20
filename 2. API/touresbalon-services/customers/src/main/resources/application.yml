@@ -10,3 +10,7 @@ ldap:
   user: cn=Administrator,o=touresbalon
   password: ingeniero3118
   dn_principal: cn=%s,ou=customers,o=touresbalon
+  
+jwt:
+  access_expires_in: 300
+  refresh_expires_in: 600
