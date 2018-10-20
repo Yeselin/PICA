@@ -18,6 +18,7 @@ CREATE PROCEDURE PR_READ_PRODUCT
     @create_date VARCHAR(MAX) OUTPUT,
     @update_date VARCHAR(MAX) OUTPUT,
 	@cost_total VARCHAR(MAX) OUTPUT,
+	@status VARCHAR(MAX) OUTPUT,
 	@ErrorSeverity INT OUTPUT,
 	@ErrorMessage VARCHAR(MAX) OUTPUT
 AS  
@@ -38,7 +39,8 @@ BEGIN TRY
     @target_city = target_city,
     @create_date = create_date,
     @update_date = update_date,
-	@cost_total = cost_total
+	@cost_total = cost_total,
+	@status = status
    FROM [dbo].[product]
    WHERE id = @P_ID
    
@@ -46,8 +48,13 @@ BEGIN TRY
    
 	IF @id = 0 
 	BEGIN
-		SELECT @ErrorSeverity = -20001, @ErrorMessage = CONCAT ('El producto ',@P_ID,' no existe');
+		SELECT @ErrorSeverity = -20001, @ErrorMessage = CONCAT ('Error el producto ',@P_ID,' no existe');
 	END
+	ELSE
+	BEGIN
+		SELECT @ErrorSeverity = 20100, @ErrorMessage = 'OK';
+	END
+	
 END TRY
  BEGIN CATCH  
    -- Retorna el error.

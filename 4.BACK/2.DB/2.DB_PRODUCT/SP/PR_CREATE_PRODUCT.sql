@@ -13,9 +13,10 @@ CREATE PROCEDURE PR_CREATE_PRODUCT
     @image_ref VARCHAR(MAX), 
     @source_city VARCHAR(MAX),
     @target_city VARCHAR(MAX),
-    @create_date VARCHAR(MAX),
-    @update_date VARCHAR(MAX),
+    --@create_date VARCHAR(MAX),
+    --@update_date VARCHAR(MAX),
 	@cost_total VARCHAR(MAX),
+	@status VARCHAR(MAX),
 	@ErrorSeverity INT OUTPUT,
 	@ErrorMessage VARCHAR(MAX) OUTPUT
 AS  
@@ -35,7 +36,8 @@ INSERT INTO [dbo].[product]
            ,[target_city]
            ,[create_date]
            ,[update_date]
-           ,[cost_total])
+           ,[cost_total]
+		   ,[status])
      VALUES
            (@name,
             @spectacle_date,
@@ -49,9 +51,14 @@ INSERT INTO [dbo].[product]
             @image_ref, 
             @source_city,
             @target_city,
-            @create_date,
-            @update_date,
-            @cost_total)
+            GETDATE(),
+            GETDATE(),
+            @cost_total,
+			@status)
+
+
+	SELECT @ErrorSeverity = 20100, @ErrorMessage = 'OK';
+	
 END TRY
  BEGIN CATCH  
    -- Retorna el error.
