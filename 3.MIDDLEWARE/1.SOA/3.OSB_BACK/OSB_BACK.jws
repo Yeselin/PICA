@@ -28,6 +28,7 @@
    </list>
    <list n="listOfChildren">
       <hash><url n="URL" path="ESB_COMMONS/ESB_COMMONS.jpr"/></hash>
+      <hash><url n="URL" path="OrdersService/OrdersService.jpr"/></hash>
       <hash><url n="URL" path="TECH_ADAPTERS/TECH_ADAPTERS.jpr"/></hash>
    </list>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
@@ -47,6 +48,6 @@
       </hash>
    </hash>
    <hash n="oracle.sb.tooling.ide.core.internal.application.SbApplication">
-      <value n="configContextSessionName" v="OSB-IDE_build_1539467849003"/>
+      <value n="configContextSessionName" v="OSB-IDE_build_1539651544128"/>
    </hash>
 </jws:workspace>

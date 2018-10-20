@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3EF9A5D0-452F-AE33-5722-AE75230B3D67" name="order_item_status">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:38 UTC</createdTime>
+<generatorID>5249562A-1954-A928-295B-B8AE02E7DDE8</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="69862242-E413-FE3A-1249-6A76427D2324">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:39 UTC</createdTime>
+<generatorID>C3958A0F-F4CA-396D-5327-662F0CC07A78</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="status_name" id="4B54E525-FDA5-BA05-84EC-ABFD44B5381B">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:39 UTC</createdTime>
+<generatorID>A865ED87-DE74-3D36-1BBD-1EC86AF4DE85</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="status_description" id="11287C95-D670-F0AC-812C-859A59A47EEC">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:39 UTC</createdTime>
+<generatorID>9A948D86-8B70-4653-C72C-F2620FACF2CC</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="create_date" id="5C68F499-B4F9-906C-2006-F16AE6573D55">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:39 UTC</createdTime>
+<generatorID>9B3E2EC1-6DB3-B7BD-47D8-BBB90C58B496</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="update_date" id="0EA391B8-E6DC-10AD-D256-A780EF0B1781">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:39 UTC</createdTime>
+<generatorID>6533B28C-3F8F-47B1-96B5-7C4D38BEDB27</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="order_item_id" id="C0ABCCBC-1858-EC07-CEFF-8DA32F1B9B13">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:39 UTC</createdTime>
+<generatorID>8174BD85-CC3A-0FF2-A198-D653445035DF</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<structuredType>47E390DE-0671-C4B1-8428-0F45CBEE18F8</structuredType>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C93970F2-D738-997B-59ED-18DA79CD49E4" referredColumn="421B0938-CAC2-8365-C949-376DD943C50C"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0C4C8384-09FC-CC78-C7B3-9DE69D7030A1" name="order_item_status_PK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:39 UTC</createdTime>
+<generatorID>C9690462-3279-3A7B-4A96-D0F0DBC293C3</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="69862242-E413-FE3A-1249-6A76427D2324"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="31C53111-F5CB-60FC-A690-82786E0F5C9B" name="order_item_status__IDX">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:39 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>E7A45898-2FA4-515F-FFCC-D539EFA90CB3</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="C0ABCCBC-1858-EC07-CEFF-8DA32F1B9B13"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="68FAD971-6E86-F3CA-8332-0EE299CF664C" name="order_item_status_order_item_FK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-10-15 01:54:39 UTC</createdTime>
+<generatorID>E7A45898-2FA4-515F-FFCC-D539EFA90CB3</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C0ABCCBC-1858-EC07-CEFF-8DA32F1B9B13"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

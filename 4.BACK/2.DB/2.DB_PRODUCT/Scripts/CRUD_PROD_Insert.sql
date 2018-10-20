@@ -1,6 +1,7 @@
 DROP PROCEDURE PRODUCT_INSERT;
 GO
 CREATE PROCEDURE PRODUCT_INSERT
+<<<<<<< HEAD
     @id     varchar ,
     @name   varchar (50) , 
     @spectacle_date varchar (20) , 
@@ -39,6 +40,27 @@ BEGIN
 INSERT INTO product 
 	values ( 
 	@id,
+=======
+    @name			varchar , 
+    @spectacle_date varchar , 
+    @arrival_date	varchar , 
+    @departure_date varchar , 
+    @transport_type varchar , 
+    @spectacle_type varchar , 
+    @lodging_type	varchar , 
+    @description	varchar , 
+    @code			varchar , 
+    @image_ref		varchar , 
+    @source_city	varchar , 
+    @target_city	varchar ,
+    @create_date	varchar ,
+    @update_date	varchar ,
+    @cost_total		varchar 
+AS
+BEGIN TRY
+INSERT INTO product 
+	values (	
+>>>>>>> e3891e3deccc4e19219335fab65c912a86d225c1
 	@name, 
 	@spectacle_date, 
 	@arrival_date, 
@@ -51,6 +73,7 @@ INSERT INTO product
 	@image_ref, 
 	@source_city,
 	@target_city, 
+<<<<<<< HEAD
 	@create_date, 
 	@update_date,
 	300 
@@ -111,3 +134,17 @@ INSERT INTO product
 END
 GO
 */
+=======
+	GETDATE(), --@create_date, 
+	@update_date,
+	@cost_total	
+)
+END TRY
+BEGIN CATCH  
+   -- Retorna el error.
+  DECLARE @ErrorMessage nvarchar(4000),  @ErrorSeverity int;  
+  SELECT @ErrorMessage = ERROR_MESSAGE(),@ErrorSeverity = ERROR_SEVERITY();  
+  RAISERROR(@ErrorMessage, @ErrorSeverity, 1);  
+END CATCH;  
+GO
+>>>>>>> e3891e3deccc4e19219335fab65c912a86d225c1

@@ -1,0 +1,6 @@
+<view_states>
+   <function arity="1" name="func">
+      <source_tree_view last.visible.row="23" last.visible.path="/sourceRoot[[0]]/createCustomerRequest[[0]]/paymentMethod[[1]]/expirationDate[[3]]" first.visible.path="/sourceRoot[[0]]/createCustomerRequest[[0]]" expanded.paths="/sourceRoot[[0]]/createCustomerRequest[[0]]&#xA;/sourceRoot[[0]]/createCustomerRequest[[0]]/customer[[0]]&#xA;/sourceRoot[[0]]/createCustomerRequest[[0]]/customer[[0]]/contact[[5]]&#xA;/sourceRoot[[0]]/createCustomerRequest[[0]]/customer[[0]]/contact[[5]]/location[[2]]&#xA;/sourceRoot[[0]]/createCustomerRequest[[0]]/paymentMethod[[1]]" first.visible.row="0" selected.paths="/sourceRoot[[0]]/createCustomerRequest[[0]]/paymentMethod[[1]]/franchise[[1]]"/>
+      <target_tree_view last.visible.row="16" last.visible.path="/TargetRoot[[0]]/InputParameters[[0]]/P_CITY[[15]]" first.visible.path="/TargetRoot[[0]]/InputParameters[[0]]" expanded.paths="/TargetRoot[[0]]/InputParameters[[0]]" first.visible.row="0" selected.paths="/TargetRoot[[0]]/InputParameters[[0]]/P_CREDITCARD_NAME[[8]]"/>
+   </function>
+</view_states>

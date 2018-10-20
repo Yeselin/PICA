@@ -89,7 +89,9 @@ CREATE OR REPLACE PACKAGE TOURESBALON.PK_CUSTOMER Is
                         P_ZIP                    OUT VARCHAR2,
                         P_COUNTRY                OUT VARCHAR2,
                         P_CITY                   OUT VARCHAR2,
-						P_RESPONSE_ID            OUT INTEGER,
+					    P_OUT_DOCUMENT_TYPE_ID   OUT INTEGER,
+					    P_OUT_DOCUMENT_ID        OUT VARCHAR2,
+					    P_RESPONSE_ID            OUT INTEGER,
                         P_RESPONSE_DESC          OUT VARCHAR2
 						);
 	
@@ -251,7 +253,7 @@ BEGIN
 	 ----------------------------------------------------
 	 --OBTENIENDO LA DIRECCION DEL CLIENTE
 	 ----------------------------------------------------
-     BEGIN
+     /*BEGIN
 		 SELECT ID INTO V_ADDRESS_ID
 		 FROM TOURESBALON.ADDRESS A
 		 WHERE UPPER(A.STREET) = UPPER(P_STREET)
@@ -261,7 +263,7 @@ BEGIN
 		   AND UPPER(A.CITY) = UPPER(P_CITY);
 	 
 	 exception 
-	 WHEN NO_DATA_FOUND THEN
+	 WHEN NO_DATA_FOUND THEN*/
 	     ----------------------------------------------------
 		 --INSERTANDO LA NUEVA DIRECCION DEL CLIENTE
 		 ----------------------------------------------------
@@ -274,20 +276,20 @@ BEGIN
 		 
 		 exception When Others Then
 			Lv_Successfull           := 'N';
-			Lv_Comment_              := 'Error crear la direccion del cliente ';
+			Lv_Comment_              := 'Error crear la direccion del cliente '||P_DOCUMENT_TYPE_NAME||'-'||P_DOCUMENT_ID;
 			COMMIT;
 			P_RESPONSE_ID:= -20006;
 			P_RESPONSE_DESC:= Lv_Comment_;
 			RAISE;
 		 END;
-	 When Others Then	 
+	 /*When Others Then	 
 	    Lv_Successfull           := 'N';
 		Lv_Comment_              := 'Error al consultar la direccion del cliente ';
 		COMMIT;
 		P_RESPONSE_ID:= -20006;
 		P_RESPONSE_DESC:= Lv_Comment_;
 		RAISE;
-	 END;
+	 END;*/
 
 	 ----------------------------------------------------
 	 --INSERTANDO EL NUEVO CLIENTE
@@ -385,6 +387,8 @@ PROCEDURE PR_READ(  P_DOCUMENT_TYPE_NAME     IN VARCHAR2,
                     P_ZIP                    OUT VARCHAR2,
                     P_COUNTRY                OUT VARCHAR2,
                     P_CITY                   OUT VARCHAR2,
+					P_OUT_DOCUMENT_TYPE_ID   OUT INTEGER,
+					P_OUT_DOCUMENT_ID        OUT VARCHAR2,
 					P_RESPONSE_ID            OUT INTEGER,
                     P_RESPONSE_DESC          OUT VARCHAR2
                   ) IS
@@ -411,7 +415,9 @@ V_CONT NUMBER := 0;
 			   G.STATE, 
 			   G.ZIP, 
 			   G.COUNTRY, 
-			   G.CITY
+			   G.CITY,
+			   A.DOCUMENT_TYPE_ID,
+			   A.DOCUMENT_ID
          INTO P_FIRST_NAME,
               P_LAST_NAME,
               P_PHONE_NUMBER,
@@ -427,7 +433,9 @@ V_CONT NUMBER := 0;
               P_STATE,
               P_ZIP,
               P_COUNTRY,
-              P_CITY
+              P_CITY,
+			  P_OUT_DOCUMENT_TYPE_ID,
+			  P_OUT_DOCUMENT_ID
 		 FROM TOURESBALON.CUSTOMER A
 		 INNER JOIN TOURESBALON.DOCUMENT_TYPE B     ON (B.ID = A.DOCUMENT_TYPE_ID AND B.DOCUMENT_NAME = UPPER(P_DOCUMENT_TYPE_NAME))
 		 INNER JOIN TOURESBALON.CUSTOMER_CATEGORY C ON (C.ID = A.CUSTOMER_CATEGORY_ID)

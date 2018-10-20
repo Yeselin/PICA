@@ -17,7 +17,7 @@ import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponent   
+    routingComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,35 @@
+<!--INSERTS CUSTOMER-->
+<dcc:InputParameters xmlns:dcc="http://xmlns.oracle.com/pcbpel/adapter/db/sp/dcCreateCustomer">
+    <!--Optional:-->
+    <dcc:P_DOCUMENT_TYPE_NAME>CE</dcc:P_DOCUMENT_TYPE_NAME>
+    <!--Optional:-->
+    <dcc:P_DOCUMENT_ID>500123</dcc:P_DOCUMENT_ID>
+    <!--Optional:-->
+    <dcc:P_FIRST_NAME>Gerardo</dcc:P_FIRST_NAME>
+    <!--Optional:-->
+    <dcc:P_LAST_NAME>Herrera</dcc:P_LAST_NAME>
+    <!--Optional:-->
+    <dcc:P_PHONE_NUMBER>3211234567</dcc:P_PHONE_NUMBER>
+    <!--Optional:-->
+    <dcc:P_EMAIL>timolo@hotmail.com</dcc:P_EMAIL>
+    <!--Optional:-->
+    <dcc:P_PASSWORD>123456</dcc:P_PASSWORD>
+    <!--Optional:-->
+    <dcc:P_CUSTOMER_CATEGORY_NAME>DORADO</dcc:P_CUSTOMER_CATEGORY_NAME>
+    <!--Optional:-->
+    <dcc:P_CREDITCARD_NAME>VISA</dcc:P_CREDITCARD_NAME>
+    <!--Optional:-->
+    <dcc:P_CREDITCARD_NUMBER>1234567891234567</dcc:P_CREDITCARD_NUMBER>
+    <!--Optional:-->
+    <dcc:P_CUSTOMER_STATUS_NAME>ACTIVO</dcc:P_CUSTOMER_STATUS_NAME>
+    <!--Optional:-->
+    <dcc:P_STREET>BOGOTA</dcc:P_STREET>
+    <!--Optional:-->
+    <dcc:P_STATE>BOGOTÁ, D. C.</dcc:P_STATE>
+    <!--Optional:-->
+    <dcc:P_ZIP>11001</dcc:P_ZIP>
+    <!--Optional:-->
+    <dcc:P_COUNTRY>COLOMBIA</dcc:P_COUNTRY>
+    <!--Optional:-->
+    <dcc:P_CITY>BOGOTÁ, D.C.</dcc:P_CITY>
+</dcc:InputParameters>

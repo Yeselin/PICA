@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+use DB_PRODUCT
+go
+>>>>>>> e3891e3deccc4e19219335fab65c912a86d225c1
 INSERT INTO lodging (id,name,cost,create_date,update_date)
 Values (1,'Hilton', 200, GETDATE(),GETDATE());
 
@@ -17,6 +22,7 @@ INSERT INTO transport (id,name,cost,create_date,update_date)
 Values (3,'American Airlines', 70, GETDATE(),GETDATE());
 COMMIT;
 
+<<<<<<< HEAD
 
 INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,is_active) Values (1, 'Campaña Especial', 25,  GETDATE(),GETDATE(),0);
 INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,is_active) Values (2, 'Campaña Navidad', 10,  GETDATE(),GETDATE(),1);
@@ -24,6 +30,28 @@ INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,is_active) Value
 INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,is_active) Values (4, 'Campaña Descuentos', 20,  GETDATE(),GETDATE(),1);
 INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,is_active) Values (5, 'Campaña Fidelizacion', 25,  GETDATE(),GETDATE(),0);
 INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,is_active) Values (6, 'Campaña Clientes especiales', 30,  GETDATE(),GETDATE(),1);
+=======
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values ( 1,'Campaña Especial',  5,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,' 1.png', 1,1);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values ( 2,'Campaña Especial', 10,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,' 2.png', 2,0);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values ( 3,'Campaña Especial', 15,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,' 3.png', 3,1);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values ( 4,'Campaña Especial', 20,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,' 4.png', 4,0);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values ( 5,'Campaña Especial', 25,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,' 5.png', 5,1);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values ( 6,'Campaña Especial',  5,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,' 6.png', 6,0);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values ( 7,'Campaña Especial', 10,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,' 7.png', 7,1);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values ( 8,'Campaña Especial', 15,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,' 8.png', 8,0);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values ( 9,'Campaña Especial', 20,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,' 9.png', 9,1);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values (10,'Campaña Especial', 25,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,'10.png',10,0);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values (11,'Campaña Especial',  5,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,'11.png',11,1);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values (12,'Campaña Especial', 10,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,'12.png',12,0);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values (13,'Campaña Especial', 15,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,'13.png',13,1);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values (14,'Campaña Especial', 20,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,'14.png',14,0);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values (15,'Campaña Especial', 25,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,'15.png',15,1);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values (16,'Campaña Especial',  5,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,'16.png',16,0);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values (17,'Campaña Especial', 10,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,'17.png',17,1);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values (18,'Campaña Especial', 15,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,'18.png',18,0);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values (19,'Campaña Especial', 20,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,'19.png',19,1);
+INSERT INTO CAMPANA (id,name,percentage,create_date,update_date,start_date,effective_date,image_ref,product_id,is_active) Values (20,'Campaña Especial', 25,  GETDATE(),GETDATE(),2018-12-15,2018-12-30,'20.png',20,0);
+>>>>>>> e3891e3deccc4e19219335fab65c912a86d225c1
 COMMIT;
 
 

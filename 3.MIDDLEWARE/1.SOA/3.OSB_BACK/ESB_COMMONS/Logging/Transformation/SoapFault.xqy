@@ -35,15 +35,14 @@ declare function xf:Fault($Body as element(*),
 	<soapenv:Reason>
 	{
 		if (empty($Body/soapenv:Fault/soapenv:Reason/soapenv:Text)) then 
-			<soapenv:Text>{$Fault/con:reason/text()}</soapenv:Text>
+			<soapenv:Text>Error de Aplicación</soapenv:Text>
 		else
-			<soapenv:Text>{$Body/soapenv:Fault/soapenv:Reason/soapenv:Text/text()}</soapenv:Text>
+			<soapenv:Text>Error de Aplicación</soapenv:Text>
 	}
 	</soapenv:Reason>
 	
 		<soapenv:Detail>
-			<osbfault>{ $Fault }</osbfault>
-			<payload>{ $Body }</payload>
+			<osbfault>Error de Aplicación</osbfault>
 		</soapenv:Detail>
 	</soapenv:Fault>
 };
