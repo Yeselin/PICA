@@ -6,6 +6,7 @@
     "creditCardType": "VISA",
     "creditCardNumber": "1234567878909028",
     "status": "ACTIVE",
+    "password": "asdfasdfasf",
     "address": {
         "country": "",
         "city": "",

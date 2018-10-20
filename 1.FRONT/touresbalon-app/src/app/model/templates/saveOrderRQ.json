@@ -1,13 +1,16 @@
 {
     "paymentInfo": {
-      "dueDate": "0622",
-      "cvc": "777",
-      "cardNumber": "4589765434423679",
-      "cardHolder": "Marco mariquita",
+      "creditCard": { 
+        "dueDate": "0622",
+        "cvc": "777",
+        "cardNumber": "4589765434423679",
+        "cardHolder": "Marco mariquita"        
+      },
       "invoiceAddress": "Avenida siempre viva, calle falsa 123"
     },
     "customerInfo":{
-      "id": "1234567890"
+      "documentType": "CC",
+      "document": "1234567890"
     },
     "products": [
       {
@@ -23,4 +26,4 @@
         "quantity": 1
       }
     ]
-  }
+}
