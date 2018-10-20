@@ -22,4 +22,11 @@ public class OrdersController {
 		return response;
 
 	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET, consumes="application/json", produces = "application/json")
+	public ResponseEntity<String> getOrders() {
+		ResponseEntity<String> response = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+		return response;
+
+	}
 }

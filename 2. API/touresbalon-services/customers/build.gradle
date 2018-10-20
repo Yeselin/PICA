@@ -17,6 +17,7 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'com.touresbalon'
 version = '0.0.1-SNAPSHOT'
+
 sourceCompatibility = 1.8
 
 repositories {
@@ -25,6 +26,8 @@ repositories {
 
 
 dependencies {
+	compile 'com.auth0:java-jwt:3.4.0'
 	implementation('org.springframework.boot:spring-boot-starter-web')
+	implementation('org.springframework.boot:spring-boot-starter-data-ldap')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }

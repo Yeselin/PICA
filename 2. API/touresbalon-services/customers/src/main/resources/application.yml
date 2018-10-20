@@ -3,3 +3,10 @@ server:
   port: ${SERVER_PORT:8083}
   servlet:
     contextPath: /customers
+    
+ldap:
+  url: ldap://localhost:10389
+  base: ou=customers,o=touresbalon
+  user: cn=Administrator,o=touresbalon
+  password: ingeniero3118
+  dn_principal: cn=%s,ou=customers,o=touresbalon
