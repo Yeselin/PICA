@@ -71,24 +71,24 @@ public class CustomersController {
 				}
 			} else if (null != bodyRQ.get("grant_type")
 					&& bodyRQ.get("grant_type").toString().equalsIgnoreCase(Constant.GRANT_TYPE_REFRESH)) {
-				
+
 				try {
-					Map<String,String> payload = tokenUtil.verifyToken(bodyRQ.get("refresh_token"), secret, false);
-					
+					Map<String, String> payload = tokenUtil.verifyToken(bodyRQ.get("refresh_token"), secret, false);
+
 					String accessToken = tokenUtil.signToken(payload.get("customerId"), accessTokenTime,
 							Constant.SCOPE_ACCESS_TOKEN, secret);
-					
+
 					bodyRS.put("access_token", accessToken);
 					bodyRS.put("token_type", "Bearer");
 					bodyRS.put("expires_in", accessTokenTime.toString());
 					bodyRS.put("refresh_token", bodyRQ.get("refresh_token"));
-	
+
 					response = new ResponseEntity<>(bodyRS, HttpStatus.OK);
-				}catch(JWTVerificationException e) {
+				} catch (JWTVerificationException e) {
 					bodyRS.put("errorCode", Constant.ERROR_INVALID_REFRESH_TOKEN);
 					response = new ResponseEntity<>(bodyRS, HttpStatus.BAD_REQUEST);
 				}
-				
+
 			} else {
 				bodyRS.put("errorCode", Constant.ERROR_UNSUPPORTED_GRANT_TYPE);
 				response = new ResponseEntity<>(bodyRS, HttpStatus.BAD_REQUEST);
@@ -114,12 +114,16 @@ public class CustomersController {
 	}
 
 	@RequestMapping(value = "/user", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, String>> createUser(@RequestBody HashMap<String, String> bodyRQ) {
+	public ResponseEntity<Map<String, String>> createUser(@RequestBody HashMap<String, Object> bodyRQ) {
 		ResponseEntity<Map<String, String>> response = null;
 		Map<String, String> bodyRS = new HashMap<>();
 		try {
-			ldapService.addCustomer(String.format("%s-%s", bodyRQ.get("documentType"), bodyRQ.get("document")),
-					bodyRQ.get("fullName"), bodyRQ.get("email"), bodyRQ.get("password"));
+			ldapService.addCustomer(
+					String.format("%s-%s", bodyRQ.get("documentType").toString(), bodyRQ.get("document").toString()),
+					String.format("%s %s", bodyRQ.get("firstName").toString(), bodyRQ.get("lastName").toString()),
+					bodyRQ.get("email").toString(), bodyRQ.get("password").toString());
+
+			// Hay que llamar al OSB
 
 			bodyRS.put("message", "success");
 			response = new ResponseEntity<>(bodyRS, HttpStatus.OK);

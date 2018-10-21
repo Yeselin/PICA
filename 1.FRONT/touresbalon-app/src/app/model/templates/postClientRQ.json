@@ -1,0 +1,23 @@
+{
+  "documentType": "CC",
+  "document": "8347918384",
+  "firstName": "Gral. Gerardo",
+  "lastName": "Santander",
+  "phoneNumber": "+573001112233",
+  "email": "gerardo.santander@gmail.com",
+  "password": "asdfasdfasf",
+  "creditCard": {
+    "number": "4589765434423679",
+    "cvc": "777",
+    "dueDate": "0622",
+    "cardHolder": "Gerardo Santander"
+  },
+  "address": {
+    "country": "Chibchombia",
+    "city": "Bogotá D.C",
+    "state": "Bogotá D.C",
+    "street": "Calle falsa",
+    "zip": "0000",
+    "addressType": ""
+  }
+}

@@ -87,7 +87,7 @@ public class TokenUtil {
 			byte[] bytes = Base64.getDecoder().decode(jwt.getPayload());
 			return new ObjectMapper().readValue(bytes, HashMap.class);
 		} catch (JWTVerificationException e) {
-			logger.error("Verify token failed", e);
+			logger.error("Verify token failed ", e.getMessage());
 			throw e;
 		}catch(Exception e) {
 			logger.error("Verify token failed", e);
