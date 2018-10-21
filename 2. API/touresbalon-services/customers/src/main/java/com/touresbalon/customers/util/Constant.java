@@ -6,6 +6,7 @@ public class Constant {
 	public static final String SCOPE_REFRESH_TOKEN = "refresh";
 	
 	public static final String JWT_AUDIENCE = "customers";
+	public static final String JTW_TOKEN_TYPE = "bearer";
 	
 	public static final String GRANT_TYPE_PASSWORD = "password";
 	public static final String GRANT_TYPE_REFRESH = "refresh_token";
@@ -17,5 +18,8 @@ public class Constant {
 	
 	public static final String ERROR_INVALID_REFRESH_TOKEN = "invalid_refresh_token";
 	public static final String ERROR_INVALID_ACCESS_TOKEN = "invalid_access_token";
+	
+	public static final String MESSAGE_SUCCESS = "success";
+	
 	
 }
