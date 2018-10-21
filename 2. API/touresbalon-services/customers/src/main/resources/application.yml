@@ -14,3 +14,4 @@ ldap:
 jwt:
   access_expires_in: 300
   refresh_expires_in: 600
+  secret: ${JTW_SECRET:secret}

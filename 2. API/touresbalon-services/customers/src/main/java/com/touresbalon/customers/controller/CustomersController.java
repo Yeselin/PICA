@@ -2,7 +2,6 @@ package com.touresbalon.customers.controller;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.touresbalon.customers.components.LDAPServices;
+import com.touresbalon.customers.util.Constant;
 import com.touresbalon.customers.util.TokenUtil;
 
 @RestController
@@ -29,9 +30,15 @@ public class CustomersController {
 
 	@Autowired
 	private LDAPServices ldapService;
-	
+
 	@Value("${jwt.access_expires_in}")
-	private Long expiryInSeconds;
+	private Long accessTokenTime;
+
+	@Value("${jwt.refresh_expires_in}")
+	private Long refreshTokenTime;
+
+	@Value("${jwt.secret}")
+	private String secret;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = "application/json")
 	public ResponseEntity<Map<String, Object>> login(@RequestParam Map<String, String> bodyRQ) {
@@ -39,18 +46,57 @@ public class CustomersController {
 		Map<String, Object> bodyRS = new HashMap<>();
 		TokenUtil tokenUtil = new TokenUtil();
 		try {
-			Map<String, String> loginRS = ldapService.login(bodyRQ.get("username").toString(),
-					bodyRQ.get("password").toString());
 
-			bodyRS.put("access_token", tokenUtil.signToken(loginRS.get("customerId"), expiryInSeconds));
-			bodyRS.put("token_type", "Bearer");
-			bodyRS.put("expires_in", expiryInSeconds.toString());
-			bodyRS.put("refresh_token", "");
-			
-			response = new ResponseEntity<>(bodyRS, HttpStatus.OK);
+			if (null != bodyRQ.get("grant_type")
+					&& bodyRQ.get("grant_type").toString().equalsIgnoreCase(Constant.GRANT_TYPE_PASSWORD)) {
+
+				if (null != bodyRQ.get("username") && null != bodyRQ.get("password")) {
+					Map<String, String> loginRS = ldapService.login(bodyRQ.get("username").toString(),
+							bodyRQ.get("password").toString());
+
+					String accessToken = tokenUtil.signToken(loginRS.get("customerId"), accessTokenTime,
+							Constant.SCOPE_ACCESS_TOKEN, secret);
+					String refreshToken = tokenUtil.signToken(loginRS.get("customerId"), refreshTokenTime,
+							Constant.SCOPE_REFRESH_TOKEN, secret);
+
+					bodyRS.put("access_token", accessToken);
+					bodyRS.put("token_type", "Bearer");
+					bodyRS.put("expires_in", accessTokenTime.toString());
+					bodyRS.put("refresh_token", refreshToken);
+
+					response = new ResponseEntity<>(bodyRS, HttpStatus.OK);
+				} else {
+					bodyRS.put("errorCode", Constant.ERROR_INVALID_REQUEST);
+					response = new ResponseEntity<>(bodyRS, HttpStatus.BAD_REQUEST);
+				}
+			} else if (null != bodyRQ.get("grant_type")
+					&& bodyRQ.get("grant_type").toString().equalsIgnoreCase(Constant.GRANT_TYPE_REFRESH)) {
+				
+				try {
+					Map<String,String> payload = tokenUtil.verifyToken(bodyRQ.get("refresh_token"), secret, false);
+					
+					String accessToken = tokenUtil.signToken(payload.get("customerId"), accessTokenTime,
+							Constant.SCOPE_ACCESS_TOKEN, secret);
+					
+					bodyRS.put("access_token", accessToken);
+					bodyRS.put("token_type", "Bearer");
+					bodyRS.put("expires_in", accessTokenTime.toString());
+					bodyRS.put("refresh_token", bodyRQ.get("refresh_token"));
+	
+					response = new ResponseEntity<>(bodyRS, HttpStatus.OK);
+				}catch(JWTVerificationException e) {
+					bodyRS.put("errorCode", Constant.ERROR_INVALID_REFRESH_TOKEN);
+					response = new ResponseEntity<>(bodyRS, HttpStatus.BAD_REQUEST);
+				}
+				
+			} else {
+				bodyRS.put("errorCode", Constant.ERROR_UNSUPPORTED_GRANT_TYPE);
+				response = new ResponseEntity<>(bodyRS, HttpStatus.BAD_REQUEST);
+			}
+
 		} catch (AuthenticationException e) {
 			logger.info("Usuario no encontrado");
-			bodyRS.put("errorCode", "Unauthorized");
+			bodyRS.put("errorCode", Constant.ERROR_UNAUTHORIZED_CLIENT);
 			response = new ResponseEntity<>(bodyRS, HttpStatus.UNAUTHORIZED);
 		} catch (Exception e) {
 			logger.error("Ocurrió un error interno al authenticar el usuario con ldap");
@@ -72,10 +118,12 @@ public class CustomersController {
 		ResponseEntity<Map<String, String>> response = null;
 		Map<String, String> bodyRS = new HashMap<>();
 		try {
-			ldapService.addCustomer(UUID.randomUUID().toString(), bodyRQ.get("fullName"), bodyRQ.get("email"),
-					bodyRQ.get("password"));
+			ldapService.addCustomer(String.format("%s-%s", bodyRQ.get("documentType"), bodyRQ.get("document")),
+					bodyRQ.get("fullName"), bodyRQ.get("email"), bodyRQ.get("password"));
+
 			bodyRS.put("message", "success");
 			response = new ResponseEntity<>(bodyRS, HttpStatus.OK);
+
 		} catch (NameAlreadyBoundException e) {
 			bodyRS.put("errorCode", "emailAlreadyExists");
 			bodyRS.put("message", "email already exists, try with other email");
