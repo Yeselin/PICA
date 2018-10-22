@@ -74,7 +74,23 @@ CREATE OR REPLACE PACKAGE ORDERTB.PK_ORDER Is
 						P_RESPONSE_ID                 OUT INTEGER,
                         P_RESPONSE_DESC               OUT VARCHAR2
 						);
-	
+
+    /* =============================================================================
+     Procedure : PR_READ_CUSTOMER
+     Proposito:  Consultar las ordenes por cliente
+     ----------- --------- ---------------------------------------------------------
+     Fecha       Iniciales Descripcion
+     ----------- --------- ---------------------------------------------------------
+     21-OCT-2018 GERARDO HERRERA     Creacion del procedimiento
+     ----------- --------- ---------------------------------------------------------
+    ============================================================================= */
+    PROCEDURE PR_READ_CUSTOMER(
+	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
+                        P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
+						P_XML_DET                     OUT CLOB,
+						P_RESPONSE_ID                 OUT INTEGER,
+                        P_RESPONSE_DESC               OUT VARCHAR2
+						);						
 	
     /* =============================================================================
      Procedure : PR_UPDATE
@@ -352,6 +368,72 @@ V_CONT NUMBER := 0;
    --Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '. ' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
    COMMIT;
 End PR_READ;
+
+
+PROCEDURE PR_READ_CUSTOMER(
+	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
+                        P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
+						P_XML_DET                     OUT CLOB,
+						P_RESPONSE_ID                 OUT INTEGER,
+                        P_RESPONSE_DESC               OUT VARCHAR2
+                  ) IS
+V_CONT NUMBER := 0;
+  begin
+   P_RESPONSE_ID:= -20001;
+   P_RESPONSE_DESC:= 'KO';
+   -------------------------------------------------------------
+   --OBTENIEDO INFORMACION DE LA ORDEN POR CLIENTE
+   -------------------------------------------------------------
+   BEGIN
+   
+   FOR CUR IN (
+		  SELECT
+		  A.ID,
+		  TO_CHAR(A.order_date,'YYYYMMDD') order_date,
+		  A.price,
+		  C.STATUS_NAME,
+		  A.COMMENTS,
+		  B.DOCUMENT_NAME CUSTOMER_DOCUMENT_TYPE_NAME,
+		  A.CUSTOMER_DOCUMENT_ID,
+		  TO_CHAR(A.UPDATE_DATE,'YYYYMMDD') update_date
+		  FROM ORDERTB.SALES_ORDER A
+		  INNER JOIN TOURESBALON.DOCUMENT_TYPE B ON (B.DOCUMENT_NAME = P_CUSTOMER_DOCUMENT_TYPE_NAME AND B.ID = A.CUSTOMER_DOCUMENT_TYPE_ID)
+		  INNER JOIN ORDERTB.ORDER_STATUS C ON (C.ID = A.STATUS_ID)
+		  WHERE A.CUSTOMER_DOCUMENT_ID = P_CUSTOMER_DOCUMENT_ID
+        ) LOOP
+		
+		
+		    p_xml_det := p_xml_det ||'<ORDER>' ||CHR(13);
+            p_xml_det := p_xml_det || '<ID>'                          || CUR.ID                          || '</ID>'||CHR(13);
+	        p_xml_det := p_xml_det || '<ORDER_DATE>'                  || CUR.ORDER_DATE                  || '</ORDER_DATE>'||CHR(13);
+	        p_xml_det := p_xml_det || '<PRICE>'                       || ROUND(CUR.PRICE, 2)             || '</PRICE>'||CHR(13);
+	        p_xml_det := p_xml_det || '<STATUS_NAME>'                 || CUR.STATUS_NAME                 || '</STATUS_NAME>'||CHR(13);
+	        p_xml_det := p_xml_det || '<COMMENTS>'                    || CUR.COMMENTS                    || '</COMMENTS>'||CHR(13);
+	        p_xml_det := p_xml_det || '<CUSTOMER_DOCUMENT_TYPE_NAME>' || CUR.CUSTOMER_DOCUMENT_TYPE_NAME || '</CUSTOMER_DOCUMENT_TYPE_NAME>'||CHR(13);
+	        p_xml_det := p_xml_det || '<CUSTOMER_DOCUMENT_ID>'        || CUR.CUSTOMER_DOCUMENT_ID        || '</CUSTOMER_DOCUMENT_ID>'||CHR(13);
+	        p_xml_det := p_xml_det || '<UPDATE_DATE>'                 || CUR.UPDATE_DATE                 || '</UPDATE_DATE>'||CHR(13);
+			p_xml_det := p_xml_det ||'</ORDER>' ||CHR(13);
+		
+		END LOOP;
+	  
+	  
+  exception When Others Then
+		Lv_Successfull           := 'N';
+		Lv_Comment_              := 'Error al consultar las ordenes del cliente '||P_CUSTOMER_DOCUMENT_TYPE_NAME||'-'||P_CUSTOMER_DOCUMENT_ID;
+		COMMIT;
+		P_RESPONSE_ID:= -20001;
+	    P_RESPONSE_DESC:= Lv_Comment_;
+		--raise_application_error(-20001, Lv_Comment_);
+		RAISE;
+  END;
+   Lv_Successfull := 'Y';
+   P_RESPONSE_ID:= 20100;
+   P_RESPONSE_DESC:= 'OK';
+   exception When Others Then
+   Lv_Successfull           := 'N';
+   --Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '. ' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
+   COMMIT;
+End PR_READ_CUSTOMER;
 	
 	
 	

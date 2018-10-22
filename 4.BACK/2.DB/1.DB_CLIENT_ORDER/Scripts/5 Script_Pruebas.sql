@@ -151,3 +151,26 @@ dbms_output.put_line(V_XML);
 END;
 /
 
+
+--CONSULTAR ORDENES POR CLIENTE
+SET SERVEROUTPUT ON;
+alter SESSION set NLS_DATE_FORMAT = 'DD-MM-YYYY HH24:MI:SS';
+DECLARE
+V_CUSTOMER_DOCUMENT_TYPE_NAME VARCHAR2(10 BYTE):= 'CE';
+V_CUSTOMER_DOCUMENT_ID VARCHAR2(50 BYTE):= '500123';
+V_XML            CLOB;
+V_RESPONSE_ID    INTEGER :=0;
+V_RESPONSE_DESC  VARCHAR2(4000 BYTE) := '';
+BEGIN
+ORDERTB.PK_ORDER.PR_READ_CUSTOMER(P_CUSTOMER_DOCUMENT_TYPE_NAME => V_CUSTOMER_DOCUMENT_TYPE_NAME,
+                                  P_CUSTOMER_DOCUMENT_ID        => V_CUSTOMER_DOCUMENT_ID,
+					              P_XML_DET                     => V_XML,
+				                  P_RESPONSE_ID                 => V_RESPONSE_ID,
+                                  P_RESPONSE_DESC               => V_RESPONSE_DESC);
+COMMIT;
+dbms_output.put_line(' P_RESPONSE_ID: '||V_RESPONSE_ID ||' P_RESPONSE_DESC: '||V_RESPONSE_DESC); 
+dbms_output.put_line(V_XML); 
+
+END;
+/
+
