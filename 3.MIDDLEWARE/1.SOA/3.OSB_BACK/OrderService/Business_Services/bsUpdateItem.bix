@@ -31,6 +31,36 @@
             <tran:retry-interval>30</tran:retry-interval>
             <tran:retry-application-errors>false</tran:retry-application-errors>
         </tran:outbound-properties>
-        <tran:provider-specific/>
+        <tran:provider-specific xsi:type="jca:JCAEndPointConfiguration" xmlns:jca="http://www.bea.com/wli/sb/transports/jca">
+            <jca:jca-file ref="OrderService/Resources/Item/db_UpdateItem_db"/>
+            <jca:adapter-name>Database Adapter</jca:adapter-name>
+            <jca:adapter-type>db</jca:adapter-type>
+            <jca:dispatch-policy>SBDefaultResponseWorkManager</jca:dispatch-policy>
+            <jca:always-use-wsdl>true</jca:always-use-wsdl>
+            <jca:connection-mode>managed</jca:connection-mode>
+            <jca:outbound-properties>
+                <jca:operation-properties>
+                    <jca:operation-name>db_UpdateItem</jca:operation-name>
+                    <jca:spec-properties>
+                        <jca:property>
+                            <jca:name>PackageName</jca:name>
+                            <jca:value>PK_ORDER</jca:value>
+                        </jca:property>
+                        <jca:property>
+                            <jca:name>SchemaName</jca:name>
+                            <jca:value>ORDERTB</jca:value>
+                        </jca:property>
+                        <jca:property>
+                            <jca:name>GetActiveUnitOfWork</jca:name>
+                            <jca:value>false</jca:value>
+                        </jca:property>
+                        <jca:property>
+                            <jca:name>ProcedureName</jca:name>
+                            <jca:value>PR_UPDATE_ITEM</jca:value>
+                        </jca:property>
+                    </jca:spec-properties>
+                </jca:operation-properties>
+            </jca:outbound-properties>
+        </tran:provider-specific>
     </con:endpointConfig>
 </con:businessServiceEntry>

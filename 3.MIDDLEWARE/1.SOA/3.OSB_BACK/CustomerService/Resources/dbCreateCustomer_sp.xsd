@@ -11,7 +11,6 @@
         <element name="P_LAST_NAME" type="string" db:index="1" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
         <element name="P_PHONE_NUMBER" type="string" db:index="1" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
         <element name="P_EMAIL" type="string" db:index="1" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
-        <element name="P_PASSWORD" type="string" db:index="1" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
         <element name="P_CUSTOMER_CATEGORY_NAME" type="string" db:index="1" db:type="VARCHAR2" minOccurs="0"
                  nillable="true"/>
         <element name="P_CREDITCARD_NAME" type="string" db:index="1" db:type="VARCHAR2" minOccurs="0" nillable="true"/>

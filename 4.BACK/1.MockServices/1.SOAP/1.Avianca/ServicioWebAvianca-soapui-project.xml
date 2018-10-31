@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="9e875844-d5f9-44ca-8ddb-72bca67ff272" activeEnvironment="Default" name="ServicioWebAvianca" resourceRoot="" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="fb71c401-8fba-4d45-b36b-5367cdd97f37" wsaVersion="NONE" name="ServicioWebAviancaSOAP" type="wsdl" bindingName="{http://avianca.com/ServicioWebAvianca}ServicioWebAviancaSOAP" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/Felipe/Documents/PICA/PICA_TouresBalon/3.BACK/1.MockServices/1.SOAP/1.Avianca/ServicioWebAvianca.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\Felipe\Documents\PICA\PICA_TouresBalon\3.BACK\1.MockServices\1.SOAP\1.Avianca\ServicioWebAvianca.wsdl"><con:part><con:url>file:\C:\Users\Felipe\Documents\PICA\PICA_TouresBalon\3.BACK\1.MockServices\1.SOAP\1.Avianca\ServicioWebAvianca.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="ServicioWebAvianca" targetNamespace="http://avianca.com/ServicioWebAvianca" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://avianca.com/ServicioWebAvianca" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<con:soapui-project id="9e875844-d5f9-44ca-8ddb-72bca67ff272" activeEnvironment="Default" name="ServicioWebAvianca" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="fb71c401-8fba-4d45-b36b-5367cdd97f37" wsaVersion="NONE" name="ServicioWebAviancaSOAP" type="wsdl" bindingName="{http://avianca.com/ServicioWebAvianca}ServicioWebAviancaSOAP" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/Felipe/Documents/PICA/PICA_TouresBalon/3.BACK/1.MockServices/1.SOAP/1.Avianca/ServicioWebAvianca.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\Felipe\Documents\PICA\PICA_TouresBalon\3.BACK\1.MockServices\1.SOAP\1.Avianca\ServicioWebAvianca.wsdl"><con:part><con:url>file:\C:\Users\Felipe\Documents\PICA\PICA_TouresBalon\3.BACK\1.MockServices\1.SOAP\1.Avianca\ServicioWebAvianca.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="ServicioWebAvianca" targetNamespace="http://avianca.com/ServicioWebAvianca" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://avianca.com/ServicioWebAvianca" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <wsdl:types>
     <xsd:schema xmlns:tns="http://avianca.com/ServicioWebAvianca">
       <xsd:import namespace="http://avianca.com/ServicioWebAvianca" schemaLocation="AviancaOperations.xsd"/>
@@ -147,7 +147,41 @@
          </ser:booking>\r
       </ser:createBookingRequest>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://avianca.com/ServicioWebcreateBooking"/></con:call></con:operation></con:interface><con:mockService id="e9e8f005-6a81-448f-947b-c4bb038196b0" port="9081" path="/ServicioWebAviancaSOAP" host="Felipe-PC" name="ServicioWebAviancaSOAP MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="cancelBooking" id="16d0955c-3a45-406a-b011-758103e6fa6b" interface="ServicioWebAviancaSOAP" operation="cancelBooking"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="7db3ac78-f012-4e82-a730-ce899a5e48d5" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://avianca.com/ServicioWebAvianca">
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://avianca.com/ServicioWebcreateBooking"/></con:call></con:operation></con:interface><con:testSuite id="3641b236-008d-4cec-a0d0-9ebaf6de1542" name="ServicioWebAviancaSOAP TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="913fa281-4fa5-4c99-87f5-d2e18bd61d5e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="cancelBooking TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="0530fd5b-c9a2-4f15-ae8c-1b7a61c61beb" name="cancelBooking"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ServicioWebAviancaSOAP</con:interface><con:operation>cancelBooking</con:operation><con:request name="cancelBooking" id="24de0f14-4834-4ffb-a1be-8d45b826c942"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://Felipe-PC:9081/ServicioWebAviancaSOAP</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://avianca.com/ServicioWebAvianca">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:cancelBookingRequest>\r
+         <ser:customer>\r
+            <ser:name>?</ser:name>\r
+            <ser:lastName>?</ser:lastName>\r
+            <ser:id>?</ser:id>\r
+            <ser:idType>?</ser:idType>\r
+         </ser:customer>\r
+         <ser:booking>\r
+            <ser:flightType>?</ser:flightType>\r
+            <ser:flightDate>?</ser:flightDate>\r
+            <ser:cabinClass>?</ser:cabinClass>\r
+         </ser:booking>\r
+      </ser:cancelBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://avianca.com/ServicioWebcancelBooking"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="afad8575-03c2-4f79-9abb-0bedaba0fa1e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="createBooking TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="384489cd-22a0-492b-a599-d2bf798805de" name="createBooking"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ServicioWebAviancaSOAP</con:interface><con:operation>createBooking</con:operation><con:request name="createBooking" id="e8357820-df44-461f-a9df-f6e65c0c7bd3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://54.237.217.234:9081/ServicioWebAviancaSOAP</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://avianca.com/ServicioWebAvianca">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:createBookingRequest>\r
+         <ser:customer>\r
+            <ser:name>?</ser:name>\r
+            <ser:lastName>?</ser:lastName>\r
+            <ser:id>?</ser:id>\r
+            <ser:idType>?</ser:idType>\r
+         </ser:customer>\r
+         <ser:booking>\r
+            <ser:flightType>?</ser:flightType>\r
+            <ser:flightDate>?</ser:flightDate>\r
+            <ser:cabinClass>?</ser:cabinClass>\r
+         </ser:booking>\r
+      </ser:createBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://avianca.com/ServicioWebcreateBooking" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:loadTest id="f00ce5ca-5a38-484a-b96b-88a99c3e2135" name="LoadTest 1"><con:settings><con:setting id="HttpSettings@close-connections">false</con:setting></con:settings><con:threadCount>5</con:threadCount><con:startDelay>0</con:startDelay><con:sampleInterval>250</con:sampleInterval><con:calculateTPSOnTimePassed>true</con:calculateTPSOnTimePassed><con:resetStatisticsOnThreadCountChange>true</con:resetStatisticsOnThreadCountChange><con:historyLimit>-1</con:historyLimit><con:testLimit>60</con:testLimit><con:limitType>TIME</con:limitType><con:loadStrategy><con:type>Simple</con:type></con:loadStrategy><con:assertion type="Step Status" name="Step Status"/><con:maxAssertionErrors>100</con:maxAssertionErrors><con:cancelExcessiveThreads>true</con:cancelExcessiveThreads><con:strategyInterval>500</con:strategyInterval></con:loadTest><con:properties/></con:testCase><con:properties/></con:testSuite><con:mockService id="e9e8f005-6a81-448f-947b-c4bb038196b0" port="9081" path="/ServicioWebAviancaSOAP" host="Felipe-PC" name="ServicioWebAviancaSOAP MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="cancelBooking" id="16d0955c-3a45-406a-b011-758103e6fa6b" interface="ServicioWebAviancaSOAP" operation="cancelBooking"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="7db3ac78-f012-4e82-a730-ce899a5e48d5" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://avianca.com/ServicioWebAvianca">
    <soapenv:Header/>
    <soapenv:Body>
       <ser:cancelBookingResponse>

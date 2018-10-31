@@ -5,10 +5,10 @@
             <con:inboundWss processWssHeader="true"/>
         </ser:security>
         <ser:binding type="SOAP" xsi:type="con:SoapBindingType" isSoap12="false" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
-            <con:wsdl ref="ESB_COMMONS/Resources/WSDL/CustomerService"/>
+            <con:wsdl ref="ESB_COMMONS/Resources/WSDL/OrderService"/>
             <con:binding>
-                <con:name>CustomerServiceSOAP</con:name>
-                <con:namespace>http://touresBalon.com/schema/CustomerService</con:namespace>
+                <con:name>OrderServiceSOAP</con:name>
+                <con:namespace>http://touresBalon.com/schema/OrderService</con:namespace>
             </con:binding>
             <con:selector type="SOAP body"/>
         </ser:binding>
@@ -16,7 +16,7 @@
         <ser:ws-policy>
             <ser:binding-mode>no-policies</ser:binding-mode>
         </ser:ws-policy>
-        <ser:invoke ref="CustomerService/Pipeline/CustomerServicesPipeline" xsi:type="con:PipelineRef" xmlns:con="http://www.bea.com/wli/sb/pipeline/config"/>
+        <ser:invoke ref="OrderService/Pipeline/OrderServicesPipeline" xsi:type="con1:PipelineRef" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config"/>
         <ser:xqConfiguration>
             <ser:snippetVersion>1.0</ser:snippetVersion>
         </ser:xqConfiguration>
@@ -25,7 +25,7 @@
         <tran:provider-id>http</tran:provider-id>
         <tran:inbound>true</tran:inbound>
         <tran:URI>
-            <env:value>/touresBalon/CustomerServices</env:value>
+            <env:value>/touresBalon/OrdersServices</env:value>
         </tran:URI>
         <tran:inbound-properties/>
         <tran:provider-specific xsi:type="http:HttpEndPointConfiguration" xmlns:http="http://www.bea.com/wli/sb/transports/http">
