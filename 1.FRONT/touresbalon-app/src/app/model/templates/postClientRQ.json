@@ -5,13 +5,7 @@
   "lastName": "Santander",
   "phoneNumber": "+573001112233",
   "email": "gerardo.santander@gmail.com",
-  "password": "asdfasdfasf",
-  "creditCard": {
-    "number": "4589765434423679",
-    "cvc": "777",
-    "dueDate": "0622",
-    "cardHolder": "Gerardo Santander"
-  },
+  "password": "asdfasdfasf", //Solo LDAP
   "address": {
     "country": "Chibchombia",
     "city": "Bogotá D.C",

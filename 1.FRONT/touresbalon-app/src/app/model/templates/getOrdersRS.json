@@ -1,23 +1,27 @@
 {
-    "orderId": "23dfdF-owpWs",
-    "orderDate": "15-10-2018 17:23",
-    "totalPrice": 9000233,
-    "status": "VALIDACIÓN",
-    "comments": "En proceso de valiadción",
-    "products": [
+    "orders": [
         {
-            "productId": "252345234",
-            "productName": "Nombre del producto",
-            "price": 1232234,
-            "quantity": 2,
-            "image_ref": "./../assets/images/guantes.jpg"
-        },
-        {
-            "productId": "252345234",
-            "productName": "Nombre del producto",
-            "price": 1232234,
-            "quantity": 2,
-            "image_ref": "./../assets/images/guantes.jpg"
+            "orderId": "23dfdF-owpWs",
+            "orderDate": "15-10-2018 17:23",
+            "totalPrice": 9000233,
+            "status": "VALIDACIÓN",
+            "comments": "En proceso de valiadción",
+            "products": [
+                {
+                    "productId": "252345234",
+                    "productName": "Nombre del producto",
+                    "price": 1232234,
+                    "quantity": 2,
+                    "image_ref": "./../assets/images/guantes.jpg"
+                },
+                {
+                    "productId": "252345234",
+                    "productName": "Nombre del producto",
+                    "price": 1232234,
+                    "quantity": 2,
+                    "image_ref": "./../assets/images/guantes.jpg"
+                }
+            ]
         }
     ]
 }
