@@ -1,0 +1,209 @@
+swagger: "2.0"
+info:
+  description: "Toures balon web API"
+  version: "1.0.0"
+  title: "Toures balon service"
+  contact:
+    email: "mcaippe@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "b2c.touresbalon.com"
+basePath: "/api"
+
+schemes:
+- "https"
+- "http"
+paths:
+  /order:
+    post:
+      summary: "Add a new order "
+      description: ""
+      operationId: "createOrder"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Order request needed add to data base"
+        required: true
+        schema:
+          $ref: "#/definitions/OrderRQ"
+      responses:
+        201:
+          schema: 
+            $ref: "#/definitions/OrderRS"
+          description: "Order created"
+    get:
+      summary: "Get orders with status 'ACTIVE'"
+      description: "Get user's orders"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        schema:
+          $ref: "#/definitions/GetOrderRQ"
+      responses:
+        200:
+          schema:
+             $ref: "#/definitions/GetOrderRS"
+          description: OK
+    put:
+      summary: "Cancelar orden"
+      description: "Request to perform order"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        schema:
+          $ref: "#/definitions/CancelOrderRQ"
+      responses:
+        200:
+          schema:
+             $ref: "#/definitions/CancelOrderRS"
+          description: OK
+definitions:
+  PaymentInfo:
+    type: "object"
+    properties:
+      paymentCode:
+        type: "string"
+      status:
+        type: "string"
+  CustomerInfo:
+    type: "object"
+    properties:
+      documentType:
+        type: "string"
+      document:
+        type: "string"
+  Product:
+    type: "object"
+    required: 
+      - id
+      - quantity
+    properties:
+      id:
+        type: "string"
+      quantity:
+        type: "integer"
+        format: "int64"
+      productName:
+        type: "string"
+      price:
+        type: "integer"
+        format: "int64"
+      image_ref:
+        type: "string"
+      
+  OrderRQ:
+    type: "object"
+    properties:
+      paymentInfo:
+        $ref: "#/definitions/PaymentInfo"
+      customerInfo:
+        $ref: "#/definitions/CustomerInfo"
+      products:
+        items:
+          $ref: "#/definitions/Product"
+    example: 
+      paymentInfo:
+        paymentCode: "1983ioer-qow83"
+        status: "OK"
+      customerInfo:
+        documentType: "CC"
+        document: "1234567890"
+      products:
+        - id: "12345"
+          quantity: 1
+        - id: "23456"
+          quantity: 5
+        - id: "45678"
+          quantity: 3
+  OrderRS:
+    type: "object"
+    properties:
+      orderId: 
+        type: "string"
+      orderDate:
+        type: "string"
+      status:
+        type: "string"
+      comments:
+        type: "string"
+    example: 
+      orderId: "23dfdF"
+      orderDate: "15-10-2018T17:23:00"
+      status: "VALIDACIÓN"
+      comments: "En proceso de validación"
+  GetOrderRQ:
+    type: "object"
+    properties:
+      documentType:
+        type: "string"
+      document:
+        type: "string"
+  GetOrderRS:
+    type: "object"
+    properties:
+      orderId:
+        type: "string"
+      orderDate:
+        type: "string"
+      totalPrice:
+        type: "integer"
+        format: "int64"
+      status:
+        type: "string"
+      comments:
+        type: "string"
+      products:
+        items:
+          $ref: "#/definitions/Product"
+    example: 
+      orderId: "23dfdF"
+      orderDate: "15-10-2018T17:23:00"
+      totalPrice: 2400000
+      status: "En proceso de validación"
+      comments: ""
+      products:
+        - id: "12345"
+          productName: "Futbol y chicas malas"
+          quantity: 1
+          price: 1200000
+          image_ref: "./../assets/images/badgirls.jpg"
+        - id: "35478"
+          productName: "Chicas malas primero, despues futbol"
+          quantity: 1
+          price: 1200000
+          image_ref: "./../assets/images/badgirls.jpg"
+  CancelOrderRQ:
+    type: "object"
+    properties:
+      orderId:
+        type: "string"
+      customerInfo:
+        $ref: '#/definitions/CustomerInfo'
+    example: 
+      orderId: "1324123"
+      customerInfo:
+        documentType: "CC"
+        document: "1234567890"
+  CancelOrderRS:
+    type: "object"
+    properties:
+      orderId:
+        type: "string"
+      satus:
+        type: "string"
+    example: 
+      orderId: "1324123"
+      status: "CANCELADA"
