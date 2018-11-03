@@ -1,0 +1,90 @@
+swagger: "2.0"
+info:
+  description: "Toures balon web API"
+  version: "1.0.0"
+  title: "Toures balon service"
+  contact:
+    email: "mcaippe@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "b2c.touresbalon.com"
+basePath: "/api"
+
+schemes:
+- "https"
+- "http"
+paths:
+  /customer:
+    post:
+      summary: "Add a new customer"
+      description: ""
+      operationId: "createCustomer"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Customers information"
+        required: true
+        schema:
+          $ref: "#/definitions/CustomerRQ"
+      responses:
+        201:
+          description: "Customer created"
+    put:
+      summary: "Update a exists customer"
+      description: ""
+      operationId: "updateCustomer"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Customers information"
+        required: true
+        schema:
+          $ref: "#/definitions/CustomerRQ"
+      responses:
+        201:
+          description: "Customer updated"
+  
+
+    
+definitions:
+  Address:
+    type: "object"
+    properties:
+      country: 
+        type: "string"
+      city: 
+        type: "string"
+      state: 
+        type: "string"
+      street: 
+        type: "string"
+      zip: 
+        type: "string"
+      addressType: 
+        type: "string"
+  CustomerRQ:
+    type: "object"
+    properties:
+      documentType:
+        type: "string"
+      document:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      phoneNumber:
+        type: "string"
+      email:
+        type: "string"
+      address:
+        $ref: "#/definitions/Address"

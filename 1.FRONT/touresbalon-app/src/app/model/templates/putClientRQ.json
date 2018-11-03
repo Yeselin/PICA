@@ -5,12 +5,6 @@
   "lastName": "Mariquita",
   "phoneNumber": "+573001112233",
   "email": "marco.mariquita@gmail.com",
-  "creditCard": {
-    "number": "4589765434423679",
-    "cvc": "777",
-    "dueDate": "0622",
-    "cardHolder": "Marco mariquita"
-  },
   "updatePassword": {
     "olPassword": "asdf",
     "newPassword": "234234"
