@@ -39,7 +39,7 @@ public class TokenUtil {
 			LocalDateTime dateTime = LocalDateTime.now().plusSeconds(expireInSeconds);
 			Date dateExpire = Date.from(dateTime.atZone(ZoneId.systemDefault()).toInstant());
 
-			Algorithm algorithm = Algorithm.HMAC256(secret);
+			Algorithm algorithm = Algorithm.HMAC256(secret);			
 
 			if (Constant.SCOPE_ACCESS_TOKEN.equals(privateClaims.getScope())) {
 				return JWT.create().withIssuer("https://www.touresbalon.com").withAudience(Constant.JWT_AUDIENCE)
