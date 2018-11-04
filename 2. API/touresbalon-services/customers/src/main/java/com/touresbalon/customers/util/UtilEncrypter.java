@@ -1,56 +1,57 @@
 package com.touresbalon.customers.util;
 
-import java.math.BigInteger;
-import java.nio.charset.Charset;
-import java.security.KeyFactory;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.SecureRandom;
-import java.security.spec.RSAKeyGenParameterSpec;
 import java.util.Base64;
-import java.util.Base64.Encoder;
 
 import javax.crypto.Cipher;
-import javax.crypto.spec.DHParameterSpec;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 public class UtilEncrypter {
 
+
 	public static void main(String args[]) {
-		try {
-			int bitLength = 256; // 512 bits
-			SecureRandom rnd = new SecureRandom();
-			BigInteger p = BigInteger.probablePrime(bitLength, rnd);
-			BigInteger g = BigInteger.probablePrime(bitLength, rnd);
-
-			KeyFactory kfactory = KeyFactory.getInstance("RSA");
-			KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
-
-			//DHParameterSpec param = new DHParameterSpec(p, g);
-			RSAKeyGenParameterSpec param= new RSAKeyGenParameterSpec(8192, RSAKeyGenParameterSpec.F4);
-			kpg.initialize(param);
-			KeyPair kp = kpg.generateKeyPair();
+		try {					
+			String plainText = "adiviname123";
+			String encryptText = null;
 			
-			Cipher cipher = Cipher.getInstance("RSA");
-			cipher.init(Cipher.ENCRYPT_MODE, kp.getPublic());
-			byte[] encrypted = cipher.doFinal("ewogICJkb2N1bWVudFR5cGUiOiAiQ0MiLAogICJkb2N1bWVudCI6ICIyMzQ1MjM0NSIsCiAgImZpcnN0TmFtZSI6ICJNYXJjbyIsCiAgImxhc3ROYW1lIjogIkNhaXBlIiwKICAicGhvbmVOdW1iZXIiOiAiKzU3MzAwNDExMjUzMyIsCiAgImVtYWlsIjogIm1hY2FpcGVAZ21haWwuY29tIiwKICAicGFzc3dvcmQiOiAibWFyY28xMjMiLAogICJjcmVkaXRDYXJkIjogewogICAgIm51bWJlciI6ICI0NTg5NzY1NDM0NDIzNjc5IiwKICAgICJjdmMiOiAiNDQ0IiwKICAgICJkdWVEYXRlIjogIjM0NSIsCiAgICAiY2FyZEhvbGRlciI6ICJNYXJjbyBDYWlwZSIKICB9LAogICJhZGRyZXNzIjogewogICAgImNvdW50cnkiOiAiQ2hpYmNob21iaWEiLAogICAgImNpdHkiOiAiQm9nb3TDoSBELkMiLAogICAgInN0YXRlIjogIkJvZ290w6EgRC5DIiwKICAgICJzdHJlZXQiOiAiQ2FsbGUgZmFsc2EiLAogICAgInppcCI6ICIwMDAwIiwKICAgICJhZGRyZXNzVHlwZSI6ICIiCiAgfQp9".getBytes());		
+			byte[] decodedKey = Base64.getDecoder().decode("ETfl8BigpmxVie8wgB4fAo8zHCcHR3M2AJNux+6N8Rk=");
+			SecretKey secretKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");			
+			Cipher cipher = Cipher.getInstance("AES");
 			
+			cipher.init(Cipher.ENCRYPT_MODE, secretKey);			
+			byte[] encripted = cipher.doFinal(plainText.getBytes());
+			byte[] encodedText = Base64.getEncoder().encode(encripted);
+			encryptText = new String(encodedText);
+			System.out.println("Cifrando ==> " + plainText);
+			System.out.println(encryptText);
 			
-			cipher.init(Cipher.DECRYPT_MODE, kp.getPrivate());
-			byte[] decrypted = cipher.doFinal(encrypted);		
-			
-			
-			System.out.println("publica: " + kp.getPublic());
-			System.out.println();
-			System.out.println();
-			System.out.println("privada: " + kp.getPrivate());
-			System.out.println();
-			
-			System.out.println(encrypted);
-			System.out.println(" --------------------------------------- ");
+			System.out.println("");
+			System.out.println("Descrifrando " + encryptText);
+			cipher.init(Cipher.DECRYPT_MODE, secretKey);
+			byte[] decotedText = Base64.getDecoder().decode(encryptText);			
+			byte[] decrypted = cipher.doFinal(decotedText);
 			System.out.println(new String(decrypted));
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static String encrypt(String plainText) {
+		try {
+
+		} catch (Exception e) {
+
+		}
+		return "";
+	}
+
+	public static String decrypt(String encryptText) {
+		try {
+
+		} catch (Exception e) {
+
+		}
+		return "";
 	}
 }

@@ -21,18 +21,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.touresbalon.customers.components.EncryptComponent;
 import com.touresbalon.customers.components.LDAPServices;
+import com.touresbalon.customers.exception.CrypterException;
 import com.touresbalon.customers.model.PrivateClaims;
 import com.touresbalon.customers.util.Constant;
 import com.touresbalon.customers.util.TokenUtil;
+import com.touresbalon.customers.util.Util;
 
 @RestController
+@RequestMapping(value = "/customers")
 public class CustomersController {
 
 	public final Logger logger = LoggerFactory.getLogger(CustomersController.class);
 
 	@Autowired
 	private LDAPServices ldapService;
+
+	@Autowired
+	private EncryptComponent encryptComponent;
 
 	@Value("${jwt.access_expires_in}")
 	private Long accessTokenTime;
@@ -53,8 +60,10 @@ public class CustomersController {
 					&& bodyRQ.get("grant_type").toString().equalsIgnoreCase(Constant.GRANT_TYPE_PASSWORD)) {
 
 				if (null != bodyRQ.get("username") && null != bodyRQ.get("password")) {
-					Map<String, String> loginRS = ldapService.login(bodyRQ.get("username").toString(),
-							bodyRQ.get("password").toString());
+
+					String password = encryptComponent.decrypt(bodyRQ.get("password").toString());
+					
+					Map<String, String> loginRS = ldapService.login(bodyRQ.get("username").toString(), password);
 
 					PrivateClaims privateClaims = new PrivateClaims(loginRS.get("customerId"), loginRS.get("fullName"),
 							loginRS.get("email"), Constant.SCOPE_ACCESS_TOKEN);
@@ -102,7 +111,11 @@ public class CustomersController {
 				response = new ResponseEntity<>(bodyRS, HttpStatus.BAD_REQUEST);
 			}
 
-		} catch (AuthenticationException e) {
+		} catch(CrypterException e) {
+			logger.error(e.getMessage());
+			bodyRS.put("errorCode", Constant.ERROR_UNAUTHORIZED_CLIENT);
+			response = new ResponseEntity<>(bodyRS, HttpStatus.UNAUTHORIZED);
+		}catch (AuthenticationException e) {
 			logger.info("Usuario no encontrado");
 			bodyRS.put("errorCode", Constant.ERROR_UNAUTHORIZED_CLIENT);
 			response = new ResponseEntity<>(bodyRS, HttpStatus.UNAUTHORIZED);
@@ -115,11 +128,17 @@ public class CustomersController {
 		return response;
 	}
 
-	@RequestMapping(value = "/user", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, String>> createUser(@RequestBody HashMap<String, Object> bodyRQ) {
+	@RequestMapping(method = RequestMethod.POST, consumes = "text/plain", produces = "application/json")
+	public ResponseEntity<Map<String, String>> createUser(@RequestBody String encryptedText) {
 		ResponseEntity<Map<String, String>> response = null;
 		Map<String, String> bodyRS = new HashMap<>();
+		HashMap<String, Object> bodyRQ = null;
+		
 		try {
+			
+			String decryted = encryptComponent.decrypt(encryptedText);
+			bodyRQ = Util.bytesToHashMap(decryted.getBytes(), HashMap.class);
+			
 			ldapService.addCustomer(
 					String.format("%s-%s", bodyRQ.get("documentType").toString(), bodyRQ.get("document").toString()),
 					String.format("%s %s", bodyRQ.get("firstName").toString(), bodyRQ.get("lastName").toString()),
@@ -130,7 +149,11 @@ public class CustomersController {
 			bodyRS.put("message", "success");
 			response = new ResponseEntity<>(bodyRS, HttpStatus.CREATED);
 
-		} catch (NameAlreadyBoundException e) {
+		} catch(CrypterException e) {
+			logger.error(e.getMessage());
+			bodyRS.put("errorCode", Constant.ERROR_MESSAGE_BAD_REQUEST);
+			response = new ResponseEntity<>(bodyRS, HttpStatus.BAD_REQUEST);
+		}catch (NameAlreadyBoundException e) {
 			bodyRS.put("errorCode", "emailAlreadyExists");
 			bodyRS.put("message", "email already exists, try with other email");
 			response = new ResponseEntity<>(bodyRS, HttpStatus.BAD_REQUEST);
@@ -143,12 +166,13 @@ public class CustomersController {
 		return response;
 	}
 
-	@RequestMapping(value = "/user", method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, String>> UpdateUser(@RequestBody HashMap<String, Object> bodyRQ,
+	@RequestMapping(method = RequestMethod.PUT, consumes = "text/plain", produces = "application/json")
+	public ResponseEntity<Map<String, String>> UpdateUser(@RequestBody String encryptedText,
 			@RequestHeader("Authorization") String authorization) {
 
 		ResponseEntity<Map<String, String>> response = null;
 		Map<String, String> bodyRS = new HashMap<>();
+		HashMap<String, Object> bodyRQ = null;
 
 		try {
 
@@ -161,6 +185,9 @@ public class CustomersController {
 				if (token.length == 2) {
 					tokenUtil().verifyToken(token[1], secret, true);
 
+					String decryted = encryptComponent.decrypt(encryptedText);
+					bodyRQ = Util.bytesToHashMap(decryted.getBytes(), HashMap.class);
+					
 					@SuppressWarnings("unchecked")
 					Map<String, Object> updatePassword = (HashMap<String, Object>) bodyRQ.get("updatePassword");
 

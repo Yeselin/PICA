@@ -1,13 +1,18 @@
-import { Address } from "./Address";
 
-export interface Customer{
-    "firstName": string,
-    "lastName": string,
-    "phoneNumer": string,
-    "email": string,
-    "password": string,
-    "creditCardType": string,
-    "creditCardNumer": string,
-    "status": string,
-    "address": Address
+export interface Customer {
+    documentType: string,
+    document: string,
+    firstName: string,
+    lastName: string,
+    phoneNumber: string,
+    email: string,
+    password: string,
+    address: {
+        country: string,
+        city: string,
+        state: string,
+        street: string,
+        zip: string,
+        addressType: string
+    }
 }
