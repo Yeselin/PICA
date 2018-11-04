@@ -49,7 +49,7 @@ services:
     depends_on:
       - elasticsearch
     environment:
-      - DB_HOST=192.168.43.155
+      - DB_HOST=25.68.181.21
       - DB_PORT=1433
       - DB_NAME=DB_PRODUCT
       - DB_USER=sa
