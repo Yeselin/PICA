@@ -2,7 +2,7 @@
 server:
   port: ${SERVER_PORT:8083}
   servlet:
-    contextPath: /customers
+    contextPath: /api
     
 ldap:
   url: ldap://localhost:10389
@@ -17,5 +17,4 @@ jwt:
   secret: ${JTW_SECRET:secret}
   
 encrypt:
-  publicKey: 2
-  privateKey: 1
+  publicKey: ETfl8BigpmxVie8wgB4fAo8zHCcHR3M2AJNux+6N8Rk=

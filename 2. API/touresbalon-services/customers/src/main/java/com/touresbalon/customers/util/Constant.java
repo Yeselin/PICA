@@ -19,6 +19,8 @@ public class Constant {
 	public static final String ERROR_INVALID_REFRESH_TOKEN = "invalid_refresh_token";
 	public static final String ERROR_INVALID_ACCESS_TOKEN = "invalid_access_token";
 	
+	public static final String ERROR_MESSAGE_BAD_REQUEST = "Verifique que la petición esté bien formada";
+	
 	public static final String MESSAGE_SUCCESS = "success";
 	
 	
