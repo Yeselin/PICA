@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   
-  login() {
+  onSubmit() {
     this.loginRQ.password = this.crypterService.encryptText(this.loginRQ.password);
     this.customerService.login$(this.loginRQ).subscribe((response) => {
       this.loginRS = response;
