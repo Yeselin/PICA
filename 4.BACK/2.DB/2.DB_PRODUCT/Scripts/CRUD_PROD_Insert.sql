@@ -1,21 +1,23 @@
 DROP PROCEDURE PRODUCT_INSERT;
 GO
 CREATE PROCEDURE PRODUCT_INSERT
-    @name			varchar , 
-    @spectacle_date varchar , 
-    @arrival_date	varchar , 
-    @departure_date varchar , 
+    @id     varchar ,
+    @name   varchar (50) , 
+    @spectacle_date varchar (20) , 
+    @arrival_date varchar (20), 
+    @departure_date varchar (20), 
     @transport_type varchar , 
     @spectacle_type varchar , 
-    @lodging_type	varchar , 
-    @description	varchar , 
-    @code			varchar , 
-    @image_ref		varchar , 
-    @source_city	varchar , 
-    @target_city	varchar ,
-    @create_date	varchar ,
-    @update_date	varchar ,
-    @cost_total		varchar 
+    @lodging_type varchar , 
+    @description varchar (100) , 
+    @code varchar (20) , 
+    @image_ref varchar (500) , 
+    @source_city varchar (20), 
+    @target_city varchar (20),
+    @create_date varchar (20),
+    @update_date varchar (20),
+    @cost varchar,
+	@status varchar
 AS
 BEGIN TRY
 INSERT INTO product 
@@ -32,9 +34,10 @@ INSERT INTO product
 	@image_ref, 
 	@source_city,
 	@target_city, 
-	GETDATE(), --@create_date, 
+	@create_date, 
 	@update_date,
-	@cost_total	
+	300,
+	@status 
 )
 END TRY
 BEGIN CATCH  
@@ -44,3 +47,4 @@ BEGIN CATCH
   RAISERROR(@ErrorMessage, @ErrorSeverity, 1);  
 END CATCH;  
 GO
+

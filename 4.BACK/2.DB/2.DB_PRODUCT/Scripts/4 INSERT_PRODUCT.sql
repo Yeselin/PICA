@@ -17,7 +17,7 @@ C1.id source_city ,
 C2.id target_city ,
 GETDATE() create_date ,
 GETDATE() update_date,
-300 cost_total,
+300 cost,
 1 status
 FROM 
 CITY C1,
