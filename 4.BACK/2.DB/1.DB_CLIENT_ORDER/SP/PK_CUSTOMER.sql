@@ -47,10 +47,10 @@ CREATE OR REPLACE PACKAGE TOURESBALON.PK_CUSTOMER Is
                         P_LAST_NAME              IN VARCHAR2,
                         P_PHONE_NUMBER           IN VARCHAR2,
                         P_EMAIL                  IN VARCHAR2,
-                        P_PASSWORD               IN VARCHAR2,
+                        --P_PASSWORD               IN VARCHAR2,
 						P_CUSTOMER_CATEGORY_NAME IN VARCHAR2,
-						P_CREDITCARD_NAME        IN VARCHAR2,
-                        P_CREDITCARD_NUMBER      IN VARCHAR2,
+						--P_CREDITCARD_NAME        IN VARCHAR2,
+                        --P_CREDITCARD_NUMBER      IN VARCHAR2,
 						P_CUSTOMER_STATUS_NAME   IN VARCHAR2,
 						P_STREET                 IN VARCHAR2,
                         P_STATE                  IN VARCHAR2,
@@ -77,10 +77,10 @@ CREATE OR REPLACE PACKAGE TOURESBALON.PK_CUSTOMER Is
                         P_LAST_NAME              OUT VARCHAR2,
                         P_PHONE_NUMBER           OUT VARCHAR2,
                         P_EMAIL                  OUT VARCHAR2,
-                        P_PASSWORD               OUT VARCHAR2,
+                        --P_PASSWORD               OUT VARCHAR2,
 					    P_CUSTOMER_CATEGORY_NAME OUT VARCHAR2,
-					    P_CREDITCARD_NAME        OUT VARCHAR2,
-                        P_CREDITCARD_NUMBER      OUT VARCHAR2,
+					    --P_CREDITCARD_NAME        OUT VARCHAR2,
+                        --P_CREDITCARD_NUMBER      OUT VARCHAR2,
 					    P_CUSTOMER_STATUS_NAME   OUT VARCHAR2,
 					    P_CREATE_DATE            OUT VARCHAR2,
 					    P_UPDATE_DATE            OUT VARCHAR2,
@@ -111,10 +111,10 @@ CREATE OR REPLACE PACKAGE TOURESBALON.PK_CUSTOMER Is
                         P_LAST_NAME              IN VARCHAR2,
                         P_PHONE_NUMBER           IN VARCHAR2,
                         P_EMAIL                  IN VARCHAR2,
-                        P_PASSWORD               IN VARCHAR2,
+                        --P_PASSWORD               IN VARCHAR2,
 						P_CUSTOMER_CATEGORY_NAME IN VARCHAR2,
-						P_CREDITCARD_NAME        IN VARCHAR2,
-                        P_CREDITCARD_NUMBER      IN VARCHAR2,
+						--P_CREDITCARD_NAME        IN VARCHAR2,
+                        --P_CREDITCARD_NUMBER      IN VARCHAR2,
 						P_CUSTOMER_STATUS_NAME   IN VARCHAR2,
 						P_STREET                 IN VARCHAR2,
                         P_STATE                  IN VARCHAR2,
@@ -161,10 +161,10 @@ PROCEDURE PR_CREATE(    P_DOCUMENT_TYPE_NAME     IN VARCHAR2,
                         P_LAST_NAME              IN VARCHAR2,
                         P_PHONE_NUMBER           IN VARCHAR2,
                         P_EMAIL                  IN VARCHAR2,
-                        P_PASSWORD               IN VARCHAR2,
+                        --P_PASSWORD               IN VARCHAR2,
 						P_CUSTOMER_CATEGORY_NAME IN VARCHAR2,
-						P_CREDITCARD_NAME        IN VARCHAR2,
-                        P_CREDITCARD_NUMBER      IN VARCHAR2,
+						--P_CREDITCARD_NAME        IN VARCHAR2,
+                        --P_CREDITCARD_NUMBER      IN VARCHAR2,
 						P_CUSTOMER_STATUS_NAME   IN VARCHAR2,
 						P_STREET                 IN VARCHAR2,
                         P_STATE                  IN VARCHAR2,
@@ -176,7 +176,7 @@ PROCEDURE PR_CREATE(    P_DOCUMENT_TYPE_NAME     IN VARCHAR2,
      ) IS
 V_DOCUMENT_TYPE_ID INTEGER :=0;
 V_CUSTOMER_CATEGORY_ID INTEGER :=0;
-V_CREDITCARD_TYPE_ID INTEGER :=0;
+--V_CREDITCARD_TYPE_ID INTEGER :=0;
 V_STATUS_ID INTEGER :=0;
 V_ADDRESS_ID INTEGER :=0;
 BEGIN
@@ -219,7 +219,7 @@ BEGIN
 	 -------------------------------------------------------------
 	 --OBTENIENDO EL ID DEL TIPO DE TARJETA DE CREDITO DEL CLIENTE
 	 -------------------------------------------------------------
-     BEGIN
+     /*BEGIN
 		 SELECT ID INTO V_CREDITCARD_TYPE_ID
 		 FROM TOURESBALON.CREDITCARD_TYPE
 		 WHERE CREDITCARD_NAME = UPPER(P_CREDITCARD_NAME);
@@ -231,7 +231,7 @@ BEGIN
 	    P_RESPONSE_DESC:= Lv_Comment_;
 		--raise_application_error(-20004, Lv_Comment_);
 		RAISE;
-	 END;
+	 END;*/
 	 
 	 ----------------------------------------------------
 	 --OBTENIENDO EL ID DEL ESTATUS DEL CLIENTE
@@ -301,10 +301,10 @@ BEGIN
 						               last_name,
 						               phone_number,
 						               email,
-						               password,
+						               --password,
 						               customer_category_id,
-						               creditcard_type_id,
-						               creditcard_number,
+						               --creditcard_type_id,
+						               --creditcard_number,
 						               status_id,
 						               create_date,
 						               update_date) 
@@ -314,10 +314,10 @@ BEGIN
 						   P_LAST_NAME,
 						   P_PHONE_NUMBER,
 						   LOWER(P_EMAIL),
-						   P_PASSWORD,
+						   --P_PASSWORD,
 						   V_CUSTOMER_CATEGORY_ID,
-						   V_CREDITCARD_TYPE_ID,
-						   P_CREDITCARD_NUMBER,
+						   --V_CREDITCARD_TYPE_ID,
+						   --P_CREDITCARD_NUMBER,
 						   CASE WHEN (V_STATUS_ID = 0 OR V_STATUS_ID IS NULL) THEN 1 ELSE V_STATUS_ID END,
 						   SYSDATE,
 						   SYSDATE);
@@ -375,10 +375,10 @@ PROCEDURE PR_READ(  P_DOCUMENT_TYPE_NAME     IN VARCHAR2,
                     P_LAST_NAME              OUT VARCHAR2,
                     P_PHONE_NUMBER           OUT VARCHAR2,
                     P_EMAIL                  OUT VARCHAR2,
-                    P_PASSWORD               OUT VARCHAR2,
+                    --P_PASSWORD               OUT VARCHAR2,
 					P_CUSTOMER_CATEGORY_NAME OUT VARCHAR2,
-					P_CREDITCARD_NAME        OUT VARCHAR2,
-                    P_CREDITCARD_NUMBER      OUT VARCHAR2,
+					--P_CREDITCARD_NAME        OUT VARCHAR2,
+                    --P_CREDITCARD_NUMBER      OUT VARCHAR2,
 					P_CUSTOMER_STATUS_NAME   OUT VARCHAR2,
 					P_CREATE_DATE            OUT VARCHAR2,
 					P_UPDATE_DATE            OUT VARCHAR2,
@@ -404,10 +404,10 @@ V_CONT NUMBER := 0;
                A.LAST_NAME,
                A.PHONE_NUMBER,
                A.EMAIL,
-               A.PASSWORD,
+               --A.PASSWORD,
                C.CATEGORY_NAME,
-               D.CREDITCARD_NAME,
-               A.CREDITCARD_NUMBER,
+               --D.CREDITCARD_NAME,
+               --A.CREDITCARD_NUMBER,
                E.STATUS_NAME,
                TO_CHAR(A.CREATE_DATE,'YYYYMMDD') CREATE_DATE,
                TO_CHAR(A.UPDATE_DATE,'YYYYMMDD') UPDATE_DATE,
@@ -422,10 +422,10 @@ V_CONT NUMBER := 0;
               P_LAST_NAME,
               P_PHONE_NUMBER,
               P_EMAIL,
-              P_PASSWORD,
+              --P_PASSWORD,
               P_CUSTOMER_CATEGORY_NAME,
-              P_CREDITCARD_NAME,
-              P_CREDITCARD_NUMBER,
+              --P_CREDITCARD_NAME,
+              --P_CREDITCARD_NUMBER,
               P_CUSTOMER_STATUS_NAME,
 			  P_CREATE_DATE,
 			  P_UPDATE_DATE,
@@ -439,7 +439,7 @@ V_CONT NUMBER := 0;
 		 FROM TOURESBALON.CUSTOMER A
 		 INNER JOIN TOURESBALON.DOCUMENT_TYPE B     ON (B.ID = A.DOCUMENT_TYPE_ID AND B.DOCUMENT_NAME = UPPER(P_DOCUMENT_TYPE_NAME))
 		 INNER JOIN TOURESBALON.CUSTOMER_CATEGORY C ON (C.ID = A.CUSTOMER_CATEGORY_ID)
-		 INNER JOIN TOURESBALON.CREDITCARD_TYPE D   ON (D.ID = A.CREDITCARD_TYPE_ID)
+		 --INNER JOIN TOURESBALON.CREDITCARD_TYPE D   ON (D.ID = A.CREDITCARD_TYPE_ID)
 		 INNER JOIN TOURESBALON.CUSTOMER_STATUS E   ON (E.ID = A.STATUS_ID)
 		 INNER JOIN TOURESBALON.CUSTOMER_ADDRESS F  ON (F.CUST_DOCUMENT_TYPE = A.DOCUMENT_TYPE_ID AND F.CUST_DOCUMENT_ID = A.DOCUMENT_ID)
 		 INNER JOIN TOURESBALON.ADDRESS G           ON (G.ID = F.ADDRESS_ID)
@@ -473,10 +473,10 @@ PROCEDURE PR_UPDATE(    P_DOCUMENT_TYPE_NAME     IN VARCHAR2,
                         P_LAST_NAME              IN VARCHAR2,
                         P_PHONE_NUMBER           IN VARCHAR2,
                         P_EMAIL                  IN VARCHAR2,
-                        P_PASSWORD               IN VARCHAR2,
+                        --P_PASSWORD               IN VARCHAR2,
 						P_CUSTOMER_CATEGORY_NAME IN VARCHAR2,
-						P_CREDITCARD_NAME        IN VARCHAR2,
-                        P_CREDITCARD_NUMBER      IN VARCHAR2,
+						--P_CREDITCARD_NAME        IN VARCHAR2,
+                        --P_CREDITCARD_NUMBER      IN VARCHAR2,
 						P_CUSTOMER_STATUS_NAME   IN VARCHAR2,
 						P_STREET                 IN VARCHAR2,
                         P_STATE                  IN VARCHAR2,
@@ -488,7 +488,7 @@ PROCEDURE PR_UPDATE(    P_DOCUMENT_TYPE_NAME     IN VARCHAR2,
 				  ) IS
 V_CONT NUMBER := 0;
 V_CUSTOMER_CATEGORY_ID INTEGER :=0;
-V_CREDITCARD_TYPE_ID INTEGER :=0;
+--V_CREDITCARD_TYPE_ID INTEGER :=0;
 V_STATUS_ID INTEGER :=0;
 BEGIN
      P_RESPONSE_ID:= -20001;
@@ -512,7 +512,7 @@ BEGIN
 	 -------------------------------------------------------------
 	 --OBTENIENDO EL ID DEL TIPO DE TARJETA DE CREDITO DEL CLIENTE
 	 -------------------------------------------------------------
-     BEGIN
+     /*BEGIN
 		 SELECT ID INTO V_CREDITCARD_TYPE_ID
 		 FROM TOURESBALON.CREDITCARD_TYPE
 		 WHERE CREDITCARD_NAME = UPPER(P_CREDITCARD_NAME);
@@ -524,7 +524,7 @@ BEGIN
 	    P_RESPONSE_DESC:= Lv_Comment_;
 		--raise_application_error(-20004, Lv_Comment_);
 		RAISE;
-	 END;
+	 END;*/
      -------------------------------------------------------------
      --OBTENIENDO EL ID DEL ESTATUS DEL CLIENTE
 	 -------------------------------------------------------------
@@ -554,10 +554,10 @@ BEGIN
 		 A.LAST_NAME = (CASE WHEN (P_LAST_NAME = '' OR P_LAST_NAME IS NULL) THEN A.LAST_NAME ELSE P_LAST_NAME END),
 		 A.PHONE_NUMBER = (CASE WHEN (P_PHONE_NUMBER = '' OR P_PHONE_NUMBER IS NULL) THEN A.PHONE_NUMBER ELSE P_PHONE_NUMBER END),
 		 A.EMAIL = (CASE WHEN (P_EMAIL = '' OR P_EMAIL IS NULL) THEN A.EMAIL ELSE LOWER(P_EMAIL) END),
-		 A.PASSWORD = (CASE WHEN (P_PASSWORD = '' OR P_PASSWORD IS NULL) THEN A.PASSWORD ELSE P_PASSWORD END),
+		 --A.PASSWORD = (CASE WHEN (P_PASSWORD = '' OR P_PASSWORD IS NULL) THEN A.PASSWORD ELSE P_PASSWORD END),
 		 A.CUSTOMER_CATEGORY_ID = (CASE WHEN (V_CUSTOMER_CATEGORY_ID = 0 OR V_CUSTOMER_CATEGORY_ID IS NULL) THEN A.CUSTOMER_CATEGORY_ID ELSE V_CUSTOMER_CATEGORY_ID END),
-		 A.CREDITCARD_TYPE_ID = (CASE WHEN (V_CREDITCARD_TYPE_ID = 0 OR V_CREDITCARD_TYPE_ID IS NULL) THEN A.CREDITCARD_TYPE_ID ELSE V_CREDITCARD_TYPE_ID END),
-		 A.CREDITCARD_NUMBER = (CASE WHEN (P_CREDITCARD_NUMBER = '' OR P_CREDITCARD_NUMBER IS NULL) THEN A.CREDITCARD_NUMBER ELSE P_CREDITCARD_NUMBER END),
+		 --A.CREDITCARD_TYPE_ID = (CASE WHEN (V_CREDITCARD_TYPE_ID = 0 OR V_CREDITCARD_TYPE_ID IS NULL) THEN A.CREDITCARD_TYPE_ID ELSE V_CREDITCARD_TYPE_ID END),
+		 --A.CREDITCARD_NUMBER = (CASE WHEN (P_CREDITCARD_NUMBER = '' OR P_CREDITCARD_NUMBER IS NULL) THEN A.CREDITCARD_NUMBER ELSE P_CREDITCARD_NUMBER END),
 		 A.STATUS_ID = (CASE WHEN (V_STATUS_ID = 0 OR V_STATUS_ID IS NULL) THEN A.STATUS_ID ELSE V_STATUS_ID END),
 		 A.UPDATE_DATE = SYSDATE
 		 WHERE A.DOCUMENT_ID = UPPER(P_DOCUMENT_ID)

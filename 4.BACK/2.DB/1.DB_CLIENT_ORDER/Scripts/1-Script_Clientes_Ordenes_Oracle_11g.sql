@@ -1,6 +1,6 @@
 --CREATE DATABASE DB_CLIENT_ORDER
---DROP TABLE ORDERTB.order_item_status;
 --DROP TABLE ORDERTB.order_item;
+--DROP TABLE ORDERTB.order_item_status;
 --DROP TABLE ORDERTB.sales_order;
 --DROP TABLE ORDERTB.order_status;
 --DROP SEQUENCE ORDERTB.SEQ_SALES_ORDER;
@@ -18,6 +18,7 @@
 ---------------------------------
 --TOURESBALON
 ---------------------------------
+/*
 CREATE TABLE TOURESBALON.creditcard_type
 (
   id                     INTEGER DEFAULT -1 NOT NULL,
@@ -27,7 +28,7 @@ CREATE TABLE TOURESBALON.creditcard_type
   update_date            DATE DEFAULT SYSDATE,
   CONSTRAINT creditcard_type_pk PRIMARY KEY (id)
 );
-
+*/
 CREATE TABLE TOURESBALON.document_type
 (
   id                     INTEGER DEFAULT -1 NOT NULL,
@@ -76,17 +77,17 @@ CREATE TABLE TOURESBALON.customer (
     last_name            VARCHAR2(50 BYTE),
     phone_number         VARCHAR2(20 BYTE),
     email                VARCHAR2(50 BYTE),
-    password             VARCHAR2(50 BYTE),
+    --password             VARCHAR2(50 BYTE),
 	customer_category_id INTEGER,
-    creditcard_type_id   INTEGER,
-    creditcard_number    VARCHAR2(20 BYTE),
+    --creditcard_type_id   INTEGER,
+    --creditcard_number    VARCHAR2(20 BYTE),
     status_id            INTEGER,
     create_date          DATE,
     update_date          DATE DEFAULT SYSDATE,
 	CONSTRAINT customer_pk PRIMARY KEY (document_type_id, document_id),
 	CONSTRAINT customer_document_type_fk  FOREIGN KEY (document_type_id)  REFERENCES TOURESBALON.document_type(id),
 	CONSTRAINT customer_category_fk  FOREIGN KEY (customer_category_id)  REFERENCES TOURESBALON.customer_category(id),
-	CONSTRAINT creditcard_type_fk  FOREIGN KEY (creditcard_type_id)  REFERENCES TOURESBALON.creditcard_type(id),
+	--CONSTRAINT creditcard_type_fk  FOREIGN KEY (creditcard_type_id)  REFERENCES TOURESBALON.creditcard_type(id),
 	CONSTRAINT customer_status_fk  FOREIGN KEY (status_id)  REFERENCES TOURESBALON.customer_status(id)
 );
 
@@ -136,7 +137,9 @@ CREATE TABLE ORDERTB.sales_order (
     customer_document_type_id   INTEGER NOT NULL,
     customer_document_id        VARCHAR2(20 BYTE) NOT NULL,
     update_date                 DATE,
-	CONSTRAINT sales_order_pk PRIMARY KEY ( id ),
+	payment_id                  VARCHAR2(50 BYTE),
+	payment_status              INTEGER,
+	CONSTRAINT sales_order_pk   PRIMARY KEY ( id ),
 	--CONSTRAINT customer_sales_fk FOREIGN KEY (customer_document_type_id,customer_document_id) REFERENCES TOURESBALON.customer(document_type_id,document_id),
 	CONSTRAINT order_status_fk  FOREIGN KEY (status_id)  REFERENCES ORDERTB.order_status(id)
 );
