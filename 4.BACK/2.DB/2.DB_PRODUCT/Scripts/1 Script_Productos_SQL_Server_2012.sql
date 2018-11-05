@@ -89,6 +89,12 @@ ALTER TABLE campana
 	ADD CONSTRAINT campana_product_fk FOREIGN KEY (product_id) REFERENCES product(id)
 GO
 
+CREATE TABLE PRODUCTO_TMP (
+    ID_IMAGE     bigint,
+    IMAGE_REF NVARCHAR (100)
+)
+GO
+
 CREATE TABLE product2 (
     id     bigint,
     name   nvarchar (50) , 
@@ -109,3 +115,5 @@ CREATE TABLE product2 (
 	status int
 )
 GO
+
+

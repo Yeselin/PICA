@@ -57,7 +57,7 @@ services:
       - "DB_STATEMENT=SELECT p.id, p.spectacle_date, p.arrival_date, p.departure_date, t.name as transport_name, t.cost as transport_cost, s.name as spectacle_name, s.cost as spectacle_cost, l.name as lodging_name,l.cost as lodging_cost, p.name, p.description, p.image_ref as image, co.name_city as source_city_name, co.country_name as source_country_name, co.cost as source_city_cost, cd.name_city as target_city_name, cd.country_name as target_country_name, cd.cost as target_city_cost FROM product p ,city co,city cd,spectacle s,transport T,lodging l WHERE p.target_city = cd.id and p.source_city = co.id and p.spectacle_type = s.id and P.transport_type = T.id and p.lodging_type = l.id and (p.create_date >= :sql_last_value or p.update_date >= :sql_last_value) ORDER BY p.id"
       - TRACKING_COLUMN=update_date
       - ES_INDEX=products
-      - "CRON_PATTERN=*/5 * * * *"
+      - "CRON_PATTERN=*/1 * * * *"
     networks:
       - esnet
 networks:
