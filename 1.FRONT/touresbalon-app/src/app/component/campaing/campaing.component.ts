@@ -3,6 +3,7 @@ import { ProductService } from './../../service/product.service';
 import { Product } from '../../model/Product';
 import { LocalStorageService } from '../../service/local-storage.service';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'comapings',
@@ -28,4 +29,7 @@ export class CampaingComponent implements OnInit {
   }
 
 
+  getImageRef(image_ref: string): string {
+    return environment.BASE_IMAGE  + image_ref;
+  }
 }

@@ -10,7 +10,7 @@
   <li class="collection-item avatar" *ngFor="let item of items">
       <div class="row">
         <div class="col s6">
-          <img src={{item.product.image_ref}} alt="" class="circle">
+          <img src={{getImageRef(item.product.image_ref)}} alt="" class="circle">
           <span class="title product-desc">{{item.product.name}}</span>
           <p>{{item.product.description}}</p>
         </div>
@@ -27,6 +27,6 @@
   </li>
 </ul>
 <div class="row">
-    <div class="col s10 text-right"><h5>Total: </h5></div>
-    <div class="col s2 text-right" style="padding-right: 32px;"><h5>$ 230.000</h5></div>
+    <div class="col s9 text-right"><h5>Total: </h5></div>
+    <div class="col s3 text-right" style="padding-right: 32px;"><h5>{{getTotal() | currency:'COP ':true:'1.0-0' }}</h5></div>
 </div>

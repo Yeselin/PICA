@@ -6,15 +6,17 @@ import { hostname } from "os";
 
 export const environment = {
   production: false,
-  API_PRODUCTS: 'http://127.0.0.1:8080/api/products',
-  API_ORDERS: 'http://127.0.0.1:8080/api/orders',
-  API_CUSTOMERS: 'http://127.0.0.1:8080/api/customers',
+  API_PRODUCTS: 'http://127.0.0.1:8081/api/products',
+  API_ORDERS: 'http://127.0.0.1:8082/api/orders',
+  API_CUSTOMERS: 'http://127.0.0.1:8083/api/customers',
 
   STORAGE_KEY_CAMPAINGS:'campaings',
   SHOPPING_CART:'shopping_cart',
 
   BASIC_AUTH : 'Basic dG91cmVzYmFsb246dG91cmVzYmFsb24xMjM=',
-  PUBLIC_KEY: 'ETfl8BigpmxVie8wgB4fAo8zHCcHR3M2AJNux+6N8Rk='
+  PUBLIC_KEY: 'ETfl8BigpmxVie8wgB4fAo8zHCcHR3M2AJNux+6N8Rk=',
+
+  BASE_IMAGE: 'http://127.0.0.1:8888/'
 };
 
 /*
