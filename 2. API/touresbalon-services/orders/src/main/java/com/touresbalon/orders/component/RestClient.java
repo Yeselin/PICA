@@ -1,21 +1,37 @@
-package com.touresbalon.orders.util;
+package com.touresbalon.orders.component;
+
+import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.touresbalon.orders.exception.RestClientExceptionOSB;
+
+@Service
 public class RestClient {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(RestClient.class);
 
+	@Value("${osb.readTimeout}")
+	private Integer readTimeout;
+	
+	@Value("${osb.connectTimeout}")
+	private Integer connectTimeout;
+	
+	
 	private RestTemplate restTemplate;
 
-	public RestClient() {
+	@PostConstruct
+	public void init() {
 		this.restTemplate = new RestTemplate();
 	}
 
@@ -43,11 +59,10 @@ public class RestClient {
 				return getBody(response);
 			}
 
-			throw new RuntimeException(
-					String.format("Método http %s no configurado", method));
+			throw new RuntimeException(String.format("Método http %s no configurado", method));
 
 		} catch (Exception e) {
-			throw new RuntimeException("Ocurrió un error ejecutar cliente REST", e);
+			throw new RestClientExceptionOSB("Ocurrió un problema de comunicación al llamar al OBS");
 		}
 	}
 

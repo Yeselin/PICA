@@ -62,7 +62,7 @@ public class CustomersController {
 				if (null != bodyRQ.get("username") && null != bodyRQ.get("password")) {
 
 					String password = encryptComponent.decrypt(bodyRQ.get("password").toString());
-					
+
 					Map<String, String> loginRS = ldapService.login(bodyRQ.get("username").toString(), password);
 
 					PrivateClaims privateClaims = new PrivateClaims(loginRS.get("customerId"), loginRS.get("fullName"),
@@ -111,11 +111,12 @@ public class CustomersController {
 				response = new ResponseEntity<>(bodyRS, HttpStatus.BAD_REQUEST);
 			}
 
-		} catch(CrypterException e) {
+		} catch (CrypterException e) {
 			logger.error(e.getMessage());
-			bodyRS.put("errorCode", Constant.ERROR_UNAUTHORIZED_CLIENT);
+			bodyRS.put("errorCode", Constant.ERROR_CODE_BAD_REQUEST);
+			bodyRS.put("message", Constant.ERROR_MESSAGE_BAD_REQUEST);
 			response = new ResponseEntity<>(bodyRS, HttpStatus.UNAUTHORIZED);
-		}catch (AuthenticationException e) {
+		} catch (AuthenticationException e) {
 			logger.info("Usuario no encontrado");
 			bodyRS.put("errorCode", Constant.ERROR_UNAUTHORIZED_CLIENT);
 			response = new ResponseEntity<>(bodyRS, HttpStatus.UNAUTHORIZED);
@@ -133,12 +134,12 @@ public class CustomersController {
 		ResponseEntity<Map<String, String>> response = null;
 		Map<String, String> bodyRS = new HashMap<>();
 		HashMap<String, Object> bodyRQ = null;
-		
+
 		try {
-			
+
 			String decryted = encryptComponent.decrypt(encryptedText);
 			bodyRQ = Util.bytesToHashMap(decryted.getBytes(), HashMap.class);
-			
+
 			ldapService.addCustomer(
 					String.format("%s-%s", bodyRQ.get("documentType").toString(), bodyRQ.get("document").toString()),
 					String.format("%s %s", bodyRQ.get("firstName").toString(), bodyRQ.get("lastName").toString()),
@@ -149,11 +150,12 @@ public class CustomersController {
 			bodyRS.put("message", "success");
 			response = new ResponseEntity<>(bodyRS, HttpStatus.CREATED);
 
-		} catch(CrypterException e) {
+		} catch (CrypterException e) {
 			logger.error(e.getMessage());
-			bodyRS.put("errorCode", Constant.ERROR_MESSAGE_BAD_REQUEST);
+			bodyRS.put("errorCode", Constant.ERROR_CODE_BAD_REQUEST);
+			bodyRS.put("message", Constant.ERROR_MESSAGE_BAD_REQUEST);
 			response = new ResponseEntity<>(bodyRS, HttpStatus.BAD_REQUEST);
-		}catch (NameAlreadyBoundException e) {
+		} catch (NameAlreadyBoundException e) {
 			bodyRS.put("errorCode", "emailAlreadyExists");
 			bodyRS.put("message", "email already exists, try with other email");
 			response = new ResponseEntity<>(bodyRS, HttpStatus.BAD_REQUEST);
@@ -168,7 +170,7 @@ public class CustomersController {
 
 	@RequestMapping(method = RequestMethod.PUT, consumes = "text/plain", produces = "application/json")
 	public ResponseEntity<Map<String, String>> UpdateUser(@RequestBody String encryptedText,
-			@RequestHeader("Authorization") String authorization) {
+			@RequestHeader(Constant.HEADER_AUTHORIZATION) String token) {
 
 		ResponseEntity<Map<String, String>> response = null;
 		Map<String, String> bodyRS = new HashMap<>();
@@ -177,40 +179,40 @@ public class CustomersController {
 		try {
 
 			// Si no esta presente el parámetro o NO comienza por bearer
-			if (null == authorization || !authorization.startsWith(Constant.JTW_TOKEN_TYPE)) {
-				bodyRS.put("errorCode", Constant.ERROR_INVALID_REQUEST);
-				response = new ResponseEntity<>(bodyRS, HttpStatus.BAD_REQUEST);
+			if (null == token || token.equals("")) {
+				bodyRS.put("errorCode", Constant.ERROR_UNAUTHORIZED_CLIENT);
+				response = new ResponseEntity<>(bodyRS, HttpStatus.UNAUTHORIZED);
 			} else {
-				String[] token = authorization.split(" ");
-				if (token.length == 2) {
-					tokenUtil().verifyToken(token[1], secret, true);
 
-					String decryted = encryptComponent.decrypt(encryptedText);
-					bodyRQ = Util.bytesToHashMap(decryted.getBytes(), HashMap.class);
-					
-					@SuppressWarnings("unchecked")
-					Map<String, Object> updatePassword = (HashMap<String, Object>) bodyRQ.get("updatePassword");
+				tokenUtil().verifyToken(token, secret, true);
 
-					if (null == updatePassword) {
-						ldapService.updateCustomer(String.format("%s %s", bodyRQ.get("firstName").toString(),
-								bodyRQ.get("lastName").toString()), bodyRQ.get("email").toString(), null, null);
-					} else {
-						ldapService.updateCustomer(
-								String.format("%s %s", bodyRQ.get("firstName").toString(),
-										bodyRQ.get("lastName").toString()),
-								bodyRQ.get("email").toString(), updatePassword.get("olPassword").toString(),
-								updatePassword.get("newPassword").toString());
-					}
+				String decryted = encryptComponent.decrypt(encryptedText);
+				bodyRQ = Util.bytesToHashMap(decryted.getBytes(), HashMap.class);
 
-					// LLAMAR AL OSB
-					bodyRS.put("message", Constant.MESSAGE_SUCCESS);
-					response = new ResponseEntity<>(bodyRS, HttpStatus.OK);
+				@SuppressWarnings("unchecked")
+				Map<String, Object> updatePassword = (HashMap<String, Object>) bodyRQ.get("updatePassword");
 
+				if (null == updatePassword) {
+					ldapService.updateCustomer(String.format("%s %s", bodyRQ.get("firstName").toString(),
+							bodyRQ.get("lastName").toString()), bodyRQ.get("email").toString(), null, null);
 				} else {
-					bodyRS.put("errorCode", Constant.ERROR_INVALID_REQUEST);
-					response = new ResponseEntity<>(bodyRS, HttpStatus.BAD_REQUEST);
+					ldapService.updateCustomer(
+							String.format("%s %s", bodyRQ.get("firstName").toString(),
+									bodyRQ.get("lastName").toString()),
+							bodyRQ.get("email").toString(), updatePassword.get("olPassword").toString(),
+							updatePassword.get("newPassword").toString());
 				}
+
+				// LLAMAR AL OSB
+				bodyRS.put("message", Constant.MESSAGE_SUCCESS);
+				response = new ResponseEntity<>(bodyRS, HttpStatus.OK);
+
 			}
+		} catch (CrypterException e) {
+			logger.error(e.getMessage());
+			bodyRS.put("errorCode", Constant.ERROR_CODE_BAD_REQUEST);
+			bodyRS.put("message", Constant.ERROR_MESSAGE_BAD_REQUEST);
+			response = new ResponseEntity<>(bodyRS, HttpStatus.BAD_REQUEST);
 		} catch (AuthenticationException e) {
 			logger.info("Credenciales inválidas");
 			bodyRS.put("errorCode", Constant.ERROR_UNAUTHORIZED_CLIENT);

@@ -1,6 +1,6 @@
 {
     "orderId": "23dfdF-owpWs",
-    "customerInfo": {
+    "customer": {
         "documentType": "CC",
         "document": "1234567890"
     }

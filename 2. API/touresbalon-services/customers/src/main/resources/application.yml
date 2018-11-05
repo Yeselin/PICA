@@ -12,8 +12,8 @@ ldap:
   dn_principal: cn=%s,ou=customers,o=touresbalon
   
 jwt:
-  access_expires_in: 300
-  refresh_expires_in: 600
+  access_expires_in: 1800
+  refresh_expires_in: 3600
   secret: ${JTW_SECRET:secret}
   
 encrypt:

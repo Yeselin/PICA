@@ -4,7 +4,14 @@ server:
   servlet:
     contextPath: /api
     
-obs:
-  endpoint: ${ENDPOINT_OSB:http://localhost:8080/customers}    
+osb:
+  endpointOrder: http://25.70.184.165:7003/OrderService/order
+  endpointCustomer: http://25.70.184.165:7003/OrderService/order 
+  readTimeout: 5000
+  connectTimeout: 2000
+  
 jwt: 
-  secret: ${JTW_SECRET:secret}    
+  secret: ${JTW_SECRET:secret}
+  
+encrypt:
+  publicKey: ETfl8BigpmxVie8wgB4fAo8zHCcHR3M2AJNux+6N8Rk=
