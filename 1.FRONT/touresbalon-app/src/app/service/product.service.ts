@@ -18,6 +18,7 @@ export class ProductService {
   getCampaigns$(): Observable<Product[]> {
     const headers = new HttpHeaders();
     headers.set("Accept", "application/json");
+    headers.set("Access-Control-Allow-Origin", "*");
     headers.set("Authorization", environment.BASIC_AUTH);
     return this.httpClient.get<Product[]>(environment.API_PRODUCTS + '/campaigns', { headers });
   }

@@ -13,18 +13,19 @@ import { LoginRQ, LoginRS } from './../../model/Login';
 export class LoginComponent implements OnInit {
 
   loginRS: LoginRS;
+  loginRQ: LoginRQ
 
-  constructor(@Inject(CustomerService) private customerService: CustomerService,
+  constructor(
+    @Inject(CustomerService) private customerService: CustomerService,
     @Inject(CrypterService) private crypterService: CrypterService,
-    private toastrService: ToastrService,
-    private loginRQ: LoginRQ) {
+    private toastrService: ToastrService) {
 
   }
 
   ngOnInit() {
   }
 
-  
+
   onSubmit() {
     this.loginRQ.password = this.crypterService.encryptText(this.loginRQ.password);
     this.customerService.login$(this.loginRQ).subscribe((response) => {
@@ -33,4 +34,5 @@ export class LoginComponent implements OnInit {
       this.toastrService.error('Parece que hay problemas', 'Ups!');
     });
   }
+
 }

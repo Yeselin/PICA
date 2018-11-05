@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../../model/Product';
 import { LocalStorageService } from '../../service/local-storage.service';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { LocalStorageService } from '../../service/local-storage.service';
 export class CardProductComponent implements OnInit {
 
   @Input('product')
-  public product : Product;
+  public product: Product;
 
   public quantity: number;
 
@@ -22,18 +23,22 @@ export class CardProductComponent implements OnInit {
     this.quantity = 1;
   }
 
-  onChangeQuantity(quantity: string){
+  onChangeQuantity(quantity: string) {
     this.quantity = parseInt(quantity);
   }
 
-  addProductToCart(){
+  addProductToCart() {
     let item = {
       product: this.product,
       quantity: this.quantity
     };
-    if(this.quantity > 0 ){ 
+    if (this.quantity > 0) {
       this.storage.putShoppingCart(item);
       this.toastrService.info('Agregado!', 'Mensaje');
     }
+  }
+
+  getImageRef(): string {
+    return environment.BASE_IMAGE + this.product.image_ref;
   }
 }
