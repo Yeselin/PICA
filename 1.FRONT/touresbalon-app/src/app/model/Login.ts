@@ -7,3 +7,9 @@ export interface LoginRS {
     errorCode ?: string,
     message ?: string
 }
+
+export interface LoginRQ{
+    grant_type: string,
+    username: string,
+    password: string
+}

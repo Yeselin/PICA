@@ -10,5 +10,5 @@ export interface Campaigns{
     "effective_date": string,
     "image_ref": string,
     "product_id": string
-    "is_actove": boolean
+    "is_active": boolean
 }

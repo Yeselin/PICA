@@ -1,9 +1,3 @@
-import { City } from "./City";
-import { Spectacle } from "./Spectacle";
-import { Lodging } from "./Lodging";
-import { Transport } from "./Transport";
-
-
 export interface Product{
     "id": number,
     "spectacle_date": Date,

@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { LoginRS } from '../model/LoginRS';
+import { LoginRS, LoginRQ } from '../model/Login';
 import { Observable } from 'rxjs';
 
 
@@ -17,7 +17,9 @@ export class CustomerService {
    * This method get campaings current campaigns
    */
   createCustomer$(customerInfo: string): Observable<any> {
-    const headers = new HttpHeaders().set("Content-Type", "text/plain");
+    const headers = new HttpHeaders();
+    headers.set("Content-Type", "text/plain");
+    headers.set("Authorization", environment.BASIC_AUTH);
     return this.httpClient.post<any>(environment.API_CUSTOMERS, customerInfo, { headers });
   }
 
@@ -29,7 +31,8 @@ export class CustomerService {
   updateCustomer$(customerInfo: string, accessToken: string): Observable<any> {
     const headers = new HttpHeaders();
     headers.set("Content-Type", "text/plain");
-    headers.set("Authorization", accessToken);
+    headers.set("Authorization", environment.BASIC_AUTH);
+    headers.set("x-api-key", accessToken);
     return this.httpClient.put<any>(environment.API_CUSTOMERS, customerInfo, { headers });
   }
 
@@ -37,11 +40,12 @@ export class CustomerService {
    * 
    * @param loginRQ 
    */
-  login$(loginRQ: string): Observable<LoginRS> {
+  login$(loginRQ: LoginRQ): Observable<LoginRS> {
     const headers = new HttpHeaders();
     headers.set("Content-Type", "application/x-www-form-urlencoded");
     headers.set("Accept", "application/json");
-    return this.httpClient.put<LoginRS>(environment.API_CUSTOMERS + "/login", `grant_type=password&info=${loginRQ}`, { headers });
+    headers.set("Authorization", environment.BASIC_AUTH);
+    return this.httpClient.put<LoginRS>(environment.API_CUSTOMERS + "/login", `grant_type=password&username=${loginRQ.username}&password=${loginRQ.password}`, { headers });
   }
 
   /**
@@ -52,6 +56,7 @@ export class CustomerService {
     const headers = new HttpHeaders();
     headers.set("Content-Type", "application/x-www-form-urlencoded");
     headers.set("Accept", "application/json");
+    headers.set("Authorization", environment.BASIC_AUTH);
     return this.httpClient.put<LoginRS>(environment.API_CUSTOMERS + "/login", `grant_type=refresh_token&refresh_token=${refreshToken}`, { headers });
   }
 }

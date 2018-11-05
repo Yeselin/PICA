@@ -22,7 +22,8 @@ export class OrderService {
   createOrder$(orderRQ: string, accessToken: string): Observable<OrderRS> {
     const headers = new HttpHeaders();
     headers.set("Content-Type", "text/plain");
-    headers.set("Authorization", `Bearer ${accessToken}`);
+    headers.set("Authorization", environment.BASIC_AUTH);
+    headers.set("x-api-key", accessToken);
     return this.httpClient.post<OrderRS>(environment.API_ORDERS, orderRQ, { headers });
   }
 
@@ -32,10 +33,12 @@ export class OrderService {
    * @param cancelOrderRQ 
    * @param accessToken 
    */
-  cancelOrder$(cancelOrderRQ: CancelOrderRQ, accessToken: string): Observable<CancelOrderRS> {
-    const headers = new HttpHeaders().set("Content-Type", "text/plain");
-    headers.set("Authorization", `Bearer ${accessToken}`);
-    return this.httpClient.put<CancelOrderRS>(environment.API_ORDERS, cancelOrderRQ, { headers });
+  cancelOrder$(orderIdEncrypt: string, accessToken: string): Observable<CancelOrderRS> {
+    const headers = new HttpHeaders();
+    headers.set("Content-Type", "text/plain");
+    headers.set("Authorization", environment.BASIC_AUTH);
+    headers.set("x-api-key", accessToken);
+    return this.httpClient.put<CancelOrderRS>(environment.API_ORDERS, orderIdEncrypt, { headers });
   }
 
 
@@ -43,10 +46,12 @@ export class OrderService {
    * 
    * @param accessToken 
    */
-  getOrders$(accessToken: string): Observable<Order> {
+  getOrders$(accessToken: string): Observable<string> {
     const headers = new HttpHeaders();
-    headers.set("Authorization", `Bearer ${accessToken}`);
-    return this.httpClient.get<Order>(environment.API_ORDERS);
+    headers.set("Accept", "application/json;  text/plain");
+    headers.set("Authorization", environment.BASIC_AUTH);
+    headers.set("x-api-key", accessToken);
+    return this.httpClient.get<string>(environment.API_ORDERS);
   }
 
 }

@@ -94,9 +94,14 @@ public class OrdersController {
 				response = new ResponseEntity<>(bodyRS, HttpStatus.UNAUTHORIZED);
 			} else {
 
-				tokenUtil().verifyToken(token, secret, true);
+				Map<String, String> payload = tokenUtil().verifyToken(token, secret, true);
+				String[] info = payload.get("customerId").split("-");
 				String decryted = encryptComponent.decrypt(encryptedText);
-				bodyRS = restClient.callService(endpointOrder, "PUT", decryted, HashMap.class);
+
+				String requestOSB = String.format("{ \"%s\":\"%s\", \"%s\":{\"%s\":\"%s\", \"%s\":\"%s\"}}", "orderId",
+						decryted, "customer", "documentType", info[0], "document", info[1]);
+
+				bodyRS = restClient.callService(endpointOrder, "PUT", requestOSB, HashMap.class);
 				response = new ResponseEntity<>(bodyRS, HttpStatus.OK);
 			}
 		} catch (CrypterException e) {
@@ -138,12 +143,12 @@ public class OrdersController {
 				String encrypted = encryptComponent.encrypt(responseOSB);
 				response = new ResponseEntity<>(encrypted, HttpStatus.OK);
 			}
-		}catch(RestClientExceptionOSB e) {
+		} catch (RestClientExceptionOSB e) {
 			logger.error(e.getMessage());
 			bodyRS.put("errorCode", Constant.ERROR_CODE_INTERNAL_ERROR);
 			bodyRS.put("message", Constant.ERROR_MESSAGE_INTERNAL_ERROR);
 			response = new ResponseEntity<>(bodyRS, HttpStatus.INTERNAL_SERVER_ERROR);
-		}catch (CrypterException e) {
+		} catch (CrypterException e) {
 			logger.error(e.getMessage());
 			bodyRS.put("errorCode", Constant.ERROR_CODE_BAD_REQUEST);
 			bodyRS.put("message", Constant.ERROR_MESSAGE_BAD_REQUEST);
