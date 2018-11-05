@@ -2,6 +2,10 @@
 -- alter SESSION set NLS_DATE_FORMAT = 'DD-MM-YYYY HH24:MI:SS';
 -- SELECT * FROM TOURESBALON.CUSTOMER WHERE DOCUMENT_TYPE_ID = 2 AND DOCUMENT_ID = '500123' ORDER BY UPDATE_DATE DESC
 --INSERTS CUSTOMER
+SET SERVEROUTPUT ON
+DECLARE
+V_RESPONSE_ID INTEGER :=0;
+V_RESPONSE_DESC VARCHAR2(4000 BYTE) := '';
 BEGIN
 TOURESBALON.PK_CUSTOMER.PR_CREATE(P_DOCUMENT_TYPE_NAME     =>'CE',
 	                              P_DOCUMENT_ID            =>'500123',
@@ -9,60 +13,119 @@ TOURESBALON.PK_CUSTOMER.PR_CREATE(P_DOCUMENT_TYPE_NAME     =>'CE',
                                   P_LAST_NAME              =>'Herrera',
                                   P_PHONE_NUMBER           =>'3211234567',
                                   P_EMAIL                  =>'timolo@hotmail.com',
-                                  P_PASSWORD               =>'123456',
+                                  --P_PASSWORD               =>'123456',
 						          P_CUSTOMER_CATEGORY_NAME =>'DORADO',
-						          P_CREDITCARD_NAME        =>'VISA',
-                                  P_CREDITCARD_NUMBER      =>'1234567891234567',
+						          --P_CREDITCARD_NAME        =>'VISA',
+                                  --P_CREDITCARD_NUMBER      =>'1234567891234567',
 						          P_CUSTOMER_STATUS_NAME   =>'ACTIVO',
 						          P_STREET                 =>'BOGOTA',
                                   P_STATE                  =>'BOGOTÁ, D. C.',
                                   P_ZIP                    =>'11001',
                                   P_COUNTRY                =>'COLOMBIA',
-                                  P_CITY                   =>'BOGOTÁ, D.C.');
+                                  P_CITY                   =>'BOGOTÁ, D.C.',
+								  P_RESPONSE_ID            => V_RESPONSE_ID,
+                                  P_RESPONSE_DESC          => V_RESPONSE_DESC
+								  );
 COMMIT;
+dbms_output.put_line( '1 - P_RESPONSE_ID: '||V_RESPONSE_ID ||' P_RESPONSE_DESC: '||V_RESPONSE_DESC); 
+
 END;
 /
 
 -- UPDATE CUSTOMER
+SET SERVEROUTPUT ON
+DECLARE
+V_RESPONSE_ID INTEGER :=0;
+V_RESPONSE_DESC VARCHAR2(4000 BYTE) := '';
 BEGIN
 TOURESBALON.PK_CUSTOMER.PR_UPDATE(P_DOCUMENT_TYPE_NAME     =>'CE',
 	                              P_DOCUMENT_ID            =>'500123',
                                   P_FIRST_NAME             =>'Gerardo',
                                   P_LAST_NAME              =>'Herrera',
-                                  P_PHONE_NUMBER           =>'3211234567',
+                                  P_PHONE_NUMBER           =>'3123456789',
                                   P_EMAIL                  =>'timolo@hotmail.com',
-                                  P_PASSWORD               =>'123456',
+                                  --P_PASSWORD               =>'123456',
 						          P_CUSTOMER_CATEGORY_NAME =>'DORADO',
-						          P_CREDITCARD_NAME        =>'VISA',
-                                  P_CREDITCARD_NUMBER      =>'7654321987654321',
+						          --P_CREDITCARD_NAME        =>'VISA',
+                                  --P_CREDITCARD_NUMBER      =>'7654321987654321',
 						          P_CUSTOMER_STATUS_NAME   =>'ACTIVO',
 						          P_STREET                 =>'BOGOTA',
                                   P_STATE                  =>'BOGOTÁ, D. C.',
                                   P_ZIP                    =>'11001',
                                   P_COUNTRY                =>'COLOMBIA',
-                                  P_CITY                   =>'BOGOTÁ, D.C.');
+                                  P_CITY                   =>'BOGOTÁ, D.C.',
+                                  P_RESPONSE_ID            => V_RESPONSE_ID,
+                                  P_RESPONSE_DESC          => V_RESPONSE_DESC
+								  );
 COMMIT;
+dbms_output.put_line( '1 - P_RESPONSE_ID: '||V_RESPONSE_ID ||' P_RESPONSE_DESC: '||V_RESPONSE_DESC); 
 END;
 /
 
 -- DELETE CUSTOMER
+SET SERVEROUTPUT ON
+DECLARE
+V_RESPONSE_ID INTEGER :=0;
+V_RESPONSE_DESC VARCHAR2(4000 BYTE) := '';
 BEGIN
 TOURESBALON.PK_CUSTOMER.PR_DELETE(P_DOCUMENT_TYPE_NAME     =>'CE',
 	                              P_DOCUMENT_ID            =>'500123',
-						          P_CUSTOMER_STATUS_NAME   =>'INACTIVO');
+						          P_CUSTOMER_STATUS_NAME   =>'INACTIVO',
+                                  P_RESPONSE_ID            => V_RESPONSE_ID,
+                                  P_RESPONSE_DESC          => V_RESPONSE_DESC
+								  );
 COMMIT;
+dbms_output.put_line( '1 - P_RESPONSE_ID: '||V_RESPONSE_ID ||' P_RESPONSE_DESC: '||V_RESPONSE_DESC);
 END;
 /
 
 
 --CONSULTA CUSTOMER
+SET SERVEROUTPUT ON
+DECLARE
+V_FIRST_NAME             VARCHAR2(50 BYTE) := '';
+V_LAST_NAME              VARCHAR2(50 BYTE) := '';
+V_PHONE_NUMBER           VARCHAR2(20 BYTE) := '';
+V_EMAIL                  VARCHAR2(50 BYTE) := '';
+V_CUSTOMER_CATEGORY_NAME VARCHAR2(50 BYTE) := '';
+V_CUSTOMER_STATUS_NAME   VARCHAR2(50 BYTE) := '';
+V_CREATE_DATE            VARCHAR2(50 BYTE) := '';
+V_UPDATE_DATE            VARCHAR2(50 BYTE) := '';
+V_STREET                 VARCHAR2(50 BYTE) := '';
+V_STATE                  VARCHAR2(50 BYTE) := '';
+V_ZIP                    VARCHAR2(50 BYTE) := '';
+V_COUNTRY                VARCHAR2(50 BYTE) := '';
+V_CITY                   VARCHAR2(50 BYTE) := '';
+V_OUT_DOCUMENT_TYPE_ID   INTEGER := 0;
+V_OUT_DOCUMENT_ID        VARCHAR2(20 BYTE) := '';
+V_RESPONSE_ID            INTEGER :=0;
+V_RESPONSE_DESC          VARCHAR2(4000 BYTE) := '';
 BEGIN
 TOURESBALON.PK_CUSTOMER.PR_READ  (P_DOCUMENT_TYPE_NAME     =>'CE',
-	                              P_DOCUMENT_ID            =>'500123');
+	                              P_DOCUMENT_ID            =>'500123',
+								  P_FIRST_NAME             => V_FIRST_NAME,
+                                  P_LAST_NAME              => V_LAST_NAME,
+                                  P_PHONE_NUMBER           => V_PHONE_NUMBER,
+                                  P_EMAIL                  => V_EMAIL,
+					              P_CUSTOMER_CATEGORY_NAME => V_CUSTOMER_CATEGORY_NAME,
+					              P_CUSTOMER_STATUS_NAME   => V_CUSTOMER_STATUS_NAME,
+					              P_CREATE_DATE            => V_CREATE_DATE,
+					              P_UPDATE_DATE            => V_UPDATE_DATE,
+					              P_STREET                 => V_STREET,
+                                  P_STATE                  => V_STATE,
+                                  P_ZIP                    => V_ZIP,
+                                  P_COUNTRY                => V_COUNTRY,
+                                  P_CITY                   => V_CITY,
+					              P_OUT_DOCUMENT_TYPE_ID   => V_OUT_DOCUMENT_TYPE_ID,
+					              P_OUT_DOCUMENT_ID        => V_OUT_DOCUMENT_ID,
+					              P_RESPONSE_ID            => V_RESPONSE_ID,
+                                  P_RESPONSE_DESC          => V_RESPONSE_DESC
+								  );
+dbms_output.put_line( '1 - P_RESPONSE_ID: '||V_RESPONSE_ID ||' P_RESPONSE_DESC: '||V_RESPONSE_DESC);
 COMMIT;
 END;
 /
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------
 -- SET SERVEROUTPUT ON
 -- alter SESSION set NLS_DATE_FORMAT = 'DD-MM-YYYY HH24:MI:SS';
 -- SELECT A.* , B.* FROM ORDERTB.SALES_ORDER A 
@@ -70,6 +133,7 @@ END;
 -- WHERE A.CUSTOMER_DOCUMENT_TYPE_ID = 2 AND A.CUSTOMER_DOCUMENT_ID = '500123'
 
 --INSERTS ORDER
+SET SERVEROUTPUT ON
 DECLARE
 V_SALES_ORDER_ID NUMBER:= 0;
 V_ORDER_ITEM_ID NUMBER:= 0;
@@ -81,6 +145,8 @@ ORDERTB.PK_ORDER.PR_CREATE(P_PRICE                       => 75,
                            P_COMMENTS                    => 'CREACION DE ORDEN',
 	                       P_CUSTOMER_DOCUMENT_TYPE_NAME => 'CE',
                            P_CUSTOMER_DOCUMENT_ID        => '500123',
+						   P_PAYMENT_ID                  => '12345',
+	                       P_PAYMENT_STATUS              => 1,
 						   P_OUT_SALES_ORDER_ID          => V_SALES_ORDER_ID,
 				           P_RESPONSE_ID                 => V_RESPONSE_ID,
                            P_RESPONSE_DESC               => V_RESPONSE_DESC);

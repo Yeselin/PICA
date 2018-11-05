@@ -46,6 +46,8 @@ CREATE OR REPLACE PACKAGE ORDERTB.PK_ORDER Is
                         P_COMMENTS                    IN VARCHAR2,
 	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                         P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
+						P_PAYMENT_ID                  IN VARCHAR2,
+	                    P_PAYMENT_STATUS              IN INTEGER,
 						P_OUT_SALES_ORDER_ID          OUT NUMBER,
 						P_RESPONSE_ID                 OUT INTEGER,
                         P_RESPONSE_DESC               OUT VARCHAR2
@@ -70,6 +72,8 @@ CREATE OR REPLACE PACKAGE ORDERTB.PK_ORDER Is
                         P_CUSTOMER_DOCUMENT_ID        OUT VARCHAR2,
                         P_ORDER_DATE                  OUT VARCHAR2,
 					    P_UPDATE_DATE                 OUT VARCHAR2,
+						P_PAYMENT_ID                  OUT VARCHAR2,
+	                    P_PAYMENT_STATUS              OUT INTEGER,
 						P_OUT_SALES_ORDER_ID          OUT NUMBER,
 						P_RESPONSE_ID                 OUT INTEGER,
                         P_RESPONSE_DESC               OUT VARCHAR2
@@ -107,6 +111,8 @@ CREATE OR REPLACE PACKAGE ORDERTB.PK_ORDER Is
                         P_COMMENTS                    IN VARCHAR2,
 	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                         P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
+						P_PAYMENT_ID                  IN VARCHAR2,
+	                    P_PAYMENT_STATUS              IN INTEGER,
 						P_RESPONSE_ID                 OUT INTEGER,
                         P_RESPONSE_DESC               OUT VARCHAR2
 						);
@@ -221,6 +227,8 @@ PROCEDURE PR_CREATE(    P_PRICE                       IN NUMBER,
                         P_COMMENTS                    IN VARCHAR2,
 	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                         P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
+						P_PAYMENT_ID                  IN VARCHAR2,
+	                    P_PAYMENT_STATUS              IN INTEGER,
 						P_OUT_SALES_ORDER_ID          OUT NUMBER,
 						P_RESPONSE_ID                 OUT INTEGER,
                         P_RESPONSE_DESC               OUT VARCHAR2
@@ -277,7 +285,9 @@ BEGIN
                                           comments,
                                           customer_document_type_id,
                                           customer_document_id,
-                                          update_date) 
+                                          update_date,
+										  payment_id,
+										  payment_status) 
                   VALUES ( P_OUT_SALES_ORDER_ID,
 				           SYSDATE,
 						   P_PRICE,
@@ -285,7 +295,10 @@ BEGIN
 				           P_COMMENTS,
 						   V_DOCUMENT_TYPE_ID,
 						   UPPER(P_CUSTOMER_DOCUMENT_ID),
-						   SYSDATE);
+						   SYSDATE,
+						   P_PAYMENT_ID,
+						   P_PAYMENT_STATUS
+						   );
    COMMIT;
   exception When Others Then
 		Lv_Successfull           := 'N';
@@ -315,6 +328,8 @@ PROCEDURE PR_READ(      P_SALES_ORDER_ID              IN NUMBER,
                         P_CUSTOMER_DOCUMENT_ID        OUT VARCHAR2,
                         P_ORDER_DATE                  OUT VARCHAR2,
 					    P_UPDATE_DATE                 OUT VARCHAR2,
+						P_PAYMENT_ID                  OUT VARCHAR2,
+	                    P_PAYMENT_STATUS              OUT INTEGER,
 						P_OUT_SALES_ORDER_ID          OUT NUMBER,
 						P_RESPONSE_ID                 OUT INTEGER,
                         P_RESPONSE_DESC               OUT VARCHAR2
@@ -335,6 +350,8 @@ V_CONT NUMBER := 0;
 		B.DOCUMENT_NAME,
 		A.customer_document_id,
 		TO_CHAR(A.UPDATE_DATE,'YYYYMMDD') update_date,
+		a.payment_id,
+		a.payment_status,
 		A.ID
 		INTO 
 		P_ORDER_DATE,
@@ -344,6 +361,8 @@ V_CONT NUMBER := 0;
 		P_CUSTOMER_DOCUMENT_TYPE_NAME,
 		P_CUSTOMER_DOCUMENT_ID,
 		P_UPDATE_DATE,
+		P_PAYMENT_ID,
+        P_PAYMENT_STATUS,
 		P_OUT_SALES_ORDER_ID
 		FROM ORDERTB.sales_order A
 		INNER JOIN TOURESBALON.DOCUMENT_TYPE B ON (B.ID = A.CUSTOMER_DOCUMENT_TYPE_ID)
@@ -395,7 +414,9 @@ V_CONT NUMBER := 0;
 		  A.COMMENTS,
 		  B.DOCUMENT_NAME CUSTOMER_DOCUMENT_TYPE_NAME,
 		  A.CUSTOMER_DOCUMENT_ID,
-		  TO_CHAR(A.UPDATE_DATE,'YYYYMMDD') update_date
+		  TO_CHAR(A.UPDATE_DATE,'YYYYMMDD') update_date,
+		  a.payment_id,
+		  a.payment_status
 		  FROM ORDERTB.SALES_ORDER A
 		  INNER JOIN TOURESBALON.DOCUMENT_TYPE B ON (B.DOCUMENT_NAME = P_CUSTOMER_DOCUMENT_TYPE_NAME AND B.ID = A.CUSTOMER_DOCUMENT_TYPE_ID)
 		  INNER JOIN ORDERTB.ORDER_STATUS C ON (C.ID = A.STATUS_ID)
@@ -412,6 +433,8 @@ V_CONT NUMBER := 0;
 	        p_xml_det := p_xml_det || '<CUSTOMER_DOCUMENT_TYPE_NAME>' || CUR.CUSTOMER_DOCUMENT_TYPE_NAME || '</CUSTOMER_DOCUMENT_TYPE_NAME>'||CHR(13);
 	        p_xml_det := p_xml_det || '<CUSTOMER_DOCUMENT_ID>'        || CUR.CUSTOMER_DOCUMENT_ID        || '</CUSTOMER_DOCUMENT_ID>'||CHR(13);
 	        p_xml_det := p_xml_det || '<UPDATE_DATE>'                 || CUR.UPDATE_DATE                 || '</UPDATE_DATE>'||CHR(13);
+			p_xml_det := p_xml_det || '<PAYMENT_ID>'                  || CUR.PAYMENT_ID                  || '</PAYMENT_ID>'||CHR(13);
+			p_xml_det := p_xml_det || '<PAYMENT_STATUS>'              || CUR.PAYMENT_STATUS              || '</PAYMENT_STATUS>'||CHR(13);
 			p_xml_det := p_xml_det ||'</ORDER>' ||CHR(13);
 		
 		END LOOP;
@@ -443,6 +466,8 @@ PROCEDURE PR_UPDATE(    P_SALES_ORDER_ID              IN NUMBER,
                         P_COMMENTS                    IN VARCHAR2,
 	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
                         P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
+						P_PAYMENT_ID                  IN VARCHAR2,
+	                    P_PAYMENT_STATUS              IN INTEGER,
 						P_RESPONSE_ID                 OUT INTEGER,
                         P_RESPONSE_DESC               OUT VARCHAR2
 					) IS
@@ -496,7 +521,9 @@ BEGIN
 		 A.COMMENTS = (CASE WHEN (P_COMMENTS = '' OR P_COMMENTS IS NULL) THEN A.COMMENTS ELSE SUBSTR(P_COMMENTS||' ¤ '|| A.COMMENTS,1,3999) END),
 		 A.CUSTOMER_DOCUMENT_TYPE_ID = (CASE WHEN (V_DOCUMENT_TYPE_ID = 0 OR V_DOCUMENT_TYPE_ID IS NULL) THEN A.CUSTOMER_DOCUMENT_TYPE_ID ELSE V_DOCUMENT_TYPE_ID END),
 		 A.CUSTOMER_DOCUMENT_ID = (CASE WHEN (P_CUSTOMER_DOCUMENT_ID = '' OR P_CUSTOMER_DOCUMENT_ID IS NULL) THEN A.CUSTOMER_DOCUMENT_ID ELSE P_CUSTOMER_DOCUMENT_ID END),
-		 A.UPDATE_DATE = SYSDATE
+		 A.UPDATE_DATE = SYSDATE,
+		 A.PAYMENT_ID = (CASE WHEN (P_PAYMENT_ID = '' OR P_PAYMENT_ID IS NULL) THEN A.PAYMENT_ID ELSE P_PAYMENT_ID END),
+		 A.PAYMENT_STATUS = (CASE WHEN (P_PAYMENT_STATUS = 0 OR P_PAYMENT_STATUS IS NULL) THEN A.PAYMENT_STATUS ELSE P_PAYMENT_STATUS END)
 		 WHERE A.ID = UPPER(P_SALES_ORDER_ID);
 	     COMMIT;
     exception When Others Then
@@ -681,6 +708,8 @@ V_COMMENTS                    VARCHAR2(4000 BYTE):= '';
 V_CUSTOMER_DOCUMENT_TYPE_NAME VARCHAR2(20 BYTE):= '';
 V_CUSTOMER_DOCUMENT_ID        VARCHAR2(20 BYTE):= '';
 V_UPDATE_DATE                 VARCHAR2(10 BYTE):= '';
+V_PAYMENT_ID                  VARCHAR2(50 BYTE):= '';
+V_PAYMENT_STATUS              INTEGER:=0;
   begin
    P_RESPONSE_ID:= -20001;
    P_RESPONSE_DESC:= 'KO';
@@ -695,7 +724,9 @@ V_UPDATE_DATE                 VARCHAR2(10 BYTE):= '';
 		A.COMMENTS,
 		B.DOCUMENT_NAME,
 		A.CUSTOMER_DOCUMENT_ID,
-		TO_CHAR(A.UPDATE_DATE,'YYYYMMDD') UPDATE_DATE
+		TO_CHAR(A.UPDATE_DATE,'YYYYMMDD') UPDATE_DATE,
+		PAYMENT_ID,
+		PAYMENT_STATUS
 		INTO
 		V_ID,
 		V_ORDER_DATE,
@@ -704,7 +735,9 @@ V_UPDATE_DATE                 VARCHAR2(10 BYTE):= '';
 		V_COMMENTS,
 		V_CUSTOMER_DOCUMENT_TYPE_NAME,
 		V_CUSTOMER_DOCUMENT_ID,
-		V_UPDATE_DATE
+		V_UPDATE_DATE,
+		V_PAYMENT_ID,
+		V_PAYMENT_STATUS
 		FROM ORDERTB.SALES_ORDER A
 		INNER JOIN TOURESBALON.DOCUMENT_TYPE B ON (B.ID = A.CUSTOMER_DOCUMENT_TYPE_ID)
 		INNER JOIN ORDERTB.ORDER_STATUS  C ON (C.ID = A.STATUS_ID)
@@ -729,6 +762,8 @@ V_UPDATE_DATE                 VARCHAR2(10 BYTE):= '';
 	p_xml_det := p_xml_det || '<CUSTOMER_DOCUMENT_TYPE_NAME>' || V_CUSTOMER_DOCUMENT_TYPE_NAME || '</CUSTOMER_DOCUMENT_TYPE_NAME>'||CHR(13);
 	p_xml_det := p_xml_det || '<CUSTOMER_DOCUMENT_ID>'        || V_CUSTOMER_DOCUMENT_ID        || '</CUSTOMER_DOCUMENT_ID>'||CHR(13);
 	p_xml_det := p_xml_det || '<UPDATE_DATE>'                 || V_UPDATE_DATE                 || '</UPDATE_DATE>'||CHR(13);
+	p_xml_det := p_xml_det || '<PAYMENT_ID>'                  || V_PAYMENT_ID                  || '</PAYMENT_ID>'||CHR(13);
+	p_xml_det := p_xml_det || '<PAYMENT_STATUS>'              || V_PAYMENT_STATUS              || '</PAYMENT_STATUS>'||CHR(13);
    
   -------------------------------------------------------------
    --OBTENIEDO INFORMACION DEL ITEM
