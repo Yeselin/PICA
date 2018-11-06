@@ -16,7 +16,7 @@ CREATE PROCEDURE PR_UPDATE_PRODUCT
     @target_city VARCHAR(MAX),
     --@create_date VARCHAR(MAX),
     --@update_date VARCHAR(MAX),
-	@cost_total VARCHAR(MAX),
+	@cost VARCHAR(MAX),
 	@status VARCHAR(MAX),
 	@ErrorSeverity INT OUTPUT,
 	@ErrorMessage VARCHAR(MAX) OUTPUT
@@ -36,7 +36,7 @@ BEGIN TRY
       ,[source_city]    = (CASE WHEN (@source_city = '' OR @source_city IS NULL) THEN source_city ELSE @source_city END)
       ,[target_city]    = (CASE WHEN (@target_city = '' OR @target_city IS NULL) THEN target_city ELSE @target_city END)
       ,[update_date]    = GETDATE()
-      ,[cost_total]     = (CASE WHEN (@cost_total = '' OR @cost_total IS NULL) THEN cost_total ELSE @cost_total END)
+      ,[cost]     = (CASE WHEN (@cost = '' OR @cost IS NULL) THEN cost ELSE @cost END)
 	  ,[status]         = (CASE WHEN (@status = '' OR @status IS NULL) THEN status ELSE @status END)
    WHERE id = @id
    

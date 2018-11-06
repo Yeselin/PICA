@@ -17,7 +17,7 @@ CREATE PROCEDURE PR_READ_PRODUCT
     @target_city VARCHAR(MAX) OUTPUT,
     @create_date VARCHAR(MAX) OUTPUT,
     @update_date VARCHAR(MAX) OUTPUT,
-	@cost_total VARCHAR(MAX) OUTPUT,
+	@cost VARCHAR(MAX) OUTPUT,
 	@status VARCHAR(MAX) OUTPUT,
 	@ErrorSeverity INT OUTPUT,
 	@ErrorMessage VARCHAR(MAX) OUTPUT
@@ -39,7 +39,7 @@ BEGIN TRY
     @target_city = target_city,
     @create_date = create_date,
     @update_date = update_date,
-	@cost_total = cost_total,
+	@cost = cost,
 	@status = status
    FROM [dbo].[product]
    WHERE id = @P_ID

@@ -15,7 +15,7 @@ CREATE PROCEDURE PR_CREATE_PRODUCT
     @target_city VARCHAR(MAX),
     --@create_date VARCHAR(MAX),
     --@update_date VARCHAR(MAX),
-	@cost_total VARCHAR(MAX),
+	@cost VARCHAR(MAX),
 	@status VARCHAR(MAX),
 	@ErrorSeverity INT OUTPUT,
 	@ErrorMessage VARCHAR(MAX) OUTPUT
@@ -36,7 +36,7 @@ INSERT INTO [dbo].[product]
            ,[target_city]
            ,[create_date]
            ,[update_date]
-           ,[cost_total]
+           ,[cost]
 		   ,[status])
      VALUES
            (@name,
@@ -53,7 +53,7 @@ INSERT INTO [dbo].[product]
             @target_city,
             GETDATE(),
             GETDATE(),
-            @cost_total,
+            @cost,
 			@status)
 
 
