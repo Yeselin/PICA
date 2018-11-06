@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="OrderProcess"
+             targetNamespace="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:client="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess"
+             xmlns:ns1="http://touresBalon.com/schema/orders"
+             xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	TYPE DEFINITION - List of services participating in this BPEL process
+	The default output of the BPEL designer uses strings as input and 
+	output to the BPEL Process. But you can define or import any XML 
+	Schema type and use them as part of the message types.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->   
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	MESSAGE TYPE DEFINITION - Definition of the message types used as 
+	part of the port type defintions
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->      
+	<wsdl:message name="OrderProcessRequestMessage">
+		<wsdl:part name="payload" element="ns1:createOrderRequest" />
+	</wsdl:message>
+	<wsdl:message name="OrderProcessResponseMessage">
+		<wsdl:part name="payload" element="ns1:createOrderResponse" />
+	</wsdl:message>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PORT TYPE DEFINITION - A port type groups a set of operations into
+	a logical service unit.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+	<!-- portType implemented by the OrderProcess BPEL process -->
+	<wsdl:portType name="OrderProcess">
+		<wsdl:operation name="process">
+			<wsdl:input  message="client:OrderProcessRequestMessage" />
+			<wsdl:output message="client:OrderProcessResponseMessage"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --> 
+	<plnk:partnerLinkType name="OrderProcess">
+		<plnk:role name="OrderProcessProvider" portType="client:OrderProcess"/>
+	</plnk:partnerLinkType>
+ <wsdl:types>
+  <xsd:schema>
+   <xsd:import namespace="http://touresBalon.com/schema/orders" schemaLocation="../Schemas/OrderCanonicalModel.xsd"/>
+  </xsd:schema>
+ </wsdl:types>
+</wsdl:definitions>

@@ -1,0 +1,14 @@
+{
+  "paymentInfo" : {
+    "paymentCode" : "paymentCode13",
+    "status" : "status14"
+  },
+  "customerInfo" : {
+    "documentType" : "documentType15",
+    "document" : 16
+  },
+  "products" : [ {
+    "product" : "product17",
+    "quantity" : 18
+  } ]
+}

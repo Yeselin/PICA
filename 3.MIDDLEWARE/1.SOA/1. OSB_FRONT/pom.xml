@@ -3,17 +3,16 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>OSB_BACK</groupId>
-    <artifactId>OSB_BACK</artifactId>
+    <groupId>OSB_FRONT</groupId>
+    <artifactId>OSB_FRONT</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
     <modules>
         <module>System</module>
-        <module>CustomerService</module>
-        <module>OrderService</module>
-        <module>ProductService</module>
+        <module>OrderServiceFront</module>
+        <module>ESB_COMMONS</module>
     </modules>
 
 </project>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CustomerService"
+                  xmlns:ns2="http://touresBalon.com/schema/CustomerService"
+                  targetNamespace="http://touresBalon.com/schema/CustomerService"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema xmlns:tns="http://touresBalon.com/schema/CustomerService">
+      <xsd:import namespace="http://touresBalon.com/schema/CustomerService"
+                  schemaLocation="../Schemas/xsd/OperationCanonicalModel.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="createCustomerRequest">
+    <wsdl:part element="ns2:createCustomerRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="createCustomerResponse">
+    <wsdl:part element="ns2:createCustomerResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="updateCustomerRequest">
+    <wsdl:part element="ns2:updateCustomerRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="updateCustomerResponse">
+    <wsdl:part element="ns2:updateCustomerResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="deleteCustomerRequest">
+    <wsdl:part element="ns2:deleteCustomerRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="deleteCustomerResponse">
+    <wsdl:part element="ns2:deleteCustomerResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getCustomerRequest">
+    <wsdl:part element="ns2:getCustomerRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getCustomerResponse">
+    <wsdl:part element="ns2:getCustomerResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="CustomerService">
+    <wsdl:operation name="createCustomer">
+      <wsdl:input message="ns2:createCustomerRequest"/>
+      <wsdl:output message="ns2:createCustomerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="updateCustomer">
+      <wsdl:input message="ns2:updateCustomerRequest"/>
+      <wsdl:output message="ns2:updateCustomerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCustomer">
+      <wsdl:input message="ns2:deleteCustomerRequest"/>
+      <wsdl:output message="ns2:deleteCustomerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomer">
+      <wsdl:input message="ns2:getCustomerRequest"/>
+      <wsdl:output message="ns2:getCustomerResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomerServiceSOAP" type="ns2:CustomerService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createCustomer">
+      <soap:operation soapAction="http://avianca.com/ServicioWebcreateBooking"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCustomer">
+      <soap:operation soapAction="http://avianca.com/ServicioWebcreateBooking"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCustomer">
+      <soap:operation soapAction="http://avianca.com/ServicioWebcreateBooking"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomer">
+      <soap:operation soapAction="http://avianca.com/ServicioWebcreateBooking"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomerService">
+    <wsdl:port binding="ns2:CustomerServiceSOAP" name="CustomerServiceSOAP">
+      <soap:address location="http://localhost:7001/CustomerService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
