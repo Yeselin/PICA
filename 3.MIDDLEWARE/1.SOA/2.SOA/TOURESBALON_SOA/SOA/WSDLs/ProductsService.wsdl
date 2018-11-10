@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+     name="Products"
+     targetNamespace="http://touresBalon.com/schema/products"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:ns2="http://touresBalon.com/schema/products"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    >
+        <plnk:partnerLinkType name="ProductService">
+        <plnk:role name="Products" portType="ns2:Products"/>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <xsd:schema xmlns:tns="http://touresBalon.com/schema/products">
+            <xsd:import namespace="http://touresBalon.com/schema/products" schemaLocation="../Schemas/ProductsCanonicalModel.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="productRequest">
+        <wsdl:part name="parameters" element="ns2:productRequest"/>
+    </wsdl:message>
+    <wsdl:message name="updateProductRequest">
+        <wsdl:part name="parameters" element="ns2:updateProductRequest"/>
+    </wsdl:message>
+    <wsdl:message name="updateProductResponse">
+        <wsdl:part name="parameters" element="ns2:updateProductResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteProductRequest">
+        <wsdl:part name="parameters" element="ns2:deleteProductRequest"/>
+    </wsdl:message>
+    <wsdl:message name="deleteProductResponse">
+        <wsdl:part name="parameters" element="ns2:deleteProductResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getProductRequest">
+        <wsdl:part name="parameters" element="ns2:getProductRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getProductResponse">
+        <wsdl:part name="parameters" element="ns2:getProductResponse"/>
+    </wsdl:message>
+    <wsdl:message name="productResponse">
+        <wsdl:part name="parameters" element="ns2:productResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="Products">
+        <wsdl:operation name="crateProduct">
+            <wsdl:input message="ns2:productRequest"/>
+            <wsdl:output message="ns2:productRequest"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateProduct">
+            <wsdl:input message="ns2:updateProductRequest"/>
+            <wsdl:output message="ns2:updateProductResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteProduct">
+            <wsdl:input message="ns2:deleteProductRequest"/>
+            <wsdl:output message="ns2:deleteProductResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getProduct">
+            <wsdl:input message="ns2:getProductRequest"/>
+            <wsdl:output message="ns2:getProductResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ProductsSOAP" type="ns2:Products">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="crateProduct">
+            <soap:operation soapAction="http://avianca.com/ServicioWebcreateBooking"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateProduct">
+            <soap:operation soapAction="http://avianca.com/ServicioWebcreateBooking"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteProduct">
+            <soap:operation soapAction="http://avianca.com/ServicioWebcreateBooking"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getProduct">
+            <soap:operation soapAction="http://avianca.com/ServicioWebcreateBooking"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="Products">
+        <wsdl:port name="ProductsSOAP" binding="ns2:ProductsSOAP">
+            <soap:address location="http://localhost:7001/Products"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

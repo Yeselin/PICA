@@ -1,9 +1,6 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <jws:workspace xmlns:jws="http://xmlns.oracle.com/ide/project">
-   <hash n="adrs-workspace-properties">
-      <value n="adrs-instance-binding" v="DefaultServer"/>
-   </hash>
-   <value n="appTemplateId" v="sbApplicationAndProjectTemplate"/>
+   <value n="appTemplateId" v="sbApplicationTemplate"/>
    <hash n="component-versions">
       <value n="oracle.adf.share.dt.migration.jps.JaznCredStoreMigratorHelper" v="11.1.1.1.0"/>
       <value n="oracle.adf.share.dt.migration.wsm.PolicyAttachmentMigratorHelper" v="12.1.2.0.0"/>
@@ -21,26 +18,24 @@
    </hash>
    <list n="contentSets">
       <string v="oracle.mds.internal.dt.ide.appresources.MDSAppResourceCSProvider/MDSAppContentSet"/>
-      <string v="oracle.jdeveloper.model.PathsConfiguration/ApplicationSrcContentSet"/>
-      <string v="oracle.jdeveloper.model.PathsConfiguration/ApplicationBuildToolContentSet"/>
       <string v="oracle.jdeveloper.model.PathsConfiguration/ADFContentSet"/>
+      <string v="oracle.jdeveloper.model.PathsConfiguration/ApplicationBuildToolContentSet"/>
+      <string v="oracle.jdeveloper.model.PathsConfiguration/ApplicationSrcContentSet"/>
       <string v="oracle.jdeveloper.model.PathsConfiguration/ResourceBundlesContentSet"/>
    </list>
    <list n="listOfChildren">
-      <hash><url n="URL" path="CustomerService/CustomerService.jpr"/></hash>
       <hash><url n="URL" path="ESB_COMMONS/ESB_COMMONS.jpr"/></hash>
-      <hash><url n="URL" path="OrderService/OrderService.jpr"/></hash>
-      <hash><url n="URL" path="ProductService/ProductService.jpr"/></hash>
+      <hash><url n="URL" path="OrderServiceFront/OrderServiceFront.jpr"/></hash>
    </list>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
-         <hash n="OSB_BACK">
+         <hash n="OSB_FRONT">
             <value n="profileClass" v="SbAppDeployProfile"/>
-            <value n="profileName" v="OSB_BACK"/>
+            <value n="profileName" v="OSB_FRONT"/>
          </hash>
       </hash>
       <list n="profileList">
-         <string v="OSB_BACK"/>
+         <string v="OSB_FRONT"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">
@@ -49,6 +44,6 @@
       </hash>
    </hash>
    <hash n="oracle.sb.tooling.ide.core.internal.application.SbApplication">
-      <value n="configContextSessionName" v="OSB-IDE_build_1541538700287"/>
+      <value n="configContextSessionName" v="OSB-IDE_build_1541536363839"/>
    </hash>
 </jws:workspace>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="OrderService"
+                  xmlns:ns2="http://touresBalon.com/schema/ordersFront"
+                  targetNamespace="http://touresBalon.com/schema/OrderService"
+                  xmlns:tns="http://touresBalon.com/schema/OrderService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema xmlns:tns="http://touresBalon.com/schema/ordersFront">
+      <xsd:import namespace="http://touresBalon.com/schema/ordersFront"
+                  schemaLocation="xsd/OrderFront.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="createOrderRequest">
+    <wsdl:part element="ns2:createOrderRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="createOrderResponse">
+    <wsdl:part element="ns2:createOrderResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="updateOrderRequest">
+    <wsdl:part element="ns2:updateOrderRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="updateOrderResponse">
+    <wsdl:part element="ns2:updateOrderResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getOrderRequest">
+    <wsdl:part element="ns2:getOrderRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getOrderResponse">
+    <wsdl:part element="ns2:getOrderResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="OrderService">
+    <wsdl:operation name="createOrder">
+      <wsdl:input message="tns:createOrderRequest"/>
+      <wsdl:output message="tns:createOrderResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="updateOrder">
+      <wsdl:input message="tns:updateOrderRequest"/>
+      <wsdl:output message="tns:updateOrderResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getOrder">
+      <wsdl:input message="tns:getOrderRequest"/>
+      <wsdl:output message="tns:getOrderResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OrderServiceSOAP" type="tns:OrderService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createOrder">
+      <soap:operation soapAction="http://avianca.com/ServicioWebcreateBooking"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateOrder">
+      <soap:operation soapAction="http://avianca.com/ServicioWebcreateBooking"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrder">
+      <soap:operation soapAction="http://avianca.com/ServicioWebcreateBooking"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrderService">
+    <wsdl:port binding="tns:OrderServiceSOAP" name="OrderServiceSOAP">
+      <soap:address location="http://localhost:7001/OrderService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
