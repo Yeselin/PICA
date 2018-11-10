@@ -1,6 +1,6 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Product } from '../model/Product';
 import { Observable } from 'rxjs';
@@ -20,8 +20,7 @@ export class ProductService {
       {
         headers: {
           "Accept": "application/json",
-          "Authorization": environment.BASIC_AUTH,
-          
+          "Authorization": environment.BASIC_AUTH
         }
       });
   }
@@ -32,10 +31,12 @@ export class ProductService {
    * @param productId This method search top five products
    */
   getTopFive$(productId: number): Observable<Product[]> {
-    const headers = new HttpHeaders();
-    headers.set("Accept", "application/json");
-    headers.set("Authorization", environment.BASIC_AUTH);
-    return this.httpClient.get<Product[]>(environment.API_PRODUCTS + '/topfive', { headers });
+    return this.httpClient.get<Product[]>(environment.API_PRODUCTS + '/topfive', {
+      headers: {
+        "Accept": "application/json",
+        "Authorization": environment.BASIC_AUTH
+      }
+    });
   }
 
   /**
@@ -45,9 +46,11 @@ export class ProductService {
    * @param parameterValue 
    */
   getFindProduct$(parameterType: string, parameterValue: string): Observable<Product[]> {
-    const headers = new HttpHeaders();
-    headers.set("Accept", "application/json");
-    headers.set("Authorization", environment.BASIC_AUTH);
-    return this.httpClient.get<Product[]>(environment.API_PRODUCTS + '/find?parameterType=' + parameterType + '&parameterValue=' + parameterValue, { headers });
+    return this.httpClient.get<Product[]>(environment.API_PRODUCTS + '/find?parameterType=' + parameterType + '&parameterValue=' + parameterValue, {
+      headers: {
+        "Accept": "application/json",
+        "Authorization": environment.BASIC_AUTH
+      }
+    });
   }
 }
