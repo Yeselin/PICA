@@ -42,10 +42,10 @@ export class CustomerService {
    */
   login$(loginRQ: LoginRQ): Observable<LoginRS> {
     const headers = new HttpHeaders();
-    headers.set("Content-Type", "application/x-www-form-urlencoded");
+    headers.set("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
     headers.set("Accept", "application/json");
     headers.set("Authorization", environment.BASIC_AUTH);
-    return this.httpClient.put<LoginRS>(environment.API_CUSTOMERS + "/login", `grant_type=password&username=${loginRQ.username}&password=${loginRQ.password}`, { headers });
+    return this.httpClient.post<LoginRS>(environment.API_CUSTOMERS + "/login", "grant_type=password&username=" + loginRQ.username + "&password=" + loginRQ.password, { headers });
   }
 
   /**
@@ -54,7 +54,7 @@ export class CustomerService {
    */
   refresh$(refreshToken: string): Observable<LoginRS> {
     const headers = new HttpHeaders();
-    headers.set("Content-Type", "application/x-www-form-urlencoded");
+    headers.set("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
     headers.set("Accept", "application/json");
     headers.set("Authorization", environment.BASIC_AUTH);
     return this.httpClient.put<LoginRS>(environment.API_CUSTOMERS + "/login", `grant_type=refresh_token&refresh_token=${refreshToken}`, { headers });

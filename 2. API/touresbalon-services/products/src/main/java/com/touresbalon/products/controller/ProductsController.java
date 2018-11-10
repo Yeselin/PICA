@@ -17,6 +17,7 @@ import com.touresbalon.products.service.FindProductsService;
 @RestController
 @CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS,
 		RequestMethod.DELETE, RequestMethod.PUT })
+@RequestMapping(value="/products")
 public class ProductsController {
 	
 	public final Logger log = LoggerFactory.getLogger(ProductsController.class);
