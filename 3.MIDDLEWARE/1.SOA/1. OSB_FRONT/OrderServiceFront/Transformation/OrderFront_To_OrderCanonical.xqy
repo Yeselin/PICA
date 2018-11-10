@@ -15,7 +15,11 @@ declare variable $Input as element() (:: schema-element(ns1:createOrderRequest) 
 
 declare function local:func($Input as element() (:: schema-element(ns1:createOrderRequest) ::)) as element() (:: schema-element(ns2:createOrderRequest) ::) {
     <ns2:createOrderRequest>
-        <ns2:customer>
+        <ns2:RequestMetadata>
+            <ns2:txId></ns2:txId>
+        </ns2:RequestMetadata>
+        <ns2:createOrder>
+<ns2:customer>
             <cus:id>{fn:data($Input/ns1:customerInfo/ns1:document)}</cus:id>
             <cus:idType>{fn:data($Input/ns1:customerInfo/ns1:documentType)}</cus:idType>
         </ns2:customer>
@@ -32,6 +36,9 @@ declare function local:func($Input as element() (:: schema-element(ns1:createOrd
                 </ns2:product>
                 <ns2:quantity>{fn:data($products/ns1:quantity)}</ns2:quantity></ns2:order>
         }
+        <ns2:orderStatus>{fn:data("EN VALIDACION")}</ns2:orderStatus>
+        <ns2:comments>{fn:data("ORDEN EN PROCESO DE APROVISIONAMIENTO")}</ns2:comments>
+        </ns2:createOrder>
     </ns2:createOrderRequest>
 };
 

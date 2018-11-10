@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Business"
+                  xmlns:ns2="http://touresbalon.com/schema/businessdomain/business"
+                  xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+                  targetNamespace="http://touresbalon.com/schema/businessdomain/business"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <plnk:partnerLinkType name="ThirdPartyServices">
+    <plnk:role name="Business" portType="ns2:Business"/>
+  </plnk:partnerLinkType>
+  <wsdl:types>
+    <xsd:schema xmlns:tns="http://touresbalon.com/schema/businessdomain/business">
+      <xsd:import namespace="http://touresbalon.com/schema/businessdomain/business"
+                  schemaLocation="../Schemas/xsd/BusinessCanonicalModel.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="businessRequest">
+    <wsdl:part element="ns2:BusinessRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="businessResponse">
+    <wsdl:part element="ns2:BusinessResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="Business">
+    <wsdl:operation name="thirdPartyService">
+      <wsdl:input message="ns2:businessRequest"/>
+      <wsdl:output message="ns2:businessResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BusinessSOAP" type="ns2:Business">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="thirdPartyService">
+      <soap:operation soapAction="http://avianca.com/ServicioWebcreateBooking"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Business">
+    <wsdl:port binding="ns2:BusinessSOAP" name="BusinessSOAP">
+      <soap:address location="http://localhost:7001/Business"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
