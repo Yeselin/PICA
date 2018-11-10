@@ -22,8 +22,8 @@ export class LocalStorageService {
         this.products = response;
         this.storage.set(environment.STORAGE_KEY_CAMPAINGS, this.products);
       },
-        (error) => {
-          console.error(error);
+        (err) => {
+          console.log(err);
         })
     }
     return this.products;

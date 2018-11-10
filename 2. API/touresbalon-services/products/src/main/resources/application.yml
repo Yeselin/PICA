@@ -2,11 +2,11 @@
 server:
   port: ${SERVER_PORT:8081}
   servlet:
-    contextPath: /products
+    contextPath: /api
 elasticParameters:
-  server: ${HOST:52.71.119.146}
+  server: ${HOST:25.75.126.105}
   port: ${PORT:9200}
   index:
     products: ${INDEX_PRODUCTS:products}
     campaigns: ${INDEX_CAMPAIGNS:campaigns}
-  searchSize: ${SEARCH_SIZE:50}
+  searchSize: ${SEARCH_SIZE:20}

@@ -1,0 +1,13 @@
+<adapter-config name="dbCreateOrder" adapter="db" wsdlLocation="dbCreateOrder.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="cnSQLOrders" location="eis/DB/Orders"/>
+  <endpoint-interaction portType="dbCreateOrder_ptt" operation="dbCreateOrder">
+    <interaction-spec className="oracle.tip.adapter.db.DBStoredProcedureInteractionSpec">
+      <property name="SchemaName" value="ORDERTB"/>
+      <property name="PackageName" value="PK_ORDER"/>
+      <property name="ProcedureName" value="PR_CREATE"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

@@ -5,8 +5,8 @@ server:
     contextPath: /api
     
 osb:
-  endpointOrder: http://25.70.184.165:7003/OrderService/order
-  endpointCustomer: http://25.70.184.165:7003/OrderService/order 
+  endpointOrder: http://25.75.150.100:7003/OrderServiceFront/OrderFrontRestService/order
+  endpointCustomer: http://25.75.150.100:7003/OrderService/order 
   readTimeout: 5000
   connectTimeout: 2000
   

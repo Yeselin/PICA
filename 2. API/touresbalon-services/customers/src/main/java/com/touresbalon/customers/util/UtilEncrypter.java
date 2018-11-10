@@ -11,7 +11,28 @@ public class UtilEncrypter {
 
 	public static void main(String args[]) {
 		try {					
-			String plainText = "adiviname123";
+			String plainText = "{\n" + 
+					"  \n" + 
+					"   \"paymentInfo\": {\n" + 
+					"     \"paymentCode\": \"123-ABC\",\n" + 
+					"     \"status\": \"OK\"\n" + 
+					"    },\n" + 
+					"    \"customer\":{\n" + 
+					"      \"documentType\": \"CC\",\n" + 
+					"      \"document\": 23094857\n" + 
+					"    },\n" + 
+					"    \"products\": [\n" + 
+					"      {\n" + 
+					"        \"product\": \"11\",\n" + 
+					"        \"quantity\": 2\n" + 
+					"      },\n" + 
+					"      {\n" + 
+					"        \"product\": \"9\",\n" + 
+					"        \"quantity\": 3\n" + 
+					"      }\n" + 
+					"    ]\n" + 
+					"}\n" + 
+					"";
 			String encryptText = null;
 			
 			byte[] decodedKey = Base64.getDecoder().decode("ETfl8BigpmxVie8wgB4fAo8zHCcHR3M2AJNux+6N8Rk=");
@@ -35,23 +56,5 @@ public class UtilEncrypter {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static String encrypt(String plainText) {
-		try {
-
-		} catch (Exception e) {
-
-		}
-		return "";
-	}
-
-	public static String decrypt(String encryptText) {
-		try {
-
-		} catch (Exception e) {
-
-		}
-		return "";
 	}
 }

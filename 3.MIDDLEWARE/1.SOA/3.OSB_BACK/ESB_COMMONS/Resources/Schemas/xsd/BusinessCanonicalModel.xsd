@@ -1,5 +1,5 @@
-<xsd:schema targetNamespace="http://touresbalon.com/schema/businessdomain/business/v1-0"
-            elementFormDefault="qualified" xmlns:tns="http://touresbalon.com/schema/businessdomain/business/v1-0"
+<xsd:schema targetNamespace="http://touresbalon.com/schema/businessdomain/business"
+            elementFormDefault="qualified" xmlns:tns="http://touresbalon.com/schema/businessdomain/business"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:element name="BusinessRequest">
     <xsd:complexType>

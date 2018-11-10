@@ -15,30 +15,61 @@ server {
 
         listen 80 default_server;
         listen [::]:80 default_server;
+        server_name touresbalon.com www.touresbalon.com;
+        
+        #Hide server information on response
+        server_tokens off;
 
 	root /var/www/touresbalon;
         index index.html;
 
-        server_name _;
-
 	expires $expires;
 
         location / {
-                auth_basic on;
+                auth_basic off;
                 try_files $uri $uri/ =404;
+        }
+        
+        #Proxy al servidor de imagenes
+        location /image {
+               auth_basic off;
+               proxy_pass "http://localhost:8888";
+
+               proxy_http_version 1.1;
+               
+               proxy_set_header Host               $host;
+               proxy_set_header X-Real-IP          $remote_addr;
+               proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
+               proxy_set_header X-Forwarded-Proto  $scheme;  
         }
         
         #Proxy al API de productos
         location /api/products {
-               auth_basic on;
-	       proxy_pass "http://localhost:8081";
 
+               auth_basic on;
+               proxy_pass "http://touresbalon.com:8081";
+                
                proxy_http_version 1.1;
 
                proxy_set_header Host               $host;
                proxy_set_header X-Real-IP          $remote_addr;
                proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
                proxy_set_header X-Forwarded-Proto  $scheme;
+
+               if ($request_method = OPTIONS) {
+                  add_header 'Access-Control-Allow-Origin' '*' always;
+                  add_header 'Access-Control-Allow-Methods' 'GET,POST,OPTIONS,DELETE,PUT' always;
+                  add_header 'Access-Control-Allow-Headers' '*';
+                  add_header Content-Length 0;
+                  add_header Content-Type text/plain;
+                  return 200;
+               }
+
+	       if ($request_method != OPTIONS){
+                  add_header 'Access-Control-Allow-Origin' '*' always;
+                  add_header 'Access-Control-Allow-Methods' 'GET,POST,OPTIONS,DELETE,PUT' always;
+                  add_header 'Access-Control-Allow-Headers' '*';
+               }
         }
 
         #Proxy al API de orders
@@ -47,23 +78,53 @@ server {
                proxy_pass "http://localhost:8082";
 
                proxy_http_version 1.1;
-
+             
                proxy_set_header Host               $host;
                proxy_set_header X-Real-IP          $remote_addr;
                proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
                proxy_set_header X-Forwarded-Proto  $scheme;
+
+               if ($request_method = OPTIONS) {
+                  add_header 'Access-Control-Allow-Origin' '*' always;
+                  add_header 'Access-Control-Allow-Methods' 'GET,POST,OPTIONS,DELETE,PUT' always;
+                  add_header 'Access-Control-Allow-Headers' '*';
+                  add_header Content-Length 0;
+                  add_header Content-Type text/plain;
+                  return 200;
+               }
+
+               if ($request_method != OPTIONS){
+                  add_header 'Access-Control-Allow-Origin' '*' always;
+                  add_header 'Access-Control-Allow-Methods' 'GET,POST,OPTIONS,DELETE,PUT' always;
+                  add_header 'Access-Control-Allow-Headers' '*';
+               }
         }
 
 	#Proxy al API de customers
         location /api/customers {
                auth_basic on;
                proxy_pass "http://localhost:8083";
-
+               
                proxy_http_version 1.1;
-
+                              
                proxy_set_header Host               $host;
                proxy_set_header X-Real-IP          $remote_addr;
                proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
                proxy_set_header X-Forwarded-Proto  $scheme;
+
+               if ($request_method = OPTIONS) {
+                  add_header 'Access-Control-Allow-Origin' '*' always;
+                  add_header 'Access-Control-Allow-Methods' 'GET,POST,OPTIONS,DELETE,PUT' always;
+                  add_header 'Access-Control-Allow-Headers' '*';
+                  add_header Content-Length 0;
+                  add_header Content-Type text/plain;
+                  return 200;
+               }
+
+               if ($request_method != OPTIONS){
+                  add_header 'Access-Control-Allow-Origin' '*' always;
+                  add_header 'Access-Control-Allow-Methods' 'GET,POST,OPTIONS,DELETE,PUT' always;
+                  add_header 'Access-Control-Allow-Headers' '*';
+               }
         }
 }
