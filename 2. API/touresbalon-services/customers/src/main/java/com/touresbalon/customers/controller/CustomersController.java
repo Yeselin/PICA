@@ -61,7 +61,7 @@ public class CustomersController {
 
 				if (null != bodyRQ.get("username") && null != bodyRQ.get("password")) {
 
-					String password = encryptComponent.decrypt(bodyRQ.get("password").toString());
+					String password = encryptComponent.decryptV2(bodyRQ.get("password").toString());
 
 					Map<String, String> loginRS = ldapService.login(bodyRQ.get("username").toString(), password);
 

@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
 
     this.customerService.login$(this.loginRQ).subscribe((response) => {
       this.loginRS = response;
+      console.log(JSON.stringify(response));
     }, (error) => {
       this.loading = false;
       this.toastrService.error('Credenciales inválidas', 'Ups!');

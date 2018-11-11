@@ -763,4 +763,4 @@ if( requestBody.contains("some data") )
     "cost_total": 1500000
 }
 
-]</con:responseContent><con:header><con:name>Access-Control-Allow-Origin</con:name><con:value>*</con:value></con:header><con:header><con:name>Access-Control-Allow-Methods</con:name><con:value>GET,POST,OPTIONS,DELETE,PUT</con:value></con:header><con:header><con:name>Content-Type</con:name><con:value>application/json</con:value></con:header></con:response></con:restMockAction></con:restMockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
+]</con:responseContent><con:header><con:name>Content-Type</con:name><con:value>application/json</con:value></con:header></con:response></con:restMockAction></con:restMockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
