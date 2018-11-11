@@ -1,0 +1,44 @@
+<xsd:schema targetNamespace="http://tuBoleta/schema/ticketService" elementFormDefault="qualified"
+            xmlns:tns="http://tuBoleta/schema/ticketService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="createTicketRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="clientID" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="eventId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="totalTickets" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="category" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="createTicketResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="clientID" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="price" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="totalTickets" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="event" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="category" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="transactionID" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="timestamp" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="status" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="eventDate" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="cancleTicketRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="transactionID" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="cancelTicketResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="timestamp" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="transactionID" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="status" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

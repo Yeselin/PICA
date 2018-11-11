@@ -102,8 +102,12 @@
    </hash>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
+         <string v="JAVASCRIPT"/>
          <string v="ServiceBusTechnology"/>
+         <string v="WSDL"/>
+         <string v="WSPolicy"/>
          <string v="XML"/>
+         <string v="XSL"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
@@ -199,4 +203,5 @@
          </list>
       </hash>
    </hash>
+   <value n="SOA_TRANSFORMATION_FOLDER_NAME" v=""/>
 </jpr:project>

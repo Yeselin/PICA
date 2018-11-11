@@ -250,7 +250,7 @@
                             </con2:xqueryTransform>
                         </con1:expr>
                     </con1:replace>
-                    <con2:reply isError="false" xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                    <con2:reply isError="true" xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
                         <con2:id>_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7aa0</con2:id>
                     </con2:reply>
                 </con:actions>
