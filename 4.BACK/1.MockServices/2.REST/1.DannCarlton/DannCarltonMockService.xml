@@ -62,8 +62,8 @@ if( requestBody.contains("some data") )
 }
 */
 </con:dispatchPath><con:response name="Response 1" id="52ec5756-1d0f-4866-9243-6f290007df57" httpResponseStatus="200"><con:settings/><con:responseContent>{
-	statusCode:0
-	statusDescription:"Reserva Creada Exitosamente"
+	statusCode:0,
+	statusDescription:"Reserva Creada Exitosamente",
 	bookingCode:12313
 }</con:responseContent></con:response></con:restMockAction><con:restMockAction name="/cancelBooking" method="POST" resourcePath="/BookingService/v1.0/cancelBooking" id="52b15f5a-8478-4bcd-9b5f-90fecefb8b4a"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:dispatchPath>/*
 // Script dispatcher is used to select a response based on the incoming request.

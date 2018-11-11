@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
-    <dgm:gService name="orderprocess_client_ep">
-        <dgm:body borderWidth="2" arcRad="20" X="21" Y="41" width="137" height="84">
+    <dgm:gService name="orderprocess_client_ep_2">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="410" width="137" height="96">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="11" Y="34" width="156" height="98">
+        <dgm:shadow arcRad="20" X="11" Y="403" width="156" height="110">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
-        <dgm:outputPort name="orderprocess_client_ep" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcess)"/>
+        <dgm:outputPort name="orderprocess_client_ep_2" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcess)" callbackInterface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcessCallback)"/>
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
         <dgm:operations>
             <dgm:item>process</dgm:item>
+            <dgm:item>processResponse</dgm:item>
         </dgm:operations>
     </dgm:gService>
     <dgm:gReference name="ProductService">
-        <dgm:body borderWidth="2" arcRad="20" X="784" Y="41" width="136" height="120">
+        <dgm:body borderWidth="2" arcRad="20" X="604" Y="410" width="136" height="120">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="774" Y="34" width="156" height="134">
+        <dgm:shadow arcRad="20" X="594" Y="403" width="156" height="134">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="ProductService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://touresBalon.com/schema/products#wsdl.interface(Products)"/>
@@ -31,26 +32,71 @@
             <dgm:item>getProduct</dgm:item>
         </dgm:operations>
     </dgm:gReference>
+    <dgm:gReference name="ThirdPartyService">
+        <dgm:body borderWidth="2" arcRad="20" X="604" Y="294" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="594" Y="287" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="ThirdPartyService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://touresbalon.com/schema/businessdomain/business#wsdl.interface(Business)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>thirdPartyService</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="TransportService">
+        <dgm:body borderWidth="2" arcRad="20" X="604" Y="178" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="594" Y="171" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="TransportService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://touresbalon.com/schema/businessdomain/business#wsdl.interface(Business)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>thirdPartyService</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="CreateItemService">
+        <dgm:body borderWidth="2" arcRad="20" X="604" Y="26" width="136" height="120">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="594" Y="19" width="156" height="134">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="CreateItemService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://touresBalon.com/schema/OrderService#wsdl.interface(OrderService)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>createOrder</dgm:item>
+            <dgm:item>updateOrder</dgm:item>
+            <dgm:item>deleteOrder</dgm:item>
+            <dgm:item>getOrder</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
     <dgm:gComponent name="OrderProcess">
-        <dgm:body borderWidth="2" arcRad="20" X="406" Y="26" width="130" height="61">
+        <dgm:body borderWidth="2" arcRad="20" X="316" Y="395" width="130" height="61">
             <dgm:borderColor r="69" g="113" b="140"/>
             <dgm:lightBgColor r="166" g="208" b="230"/>
             <dgm:darkBgColor r="99" g="162" b="201"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="396" Y="19" width="150" height="77">
+        <dgm:shadow arcRad="20" X="306" Y="388" width="150" height="77">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
-        <dgm:inputPort name="orderprocess_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcess)"/>
+        <dgm:inputPort name="orderprocess_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcess)" callbackInterface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcessCallback)"/>
         <dgm:outputPort name="ProductService" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://touresBalon.com/schema/products#wsdl.interface(Products)"/>
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
-    <dgm:gWireLink source="orderprocess_client_ep" target="OrderProcess/orderprocess_client" width="2">
-        <dgm:gSegment X1="168" Y1="51" X2="396" Y2="51"/>
+    <dgm:gWireLink source="orderprocess_client_ep_2" target="OrderProcess/orderprocess_client" width="2">
+        <dgm:gSegment X1="168" Y1="420" X2="306" Y2="420"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="OrderProcess/ProductService" target="ProductService" width="2">
-        <dgm:gSegment X1="546" Y1="51" X2="774" Y2="51"/>
+        <dgm:gSegment X1="456" Y1="420" X2="594" Y2="420"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>

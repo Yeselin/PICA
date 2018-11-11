@@ -1,0 +1,65 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="TicketService"
+     targetNamespace="http://tuBoleta/schema/ticketOrders"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:ns2="http://tuBoleta/schema/ticketService"
+     xmlns:tns="http://tuBoleta/schema/ticketOrders"
+     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    >
+    <wsdl:types>
+        <xsd:schema xmlns:tns="http://tuBoleta/schema/ticketService">
+            <xsd:import namespace="http://tuBoleta/schema/ticketService" schemaLocation="xsd/Ticket.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="createTicketRequest">
+        <wsdl:part name="parameters" element="ns2:createTicketRequest"/>
+    </wsdl:message>
+    <wsdl:message name="createTicketResponse">
+        <wsdl:part name="parameters" element="ns2:createTicketResponse"/>
+    </wsdl:message>
+    <wsdl:message name="cancleTicketRequest">
+        <wsdl:part name="parameters" element="ns2:cancleTicketRequest"/>
+    </wsdl:message>
+    <wsdl:message name="cancelTicketResponse">
+        <wsdl:part name="parameters" element="ns2:cancelTicketResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="TicketService">
+        <wsdl:operation name="buyTicket">
+            <wsdl:input message="tns:createTicketRequest"/>
+            <wsdl:output message="tns:createTicketResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="cancelTicket">
+            <wsdl:input message="tns:cancleTicketRequest"/>
+            <wsdl:output message="tns:cancelTicketResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="TicketServiceSOAP" type="tns:TicketService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="buyTicket">
+            <soap:operation soapAction="http://avianca.com/ServicioWebcreateBooking"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="cancelTicket">
+            <soap:operation soapAction="http://avianca.com/ServicioWebcreateBooking"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="TicketService">
+        <wsdl:port name="TicketServiceSOAP" binding="tns:TicketServiceSOAP">
+            <soap:address location="http://localhost:7001/TicketService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

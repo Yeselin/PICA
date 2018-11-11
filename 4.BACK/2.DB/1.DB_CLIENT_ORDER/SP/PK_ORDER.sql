@@ -460,7 +460,7 @@ End PR_READ_CUSTOMER;
 	
 	
 	
-PROCEDURE PR_UPDATE(    P_SALES_ORDER_ID              IN NUMBER,
+PROCEDURE PR_UPDATE(    P_SALES_ORDER_ID              IN NUMBER ,
 	                    P_PRICE                       IN NUMBER,
 	                    P_ORDER_STATUS_NAME           IN VARCHAR2,
                         P_COMMENTS                    IN VARCHAR2,

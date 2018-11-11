@@ -1,0 +1,15 @@
+<wsdl:definitions targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/OSB_BACK/ProductService/dbGetProduct" name="dbGetProduct-concrete" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <wsdl:import location="dbGetProduct.wsdl" namespace="http://xmlns.oracle.com/pcbpel/adapter/db/OSB_BACK/ProductService/dbGetProduct"/>
+    <wsdl:binding name="dbGetProduct_ptt-binding" type="dbg:dbGetProduct_ptt" xmlns:dbg="http://xmlns.oracle.com/pcbpel/adapter/db/OSB_BACK/ProductService/dbGetProduct">
+        <soap:binding style="document" transport="http://www.bea.com/wli/sb/transports/jca"/>
+        <wsdl:operation name="dbGetProduct">
+            <soap:operation soapAction="dbGetProduct"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+</wsdl:definitions>

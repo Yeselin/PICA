@@ -14,6 +14,9 @@
         <module>CustomerService</module>
         <module>OrderService</module>
         <module>ProductService</module>
+        <module>TicketService</module>
+        <module>TransportService</module>
+        <module>LodgingService</module>
     </modules>
 
 </project>

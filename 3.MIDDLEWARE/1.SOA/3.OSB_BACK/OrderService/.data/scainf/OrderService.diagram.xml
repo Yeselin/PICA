@@ -1,248 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
-    <dgm:gService name="OrderItemServicePipelineProxyService">
-        <dgm:body borderWidth="2" arcRad="20" X="21" Y="515" width="137" height="54">
+    <dgm:gService name="ItemServiceProxyService">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="245" width="137" height="54">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="11" Y="508" width="156" height="68">
+        <dgm:shadow arcRad="20" X="11" Y="238" width="156" height="68">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
-        <dgm:outputPort name="OrderItemServicePipelineProxyService" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:outputPort name="ItemServiceProxyService" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
         <dgm:nodeIcon URI="/oracle/sb/tooling/ide/sca/internal/icons/icon_transport_http_20x20.png" X="7" Y="4" width="20" height="20"/>
         <dgm:operations/>
     </dgm:gService>
-    <dgm:gService name="OrderServicesProxyService">
-        <dgm:body borderWidth="2" arcRad="20" X="21" Y="163" width="137" height="54">
+    <dgm:gService name="OrderServiceProxyService">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="100" width="137" height="54">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="11" Y="156" width="156" height="68">
+        <dgm:shadow arcRad="20" X="11" Y="93" width="156" height="68">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
-        <dgm:outputPort name="OrderServicesProxyService" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:outputPort name="OrderServiceProxyService" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
         <dgm:nodeIcon URI="/oracle/sb/tooling/ide/sca/internal/icons/icon_transport_http_20x20.png" X="7" Y="4" width="20" height="20"/>
         <dgm:operations/>
     </dgm:gService>
-    <dgm:gReference name="bsCreateItem">
-        <dgm:body borderWidth="2" arcRad="20" X="584" Y="466" width="136" height="54">
+    <dgm:gReference name="CreateItemBS">
+        <dgm:body borderWidth="2" arcRad="20" X="515" Y="290" width="136" height="54">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="574" Y="459" width="156" height="68">
+        <dgm:shadow arcRad="20" X="505" Y="283" width="156" height="68">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
-        <dgm:inputPort name="bsCreateItem" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="14" Y="4" width="20" height="20"/>
-        <dgm:operations/>
-    </dgm:gReference>
-    <dgm:gReference name="bsDeleteItem">
-        <dgm:body borderWidth="2" arcRad="20" X="584" Y="554" width="136" height="54">
-            <dgm:borderColor r="153" g="153" b="153"/>
-            <dgm:bgColor r="255" g="255" b="255"/>
-        </dgm:body>
-        <dgm:shadow arcRad="20" X="574" Y="547" width="156" height="68">
-            <dgm:bgColor r="196" g="228" b="240"/>
-        </dgm:shadow>
-        <dgm:inputPort name="bsDeleteItem" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="14" Y="4" width="20" height="20"/>
-        <dgm:operations/>
-    </dgm:gReference>
-    <dgm:gReference name="bsUpdateItem">
-        <dgm:body borderWidth="2" arcRad="20" X="584" Y="642" width="136" height="54">
-            <dgm:borderColor r="153" g="153" b="153"/>
-            <dgm:bgColor r="255" g="255" b="255"/>
-        </dgm:body>
-        <dgm:shadow arcRad="20" X="574" Y="635" width="156" height="68">
-            <dgm:bgColor r="196" g="228" b="240"/>
-        </dgm:shadow>
-        <dgm:inputPort name="bsUpdateItem" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="14" Y="4" width="20" height="20"/>
-        <dgm:operations/>
-    </dgm:gReference>
-    <dgm:gReference name="bsGetItem">
-        <dgm:body borderWidth="2" arcRad="20" X="584" Y="730" width="136" height="54">
-            <dgm:borderColor r="153" g="153" b="153"/>
-            <dgm:bgColor r="255" g="255" b="255"/>
-        </dgm:body>
-        <dgm:shadow arcRad="20" X="574" Y="723" width="156" height="68">
-            <dgm:bgColor r="196" g="228" b="240"/>
-        </dgm:shadow>
-        <dgm:inputPort name="bsGetItem" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:inputPort name="CreateItemBS" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="14" Y="4" width="20" height="20"/>
         <dgm:operations/>
     </dgm:gReference>
     <dgm:gReference name="LoggingServicePipelineProxyService">
-        <dgm:body borderWidth="2" arcRad="20" X="584" Y="378" width="136" height="54">
+        <dgm:body borderWidth="2" arcRad="20" X="515" Y="202" width="136" height="54">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="574" Y="371" width="156" height="68">
+        <dgm:shadow arcRad="20" X="505" Y="195" width="156" height="68">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="LoggingServicePipelineProxyService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
         <dgm:nodeIcon URI="/oracle/sb/tooling/ide/sca/internal/icons/icon_transport_local_20x20.png" X="14" Y="4" width="20" height="20"/>
         <dgm:operations/>
     </dgm:gReference>
-    <dgm:gReference name="bsCreateOrder">
-        <dgm:body borderWidth="2" arcRad="20" X="584" Y="26" width="136" height="54">
+    <dgm:gReference name="CreateProductBS">
+        <dgm:body borderWidth="2" arcRad="20" X="515" Y="26" width="136" height="54">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="574" Y="19" width="156" height="68">
+        <dgm:shadow arcRad="20" X="505" Y="19" width="156" height="68">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
-        <dgm:inputPort name="bsCreateOrder" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:inputPort name="CreateProductBS" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="14" Y="4" width="20" height="20"/>
         <dgm:operations/>
     </dgm:gReference>
-    <dgm:gReference name="bsUpdateOrder">
-        <dgm:body borderWidth="2" arcRad="20" X="584" Y="114" width="136" height="54">
+    <dgm:gReference name="UpdateOrderBS">
+        <dgm:body borderWidth="2" arcRad="20" X="515" Y="114" width="136" height="54">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="574" Y="107" width="156" height="68">
+        <dgm:shadow arcRad="20" X="505" Y="107" width="156" height="68">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
-        <dgm:inputPort name="bsUpdateOrder" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:inputPort name="UpdateOrderBS" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="14" Y="4" width="20" height="20"/>
         <dgm:operations/>
     </dgm:gReference>
-    <dgm:gReference name="bsDeleteOrder">
-        <dgm:body borderWidth="2" arcRad="20" X="584" Y="202" width="136" height="54">
-            <dgm:borderColor r="153" g="153" b="153"/>
-            <dgm:bgColor r="255" g="255" b="255"/>
-        </dgm:body>
-        <dgm:shadow arcRad="20" X="574" Y="195" width="156" height="68">
-            <dgm:bgColor r="196" g="228" b="240"/>
-        </dgm:shadow>
-        <dgm:inputPort name="bsDeleteOrder" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="14" Y="4" width="20" height="20"/>
-        <dgm:operations/>
-    </dgm:gReference>
-    <dgm:gReference name="bsGetOrder">
-        <dgm:body borderWidth="2" arcRad="20" X="584" Y="290" width="136" height="54">
-            <dgm:borderColor r="153" g="153" b="153"/>
-            <dgm:bgColor r="255" g="255" b="255"/>
-        </dgm:body>
-        <dgm:shadow arcRad="20" X="574" Y="283" width="156" height="68">
-            <dgm:bgColor r="196" g="228" b="240"/>
-        </dgm:shadow>
-        <dgm:inputPort name="bsGetOrder" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="14" Y="4" width="20" height="20"/>
-        <dgm:operations/>
-    </dgm:gReference>
-    <dgm:gComponent name="OrderItemServicePipeline">
-        <dgm:body borderWidth="2" arcRad="20" X="326" Y="500" width="130" height="161">
+    <dgm:gComponent name="ItemServicePipeline">
+        <dgm:body borderWidth="2" arcRad="20" X="302" Y="230" width="130" height="86">
             <dgm:borderColor r="109" g="136" b="65"/>
             <dgm:lightBgColor r="201" g="224" b="155"/>
             <dgm:darkBgColor r="157" g="195" b="93"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="316" Y="493" width="150" height="177">
+        <dgm:shadow arcRad="20" X="292" Y="223" width="150" height="102">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="__service__" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:outputPort name="businessservice.-819307115.bsCreateItem" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:outputPort name="businessservice.-819307115.bsDeleteItem" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:outputPort name="businessservice.-819307115.bsUpdateItem" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:outputPort name="businessservice.-819307115.bsGetItem" X="120" Y="90" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:outputPort name="proxyservice.-1956858223.LoggingServicePipelineProxyService" X="120" Y="115" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:outputPort name="businessservice.-819307115.CreateItemBS" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:outputPort name="proxyservice.-1956858223.LoggingServicePipelineProxyService" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
         <dgm:nodeIcon URI="/oracle/sb/tooling/ide/sca/internal/icons/icon_pipeline_20x20.gif" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
-    <dgm:gComponent name="OrderServicesPipeline">
-        <dgm:body borderWidth="2" arcRad="20" X="326" Y="148" width="130" height="161">
+    <dgm:gComponent name="OrderServicePipeline">
+        <dgm:body borderWidth="2" arcRad="20" X="302" Y="85" width="130" height="111">
             <dgm:borderColor r="109" g="136" b="65"/>
             <dgm:lightBgColor r="201" g="224" b="155"/>
             <dgm:darkBgColor r="157" g="195" b="93"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="316" Y="141" width="150" height="177">
+        <dgm:shadow arcRad="20" X="292" Y="78" width="150" height="127">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="__service__" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:outputPort name="businessservice.-819307115.bsCreateOrder" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:outputPort name="businessservice.-819307115.bsUpdateOrder" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:outputPort name="businessservice.-819307115.bsDeleteOrder" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:outputPort name="proxyservice.-1956858223.LoggingServicePipelineProxyService" X="120" Y="90" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
-        <dgm:outputPort name="businessservice.-819307115.bsGetOrder" X="120" Y="115" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:outputPort name="businessservice.-819307115.CreateProductBS" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:outputPort name="businessservice.-819307115.UpdateOrderBS" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
+        <dgm:outputPort name="proxyservice.-1956858223.LoggingServicePipelineProxyService" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="SB Interface" callbackInterface="SB Interface"/>
         <dgm:nodeIcon URI="/oracle/sb/tooling/ide/sca/internal/icons/icon_pipeline_20x20.gif" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
-    <dgm:gWireLink source="OrderItemServicePipelineProxyService" target="OrderItemServicePipeline/__service__" width="2">
-        <dgm:gSegment X1="168" Y1="525" X2="316" Y2="525"/>
+    <dgm:gWireLink source="ItemServiceProxyService" target="ItemServicePipeline/__service__" width="2">
+        <dgm:gSegment X1="168" Y1="255" X2="292" Y2="255"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
-    <dgm:gWireLink source="OrderServicesProxyService" target="OrderServicesPipeline/__service__" width="2">
-        <dgm:gSegment X1="168" Y1="173" X2="316" Y2="173"/>
+    <dgm:gWireLink source="OrderServiceProxyService" target="OrderServicePipeline/__service__" width="2">
+        <dgm:gSegment X1="168" Y1="110" X2="292" Y2="110"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
-    <dgm:gWireLink source="OrderItemServicePipeline/businessservice.-819307115.bsCreateItem" target="bsCreateItem" width="2">
-        <dgm:gSegment X1="466" Y1="525" X2="490" Y2="525"/>
-        <dgm:gSegment X1="490" Y1="525" X2="490" Y2="476"/>
-        <dgm:gSegment X1="490" Y1="476" X2="574" Y2="476"/>
+    <dgm:gWireLink source="ItemServicePipeline/businessservice.-819307115.CreateItemBS" target="CreateItemBS" width="2">
+        <dgm:gSegment X1="442" Y1="255" X2="481" Y2="255"/>
+        <dgm:gSegment X1="481" Y1="255" X2="481" Y2="300"/>
+        <dgm:gSegment X1="481" Y1="300" X2="505" Y2="300"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
-    <dgm:gWireLink source="OrderItemServicePipeline/businessservice.-819307115.bsDeleteItem" target="bsDeleteItem" width="2">
-        <dgm:gSegment X1="466" Y1="550" X2="550" Y2="550"/>
-        <dgm:gSegment X1="550" Y1="550" X2="550" Y2="564"/>
-        <dgm:gSegment X1="550" Y1="564" X2="574" Y2="564"/>
+    <dgm:gWireLink source="ItemServicePipeline/proxyservice.-1956858223.LoggingServicePipelineProxyService" target="LoggingServicePipelineProxyService" width="2">
+        <dgm:gSegment X1="442" Y1="280" X2="466" Y2="280"/>
+        <dgm:gSegment X1="466" Y1="280" X2="466" Y2="212"/>
+        <dgm:gSegment X1="466" Y1="212" X2="505" Y2="212"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
-    <dgm:gWireLink source="OrderItemServicePipeline/businessservice.-819307115.bsUpdateItem" target="bsUpdateItem" width="2">
-        <dgm:gSegment X1="466" Y1="575" X2="535" Y2="575"/>
-        <dgm:gSegment X1="535" Y1="575" X2="535" Y2="652"/>
-        <dgm:gSegment X1="535" Y1="652" X2="574" Y2="652"/>
+    <dgm:gWireLink source="OrderServicePipeline/businessservice.-819307115.CreateProductBS" target="CreateProductBS" width="2">
+        <dgm:gSegment X1="442" Y1="110" X2="466" Y2="110"/>
+        <dgm:gSegment X1="466" Y1="110" X2="466" Y2="36"/>
+        <dgm:gSegment X1="466" Y1="36" X2="505" Y2="36"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
-    <dgm:gWireLink source="OrderItemServicePipeline/businessservice.-819307115.bsGetItem" target="bsGetItem" width="2">
-        <dgm:gSegment X1="466" Y1="600" X2="520" Y2="600"/>
-        <dgm:gSegment X1="520" Y1="600" X2="520" Y2="740"/>
-        <dgm:gSegment X1="520" Y1="740" X2="574" Y2="740"/>
+    <dgm:gWireLink source="OrderServicePipeline/businessservice.-819307115.UpdateOrderBS" target="UpdateOrderBS" width="2">
+        <dgm:gSegment X1="442" Y1="135" X2="481" Y2="135"/>
+        <dgm:gSegment X1="481" Y1="135" X2="481" Y2="124"/>
+        <dgm:gSegment X1="481" Y1="124" X2="505" Y2="124"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
-    <dgm:gWireLink source="OrderItemServicePipeline/proxyservice.-1956858223.LoggingServicePipelineProxyService" target="LoggingServicePipelineProxyService" width="2">
-        <dgm:gSegment X1="466" Y1="625" X2="505" Y2="625"/>
-        <dgm:gSegment X1="505" Y1="625" X2="505" Y2="388"/>
-        <dgm:gSegment X1="505" Y1="388" X2="574" Y2="388"/>
-        <dgm:baseColor r="153" g="153" b="153"/>
-        <dgm:selectedColor r="49" g="106" b="196"/>
-    </dgm:gWireLink>
-    <dgm:gWireLink source="OrderServicesPipeline/businessservice.-819307115.bsCreateOrder" target="bsCreateOrder" width="2">
-        <dgm:gSegment X1="466" Y1="173" X2="490" Y2="173"/>
-        <dgm:gSegment X1="490" Y1="173" X2="490" Y2="36"/>
-        <dgm:gSegment X1="490" Y1="36" X2="574" Y2="36"/>
-        <dgm:baseColor r="153" g="153" b="153"/>
-        <dgm:selectedColor r="49" g="106" b="196"/>
-    </dgm:gWireLink>
-    <dgm:gWireLink source="OrderServicesPipeline/businessservice.-819307115.bsUpdateOrder" target="bsUpdateOrder" width="2">
-        <dgm:gSegment X1="466" Y1="198" X2="505" Y2="198"/>
-        <dgm:gSegment X1="505" Y1="198" X2="505" Y2="124"/>
-        <dgm:gSegment X1="505" Y1="124" X2="574" Y2="124"/>
-        <dgm:baseColor r="153" g="153" b="153"/>
-        <dgm:selectedColor r="49" g="106" b="196"/>
-    </dgm:gWireLink>
-    <dgm:gWireLink source="OrderServicesPipeline/businessservice.-819307115.bsDeleteOrder" target="bsDeleteOrder" width="2">
-        <dgm:gSegment X1="466" Y1="223" X2="520" Y2="223"/>
-        <dgm:gSegment X1="520" Y1="223" X2="520" Y2="212"/>
-        <dgm:gSegment X1="520" Y1="212" X2="574" Y2="212"/>
-        <dgm:baseColor r="153" g="153" b="153"/>
-        <dgm:selectedColor r="49" g="106" b="196"/>
-    </dgm:gWireLink>
-    <dgm:gWireLink source="OrderServicesPipeline/proxyservice.-1956858223.LoggingServicePipelineProxyService" target="LoggingServicePipelineProxyService" width="2">
-        <dgm:gSegment X1="466" Y1="248" X2="520" Y2="248"/>
-        <dgm:gSegment X1="520" Y1="248" X2="520" Y2="388"/>
-        <dgm:gSegment X1="520" Y1="388" X2="574" Y2="388"/>
-        <dgm:baseColor r="153" g="153" b="153"/>
-        <dgm:selectedColor r="49" g="106" b="196"/>
-    </dgm:gWireLink>
-    <dgm:gWireLink source="OrderServicesPipeline/businessservice.-819307115.bsGetOrder" target="bsGetOrder" width="2">
-        <dgm:gSegment X1="466" Y1="273" X2="490" Y2="273"/>
-        <dgm:gSegment X1="490" Y1="273" X2="490" Y2="300"/>
-        <dgm:gSegment X1="490" Y1="300" X2="574" Y2="300"/>
+    <dgm:gWireLink source="OrderServicePipeline/proxyservice.-1956858223.LoggingServicePipelineProxyService" target="LoggingServicePipelineProxyService" width="2">
+        <dgm:gSegment X1="442" Y1="160" X2="481" Y2="160"/>
+        <dgm:gSegment X1="481" Y1="160" X2="481" Y2="212"/>
+        <dgm:gSegment X1="481" Y1="212" X2="505" Y2="212"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>

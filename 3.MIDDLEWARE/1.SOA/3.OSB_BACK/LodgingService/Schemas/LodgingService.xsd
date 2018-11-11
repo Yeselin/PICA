@@ -1,0 +1,40 @@
+<xsd:schema targetNamespace="http://dannCarlton/schema/bookingSerive" elementFormDefault="qualified"
+            xmlns:tns="http://dannCarlton/schema/bookingSerive" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="createBookingRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="requireBreakfast" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="bookingDate" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="numberOfRooms" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="bookingCode" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+		<xsd:element name="numberOfPeople" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="createBookingResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="bookingCode" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="statusDescription" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="bookingCode" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="cancelBookingtRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="bookingCode" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+		<xsd:element name="cancelReason" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="cancelBookingtResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="bookingCode" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="statusDescription" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="bookingCode" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

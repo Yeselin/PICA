@@ -14,9 +14,18 @@
   <import namespace="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess"
           location="WSDLs/OrderProcess.wsdl" importType="wsdl"/>
   <import namespace="http://touresBalon.com/schema/products" location="WSDLs/ProductsService.wsdl" importType="wsdl"/>
-  <service name="orderprocess_client_ep" ui:wsdlLocation="WSDLs/OrderProcess.wsdl">
-    <interface.wsdl interface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcess)"/>
+  <import namespace="http://touresbalon.com/schema/businessdomain/business" location="WSDLs/BusinessService.wsdl"
+          importType="wsdl"/>
+  <import namespace="http://touresbalon.com/schema/businessdomain/business" location="WSDLs/BusinessService_1.wsdl"
+          importType="wsdl"/>
+  <import namespace="http://touresBalon.com/schema/OrderService" location="WSDLs/OrderService.wsdl" importType="wsdl"/>
+  <service name="orderprocess_client_ep_2" ui:wsdlLocation="WSDLs/OrderProcess.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcess)"
+                    callbackInterface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcessCallback)"/>
     <binding.ws port="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.endpoint(orderprocess_client_ep/OrderProcess_pt)"/>
+    <callback>
+      <binding.ws port="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.endpoint(orderprocess_client_ep/OrderProcessCallback_pt)"/>
+    </callback>
   </service>
   <property name="productVersion" type="xs:string" many="false">12.2.1.3.0.170820</property>
   <property name="compositeID" type="xs:string" many="false">0abd404c-2ad4-43e9-b3fd-4743e0fa2be1</property>
@@ -24,21 +33,41 @@
     <implementation.bpel src="BPEL/OrderProcess.bpel"/>
     <componentType>
       <service name="orderprocess_client" ui:wsdlLocation="WSDLs/OrderProcess.wsdl">
-        <interface.wsdl interface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcess)"/>
+        <interface.wsdl interface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcess)"
+                        callbackInterface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcessCallback)"/>
       </service>
       <reference name="ProductService" ui:wsdlLocation="WSDLs/ProductsService.wsdl">
         <interface.wsdl interface="http://touresBalon.com/schema/products#wsdl.interface(Products)"/>
       </reference>
     </componentType>
-    <property name="bpel.config.transaction" type="xs:string" many="false">required</property>
+    <property name="bpel.config.oneWayDeliveryPolicy" type="xs:string" many="false">async.persist</property>
   </component>
   <reference name="ProductService" ui:wsdlLocation="WSDLs/ProductsService.wsdl">
     <interface.wsdl interface="http://touresBalon.com/schema/products#wsdl.interface(Products)"/>
     <binding.ws port="http://touresBalon.com/schema/products#wsdl.endpoint(Products/ProductsSOAP)"
                 location="WSDLs/ProductsService.wsdl" soapVersion="1.1"/>
   </reference>
+  <reference name="ThirdPartyService" ui:wsdlLocation="WSDLs/BusinessService.wsdl">
+    <interface.wsdl interface="http://touresbalon.com/schema/businessdomain/business#wsdl.interface(Business)"/>
+    <binding.ws port="http://touresbalon.com/schema/businessdomain/business#wsdl.endpoint(Business/BusinessSOAP)"
+                location="WSDLs/BusinessService.wsdl" soapVersion="1.1">
+      <property name="weblogic.wsee.wsat.transaction.flowOption" type="xs:string" many="false">WSDLDriven</property>
+    </binding.ws>
+  </reference>
+  <reference name="TransportService" ui:wsdlLocation="WSDLs/BusinessService_1.wsdl">
+    <interface.wsdl interface="http://touresbalon.com/schema/businessdomain/business#wsdl.interface(Business)"/>
+    <binding.ws port="http://touresbalon.com/schema/businessdomain/business#wsdl.endpoint(Business/BusinessSOAP)"
+                location="WSDLs/BusinessService_1.wsdl" soapVersion="1.1">
+      <property name="weblogic.wsee.wsat.transaction.flowOption" type="xs:string" many="false">WSDLDriven</property>
+    </binding.ws>
+  </reference>
+  <reference name="CreateItemService" ui:wsdlLocation="WSDLs/OrderService.wsdl">
+    <interface.wsdl interface="http://touresBalon.com/schema/OrderService#wsdl.interface(OrderService)"/>
+    <binding.ws port="http://touresBalon.com/schema/OrderService#wsdl.endpoint(OrderService/OrderServiceSOAP)"
+                location="WSDLs/OrderService.wsdl" soapVersion="1.1"/>
+  </reference>
   <wire>
-    <source.uri>orderprocess_client_ep</source.uri>
+    <source.uri>orderprocess_client_ep_2</source.uri>
     <target.uri>OrderProcess/orderprocess_client</target.uri>
   </wire>
   <wire>
