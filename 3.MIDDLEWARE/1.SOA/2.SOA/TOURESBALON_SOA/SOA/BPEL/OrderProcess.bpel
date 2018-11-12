@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   Oracle JDeveloper BPEL Designer 
   
-  Created: Sat Nov 10 16:26:08 COT 2018
+  Created: Sun Nov 11 12:28:02 COT 2018
   Author:  FELIPE
   Type: BPEL 2.0 Process
   Purpose: Asynchronous BPEL Process
@@ -17,7 +17,19 @@
          xmlns:ui="http://xmlns.oracle.com/soa/designer"
          xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
          xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
-         xmlns:ns1="http://touresBalon.com/schema/products">
+         xmlns:ns1="http://touresBalon.com/schema/products" xmlns:ns2="http://touresBalon.com/schema/orders"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:ess="http://xmlns.oracle.com/scheduler" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:ns3="http://touresBalon.com/schema/customer" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns4="http://touresbalon.com/schema/businessdomain/business" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ns5="http://touresBalon.com/schema/OrderService">
 
     <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess" location="../WSDLs/OrderProcess.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
     <!-- 
@@ -34,6 +46,13 @@
     -->
         <partnerLink name="orderprocess_client" partnerLinkType="client:OrderProcess" myRole="OrderProcessProvider" partnerRole="OrderProcessRequester"/>
         <partnerLink name="ProductService" partnerLinkType="ns1:ProductService" partnerRole="Products"/>
+        <partnerLink name="TicketService" partnerLinkType="ns4:TicketService" partnerRole="Business"/>
+        <partnerLink name="AviancaService" partnerLinkType="ns4:AviancaService" partnerRole="Business"/>
+        <partnerLink name="AmericanAirlinesService" partnerLinkType="ns4:AmericanAirlinesService"
+                     partnerRole="Business"/>
+        <partnerLink name="LodgingService" partnerLinkType="ns4:LodgingService" partnerRole="Business"/>
+        <partnerLink name="OrderItemService" partnerLinkType="ns5:OrderItemService" partnerRole="OrderService"/>
+        <partnerLink name="OrderServices" partnerLinkType="ns5:OrderServices" partnerRole="OrderService"/>
     </partnerLinks>
 
     <!-- 
@@ -48,6 +67,21 @@
 
         <!-- Reference to the message that will be sent back to the requester during callback -->
         <variable name="outputVariable" messageType="client:OrderProcessResponseMessage"/>
+        <variable name="Invoke_getProduct_InputVariable" messageType="ns1:getProductRequest"/>
+        <variable name="Invoke_getProduct_OutputVariable" messageType="ns1:getProductResponse"/>
+        <variable name="InvokeBuyTicket_thirdPartyService_InputVariable" messageType="ns4:businessRequest"/>
+        <variable name="InvokeBuyTicket_thirdPartyService_OutputVariable" messageType="ns4:businessResponse"/>
+        <variable name="InvokeAviancaService_thirdPartyService_InputVariable" messageType="ns4:businessRequest"/>
+        <variable name="InvokeAviancaService_thirdPartyService_OutputVariable" messageType="ns4:businessResponse"/>
+        <variable name="InvokeAmericaAirlines_thirdPartyService_InputVariable" messageType="ns4:businessRequest"/>
+        <variable name="InvokeAmericaAirlines_thirdPartyService_OutputVariable" messageType="ns4:businessResponse"/>
+        <variable name="InvokeLodging_thirdPartyService_InputVariable" messageType="ns4:businessRequest"/>
+        <variable name="InvokeLodging_thirdPartyService_OutputVariable" messageType="ns4:businessResponse"/>
+        <variable name="totalPrice" type="xsd:int"/>
+        <variable name="InvokeCreateItemOrder_createOrder_InputVariable" messageType="ns5:createOrderRequest"/>
+        <variable name="InvokeCreateItemOrder_createOrder_OutputVariable" messageType="ns5:createOrderResponse"/>
+        <variable name="InvokeUpdateOrder_updateOrder_InputVariable" messageType="ns5:updateOrderRequest"/>
+        <variable name="InvokeUpdateOrder_updateOrder_OutputVariable" messageType="ns5:updateOrderResponse"/>
     </variables>
 
     <!-- 
@@ -60,7 +94,279 @@
     <sequence name="main">
         <!-- Receive input from requestor. (Note: This maps to operation defined in OrderProcess.wsdl) -->
         <receive name="receiveInput" partnerLink="orderprocess_client" portType="client:OrderProcess" operation="process" variable="inputVariable" createInstance="yes"/>
-
+        <assign name="AssignPriceToZero">
+            <copy>
+                <from>0</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$totalPrice</to>
+            </copy>
+        </assign>
+        <forEach parallel="no" counterName="productCounter" name="ForEach1">
+            <startCounterValue expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">1</startCounterValue>
+            <finalCounterValue expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">count($inputVariable.payload/ns2:createOrder/ns2:order)</finalCounterValue>
+            <scope name="Scope1">
+                <sequence name="Sequence1">
+                    <assign name="AssignGetProduct">
+                        <copy>
+                            <from>$inputVariable.payload/ns2:RequestMetadata/ns2:txId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Invoke_getProduct_InputVariable.parameters/ns1:RequestMetadata/ns1:txId</to>
+                        </copy>
+                        <copy>
+                            <from>$inputVariable.payload/ns2:createOrder/ns2:order[$productCounter]/ns2:product/ns1:productId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Invoke_getProduct_InputVariable.parameters/ns1:product/ns1:productId</to>
+                        </copy>
+                    </assign>
+                    <invoke name="InvokeGetProduct" partnerLink="ProductService"
+                            portType="ns1:Products" operation="getProduct"
+                            inputVariable="Invoke_getProduct_InputVariable"
+                            outputVariable="Invoke_getProduct_OutputVariable" bpelx:invokeAsDetail="no"/>
+                    <assign name="AssignCreateOrderItem">
+                        <copy>
+                            <from>$inputVariable.payload/ns2:createOrder/ns2:customer/ns3:id</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:customer/ns3:id</to>
+                        </copy>
+                        <copy>
+                            <from>$inputVariable.payload/ns2:RequestMetadata/ns2:txId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:RequestMetadata/ns2:txId</to>
+                        </copy>
+                        <copy>
+                            <from>$inputVariable.payload/ns2:createOrder/ns2:customer/ns3:idType</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:customer/ns3:idType</to>
+                        </copy>
+                        <copy>
+                            <from>$inputVariable.payload/ns2:createOrder/ns2:paymentMethod/ns2:paymentCode</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:paymentMethod/ns2:paymentCode</to>
+                        </copy>
+                        <copy>
+                            <from>$inputVariable.payload/ns2:createOrder/ns2:paymentMethod/ns2:status</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:paymentMethod/ns2:status</to>
+                        </copy>
+                        <copy>
+                            <from>$inputVariable.payload/ns2:createOrder/ns2:orderId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:orderId</to>
+                        </copy>
+                        <copy>
+                            <from>$inputVariable.payload/ns2:createOrder/ns2:comments</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:comments</to>
+                        </copy>
+                        <copy>
+                            <from>$inputVariable.payload/ns2:createOrder/ns2:orderStatus</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:orderStatus</to>
+                        </copy>
+                        <copy>
+                            <from>$inputVariable.payload/ns2:createOrder/ns2:orderPrice</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:orderPrice</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:productId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:order/ns2:product/ns1:productId</to>
+                        </copy>
+                        <copy>
+                            <from>$inputVariable.payload/ns2:createOrder/ns2:order[$productCounter]/ns2:quantity</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:order/ns2:quantity</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:productName</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:order/ns2:product/ns1:productName</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:spectacleId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:order/ns2:product/ns1:spectacleId</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:transportId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:order/ns2:product/ns1:transportId</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:lodgingId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:order/ns2:product/ns1:lodgingId</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:arrivalDate</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:order/ns2:product/ns1:arrivalDate</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:departureDate</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:order/ns2:product/ns1:departureDate</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:code</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:order/ns2:product/ns1:code</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:description</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:order/ns2:product/ns1:description</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:image</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:order/ns2:product/ns1:image</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:sourceCityId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:order/ns2:product/ns1:sourceCityId</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:targetCityId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:order/ns2:product/ns1:targetCityId</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:cost</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeCreateItemOrder_createOrder_InputVariable.parameters/ns2:createOrder/ns2:order/ns2:product/ns1:cost</to>
+                        </copy>
+                    </assign>
+                    <invoke name="InvokeCreateItemOrder" partnerLink="OrderItemService"
+                            portType="ns5:OrderService" operation="createOrder"
+                            inputVariable="InvokeCreateItemOrder_createOrder_InputVariable"
+                            outputVariable="InvokeCreateItemOrder_createOrder_OutputVariable"
+                            bpelx:invokeAsDetail="no"/>
+                    <assign name="AssignBuyTicket">
+                        <copy>
+                            <from>$inputVariable.payload/ns2:RequestMetadata/ns2:txId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeBuyTicket_thirdPartyService_InputVariable.parameters/ns4:RequestMetadata/ns4:txId</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:spectacleId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeBuyTicket_thirdPartyService_InputVariable.parameters/ns4:BusinessRequest/ns4:ticketBooking/ns4:eventId</to>
+                        </copy>
+                        <copy>
+                            <from>$inputVariable.payload/ns2:createOrder/ns2:order[$productCounter]/ns2:quantity</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeBuyTicket_thirdPartyService_InputVariable.parameters/ns4:BusinessRequest/ns4:ticketBooking/ns4:totalTickets</to>
+                        </copy>
+                        <copy>
+                            <from>$inputVariable.payload/ns2:createOrder/ns2:customer/ns3:id</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeBuyTicket_thirdPartyService_InputVariable.parameters/ns4:BusinessRequest/ns4:ticketBooking/ns4:clientID</to>
+                        </copy>
+                    </assign>
+                    <invoke name="InvokeBuyTicket" partnerLink="TicketService"
+                            portType="ns4:Business" operation="thirdPartyService"
+                            inputVariable="InvokeBuyTicket_thirdPartyService_InputVariable"
+                            outputVariable="InvokeBuyTicket_thirdPartyService_OutputVariable" bpelx:invokeAsDetail="no"/>
+                    <assign name="AssignTransport">
+                        <copy>
+                            <from>$inputVariable.payload/ns2:RequestMetadata/ns2:txId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeAviancaService_thirdPartyService_InputVariable.parameters/ns4:RequestMetadata/ns4:txId</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:sourceCityId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeAviancaService_thirdPartyService_InputVariable.parameters/ns4:BusinessRequest/ns4:transport/ns4:fromCity</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:targetCityId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeAviancaService_thirdPartyService_InputVariable.parameters/ns4:BusinessRequest/ns4:transport/ns4:toCity</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:arrivalDate</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeAviancaService_thirdPartyService_InputVariable.parameters/ns4:BusinessRequest/ns4:transport/ns4:travelDate</to>
+                        </copy>
+                        <copy>
+                            <from>$inputVariable.payload/ns2:createOrder/ns2:order[$productCounter]/ns2:quantity</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeAviancaService_thirdPartyService_InputVariable.parameters/ns4:BusinessRequest/ns4:transport/ns4:numberOfTickets</to>
+                        </copy>
+                    </assign>
+                    <if name="If1">
+                        <documentation>
+                            <![CDATA[Avianca]]>
+                        </documentation>
+                        <condition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:transportId = 'Avianca'</condition>
+                        <sequence name="Sequence2">
+                            <invoke name="InvokeAviancaService" partnerLink="AviancaService"
+                                    portType="ns4:Business" operation="thirdPartyService"
+                                    inputVariable="InvokeAviancaService_thirdPartyService_InputVariable"
+                                    outputVariable="InvokeAviancaService_thirdPartyService_OutputVariable"
+                                    bpelx:invokeAsDetail="no"/>
+                        </sequence>
+                        <elseif>
+                            <documentation>
+                                <![CDATA[AA]]>
+                            </documentation>
+                            <condition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:transportId = 'American Airlines'</condition>
+                            <invoke name="InvokeAmericaAirlines"
+                                    partnerLink="AmericanAirlinesService" portType="ns4:Business"
+                                    operation="thirdPartyService"
+                                    inputVariable="InvokeAmericaAirlines_thirdPartyService_InputVariable"
+                                    outputVariable="InvokeAmericaAirlines_thirdPartyService_OutputVariable"
+                                    bpelx:invokeAsDetail="no"/>
+                        </elseif>
+                        <elseif>
+                            <documentation>
+                                <![CDATA[Bolivariano]]>
+                            </documentation>
+                            <condition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:transportId = 'Bolivariano'</condition>
+                            <empty name="Empty1"/>
+                        </elseif>
+                    </if>
+                    <assign name="AssignCreateBooking">
+                        <copy>
+                            <from>$inputVariable.payload/ns2:RequestMetadata/ns2:txId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeLodging_thirdPartyService_InputVariable.parameters/ns4:RequestMetadata/ns4:txId</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:targetCityId</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeLodging_thirdPartyService_InputVariable.parameters/ns4:BusinessRequest/ns4:hotelBooking/ns4:bookingCity</to>
+                        </copy>
+                        <copy>
+                            <from>$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:arrivalDate</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeLodging_thirdPartyService_InputVariable.parameters/ns4:BusinessRequest/ns4:hotelBooking/ns4:bookingDate</to>
+                        </copy>
+                        <copy>
+                            <from>$inputVariable.payload/ns2:createOrder/ns2:order[$productCounter]/ns2:quantity</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeLodging_thirdPartyService_InputVariable.parameters/ns4:BusinessRequest/ns4:hotelBooking/ns4:numberOfRooms</to>
+                        </copy>
+                        <copy>
+                            <from>$inputVariable.payload/ns2:createOrder/ns2:order[$productCounter]/ns2:quantity</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeLodging_thirdPartyService_InputVariable.parameters/ns4:BusinessRequest/ns4:hotelBooking/ns4:numberOfPeople</to>
+                        </copy>
+                    </assign>
+                    <invoke name="InvokeLodging" partnerLink="LodgingService"
+                            portType="ns4:Business" operation="thirdPartyService"
+                            inputVariable="InvokeLodging_thirdPartyService_InputVariable"
+                            outputVariable="InvokeLodging_thirdPartyService_OutputVariable" bpelx:invokeAsDetail="no"/>
+                    <assign name="AssignPriceCounter">
+                        <copy>
+                            <from>$totalPrice+($inputVariable.payload/ns2:createOrder/ns2:order[$productCounter]/ns2:quantity*$Invoke_getProduct_OutputVariable.parameters/ns1:product/ns1:cost)</from>
+                            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$totalPrice</to>
+                        </copy>
+                    </assign>
+                </sequence>
+            </scope>
+        </forEach>
+        <assign name="AssignUpdateOrder">
+            <copy>
+                <from>$inputVariable.payload/ns2:createOrder/ns2:customer/ns3:id</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeUpdateOrder_updateOrder_InputVariable.parameters/ns2:customer/ns3:id</to>
+            </copy>
+            <copy>
+                <from>$inputVariable.payload/ns2:createOrder/ns2:customer/ns3:idType</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeUpdateOrder_updateOrder_InputVariable.parameters/ns2:customer/ns3:idType</to>
+            </copy>
+            <copy>
+                <from>$inputVariable.payload/ns2:createOrder/ns2:orderId</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeUpdateOrder_updateOrder_InputVariable.parameters/ns2:orderId</to>
+            </copy>
+            <copy>
+                <from>$inputVariable.payload/ns2:createOrder/ns2:comments</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeUpdateOrder_updateOrder_InputVariable.parameters/ns2:comments</to>
+            </copy>
+            <copy>
+                <from>$totalPrice</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeUpdateOrder_updateOrder_InputVariable.parameters/ns2:orderPrice</to>
+            </copy>
+            <copy>
+                <from>'CERRADA'</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeUpdateOrder_updateOrder_InputVariable.parameters/ns2:orderStatus</to>
+            </copy>
+            <copy>
+                <from>$inputVariable.payload/ns2:createOrder/ns2:paymentMethod/ns2:paymentCode</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeUpdateOrder_updateOrder_InputVariable.parameters/ns2:paymentMethod/ns2:paymentCode</to>
+            </copy>
+            <copy>
+                <from>$inputVariable.payload/ns2:createOrder/ns2:paymentMethod/ns2:status</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeUpdateOrder_updateOrder_InputVariable.parameters/ns2:paymentMethod/ns2:status</to>
+            </copy>
+        </assign>
+        <invoke name="InvokeUpdateOrder" partnerLink="OrderServices"
+                portType="ns5:OrderService" operation="updateOrder"
+                inputVariable="InvokeUpdateOrder_updateOrder_InputVariable"
+                outputVariable="InvokeUpdateOrder_updateOrder_OutputVariable" bpelx:invokeAsDetail="no"/>
         <!-- 
           Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
         -->

@@ -1,0 +1,19 @@
+<schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/sp/dbGetOrder" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/sp/dbGetOrder" elementFormDefault="qualified">
+   <element name="InputParameters">
+      <complexType>
+         <sequence>
+            <element name="P_CUSTOMER_DOCUMENT_TYPE_NAME" type="string" db:index="1" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+            <element name="P_CUSTOMER_DOCUMENT_ID" type="string" db:index="2" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+         </sequence>
+      </complexType>
+   </element>
+   <element name="OutputParameters">
+      <complexType>
+         <sequence>
+            <element name="P_XML_DET" type="string" db:index="3" db:type="CLOB" minOccurs="0" nillable="true"/>
+            <element name="P_RESPONSE_ID" type="int" db:index="4" db:type="INTEGER" minOccurs="0" nillable="true"/>
+            <element name="P_RESPONSE_DESC" type="string" db:index="5" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+         </sequence>
+      </complexType>
+   </element>
+</schema>

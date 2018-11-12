@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="65bf663d-d711-4894-a044-b558ab463082" activeEnvironment="Default" name="REST Project 1" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="4a337d3d-555a-40e7-b58c-45e30b989e67" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:7003" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>http://localhost:7003</con:endpoint></con:endpoints><con:resource name="OrderService" path="/OrderService/order" id="ea0332c8-84be-4dd7-b3de-c87a770c748b"><con:settings/><con:parameters/><con:method name="OrderService 1" id="261dba58-a92e-4476-ac38-1f0bb57a9c51" method="POST"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>500</con:status><con:params/></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:ord="http://localhost/OrderService/order">ord:Response</con:element></con:representation><con:request name="Request 1" id="167dd138-5c0f-40fc-a232-94a77b4146db" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:7003</con:endpoint><con:request>{
+  "paymentInfo" : {
+    "paymentCode" : "string",
+    "status" : "1"
+  },
+  "customerInfo" : {
+    "documentType" : "CC",
+    "document" : 10
+  },
+  "products" : [ {
+    "product" : "10",
+    "quantity" : 100
+  } ]
+}</con:request><con:originalUri>http://localhost/OrderService/order</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

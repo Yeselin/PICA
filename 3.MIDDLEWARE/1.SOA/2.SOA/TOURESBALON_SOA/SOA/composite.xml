@@ -18,8 +18,15 @@
           importType="wsdl"/>
   <import namespace="http://touresbalon.com/schema/businessdomain/business" location="WSDLs/BusinessService_1.wsdl"
           importType="wsdl"/>
-  <import namespace="http://touresBalon.com/schema/OrderService" location="WSDLs/OrderService.wsdl" importType="wsdl"/>
-  <service name="orderprocess_client_ep_2" ui:wsdlLocation="WSDLs/OrderProcess.wsdl">
+  <import namespace="http://touresbalon.com/schema/businessdomain/business" location="WSDLs/BusinessService_2.wsdl"
+          importType="wsdl"/>
+  <import namespace="http://touresbalon.com/schema/businessdomain/business" location="WSDLs/BusinessService_3.wsdl"
+          importType="wsdl"/>
+  <import namespace="http://touresBalon.com/schema/OrderService" location="WSDLs/OrderService_1.wsdl"
+          importType="wsdl"/>
+  <import namespace="http://touresBalon.com/schema/OrderService" location="WSDLs/OrderService_2.wsdl"
+          importType="wsdl"/>
+  <service name="orderprocess_client_ep" ui:wsdlLocation="WSDLs/OrderProcess.wsdl">
     <interface.wsdl interface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcess)"
                     callbackInterface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcessCallback)"/>
     <binding.ws port="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.endpoint(orderprocess_client_ep/OrderProcess_pt)"/>
@@ -39,6 +46,24 @@
       <reference name="ProductService" ui:wsdlLocation="WSDLs/ProductsService.wsdl">
         <interface.wsdl interface="http://touresBalon.com/schema/products#wsdl.interface(Products)"/>
       </reference>
+      <reference name="TicketService" ui:wsdlLocation="WSDLs/BusinessService.wsdl">
+        <interface.wsdl interface="http://touresbalon.com/schema/businessdomain/business#wsdl.interface(Business)"/>
+      </reference>
+      <reference name="AviancaService" ui:wsdlLocation="WSDLs/BusinessService_1.wsdl">
+        <interface.wsdl interface="http://touresbalon.com/schema/businessdomain/business#wsdl.interface(Business)"/>
+      </reference>
+      <reference name="AmericanAirlinesService" ui:wsdlLocation="WSDLs/BusinessService_2.wsdl">
+        <interface.wsdl interface="http://touresbalon.com/schema/businessdomain/business#wsdl.interface(Business)"/>
+      </reference>
+      <reference name="LodgingService" ui:wsdlLocation="WSDLs/BusinessService_3.wsdl">
+        <interface.wsdl interface="http://touresbalon.com/schema/businessdomain/business#wsdl.interface(Business)"/>
+      </reference>
+      <reference name="OrderItemService" ui:wsdlLocation="WSDLs/OrderService_1.wsdl">
+        <interface.wsdl interface="http://touresBalon.com/schema/OrderService#wsdl.interface(OrderService)"/>
+      </reference>
+      <reference name="OrderServices" ui:wsdlLocation="WSDLs/OrderService_2.wsdl">
+        <interface.wsdl interface="http://touresBalon.com/schema/OrderService#wsdl.interface(OrderService)"/>
+      </reference>
     </componentType>
     <property name="bpel.config.oneWayDeliveryPolicy" type="xs:string" many="false">async.persist</property>
   </component>
@@ -47,31 +72,78 @@
     <binding.ws port="http://touresBalon.com/schema/products#wsdl.endpoint(Products/ProductsSOAP)"
                 location="WSDLs/ProductsService.wsdl" soapVersion="1.1"/>
   </reference>
-  <reference name="ThirdPartyService" ui:wsdlLocation="WSDLs/BusinessService.wsdl">
+  <reference name="TicketService" ui:wsdlLocation="WSDLs/BusinessService.wsdl">
     <interface.wsdl interface="http://touresbalon.com/schema/businessdomain/business#wsdl.interface(Business)"/>
     <binding.ws port="http://touresbalon.com/schema/businessdomain/business#wsdl.endpoint(Business/BusinessSOAP)"
                 location="WSDLs/BusinessService.wsdl" soapVersion="1.1">
       <property name="weblogic.wsee.wsat.transaction.flowOption" type="xs:string" many="false">WSDLDriven</property>
     </binding.ws>
   </reference>
-  <reference name="TransportService" ui:wsdlLocation="WSDLs/BusinessService_1.wsdl">
+  <reference name="AviancaService" ui:wsdlLocation="WSDLs/BusinessService_1.wsdl">
     <interface.wsdl interface="http://touresbalon.com/schema/businessdomain/business#wsdl.interface(Business)"/>
     <binding.ws port="http://touresbalon.com/schema/businessdomain/business#wsdl.endpoint(Business/BusinessSOAP)"
                 location="WSDLs/BusinessService_1.wsdl" soapVersion="1.1">
       <property name="weblogic.wsee.wsat.transaction.flowOption" type="xs:string" many="false">WSDLDriven</property>
     </binding.ws>
   </reference>
-  <reference name="CreateItemService" ui:wsdlLocation="WSDLs/OrderService.wsdl">
+  <reference name="AmericanAirlinesService" ui:wsdlLocation="WSDLs/BusinessService_2.wsdl">
+    <interface.wsdl interface="http://touresbalon.com/schema/businessdomain/business#wsdl.interface(Business)"/>
+    <binding.ws port="http://touresbalon.com/schema/businessdomain/business#wsdl.endpoint(Business/BusinessSOAP)"
+                location="WSDLs/BusinessService_2.wsdl" soapVersion="1.1">
+      <property name="weblogic.wsee.wsat.transaction.flowOption" type="xs:string" many="false">WSDLDriven</property>
+    </binding.ws>
+  </reference>
+  <reference name="LodgingService" ui:wsdlLocation="WSDLs/BusinessService_3.wsdl">
+    <interface.wsdl interface="http://touresbalon.com/schema/businessdomain/business#wsdl.interface(Business)"/>
+    <binding.ws port="http://touresbalon.com/schema/businessdomain/business#wsdl.endpoint(Business/BusinessSOAP)"
+                location="WSDLs/BusinessService_3.wsdl" soapVersion="1.1">
+      <property name="weblogic.wsee.wsat.transaction.flowOption" type="xs:string" many="false">WSDLDriven</property>
+    </binding.ws>
+  </reference>
+  <reference name="OrderItemService" ui:wsdlLocation="WSDLs/OrderService_1.wsdl">
     <interface.wsdl interface="http://touresBalon.com/schema/OrderService#wsdl.interface(OrderService)"/>
     <binding.ws port="http://touresBalon.com/schema/OrderService#wsdl.endpoint(OrderService/OrderServiceSOAP)"
-                location="WSDLs/OrderService.wsdl" soapVersion="1.1"/>
+                location="WSDLs/OrderService_1.wsdl" soapVersion="1.1">
+      <property name="weblogic.wsee.wsat.transaction.flowOption" type="xs:string" many="false">WSDLDriven</property>
+    </binding.ws>
+  </reference>
+  <reference name="OrderServices" ui:wsdlLocation="WSDLs/OrderService_2.wsdl">
+    <interface.wsdl interface="http://touresBalon.com/schema/OrderService#wsdl.interface(OrderService)"/>
+    <binding.ws port="http://touresBalon.com/schema/OrderService#wsdl.endpoint(OrderService/OrderServiceSOAP)"
+                location="WSDLs/OrderService_2.wsdl" soapVersion="1.1">
+      <property name="weblogic.wsee.wsat.transaction.flowOption" type="xs:string" many="false">WSDLDriven</property>
+    </binding.ws>
   </reference>
   <wire>
-    <source.uri>orderprocess_client_ep_2</source.uri>
+    <source.uri>orderprocess_client_ep</source.uri>
     <target.uri>OrderProcess/orderprocess_client</target.uri>
   </wire>
   <wire>
     <source.uri>OrderProcess/ProductService</source.uri>
     <target.uri>ProductService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>OrderProcess/TicketService</source.uri>
+    <target.uri>TicketService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>OrderProcess/AviancaService</source.uri>
+    <target.uri>AviancaService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>OrderProcess/AmericanAirlinesService</source.uri>
+    <target.uri>AmericanAirlinesService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>OrderProcess/LodgingService</source.uri>
+    <target.uri>LodgingService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>OrderProcess/OrderItemService</source.uri>
+    <target.uri>OrderItemService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>OrderProcess/OrderServices</source.uri>
+    <target.uri>OrderServices</target.uri>
   </wire>
 </composite>

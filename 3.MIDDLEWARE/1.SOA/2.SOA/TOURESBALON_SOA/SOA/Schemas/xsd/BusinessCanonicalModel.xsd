@@ -1,22 +1,39 @@
 <?xml version= '1.0' encoding= 'UTF-8' ?>
 <xsd:schema targetNamespace="http://touresbalon.com/schema/businessdomain/business" elementFormDefault="qualified"
      xmlns:tns="http://touresbalon.com/schema/businessdomain/business" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:complexType name="RequestMetadata">
+        <xsd:sequence>
+            <xsd:element name="txId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
     <xsd:element name="BusinessRequest">
         <xsd:complexType>
             <xsd:sequence>
-                <xsd:element name="transport" type="tns:transportBookingType" minOccurs="0" maxOccurs="1"/>
-                <xsd:element name="hotelBooking" type="tns:hotelBookingType" minOccurs="0" maxOccurs="1"/>
-                <xsd:element name="ticketBooking" type="tns:ticketBookingType" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="RequestMetadata" type="tns:RequestMetadata" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="BusinessRequest" type="tns:BusinessRequestType" minOccurs="1" maxOccurs="1"/>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>
+    <xsd:complexType name="BusinessRequestType">
+        <xsd:sequence>
+            <xsd:element name="transport" type="tns:transportBookingType" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="hotelBooking" type="tns:hotelBookingType" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="ticketBooking" type="tns:ticketBookingType" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
     <xsd:element name="BusinessResponse">
         <xsd:complexType>
             <xsd:sequence>
-                <xsd:element name="response" type="tns:responseType" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="RequestMetadata" type="tns:RequestMetadata" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="BusinessResponse" type="tns:BusinessResponseType" minOccurs="0" maxOccurs="1"/>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>
+    <xsd:complexType name="BusinessResponseType">
+        <xsd:sequence>
+            <xsd:element name="response" type="tns:responseType" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
     <xsd:complexType name="transportBookingType">
         <xsd:sequence>
             <xsd:element name="transportType" type="xsd:string" minOccurs="1" maxOccurs="1"/>
@@ -47,7 +64,9 @@
     <xsd:complexType name="responseType">
         <xsd:sequence>
             <xsd:element name="status" type="xsd:string" minOccurs="1" maxOccurs="1"/>
-            <xsd:element name="description" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="bookingTransactionID" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="lodgingTransactionID" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="transportTransactionID" type="xsd:string" minOccurs="1" maxOccurs="1"/>
         </xsd:sequence>
     </xsd:complexType>
 </xsd:schema>
