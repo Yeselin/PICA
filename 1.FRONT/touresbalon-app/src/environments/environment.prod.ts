@@ -9,4 +9,5 @@ export const environment = {
   PUBLIC_KEY: 'ETfl8BigpmxVie8wgB4fAo8zHCcHR3M2AJNux+6N8Rk=',
   BASE_IMAGE: 'http://touresbalon.com/image/',
   TOKEN: 'jwt',
+  PAYMENT_GATEWAT: "http://127.0.0.1:80/gateway"
 };
