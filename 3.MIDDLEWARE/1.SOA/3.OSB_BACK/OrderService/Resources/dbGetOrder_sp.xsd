@@ -10,7 +10,7 @@
    <element name="OutputParameters">
       <complexType>
          <sequence>
-            <element name="P_XML_DET" type="string" db:index="3" db:type="CLOB" minOccurs="0" nillable="true"/>
+            <element name="P_XML_DET" type="anyType" db:index="3" db:type="CLOB" minOccurs="0" nillable="true"/>
             <element name="P_RESPONSE_ID" type="int" db:index="4" db:type="INTEGER" minOccurs="0" nillable="true"/>
             <element name="P_RESPONSE_DESC" type="string" db:index="5" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
          </sequence>

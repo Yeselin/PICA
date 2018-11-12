@@ -23,7 +23,7 @@
         <tran:provider-id>jca</tran:provider-id>
         <tran:inbound>false</tran:inbound>
         <tran:URI>
-            <env:value>jca://eis/DB/cnSQLOrders</env:value>
+            <env:value>jca://eis/DB/Orders</env:value>
         </tran:URI>
         <tran:outbound-properties>
             <tran:load-balancing-algorithm>round-robin</tran:load-balancing-algorithm>
