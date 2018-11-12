@@ -2,12 +2,8 @@
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Business"
                   xmlns:ns2="http://touresbalon.com/schema/businessdomain/business"
-                  xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
                   targetNamespace="http://touresbalon.com/schema/businessdomain/business"
                   xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <plnk:partnerLinkType name="ThirdPartyServices">
-    <plnk:role name="Business" portType="ns2:Business"/>
-  </plnk:partnerLinkType>
   <wsdl:types>
     <xsd:schema xmlns:tns="http://touresbalon.com/schema/businessdomain/business">
       <xsd:import namespace="http://touresbalon.com/schema/businessdomain/business"

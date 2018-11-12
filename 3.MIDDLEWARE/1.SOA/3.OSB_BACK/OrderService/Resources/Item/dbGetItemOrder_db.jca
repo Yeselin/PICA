@@ -1,11 +1,11 @@
-<adapter-config name="dbUpdateOrder" adapter="db" wsdlLocation="dbUpdateOrder.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+<adapter-config name="dbGetItemOrder" adapter="db" wsdlLocation="dbGetItemOrder.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
   
   <connection-factory UIConnectionName="cnSQLOrders" location="eis/DB/cnSQLOrders"/>
-  <endpoint-interaction portType="dbUpdateOrder_ptt" operation="dbUpdateOrder">
+  <endpoint-interaction portType="dbGetItemOrder_ptt" operation="dbGetItemOrder">
     <interaction-spec className="oracle.tip.adapter.db.DBStoredProcedureInteractionSpec">
       <property name="SchemaName" value="ORDERTB"/>
       <property name="PackageName" value="PK_ORDER"/>
-      <property name="ProcedureName" value="PR_UPDATE"/>
+      <property name="ProcedureName" value="PR_READ_ITEM"/>
       <property name="GetActiveUnitOfWork" value="false"/>
     </interaction-spec>
   </endpoint-interaction>

@@ -82,6 +82,8 @@
   <xsd:element name="getOrderRequest">
     <xsd:complexType>
       <xsd:sequence>
+      <xsd:element name="customer" type="ns1:CustomerType" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="paymentMethod" type="tns:paymentInfo" minOccurs="0" maxOccurs="1"/>
         <xsd:element name="orderId" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
       </xsd:sequence>
     </xsd:complexType>

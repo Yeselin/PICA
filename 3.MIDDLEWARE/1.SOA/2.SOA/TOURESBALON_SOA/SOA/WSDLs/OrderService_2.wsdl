@@ -5,10 +5,14 @@
      xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
      xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
      xmlns:ns2="http://touresBalon.com/schema/orders"
      xmlns:tns="http://touresBalon.com/schema/OrderService"
      xmlns:xs="http://www.w3.org/2001/XMLSchema"
     >
+    <plnk:partnerLinkType name="OrderServices">
+        <plnk:role name="OrderService" portType="tns:OrderService"/>
+    </plnk:partnerLinkType>    
     <wsdl:types>
         <xsd:schema xmlns:tns="http://touresBalon.com/schema/orders">
             <xsd:import namespace="http://touresBalon.com/schema/orders" schemaLocation="../Schemas/xsd/OrderCanonicalModel.xsd"/>
@@ -97,7 +101,7 @@
     </wsdl:binding>
     <wsdl:service name="OrderService">
         <wsdl:port name="OrderServiceSOAP" binding="tns:OrderServiceSOAP">
-            <soap:address location="http://localhost:7001/OrderService"/>
+            <soap:address location="http://localhost:7003/OrderService/orderManagment"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

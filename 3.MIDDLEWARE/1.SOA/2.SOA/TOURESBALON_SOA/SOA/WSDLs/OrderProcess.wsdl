@@ -4,9 +4,7 @@
              xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
              xmlns:client="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess"
              xmlns:ns1="http://touresBalon.com/schema/orders"
-             xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
-
-	<wsdl:import namespace="http://touresBalon.com/schema/orders" location="../Schemas/OrderCanonicalModel.xsd" />
+             xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	TYPE DEFINITION - List of services participating in this BPEL process
 	The default output of the BPEL designer uses strings as input and 
@@ -55,4 +53,10 @@
 		<plnk:role name="OrderProcessProvider" portType="client:OrderProcess"/>
 		<plnk:role name="OrderProcessRequester" portType="client:OrderProcessCallback"/>
 	</plnk:partnerLinkType>
+ <wsdl:types>
+  <xsd:schema>
+   <xsd:import namespace="http://touresBalon.com/schema/orders"
+               schemaLocation="../Schemas/xsd/OrderCanonicalModel.xsd"/>
+  </xsd:schema>
+ </wsdl:types>
 </wsdl:definitions>

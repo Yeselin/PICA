@@ -14,13 +14,13 @@ declare variable $Input as element() (:: schema-element(ns1:updateOrderRequest) 
 declare function local:func($Input as element() (:: schema-element(ns1:updateOrderRequest) ::)) as element() (:: schema-element(ns2:InputParameters) ::) {
     <ns2:InputParameters>
         <ns2:P_SALES_ORDER_ID>{fn:data($Input/ns1:orderId)}</ns2:P_SALES_ORDER_ID>
-       <ns2:P_PRICE>{fn:data($Input/ns1:orderPrice)}</ns2:P_PRICE>
-       <ns2:P_ORDER_STATUS_NAME>{fn:data($Input/ns1:orderStatus)}</ns2:P_ORDER_STATUS_NAME>
-       <ns2:P_COMMENTS>{fn:data($Input/ns1:comments)}</ns2:P_COMMENTS>
+        <ns2:P_PRICE>{fn:data($Input/ns1:orderPrice)}</ns2:P_PRICE>
+        <ns2:P_ORDER_STATUS_NAME>{fn:data($Input/ns1:orderStatus)}</ns2:P_ORDER_STATUS_NAME>
+        <ns2:P_COMMENTS>{fn:data($Input/ns1:comments)}</ns2:P_COMMENTS>
         <ns2:P_CUSTOMER_DOCUMENT_TYPE_NAME>{fn:data($Input/ns1:customer/cus:idType)}</ns2:P_CUSTOMER_DOCUMENT_TYPE_NAME>
-        <ns2:P_CUSTOMER_DOCUMENT_ID>{fn:data(xs:string($Input/ns1:customer/cus:id))}</ns2:P_CUSTOMER_DOCUMENT_ID>
+        <ns2:P_CUSTOMER_DOCUMENT_ID>{xs:string(fn:data($Input/ns1:customer/cus:id))}</ns2:P_CUSTOMER_DOCUMENT_ID>
         <ns2:P_PAYMENT_ID>{fn:data($Input/ns1:paymentMethod/ns1:paymentCode)}</ns2:P_PAYMENT_ID>
-        <ns2:P_PAYMENT_STATUS>{fn:data(xs:int($Input/ns1:paymentMethod/ns1:status))}</ns2:P_PAYMENT_STATUS>
+        <ns2:P_PAYMENT_STATUS>{xs:int(fn:data($Input/ns1:paymentMethod/ns1:status))}</ns2:P_PAYMENT_STATUS>
     </ns2:InputParameters>
 };
 
