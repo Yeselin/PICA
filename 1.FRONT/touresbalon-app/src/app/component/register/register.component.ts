@@ -74,13 +74,14 @@ export class RegisterComponent implements OnInit {
         zip: this.f.zip.value,
         addressType: this.f.addressType.value
       }
-    };
-
+    };    
+    //Aquí se debe cifrar la data antes de mandarla
     this.customerService.createCustomer$(JSON.stringify(customer)).subscribe((response) => {
       this.router.navigate(['/success']);
     }, (error) => {
       this.toastrService.error('Ocurrió un error al crear el registro', 'Ups!');
       console.log(JSON.stringify(error));
     });
+    
   }
 }

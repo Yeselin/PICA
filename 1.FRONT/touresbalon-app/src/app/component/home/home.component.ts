@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { LocalStorageService } from '../../service/local-storage.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  logined = false;
+
+  constructor(@Inject(LocalStorageService) private storage: LocalStorageService) { 
+
+  }
 
   ngOnInit() {
+      const token = this.storage.getToken();
+      this.logined = token ? true : false;
   }
 
 }
