@@ -137,8 +137,8 @@ public class CustomersController {
 
 		try {
 
-			String decryted = encryptComponent.decrypt(encryptedText);
-			bodyRQ = Util.bytesToHashMap(decryted.getBytes(), HashMap.class);
+			//String decryted = encryptComponent.decrypt(encryptedText);
+			bodyRQ = Util.bytesToHashMap(encryptedText.getBytes(), HashMap.class);
 
 			ldapService.addCustomer(
 					String.format("%s-%s", bodyRQ.get("documentType").toString(), bodyRQ.get("document").toString()),

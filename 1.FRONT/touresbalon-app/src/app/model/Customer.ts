@@ -6,7 +6,7 @@ export interface Customer {
     lastName: string,
     phoneNumber: string,
     email: string,
-    password: string,
+    password ?: string,
     address: {
         country: string,
         city: string,

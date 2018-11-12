@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'comapings',
+  selector: 'compaings',
   templateUrl: './campaing.component.html',
   styleUrls: ['./campaing.component.css']
 })

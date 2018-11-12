@@ -6,7 +6,7 @@
         <span class="search-label" style="width: auto;">{{selectedObj.label}}</span>
         <i class="material-icons icon-arrow-search">arrow_drop_down</i>
       </div>
-      <select #selectType class="search-select blue-grey darken-4" (change)="changeSelectType(selectType.value)">
+      <select #selectType class="search-select" (change)="changeSelectType(selectType.value)">
         <option *ngFor="let type of listTypes" value={{type.id}} label={{type.label}}></option>
       </select>
     </div>

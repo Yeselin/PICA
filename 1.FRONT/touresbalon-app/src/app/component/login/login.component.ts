@@ -62,6 +62,7 @@ export class LoginComponent implements OnInit {
 
     this.customerService.login$(this.loginRQ).subscribe((response) => {
       this.storage.putToken(response);
+      this.router.navigate(['/home']);
     }, (error) => {
       this.loading = false;
       this.toastrService.error('Credenciales inválidas', 'Ups!');
