@@ -50,4 +50,12 @@ export class LocalStorageService {
     let items = this.storage.get(environment.SHOPPING_CART);
     delete items['item'];
   }
+
+  public getToken(): any{
+    return this.storage.get(environment.TOKEN);
+  }
+
+  public putToken(token: any): void{
+    this.storage.set(environment.TOKEN, token);
+  }
 }

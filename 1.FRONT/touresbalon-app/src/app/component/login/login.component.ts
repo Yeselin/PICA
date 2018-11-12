@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { LocalStorageService } from '../../service/local-storage.service';
 import { CrypterService } from '../../service/crypter.service';
 import { CustomerService } from '../../service/customer.service';
 import { ToastrService } from 'ngx-toastr';
@@ -21,10 +22,10 @@ export class LoginComponent implements OnInit {
   loading = false;
   returnUrl: string;
 
-  loginRS: LoginRS;
   loginRQ: LoginRQ
 
   constructor(
+    @Inject(LocalStorageService) private storage: LocalStorageService,
     @Inject(CustomerService) private customerService: CustomerService,
     @Inject(CrypterService) private crypterService: CrypterService,
     private formBuilder: FormBuilder,
@@ -56,12 +57,11 @@ export class LoginComponent implements OnInit {
     this.loginRQ = {username: '', password:'', grant_type:'password'};
 
     this.loading = true;
-    this.loginRQ.username = this.f.username.value;
-    this.loginRQ.password = this.crypterService.encryptText(this.f.password.value);
+    this.loginRQ.username = "yeselin.eublime@gmail.com"; //this.f.username.value;
+    this.loginRQ.password = "0GMXNHHklytKFyEXctBe4A=="; //this.f.password.value; //this.crypterService.encryptText(this.f.password.value);
 
     this.customerService.login$(this.loginRQ).subscribe((response) => {
-      this.loginRS = response;
-      console.log(JSON.stringify(response));
+      this.storage.putToken(response);
     }, (error) => {
       this.loading = false;
       this.toastrService.error('Credenciales inválidas', 'Ups!');

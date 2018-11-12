@@ -36,8 +36,8 @@ public class EncryptComponent {
 		decodedKey = Base64.getDecoder().decode(encodedPublicKey);
 		originalKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
 		try {
-			//cipher = Cipher.getInstance("AES");
-			cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+			cipher = Cipher.getInstance("AES");
+			//cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 		} catch (Exception e) {
 			logger.error("Error al instanciar el bean", e);
 		}

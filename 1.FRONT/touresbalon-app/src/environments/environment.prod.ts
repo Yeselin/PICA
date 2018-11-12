@@ -7,5 +7,6 @@ export const environment = {
   SHOPPING_CART:'shopping_cart',
   BASIC_AUTH : 'Basic dG91cmVzYmFsb246dG91cmVzYmFsb24xMjM=',
   PUBLIC_KEY: 'ETfl8BigpmxVie8wgB4fAo8zHCcHR3M2AJNux+6N8Rk=',
-  BASE_IMAGE: 'http://touresbalon.com/image/'
+  BASE_IMAGE: 'http://touresbalon.com/image/',
+  TOKEN: 'jwt',
 };
