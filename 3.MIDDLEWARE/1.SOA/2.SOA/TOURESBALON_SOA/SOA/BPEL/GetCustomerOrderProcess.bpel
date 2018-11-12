@@ -1,0 +1,128 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Mon Nov 12 16:02:51 COT 2018
+  Author:  FELIPE
+  Type: BPEL 2.0 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="GetCustomerOrderProcess"
+               targetNamespace="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/GetCustomerOrderProcess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/GetCustomerOrderProcess"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://touresBalon.com/schema/OrderService" xmlns:ns2="http://touresBalon.com/schema/orders"
+         xmlns:ns3="http://touresBalon.com/schema/customer" xmlns:ns4="http://touresBalon.com/schema/products"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:ess="http://xmlns.oracle.com/scheduler" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap">
+
+    <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/GetCustomerOrderProcess" location="../WSDLs/GetCustomerOrderProcess.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="getcustomerorderprocess_client" partnerLinkType="client:GetCustomerOrderProcess" myRole="GetCustomerOrderProcessProvider"/>
+    <partnerLink name="OrderItemService" partnerLinkType="ns1:OrderItemService" partnerRole="OrderService"/>
+    <partnerLink name="OrderServices" partnerLinkType="ns1:OrderServices" partnerRole="OrderService"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:GetCustomerOrderProcessRequestMessage"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="client:GetCustomerOrderProcessResponseMessage"/>
+    <variable name="InvokeGetCustomerOrders_getOrder_InputVariable" messageType="ns1:getOrderRequest"/>
+    <variable name="InvokeGetCustomerOrders_getOrder_OutputVariable" messageType="ns1:getOrderResponse"/>
+    <variable name="InvokeGetItems_getOrder_InputVariable" messageType="ns1:getOrderRequest"/>
+    <variable name="InvokeGetItems_getOrder_OutputVariable" messageType="ns1:getOrderResponse"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in GetCustomerOrderProcess.wsdl) -->
+    <receive name="receiveInput" partnerLink="getcustomerorderprocess_client" portType="client:GetCustomerOrderProcess" operation="process" variable="inputVariable" createInstance="yes"/>
+    <assign name="AssignGetCustomerOrders">
+      <copy>
+        <from>$inputVariable.payload/ns2:customer/ns3:id</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeGetCustomerOrders_getOrder_InputVariable.parameters/ns2:customer/ns3:id</to>
+      </copy>
+      <copy>
+        <from>$inputVariable.payload/ns2:customer/ns3:idType</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeGetCustomerOrders_getOrder_InputVariable.parameters/ns2:customer/ns3:idType</to>
+      </copy>
+    </assign>
+    <invoke name="InvokeGetCustomerOrders" partnerLink="OrderServices"
+            portType="ns1:OrderService" operation="getOrder"
+            inputVariable="InvokeGetCustomerOrders_getOrder_InputVariable"
+            outputVariable="InvokeGetCustomerOrders_getOrder_OutputVariable" bpelx:invokeAsDetail="no"/>
+    <forEach parallel="no" counterName="ordersCounter" name="ForEach1">
+      <startCounterValue expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">2</startCounterValue>
+      <finalCounterValue expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">count($InvokeGetCustomerOrders_getOrder_OutputVariable.parameters/ns2:order)</finalCounterValue>
+      <scope name="Scope1">
+        <sequence name="Sequence1">
+          <assign name="AssignGetItems">
+            <copy>
+              <from>$InvokeGetCustomerOrders_getOrder_OutputVariable.parameters/ns2:order[$ordersCounter]/ns2:orderId</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeGetItems_getOrder_InputVariable.parameters/ns2:orders/ns2:orderId</to>
+            </copy>
+          </assign>
+          <invoke name="InvokeGetItems" partnerLink="OrderItemService"
+                  portType="ns1:OrderService" operation="getOrder"
+                  inputVariable="InvokeGetItems_getOrder_InputVariable"
+                  outputVariable="InvokeGetItems_getOrder_OutputVariable" bpelx:invokeAsDetail="no"/>
+          <assign name="AssignProductsToOrders">
+            <copy>
+              <from>$InvokeGetItems_getOrder_OutputVariable.parameters/ns2:order</from>
+              <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeGetCustomerOrders_getOrder_OutputVariable.parameters/ns2:order[$ordersCounter]</to>
+            </copy>
+          </assign>
+        </sequence>
+      </scope>
+    </forEach>
+    <assign name="AssignOrdersResponse">
+      <copy>
+        <from>$InvokeGetCustomerOrders_getOrder_OutputVariable.parameters</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload</to>
+      </copy>
+    </assign>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="getcustomerorderprocess_client" portType="client:GetCustomerOrderProcess" operation="process"
+           variable="outputVariable"/>
+  </sequence>
+</process>

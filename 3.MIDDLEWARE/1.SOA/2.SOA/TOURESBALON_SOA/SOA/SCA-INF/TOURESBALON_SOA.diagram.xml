@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
     <dgm:gService name="orderprocess_client_ep">
-        <dgm:body borderWidth="2" arcRad="20" X="21" Y="375" width="137" height="96">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="416" width="137" height="96">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="11" Y="368" width="156" height="110">
+        <dgm:shadow arcRad="20" X="11" Y="409" width="156" height="110">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:outputPort name="orderprocess_client_ep" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcess)" callbackInterface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcessCallback)"/>
@@ -15,12 +15,26 @@
             <dgm:item>processResponse</dgm:item>
         </dgm:operations>
     </dgm:gService>
-    <dgm:gReference name="ProductService">
-        <dgm:body borderWidth="2" arcRad="20" X="594" Y="26" width="136" height="120">
+    <dgm:gService name="getcustomerorderprocess_client_ep">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="135" width="137" height="84">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="584" Y="19" width="156" height="134">
+        <dgm:shadow arcRad="20" X="11" Y="128" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="getcustomerorderprocess_client_ep" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/GetCustomerOrderProcess#wsdl.interface(GetCustomerOrderProcess)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gReference name="ProductService">
+        <dgm:body borderWidth="2" arcRad="20" X="775" Y="334" width="136" height="120">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="765" Y="327" width="156" height="134">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="ProductService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://touresBalon.com/schema/products#wsdl.interface(Products)"/>
@@ -33,11 +47,11 @@
         </dgm:operations>
     </dgm:gReference>
     <dgm:gReference name="TicketService">
-        <dgm:body borderWidth="2" arcRad="20" X="594" Y="180" width="136" height="84">
+        <dgm:body borderWidth="2" arcRad="20" X="775" Y="488" width="136" height="84">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="584" Y="173" width="156" height="98">
+        <dgm:shadow arcRad="20" X="765" Y="481" width="156" height="98">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="TicketService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://touresbalon.com/schema/businessdomain/business#wsdl.interface(Business)"/>
@@ -47,11 +61,11 @@
         </dgm:operations>
     </dgm:gReference>
     <dgm:gReference name="AviancaService">
-        <dgm:body borderWidth="2" arcRad="20" X="594" Y="298" width="136" height="84">
+        <dgm:body borderWidth="2" arcRad="20" X="775" Y="606" width="136" height="84">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="584" Y="291" width="156" height="98">
+        <dgm:shadow arcRad="20" X="765" Y="599" width="156" height="98">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="AviancaService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://touresbalon.com/schema/businessdomain/business#wsdl.interface(Business)"/>
@@ -61,11 +75,11 @@
         </dgm:operations>
     </dgm:gReference>
     <dgm:gReference name="AmericanAirlinesService">
-        <dgm:body borderWidth="2" arcRad="20" X="594" Y="416" width="136" height="84">
+        <dgm:body borderWidth="2" arcRad="20" X="775" Y="724" width="136" height="84">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="584" Y="409" width="156" height="98">
+        <dgm:shadow arcRad="20" X="765" Y="717" width="156" height="98">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="AmericanAirlinesService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://touresbalon.com/schema/businessdomain/business#wsdl.interface(Business)"/>
@@ -75,11 +89,11 @@
         </dgm:operations>
     </dgm:gReference>
     <dgm:gReference name="LodgingService">
-        <dgm:body borderWidth="2" arcRad="20" X="594" Y="534" width="136" height="84">
+        <dgm:body borderWidth="2" arcRad="20" X="775" Y="842" width="136" height="84">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="584" Y="527" width="156" height="98">
+        <dgm:shadow arcRad="20" X="765" Y="835" width="156" height="98">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="LodgingService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://touresbalon.com/schema/businessdomain/business#wsdl.interface(Business)"/>
@@ -89,11 +103,11 @@
         </dgm:operations>
     </dgm:gReference>
     <dgm:gReference name="OrderItemService">
-        <dgm:body borderWidth="2" arcRad="20" X="594" Y="652" width="136" height="120">
+        <dgm:body borderWidth="2" arcRad="20" X="775" Y="26" width="136" height="120">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="584" Y="645" width="156" height="134">
+        <dgm:shadow arcRad="20" X="765" Y="19" width="156" height="134">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="OrderItemService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://touresBalon.com/schema/OrderService#wsdl.interface(OrderService)"/>
@@ -106,11 +120,11 @@
         </dgm:operations>
     </dgm:gReference>
     <dgm:gReference name="OrderServices">
-        <dgm:body borderWidth="2" arcRad="20" X="594" Y="806" width="136" height="120">
+        <dgm:body borderWidth="2" arcRad="20" X="775" Y="180" width="136" height="120">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="584" Y="799" width="156" height="134">
+        <dgm:shadow arcRad="20" X="765" Y="173" width="156" height="134">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="OrderServices" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://touresBalon.com/schema/OrderService#wsdl.interface(OrderService)"/>
@@ -123,12 +137,12 @@
         </dgm:operations>
     </dgm:gReference>
     <dgm:gComponent name="OrderProcess">
-        <dgm:body borderWidth="2" arcRad="20" X="311" Y="360" width="130" height="211">
+        <dgm:body borderWidth="2" arcRad="20" X="476" Y="401" width="130" height="211">
             <dgm:borderColor r="69" g="113" b="140"/>
             <dgm:lightBgColor r="166" g="208" b="230"/>
             <dgm:darkBgColor r="99" g="162" b="201"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="301" Y="353" width="150" height="227">
+        <dgm:shadow arcRad="20" X="466" Y="394" width="150" height="227">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="orderprocess_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcess)" callbackInterface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/OrderProcess#wsdl.interface(OrderProcessCallback)"/>
@@ -141,57 +155,90 @@
         <dgm:outputPort name="OrderServices" X="120" Y="165" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://touresBalon.com/schema/OrderService#wsdl.interface(OrderService)"/>
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
+    <dgm:gComponent name="GetCustomerOrderProcess">
+        <dgm:body borderWidth="2" arcRad="20" X="476" Y="120" width="130" height="86">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="466" Y="113" width="150" height="102">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="getcustomerorderprocess_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TOURESBALON_SOA/TOURESBALON_SOA/GetCustomerOrderProcess#wsdl.interface(GetCustomerOrderProcess)"/>
+        <dgm:outputPort name="OrderItemService" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://touresBalon.com/schema/OrderService#wsdl.interface(OrderService)"/>
+        <dgm:outputPort name="OrderServices" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://touresBalon.com/schema/OrderService#wsdl.interface(OrderService)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
     <dgm:gWireLink source="orderprocess_client_ep" target="OrderProcess/orderprocess_client" width="2">
-        <dgm:gSegment X1="168" Y1="385" X2="301" Y2="385"/>
+        <dgm:gSegment X1="168" Y1="426" X2="466" Y2="426"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="OrderProcess/ProductService" target="ProductService" width="2">
-        <dgm:gSegment X1="451" Y1="385" X2="475" Y2="385"/>
-        <dgm:gSegment X1="475" Y1="385" X2="475" Y2="36"/>
-        <dgm:gSegment X1="475" Y1="36" X2="584" Y2="36"/>
+        <dgm:gSegment X1="616" Y1="426" X2="640" Y2="426"/>
+        <dgm:gSegment X1="640" Y1="426" X2="640" Y2="344"/>
+        <dgm:gSegment X1="640" Y1="344" X2="765" Y2="344"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="OrderProcess/TicketService" target="TicketService" width="2">
-        <dgm:gSegment X1="451" Y1="410" X2="490" Y2="410"/>
-        <dgm:gSegment X1="490" Y1="410" X2="490" Y2="190"/>
-        <dgm:gSegment X1="490" Y1="190" X2="584" Y2="190"/>
+        <dgm:gSegment X1="616" Y1="451" X2="730" Y2="451"/>
+        <dgm:gSegment X1="730" Y1="451" X2="730" Y2="498"/>
+        <dgm:gSegment X1="730" Y1="498" X2="765" Y2="498"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="OrderProcess/AviancaService" target="AviancaService" width="2">
-        <dgm:gSegment X1="451" Y1="435" X2="505" Y2="435"/>
-        <dgm:gSegment X1="505" Y1="435" X2="505" Y2="308"/>
-        <dgm:gSegment X1="505" Y1="308" X2="584" Y2="308"/>
+        <dgm:gSegment X1="616" Y1="476" X2="715" Y2="476"/>
+        <dgm:gSegment X1="715" Y1="476" X2="715" Y2="616"/>
+        <dgm:gSegment X1="715" Y1="616" X2="765" Y2="616"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="OrderProcess/AmericanAirlinesService" target="AmericanAirlinesService" width="2">
-        <dgm:gSegment X1="451" Y1="460" X2="520" Y2="460"/>
-        <dgm:gSegment X1="520" Y1="460" X2="520" Y2="426"/>
-        <dgm:gSegment X1="520" Y1="426" X2="584" Y2="426"/>
+        <dgm:gSegment X1="616" Y1="501" X2="700" Y2="501"/>
+        <dgm:gSegment X1="700" Y1="501" X2="700" Y2="734"/>
+        <dgm:gSegment X1="700" Y1="734" X2="765" Y2="734"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="OrderProcess/LodgingService" target="LodgingService" width="2">
-        <dgm:gSegment X1="451" Y1="485" X2="505" Y2="485"/>
-        <dgm:gSegment X1="505" Y1="485" X2="505" Y2="544"/>
-        <dgm:gSegment X1="505" Y1="544" X2="584" Y2="544"/>
+        <dgm:gSegment X1="616" Y1="526" X2="685" Y2="526"/>
+        <dgm:gSegment X1="685" Y1="526" X2="685" Y2="852"/>
+        <dgm:gSegment X1="685" Y1="852" X2="765" Y2="852"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="OrderProcess/OrderItemService" target="OrderItemService" width="2">
-        <dgm:gSegment X1="451" Y1="510" X2="490" Y2="510"/>
-        <dgm:gSegment X1="490" Y1="510" X2="490" Y2="662"/>
-        <dgm:gSegment X1="490" Y1="662" X2="584" Y2="662"/>
+        <dgm:gSegment X1="616" Y1="551" X2="655" Y2="551"/>
+        <dgm:gSegment X1="655" Y1="551" X2="655" Y2="36"/>
+        <dgm:gSegment X1="655" Y1="36" X2="765" Y2="36"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="OrderProcess/OrderServices" target="OrderServices" width="2">
-        <dgm:gSegment X1="451" Y1="535" X2="475" Y2="535"/>
-        <dgm:gSegment X1="475" Y1="535" X2="475" Y2="816"/>
-        <dgm:gSegment X1="475" Y1="816" X2="584" Y2="816"/>
+        <dgm:gSegment X1="616" Y1="576" X2="670" Y2="576"/>
+        <dgm:gSegment X1="670" Y1="576" X2="670" Y2="190"/>
+        <dgm:gSegment X1="670" Y1="190" X2="765" Y2="190"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="getcustomerorderprocess_client_ep" target="GetCustomerOrderProcess/getcustomerorderprocess_client" width="2">
+        <dgm:gSegment X1="168" Y1="145" X2="466" Y2="145"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="GetCustomerOrderProcess/OrderItemService" target="OrderItemService" width="2">
+        <dgm:gSegment X1="616" Y1="145" X2="640" Y2="145"/>
+        <dgm:gSegment X1="640" Y1="145" X2="640" Y2="36"/>
+        <dgm:gSegment X1="640" Y1="36" X2="765" Y2="36"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="GetCustomerOrderProcess/OrderServices" target="OrderServices" width="2">
+        <dgm:gSegment X1="616" Y1="170" X2="685" Y2="170"/>
+        <dgm:gSegment X1="685" Y1="170" X2="685" Y2="190"/>
+        <dgm:gSegment X1="685" Y1="190" X2="765" Y2="190"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
