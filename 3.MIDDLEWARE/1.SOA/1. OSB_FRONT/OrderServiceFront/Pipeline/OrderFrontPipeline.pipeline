@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config">
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con2="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con3="http://www.bea.com/wli/sb/stages/config">
     <con:coreEntry>
         <con:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType">
             <con:wsdl ref="OrderServiceFront/Resources/OrderServiceFront"/>
@@ -18,9 +18,9 @@
                 <con:context/>
                 <con:actions>
                     <con1:assign varName="UUID">
-                        <con2:id>_ActionId-a8a641b.5dae17b5.0.166fee503db.N7ffd</con2:id>
+                        <con2:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-a8a641b.5dae17b5.0.166fee503db.N7ffd</con2:id>
                         <con1:expr>
-                            <con2:xqueryText>fn-bea:uuid()</con2:xqueryText>
+                            <con2:xqueryText xmlns:con4="http://www.bea.com/wli/sb/stages/config">fn-bea:uuid()</con2:xqueryText>
                         </con1:expr>
                     </con1:assign>
                 </con:actions>
@@ -29,9 +29,9 @@
                 <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config"/>
                 <con:actions>
                     <con4:assign varName="bodyLog" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
-                        <con2:id>_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7e86</con2:id>
+                        <con2:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7e86</con2:id>
                         <con1:expr>
-                            <con2:xqueryTransform>
+                            <con2:xqueryTransform xmlns:con5="http://www.bea.com/wli/sb/stages/config">
                                 <con2:resource ref="ESB_COMMONS/Logging/Transformation/LogInMessageTransformation"/>
                                 <con2:param name="attachment">
                                     <con2:path>fn-bea:serialize($attachments)</con2:path>
@@ -58,16 +58,16 @@
                         </con1:expr>
                     </con4:assign>
                     <con1:route xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
-                        <con2:id>_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7e85</con2:id>
+                        <con2:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7e85</con2:id>
                         <con1:service ref="ESB_COMMONS/Logging/Proxy_Services/LoggingServicePipelineProxyService" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
                         <con1:outboundTransform>
                             <con4:replace varName="body" contents-only="true">
-                                <con2:id>_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7e84</con2:id>
+                                <con2:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7e84</con2:id>
                                 <con4:location>
-                                    <con2:xpathText>.</con2:xpathText>
+                                    <con2:xpathText xmlns:con5="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
                                 </con4:location>
                                 <con4:expr>
-                                    <con2:xqueryText>$bodyLog</con2:xqueryText>
+                                    <con2:xqueryText xmlns:con5="http://www.bea.com/wli/sb/stages/config">$bodyLog</con2:xqueryText>
                                 </con4:expr>
                             </con4:replace>
                         </con1:outboundTransform>
@@ -78,12 +78,12 @@
                 <con:context/>
                 <con:actions>
                     <con1:replace varName="body" contents-only="true">
-                        <con2:id>_ActionId-N53e71ffa.53d21847.0.166eaabca59.N7ed3</con2:id>
+                        <con2:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-N53e71ffa.53d21847.0.166eaabca59.N7ed3</con2:id>
                         <con1:location>
-                            <con2:xpathText>.</con2:xpathText>
+                            <con2:xpathText xmlns:con4="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
                         </con1:location>
                         <con1:expr>
-                            <con2:xqueryTransform>
+                            <con2:xqueryTransform xmlns:con4="http://www.bea.com/wli/sb/stages/config">
                                 <con2:resource ref="OrderServiceFront/Transformation/OrderFront_To_OrderCanonical"/>
                                 <con2:param name="Input">
                                     <con2:path>$body/*</con2:path>
@@ -92,12 +92,12 @@
                         </con1:expr>
                     </con1:replace>
                     <con1:replace varName="body" contents-only="true">
-                        <con2:id>_ActionId-a8a641b.5dae17b5.0.166fee503db.N7ff7</con2:id>
+                        <con2:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-a8a641b.5dae17b5.0.166fee503db.N7ff7</con2:id>
                         <con1:location>
-                            <con2:xpathText>./*:createOrderRequest/*:RequestMetadata/*:txId</con2:xpathText>
+                            <con2:xpathText xmlns:con4="http://www.bea.com/wli/sb/stages/config">./*:createOrderRequest/*:RequestMetadata/*:txId</con2:xpathText>
                         </con1:location>
                         <con1:expr>
-                            <con2:xqueryText>$UUID</con2:xqueryText>
+                            <con2:xqueryText xmlns:con4="http://www.bea.com/wli/sb/stages/config">$UUID</con2:xqueryText>
                         </con1:expr>
                     </con1:replace>
                 </con:actions>
@@ -106,7 +106,7 @@
                 <con:context/>
                 <con:actions>
                     <con1:wsCallout>
-                        <con2:id>_ActionId-a8a6623.1a63643e.0.166f0a6f07d.N7eef</con2:id>
+                        <con2:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-a8a6623.1a63643e.0.166f0a6f07d.N7eef</con2:id>
                         <con1:service ref="OrderServiceFront/BusinessService/CreateOrderServiceBack" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
                         <con1:operation>createOrder</con1:operation>
                         <con1:request>
@@ -117,9 +117,9 @@
                         </con1:response>
                         <con1:requestTransform>
                             <con1:assign varName="creatOrderRequest">
-                                <con2:id>_ActionId-a8a6623.1a63643e.0.166f0a6f07d.N7ee9</con2:id>
+                                <con2:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-a8a6623.1a63643e.0.166f0a6f07d.N7ee9</con2:id>
                                 <con1:expr>
-                                    <con2:xqueryText>$body</con2:xqueryText>
+                                    <con2:xqueryText xmlns:con4="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
                                 </con1:expr>
                             </con1:assign>
                         </con1:requestTransform>
@@ -131,12 +131,12 @@
                 <con:context/>
                 <con:actions>
                     <con1:replace varName="body" contents-only="true">
-                        <con2:id>_ActionId-a8a6623.1a63643e.0.166f0a6f07d.N7eaf</con2:id>
+                        <con2:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-a8a6623.1a63643e.0.166f0a6f07d.N7eaf</con2:id>
                         <con1:location>
-                            <con2:xpathText>.</con2:xpathText>
+                            <con2:xpathText xmlns:con4="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
                         </con1:location>
                         <con1:expr>
-                            <con2:xqueryTransform>
+                            <con2:xqueryTransform xmlns:con4="http://www.bea.com/wli/sb/stages/config">
                                 <con2:resource ref="OrderServiceFront/Transformation/OrderWithID_To_CanonicalOrder"/>
                                 <con2:param name="InputBody">
                                     <con2:path>$body/*</con2:path>
@@ -153,7 +153,7 @@
                 <con:context/>
                 <con:actions>
                     <con4:route xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config">
-                        <con2:id>_ActionId-a01db43.2c7ee363.0.166ef8c5f6f.N7ffd</con2:id>
+                        <con2:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-a01db43.2c7ee363.0.166ef8c5f6f.N7ffd</con2:id>
                         <con4:service ref="OrderServiceFront/BusinessService/OrderProcessBS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
                         <con4:operation>createOrder</con4:operation>
                         <con4:outboundTransform/>
@@ -166,24 +166,24 @@
                 <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config"/>
                 <con:actions>
                     <con1:route xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
-                        <con2:id>_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7e7e</con2:id>
+                        <con2:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7e7e</con2:id>
                         <con1:service ref="ESB_COMMONS/Logging/Proxy_Services/LoggingServicePipelineProxyService" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
                         <con1:outboundTransform>
                             <con4:replace varName="body" contents-only="true">
-                                <con2:id>_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7e7d</con2:id>
+                                <con2:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7e7d</con2:id>
                                 <con4:location>
-                                    <con2:xpathText>.</con2:xpathText>
+                                    <con2:xpathText xmlns:con5="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
                                 </con4:location>
                                 <con4:expr>
-                                    <con2:xqueryText>$bodyLog</con2:xqueryText>
+                                    <con2:xqueryText xmlns:con5="http://www.bea.com/wli/sb/stages/config">$bodyLog</con2:xqueryText>
                                 </con4:expr>
                             </con4:replace>
                         </con1:outboundTransform>
                     </con1:route>
                     <con4:assign varName="bodyLog" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
-                        <con2:id>_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7e7f</con2:id>
+                        <con2:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7e7f</con2:id>
                         <con1:expr>
-                            <con2:xqueryTransform>
+                            <con2:xqueryTransform xmlns:con5="http://www.bea.com/wli/sb/stages/config">
                                 <con2:resource ref="ESB_COMMONS/Logging/Transformation/LogInMessageTransformation"/>
                                 <con2:param name="attachment">
                                     <con2:path>fn-bea:serialize($attachments)</con2:path>
@@ -215,12 +215,12 @@
                 <con:context/>
                 <con:actions>
                     <con1:replace varName="body" contents-only="true">
-                        <con2:id>_ActionId-N53e71ffa.53d21847.0.166eaabca59.N7ece</con2:id>
+                        <con2:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-N53e71ffa.53d21847.0.166eaabca59.N7ece</con2:id>
                         <con1:location>
-                            <con2:xpathText>.</con2:xpathText>
+                            <con2:xpathText xmlns:con4="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
                         </con1:location>
                         <con1:expr>
-                            <con2:xqueryTransform>
+                            <con2:xqueryTransform xmlns:con4="http://www.bea.com/wli/sb/stages/config">
                                 <con2:resource ref="OrderServiceFront/Transformation/OrderFront_To_OrderCaonicalResponse"/>
                                 <con2:param name="Input">
                                     <con2:path>$creatOrderResponse/*</con2:path>
@@ -236,9 +236,9 @@
                 <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config"/>
                 <con:actions>
                     <con4:assign varName="bodyLogError" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
-                        <con2:id>_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7965</con2:id>
+                        <con2:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7965</con2:id>
                         <con1:expr>
-                            <con2:xqueryTransform>
+                            <con2:xqueryTransform xmlns:con5="http://www.bea.com/wli/sb/stages/config">
                                 <con2:resource ref="ESB_COMMONS/Logging/Transformation/LogInMessageTransformation"/>
                                 <con2:param name="attachment">
                                     <con2:path>fn-bea:serialize($attachments)</con2:path>
@@ -265,16 +265,16 @@
                         </con1:expr>
                     </con4:assign>
                     <con1:route xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
-                        <con2:id>_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7964</con2:id>
+                        <con2:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7964</con2:id>
                         <con1:service ref="ESB_COMMONS/Logging/Proxy_Services/LoggingServicePipelineProxyService" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
                         <con1:outboundTransform>
                             <con4:replace varName="body" contents-only="true">
-                                <con2:id>_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7963</con2:id>
+                                <con2:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7963</con2:id>
                                 <con4:location>
-                                    <con2:xpathText>.</con2:xpathText>
+                                    <con2:xpathText xmlns:con5="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
                                 </con4:location>
                                 <con4:expr>
-                                    <con2:xqueryText>$bodyLogError</con2:xqueryText>
+                                    <con2:xqueryText xmlns:con5="http://www.bea.com/wli/sb/stages/config">$bodyLogError</con2:xqueryText>
                                 </con4:expr>
                             </con4:replace>
                         </con1:outboundTransform>
@@ -285,12 +285,12 @@
                 <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config"/>
                 <con:actions>
                     <con1:replace varName="body" contents-only="true">
-                        <con2:id>_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7aa1</con2:id>
+                        <con2:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7aa1</con2:id>
                         <con1:location>
-                            <con2:xpathText>.</con2:xpathText>
+                            <con2:xpathText xmlns:con4="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
                         </con1:location>
                         <con1:expr>
-                            <con2:xqueryTransform>
+                            <con2:xqueryTransform xmlns:con4="http://www.bea.com/wli/sb/stages/config">
                                 <con2:resource ref="ESB_COMMONS/Logging/Transformation/SoapFault"/>
                                 <con2:param name="Fault">
                                     <con2:path>$fault</con2:path>
@@ -301,9 +301,172 @@
                             </con2:xqueryTransform>
                         </con1:expr>
                     </con1:replace>
-                    <con2:reply isError="false" xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                    <con2:reply isError="true" xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con5="http://www.bea.com/wli/sb/stages/config">
                         <con2:id>_ActionId-a896476.N559ca6aa.0.1669339cdc6.N7aa0</con2:id>
                     </con2:reply>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline name="request-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e5f" type="request" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config">
+            <con:stage id="_StageId-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e5e" name="UUID">
+                <con:context/>
+                <con:actions>
+                    <con1:assign varName="UUID">
+                        <con2:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e5d</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con4="http://www.bea.com/wli/sb/stages/config">fn-bea:uuid()</con2:xqueryText>
+                        </con1:expr>
+                    </con1:assign>
+                </con:actions>
+            </con:stage>
+            <con:stage name="LogginIn" id="_StageId-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e5c">
+                <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config"/>
+                <con:actions>
+                    <con4:assign varName="bodyLog" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e5b</con2:id>
+                        <con1:expr>
+                            <con2:xqueryTransform xmlns:con5="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="ESB_COMMONS/Logging/Transformation/LogInMessageTransformation"/>
+                                <con2:param name="attachment">
+                                    <con2:path>fn-bea:serialize($attachments)</con2:path>
+                                </con2:param>
+                                <con2:param name="inbound">
+                                    <con2:path>fn-bea:serialize($inbound)</con2:path>
+                                </con2:param>
+                                <con2:param name="logSite">
+                                    <con2:path>'REQ_IN'</con2:path>
+                                </con2:param>
+                                <con2:param name="header">
+                                    <con2:path>fn-bea:serialize($header)</con2:path>
+                                </con2:param>
+                                <con2:param name="body">
+                                    <con2:path>fn-bea:serialize($body)</con2:path>
+                                </con2:param>
+                                <con2:param name="operation">
+                                    <con2:path>fn:concat($operation, 'Front')</con2:path>
+                                </con2:param>
+                                <con2:param name="transactionId">
+                                    <con2:path>$UUID</con2:path>
+                                </con2:param>
+                            </con2:xqueryTransform>
+                        </con1:expr>
+                    </con4:assign>
+                    <con1:route xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e5a</con2:id>
+                        <con1:service ref="ESB_COMMONS/Logging/Proxy_Services/LoggingServicePipelineProxyService" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:outboundTransform>
+                            <con4:replace varName="body" contents-only="true">
+                                <con2:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e59</con2:id>
+                                <con4:location>
+                                    <con2:xpathText xmlns:con5="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                                </con4:location>
+                                <con4:expr>
+                                    <con2:xqueryText xmlns:con5="http://www.bea.com/wli/sb/stages/config">$bodyLog</con2:xqueryText>
+                                </con4:expr>
+                            </con4:replace>
+                        </con1:outboundTransform>
+                    </con1:route>
+                </con:actions>
+            </con:stage>
+            <con:stage id="_StageId-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e58" name="TransformOrderProcessRequest">
+                <con:context>
+                    <con2:userNsDecl prefix="ord" namespace="http://touresBalon.com/schema/ordersFront" xmlns:con4="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true">
+                        <con2:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e57</con2:id>
+                        <con1:location>
+                            <con2:xpathText xmlns:con4="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                        </con1:location>
+                        <con1:expr>
+                            <con2:xqueryTransform xmlns:con4="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="OrderServiceFront/Transformation/GetOrderFront_To_GetCanonicalOrder_request"/>
+                                <con2:param name="Input">
+                                    <con2:path>$body/ord:getOrderRequest</con2:path>
+                                </con2:param>
+                            </con2:xqueryTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:replace varName="body" contents-only="true">
+                        <con2:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e56</con2:id>
+                        <con2:disabled xmlns:con4="http://www.bea.com/wli/sb/stages/config">true</con2:disabled>
+                        <con1:location>
+                            <con2:xpathText xmlns:con4="http://www.bea.com/wli/sb/stages/config">./*:createOrderRequest/*:RequestMetadata/*:txId</con2:xpathText>
+                        </con1:location>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con4="http://www.bea.com/wli/sb/stages/config">$UUID</con2:xqueryText>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline name="response-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e4e" type="response" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config">
+            <con:stage id="_StageId-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e49" name="TransformResponse">
+                <con:context/>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true">
+                        <con2:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e48</con2:id>
+                        <con1:location>
+                            <con2:xpathText xmlns:con4="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                        </con1:location>
+                        <con1:expr>
+                            <con2:xqueryTransform xmlns:con4="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="OrderServiceFront/Transformation/GetOrderFront_To_GetCanonicalOrder_Response"/>
+                                <con2:param name="Input">
+                                    <con2:path>$body/*</con2:path>
+                                </con2:param>
+                            </con2:xqueryTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+            <con:stage name="LogginOut" id="_StageId-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e4d">
+                <con:context xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config"/>
+                <con:actions>
+                    <con1:route xmlns:con1="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e4c</con2:id>
+                        <con1:service ref="ESB_COMMONS/Logging/Proxy_Services/LoggingServicePipelineProxyService" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:outboundTransform>
+                            <con4:replace varName="body" contents-only="true">
+                                <con2:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e4b</con2:id>
+                                <con4:location>
+                                    <con2:xpathText xmlns:con5="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                                </con4:location>
+                                <con4:expr>
+                                    <con2:xqueryText xmlns:con5="http://www.bea.com/wli/sb/stages/config">$bodyLog</con2:xqueryText>
+                                </con4:expr>
+                            </con4:replace>
+                        </con1:outboundTransform>
+                    </con1:route>
+                    <con4:assign varName="bodyLog" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e4a</con2:id>
+                        <con1:expr>
+                            <con2:xqueryTransform xmlns:con5="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="ESB_COMMONS/Logging/Transformation/LogInMessageTransformation"/>
+                                <con2:param name="attachment">
+                                    <con2:path>fn-bea:serialize($attachments)</con2:path>
+                                </con2:param>
+                                <con2:param name="inbound">
+                                    <con2:path>fn-bea:serialize($inbound)</con2:path>
+                                </con2:param>
+                                <con2:param name="logSite">
+                                    <con2:path>'RESP_OUT'</con2:path>
+                                </con2:param>
+                                <con2:param name="header">
+                                    <con2:path>fn-bea:serialize($header)</con2:path>
+                                </con2:param>
+                                <con2:param name="body">
+                                    <con2:path>fn-bea:serialize($body)</con2:path>
+                                </con2:param>
+                                <con2:param name="operation">
+                                    <con2:path>fn:concat($operation, 'Front')</con2:path>
+                                </con2:param>
+                                <con2:param name="transactionId">
+                                    <con2:path>$UUID</con2:path>
+                                </con2:param>
+                            </con2:xqueryTransform>
+                        </con1:expr>
+                    </con4:assign>
                 </con:actions>
             </con:stage>
         </con:pipeline>
@@ -319,6 +482,28 @@
                                 <con:request>request-a896476.N559ca6aa.0.1669339cdc6.N7e88</con:request>
                                 <con:response>response-a896476.N559ca6aa.0.1669339cdc6.N7e81</con:response>
                             </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="getOrder">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="GetOrderPipeline" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config">
+                                <con:request>request-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e5f</con:request>
+                                <con:response>response-N3f57fe4a.N54b0ef0d.0.16709f185b0.N7e4e</con:response>
+                            </con:pipeline-node>
+                            <con:route-node name="RouteNode1">
+                                <con:context/>
+                                <con:actions>
+                                    <con2:route>
+                                        <con3:id>_ActionId-N3f57fe4a.N4fd7c760.0.1670a027741.N7ffd</con3:id>
+                                        <con2:service ref="OrderServiceFront/BusinessService/GetCustomerProducts" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                                        <con2:operation>getOrder</con2:operation>
+                                        <con2:outboundTransform/>
+                                        <con2:responseTransform/>
+                                    </con2:route>
+                                </con:actions>
+                            </con:route-node>
                         </con:flow>
                     </con:branch>
                     <con:default-branch>

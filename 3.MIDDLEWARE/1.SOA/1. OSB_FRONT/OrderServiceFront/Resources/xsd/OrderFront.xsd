@@ -45,19 +45,38 @@
   <xsd:element name="getOrderResponse">
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element name="orderId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
-        <xsd:element name="orderDate" type="xsd:date" minOccurs="1" maxOccurs="1"/>
-        <xsd:element name="totalPrice" type="xsd:long" minOccurs="1" maxOccurs="1"/>
-        <xsd:element name="status" type="xsd:string" minOccurs="1" maxOccurs="1"/>
-        <xsd:element name="comment" type="xsd:string" minOccurs="1" maxOccurs="1"/>
-        <xsd:element name="products" type="tns:productsType" minOccurs="1" maxOccurs="unbounded"/>
+        <xsd:element name="orders" type="tns:ordersType" minOccurs="1" maxOccurs="unbounded"/>
       </xsd:sequence>
     </xsd:complexType>
   </xsd:element>
+  <xsd:complexType name="ordersType">
+    <xsd:sequence>
+      <xsd:element name="orderId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="orderDate" type="xsd:date" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="totalPrice" type="xsd:long" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="status" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="comment" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="products" type="tns:productsGetType" minOccurs="1" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="productsType">
     <xsd:sequence>
       <xsd:element name="product" type="xsd:string" minOccurs="1" maxOccurs="1"/>
       <xsd:element name="quantity" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="productsGetType">
+    <xsd:sequence>
+      <xsd:element name="product" type="tns:productGetType" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="productGetType">
+    <xsd:sequence>
+      <xsd:element name="productId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="productName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="price" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="quantity" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="image_ref" type="xsd:string" minOccurs="1" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="paymentInfoType">
