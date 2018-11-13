@@ -39,7 +39,7 @@ public class RestClient {
 	public <T> T callService(String endpoint, String method, Object payload, Class<?> clazz) {
 		ResponseEntity<T> response = null;
 		LOGGER.info(String.format("Consumiendo servicio %s", endpoint));
-
+		LOGGER.info(payload.toString());
 		try {
 
 			if ("GET".equalsIgnoreCase(method)) {
@@ -62,7 +62,7 @@ public class RestClient {
 			throw new RuntimeException(String.format("Método http %s no configurado", method));
 
 		} catch (Exception e) {
-			throw new RestClientExceptionOSB("Ocurrió un problema de comunicación al llamar al OBS");
+			throw new RestClientExceptionOSB("Ocurrió un problema de comunicación al llamar al OBS", e);
 		}
 	}
 

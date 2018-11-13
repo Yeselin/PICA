@@ -1,7 +1,7 @@
 
 export interface OrderRQ {
     paymentInfo: PaymentInfo,
-    customer: CustomerInfo,
+    customerInfo: CustomerInfo,
     products: Item[]
 }
 

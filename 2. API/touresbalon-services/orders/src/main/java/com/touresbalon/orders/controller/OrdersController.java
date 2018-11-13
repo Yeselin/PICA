@@ -43,11 +43,11 @@ public class OrdersController {
 	private String endpointOrder;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "text/plain", produces = "application/json")
-	public ResponseEntity<Map<String, String>> createOrder(@RequestBody String encryptedText,
+	public ResponseEntity<Map<String, Object>> createOrder(@RequestBody String encryptedText,
 			@RequestHeader(Constant.HEADER_AUTHORIZATION) String token) {
 
-		ResponseEntity<Map<String, String>> response = null;
-		Map<String, String> bodyRS = new HashMap<>();
+		ResponseEntity<Map<String, Object>> response = null;
+		Map<String, Object> bodyRS = new HashMap<>();
 
 		try {
 
@@ -57,8 +57,8 @@ public class OrdersController {
 				response = new ResponseEntity<>(bodyRS, HttpStatus.UNAUTHORIZED);
 			} else {
 				tokenUtil().verifyToken(token, secret, true);
-				String decryted = encryptComponent.decrypt(encryptedText);
-				bodyRS = restClient.callService(endpointOrder, "POST", decryted, HashMap.class);
+				//String decryted = encryptComponent.decrypt(encryptedText);
+				bodyRS = restClient.callService(endpointOrder, "POST", encryptedText, HashMap.class);
 				response = new ResponseEntity<>(bodyRS, HttpStatus.OK);
 			}
 		} catch (CrypterException e) {
@@ -70,7 +70,7 @@ public class OrdersController {
 			bodyRS.put("errorCode", Constant.ERROR_INVALID_ACCESS_TOKEN);
 			response = new ResponseEntity<>(bodyRS, HttpStatus.BAD_REQUEST);
 		} catch (Exception e) {
-			logger.error("Ocurrió un error interno al actualizar la información del usuario");
+			logger.error("Ocurrió un error interno al crear la orden", e);
 			bodyRS.put("errorCode", "internal_error");
 			bodyRS.put("message", "An internal error has occurred, try later");
 			response = new ResponseEntity<>(bodyRS, HttpStatus.INTERNAL_SERVER_ERROR);

@@ -34,8 +34,7 @@ export class PaymentComponent implements OnInit {
   ngOnInit() {
 
     this.encodedParam = window.location.search.substring(1);
-    this.decodeParam = atob(this.encodedParam.split("=")[1]);
-    const split = this.decodeParam.split("&");
+    const split = this.encodedParam.split("&");
 
     this.payment.commerceId = split[0].split("=")[1];
     this.payment.paymentCode = split[1].split("=")[1];

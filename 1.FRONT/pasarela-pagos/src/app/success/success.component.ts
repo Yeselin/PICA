@@ -22,7 +22,7 @@ export class SuccessComponent implements OnInit {
     this.commerceId = this.activatedRoute.snapshot.queryParams.commerceId;
     this.paymentCode = this.activatedRoute.snapshot.queryParams.paymentCode;
     this.paymentStatus = this.activatedRoute.snapshot.queryParams.paymentStatus;
-    this.callbackURL = this.activatedRoute.snapshot.queryParams.callbackURL;
+    this.callbackURL = decodeURIComponent(this.activatedRoute.snapshot.queryParams.callbackURL);
   }
 
   goBack() {

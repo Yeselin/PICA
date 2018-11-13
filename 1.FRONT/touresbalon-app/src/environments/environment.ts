@@ -16,7 +16,8 @@ export const environment = {
   BASIC_AUTH : 'Basic dG91cmVzYmFsb246dG91cmVzYmFsb24xMjM=',
   PUBLIC_KEY: 'ETfl8BigpmxVie8wgB4fAo8zHCcHR3M2AJNux+6N8Rk=',
   BASE_IMAGE: 'http://touresbalon.com/image/',
-  PAYMENT_GATEWAT: "http://127.0.0.1:80/gateway"
+  PAYMENT_GATEWAT: "http://pasarela.com:81",
+  CALLBACK_PAYMENT : "http://localhost:4200/shopping-cart"
 };
 
 /*
