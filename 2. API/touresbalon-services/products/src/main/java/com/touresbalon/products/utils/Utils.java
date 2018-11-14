@@ -8,11 +8,13 @@ public class Utils {
 	
 	@Value("${elasticParameters.server}")
 	private String server;
+	
 	@Value("${elasticParameters.port}")
 	private String port;
 	
 	@Value("${elasticParameters.index.products}")
 	private String indexProducts;
+	
 	@Value("${elasticParameters.index.campaigns}")
 	private String indexCampaigns;
 	
@@ -20,16 +22,14 @@ public class Utils {
 	private Integer searchSize;
 	
 	public String getHostElasticSearchWithProducts() {
-		return "http://" + server + ":" + port + "/" + indexProducts + "/_doc/_search";
+		return "http://" + server + ":" + port + "/" + indexProducts + "/_search";
 	}
 	
 	public String getHostElasticSearchWithCampaigns() {
-		return "http://" + server + ":" + port + "/" + indexCampaigns + "/_doc/_search";
+		return "http://" + server + ":" + port + "/" + indexCampaigns + "/_search";
 	}
 
 	public Integer getSearchSize() {
 		return searchSize;
-	}	
-	
-
+	}
 }

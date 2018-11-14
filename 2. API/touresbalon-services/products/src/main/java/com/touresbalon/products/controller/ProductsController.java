@@ -15,8 +15,8 @@ import com.touresbalon.products.exceptions.ElasticSearchException;
 import com.touresbalon.products.service.FindProductsService;
 
 @RestController
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS,
-		RequestMethod.DELETE, RequestMethod.PUT })
+//@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS,
+//		RequestMethod.DELETE, RequestMethod.PUT })
 @RequestMapping(value="/products")
 public class ProductsController {
 	
@@ -28,18 +28,16 @@ public class ProductsController {
 	@RequestMapping(value = "/campaigns", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<String> campaigns() {
 		ResponseEntity<String> response = null;
-		try {
-			
-			String products = productService.find("4", "4");
-			
-			response = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+		try {			
+			String products = productService.find("2", "granada");			
+			response = new ResponseEntity<>(products, HttpStatus.OK);
 		}catch(ElasticSearchException e) {
-			
+			log.error("Error de consulta en elasticSearch", e);
+			response = new ResponseEntity<>("{\"code\":\"internal_error\"}", HttpStatus.INTERNAL_SERVER_ERROR);
 		}catch(Exception e) {
-			
-		}
-		//Primero se debe consultar la campaña y despues los proudctos asociados a dicha campaña
-		
+			log.error("Error interno", e);
+			response = new ResponseEntity<>("{\"code\":\"internal_error\"}", HttpStatus.INTERNAL_SERVER_ERROR);
+		}		
 		return response;
 	}
 
