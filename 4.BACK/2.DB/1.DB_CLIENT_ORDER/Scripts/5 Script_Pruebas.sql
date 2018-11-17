@@ -30,6 +30,29 @@ TOURESBALON.PK_CUSTOMER.PR_CREATE(P_DOCUMENT_TYPE_NAME     =>'CE',
 COMMIT;
 dbms_output.put_line( '1 - P_RESPONSE_ID: '||V_RESPONSE_ID ||' P_RESPONSE_DESC: '||V_RESPONSE_DESC); 
 
+
+TOURESBALON.PK_CUSTOMER.PR_CREATE(P_DOCUMENT_TYPE_NAME     =>'CC',
+	                              P_DOCUMENT_ID            =>'27545454',
+                                  P_FIRST_NAME             =>'Danny',
+                                  P_LAST_NAME              =>'Pizon',
+                                  P_PHONE_NUMBER           =>'3012345678',
+                                  P_EMAIL                  =>'Danny@hotmail.com',
+                                  --P_PASSWORD               =>'123456',
+						          P_CUSTOMER_CATEGORY_NAME =>'DORADO',
+						          --P_CREDITCARD_NAME        =>'VISA',
+                                  --P_CREDITCARD_NUMBER      =>'1234567891234567',
+						          P_CUSTOMER_STATUS_NAME   =>'ACTIVO',
+						          P_STREET                 =>'BOGOTA',
+                                  P_STATE                  =>'BOGOTÁ, D. C.',
+                                  P_ZIP                    =>'11001',
+                                  P_COUNTRY                =>'COLOMBIA',
+                                  P_CITY                   =>'BOGOTÁ, D.C.',
+								  P_RESPONSE_ID            => V_RESPONSE_ID,
+                                  P_RESPONSE_DESC          => V_RESPONSE_DESC
+								  );
+COMMIT;
+dbms_output.put_line( '1 - P_RESPONSE_ID: '||V_RESPONSE_ID ||' P_RESPONSE_DESC: '||V_RESPONSE_DESC); 
+
 END;
 /
 
@@ -234,6 +257,33 @@ ORDERTB.PK_ORDER.PR_CREATE_ITEM (P_PRODUCT_ID                  => 25,
                                  P_RESPONSE_DESC               => V_RESPONSE_DESC);
 COMMIT;
 dbms_output.put_line( '4 - P_OUT_ORDER_ITEM_ID: '||V_ORDER_ITEM_ID || ' P_RESPONSE_ID: '||V_RESPONSE_ID ||' P_RESPONSE_DESC: '||V_RESPONSE_DESC); 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+ORDERTB.PK_ORDER.PR_CREATE(P_PRICE                       => 20,
+	                       P_ORDER_STATUS_NAME           => 'VALIDACION',
+                           P_COMMENTS                    => 'CREACION DE ORDEN',
+	                       P_CUSTOMER_DOCUMENT_TYPE_NAME => 'CC',
+                           P_CUSTOMER_DOCUMENT_ID        => '27545454',
+						   P_PAYMENT_ID                  => '65000',
+	                       P_PAYMENT_STATUS              => 1,
+						   P_OUT_SALES_ORDER_ID          => V_SALES_ORDER_ID,
+				           P_RESPONSE_ID                 => V_RESPONSE_ID,
+                           P_RESPONSE_DESC               => V_RESPONSE_DESC);
+COMMIT;
+dbms_output.put_line( '1 - P_OUT_SALES_ORDER_ID: '||V_SALES_ORDER_ID || ' P_RESPONSE_ID: '||V_RESPONSE_ID ||' P_RESPONSE_DESC: '||V_RESPONSE_DESC); 
+
+ORDERTB.PK_ORDER.PR_CREATE_ITEM (P_PRODUCT_ID                  => 1,
+                                 P_PRODUCT_NAME                => 'R.C.D. Espanyol / Real Madrid C.F.',
+                                 P_PARTNUM                     => '1',
+                                 P_PRICE_ITEM                  => 20,
+                                 P_QUANTITY                    => 1,
+							     P_SALES_ORDER_ID              => V_SALES_ORDER_ID,
+							     P_ITEM_STATUS_NAME            => 'VALIDACION',
+							     P_OUT_ORDER_ITEM_ID           => V_ORDER_ITEM_ID,
+				                 P_RESPONSE_ID                 => V_RESPONSE_ID,
+                                 P_RESPONSE_DESC               => V_RESPONSE_DESC);
+COMMIT;
+dbms_output.put_line( '2 - P_OUT_ORDER_ITEM_ID: '||V_ORDER_ITEM_ID || ' P_RESPONSE_ID: '||V_RESPONSE_ID ||' P_RESPONSE_DESC: '||V_RESPONSE_DESC); 
 
 END;
 /
