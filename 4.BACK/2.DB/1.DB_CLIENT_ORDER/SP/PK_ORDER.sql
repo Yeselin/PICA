@@ -96,6 +96,23 @@ CREATE OR REPLACE PACKAGE ORDERTB.PK_ORDER Is
                         P_RESPONSE_DESC               OUT VARCHAR2
 						);						
 	
+	 /* =============================================================================
+     Procedure : PR_READ_ITEM_ORDER_CUSTOMER
+     Proposito:  Consultar los items de las ordenes por cliente
+     ----------- --------- ---------------------------------------------------------
+     Fecha       Iniciales Descripcion
+     ----------- --------- ---------------------------------------------------------
+     21-OCT-2018 GERARDO HERRERA     Creacion del procedimiento
+     ----------- --------- ---------------------------------------------------------
+    ============================================================================= */
+    PROCEDURE PR_READ_ITEM_ORDER_CUSTOMER(
+	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
+                        P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
+						P_XML_DET                     OUT CLOB,
+						P_RESPONSE_ID                 OUT INTEGER,
+                        P_RESPONSE_DESC               OUT VARCHAR2
+						);
+	
     /* =============================================================================
      Procedure : PR_UPDATE
      Proposito:  Modificar las ordenes
@@ -457,8 +474,106 @@ V_CONT NUMBER := 0;
    --Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '. ' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
    COMMIT;
 End PR_READ_CUSTOMER;
-	
-	
+
+
+PROCEDURE PR_READ_ITEM_ORDER_CUSTOMER(
+	                    P_CUSTOMER_DOCUMENT_TYPE_NAME IN VARCHAR2,
+                        P_CUSTOMER_DOCUMENT_ID        IN VARCHAR2,
+						P_XML_DET                     OUT CLOB,
+						P_RESPONSE_ID                 OUT INTEGER,
+                        P_RESPONSE_DESC               OUT VARCHAR2
+                  ) IS
+V_CONT NUMBER := 0;
+  begin
+   P_RESPONSE_ID:= -20001;
+   P_RESPONSE_DESC:= 'KO';
+   -------------------------------------------------------------
+   --OBTENIEDO INFORMACION DE LA ORDEN POR CLIENTE
+   -------------------------------------------------------------
+   BEGIN
+   
+   FOR CUR IN (
+		  SELECT
+		  A.ID,
+		  TO_CHAR(A.order_date,'YYYYMMDD') order_date,
+		  NVL(A.price,0) price,
+		  C.STATUS_NAME,
+		  A.COMMENTS,
+		  B.DOCUMENT_NAME CUSTOMER_DOCUMENT_TYPE_NAME,
+		  A.CUSTOMER_DOCUMENT_ID,
+		  TO_CHAR(A.UPDATE_DATE,'YYYYMMDD') update_date,
+		  a.payment_id,
+		  a.payment_status
+		  FROM ORDERTB.SALES_ORDER A
+		  INNER JOIN TOURESBALON.DOCUMENT_TYPE B ON (B.DOCUMENT_NAME = P_CUSTOMER_DOCUMENT_TYPE_NAME AND B.ID = A.CUSTOMER_DOCUMENT_TYPE_ID)
+		  INNER JOIN ORDERTB.ORDER_STATUS C ON (C.ID = A.STATUS_ID)
+		  WHERE A.CUSTOMER_DOCUMENT_ID = P_CUSTOMER_DOCUMENT_ID
+        ) LOOP
+		
+		
+		    p_xml_det := p_xml_det ||'<ORDER>' ||CHR(13);
+            p_xml_det := p_xml_det || '<ID>'                          || CUR.ID                          || '</ID>'||CHR(13);
+	        p_xml_det := p_xml_det || '<ORDER_DATE>'                  || CUR.ORDER_DATE                  || '</ORDER_DATE>'||CHR(13);
+	        p_xml_det := p_xml_det || '<TOTAL_PRICE>'                 || ROUND(CUR.PRICE, 2)             || '</TOTAL_PRICE>'||CHR(13);
+	        p_xml_det := p_xml_det || '<STATUS_NAME>'                 || CUR.STATUS_NAME                 || '</STATUS_NAME>'||CHR(13);
+	        p_xml_det := p_xml_det || '<COMMENTS>'                    || CUR.COMMENTS                    || '</COMMENTS>'||CHR(13);
+	        p_xml_det := p_xml_det || '<CUSTOMER_DOCUMENT_TYPE_NAME>' || CUR.CUSTOMER_DOCUMENT_TYPE_NAME || '</CUSTOMER_DOCUMENT_TYPE_NAME>'||CHR(13);
+	        p_xml_det := p_xml_det || '<CUSTOMER_DOCUMENT_ID>'        || CUR.CUSTOMER_DOCUMENT_ID        || '</CUSTOMER_DOCUMENT_ID>'||CHR(13);
+	        p_xml_det := p_xml_det || '<UPDATE_DATE>'                 || CUR.UPDATE_DATE                 || '</UPDATE_DATE>'||CHR(13);
+			p_xml_det := p_xml_det || '<PAYMENT_ID>'                  || CUR.PAYMENT_ID                  || '</PAYMENT_ID>'||CHR(13);
+			p_xml_det := p_xml_det || '<PAYMENT_STATUS>'              || CUR.PAYMENT_STATUS              || '</PAYMENT_STATUS>'||CHR(13);
+			
+			 FOR CUR2 IN (
+			  SELECT
+				ID,
+				PRODUCT_ID,
+				PRODUCT_NAME,
+				PARTNUM,
+				NVL(PRICE,0) PRICE,
+				QUANTITY,
+				SALES_ORDER_ID,
+				STATUS_ITEM_ID,
+				TO_CHAR(CREATE_DATE,'YYYYMMDD') CREATE_DATE,
+				TO_CHAR(UPDATE_DATE,'YYYYMMDD') UPDATE_DATE
+				FROM ORDERTB.ORDER_ITEM
+				WHERE SALES_ORDER_ID = CUR.ID
+			) LOOP
+				p_xml_det := p_xml_det ||'<PRODUCTO>' ||CHR(13);
+				p_xml_det := p_xml_det || '<ITEM_ID>'           || CUR2.ID              || '</ITEM_ID>'||CHR(13);
+				p_xml_det := p_xml_det || '<PRODUCT_ID>'        || CUR2.PRODUCT_ID      || '</PRODUCT_ID>'||CHR(13);
+				p_xml_det := p_xml_det || '<PRODUCT_NAME>'      || CUR2.PRODUCT_NAME    || '</PRODUCT_NAME>'||CHR(13);
+				p_xml_det := p_xml_det || '<PARTNUM>'           || CUR2.PARTNUM         || '</PARTNUM>'||CHR(13);
+				p_xml_det := p_xml_det || '<PRICE>'             || ROUND(CUR2.PRICE, 2) || '</PRICE>'||CHR(13);
+				p_xml_det := p_xml_det || '<QUANTITY>'          || CUR2.QUANTITY        || '</QUANTITY>'||CHR(13);
+				p_xml_det := p_xml_det || '<SALES_ORDER_ID>'    || CUR2.SALES_ORDER_ID  || '</SALES_ORDER_ID>'||CHR(13);
+				p_xml_det := p_xml_det || '<STATUS_ITEM_ID>'    || CUR2.STATUS_ITEM_ID  || '</STATUS_ITEM_ID>'||CHR(13);
+				p_xml_det := p_xml_det ||'</PRODUCTO>' ||CHR(13);
+				
+			END LOOP;	
+			
+			p_xml_det := p_xml_det ||'</ORDER>' ||CHR(13);
+		
+		END LOOP;
+	  
+	  
+  exception When Others Then
+		Lv_Successfull           := 'N';
+		Lv_Comment_              := 'Error al consultar las ordenes del cliente '||P_CUSTOMER_DOCUMENT_TYPE_NAME||'-'||P_CUSTOMER_DOCUMENT_ID;
+		COMMIT;
+		P_RESPONSE_ID:= -20001;
+	    P_RESPONSE_DESC:= Lv_Comment_;
+		--raise_application_error(-20001, Lv_Comment_);
+		RAISE;
+  END;
+   Lv_Successfull := 'Y';
+   P_RESPONSE_ID:= 20100;
+   P_RESPONSE_DESC:= 'OK';
+   exception When Others Then
+   Lv_Successfull           := 'N';
+   --Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '. ' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
+   COMMIT;
+End PR_READ_ITEM_ORDER_CUSTOMER;
+
 	
 PROCEDURE PR_UPDATE(    P_SALES_ORDER_ID              IN NUMBER ,
 	                    P_PRICE                       IN NUMBER,
