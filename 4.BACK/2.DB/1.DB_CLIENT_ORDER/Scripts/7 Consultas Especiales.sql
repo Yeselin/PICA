@@ -1,0 +1,33 @@
+--Ranking de los tipos de espectáculos más vendidos en un rango de fechas dado, es decir, los tipos de espectáculos ordenados desde el que más ha participado en órdenes de pedido
+--SET SERVEROUTPUT ON
+--alter SESSION set NLS_DATE_FORMAT = 'DD-MM-YYYY HH24:MI:SS';
+SELECT 
+PRODUCT_ID,
+PRODUCT_NAME,
+QUANTITY
+FROM (
+SELECT B.PRODUCT_ID, 
+       B.PRODUCT_NAME, 
+	   COUNT(B.QUANTITY) QUANTITY 
+FROM ORDERTB.SALES_ORDER A 
+INNER JOIN ORDERTB.ORDER_ITEM B ON (B.SALES_ORDER_ID = A.ID)
+WHERE A.ORDER_DATE >= TO_DATE('19000101','YYYYMMDD')
+  AND A.ORDER_DATE < TO_DATE('20181231','YYYYMMDD') +1
+GROUP BY B.PRODUCT_ID, B.PRODUCT_NAME
+) ORDER BY QUANTITY DESC
+
+--Ranking de los productos más vendidos en un rango de fechas dado, es decir, los productos ordenados desde el que más ha participado en órdenes de pedido
+SELECT 
+PRODUCT_ID,
+PRODUCT_NAME,
+QUANTITY
+FROM (
+SELECT B.PRODUCT_ID, 
+       B.PRODUCT_NAME, 
+	   COUNT(B.QUANTITY) QUANTITY 
+FROM ORDERTB.SALES_ORDER A 
+INNER JOIN ORDERTB.ORDER_ITEM B ON (B.SALES_ORDER_ID = A.ID)
+WHERE A.ORDER_DATE >= TO_DATE('19000101','YYYYMMDD')
+  AND A.ORDER_DATE < TO_DATE('20181231','YYYYMMDD') +1
+GROUP BY B.PRODUCT_ID, B.PRODUCT_NAME
+) ORDER BY QUANTITY DESC
