@@ -380,3 +380,76 @@ dbms_output.put_line(V_XML);
 END;
 /
 
+
+--CONSULTA FUNCION DE RANKING DE PRODUCTOS MAS VENDIDOS
+SET SERVEROUTPUT ON;
+alter SESSION set NLS_DATE_FORMAT = 'DD-MM-YYYY HH24:MI:SS';
+DECLARE
+V_ORDER_DATE_INI DATE:= TO_DATE('19000101','YYYYMMDD');
+V_ORDER_DATE_END DATE:= LAST_DAY(TRUNC(SYSDATE))+1;
+
+TYPE REC_RANK IS RECORD
+(
+PRODUCT_ID    NUMBER:=0,
+PRODUCT_NAME  VARCHAR2(50 BYTE),
+QUANTITY      NUMBER:=0
+);
+REC      REC_RANK;
+V_RESULT              SYS_REFCURSOR;
+
+BEGIN
+V_RESULT:= ORDERTB.PK_ORDER.FN_READ_RANK_PRODUCT(P_ORDER_DATE_INI => V_ORDER_DATE_INI,
+									             P_ORDER_DATE_END => V_ORDER_DATE_END
+									            );
+COMMIT;
+  loop
+    fetch v_result into REC; -- and other columns if needed
+    exit when v_result%notfound;
+    dbms_output.put_line('PRODUCT_ID    =>' || REC.PRODUCT_ID);
+	dbms_output.put_line('PRODUCT_NAME  =>' || REC.PRODUCT_NAME);
+	dbms_output.put_line('QUANTITY      =>' || REC.QUANTITY);
+	dbms_output.put_line('--------------------------------------------');
+  end loop;
+
+END;
+/
+
+--CONSULTA PROCEDIMIENTO DE RANKING DE PRODUCTOS MAS VENDIDOS
+SET SERVEROUTPUT ON;
+alter SESSION set NLS_DATE_FORMAT = 'DD-MM-YYYY HH24:MI:SS';
+DECLARE
+V_ORDER_DATE_INI DATE:= TO_DATE('19000101','YYYYMMDD');
+V_ORDER_DATE_END DATE:= LAST_DAY(TRUNC(SYSDATE))+1;
+V_RESPONSE_ID    INTEGER :=0;
+V_RESPONSE_DESC  VARCHAR2(4000 BYTE) := '';
+
+TYPE REC_RANK IS RECORD
+(
+PRODUCT_ID    NUMBER:=0,
+PRODUCT_NAME  VARCHAR2(50 BYTE),
+QUANTITY      NUMBER:=0
+);
+REC      REC_RANK;
+V_RESULT              SYS_REFCURSOR;
+
+BEGIN
+ORDERTB.PK_ORDER.PR_READ_RANK_PRODUCT(P_ORDER_DATE_INI => V_ORDER_DATE_INI,
+									  P_ORDER_DATE_END => V_ORDER_DATE_END,
+                                      P_OUT_RESULTS    => V_RESULT,
+				                      P_RESPONSE_ID    => V_RESPONSE_ID,
+                                      P_RESPONSE_DESC  => V_RESPONSE_DESC
+									  );
+COMMIT;
+dbms_output.put_line(' P_RESPONSE_ID: '||V_RESPONSE_ID ||' P_RESPONSE_DESC: '||V_RESPONSE_DESC); 
+  loop
+    fetch v_result into REC; -- and other columns if needed
+    exit when v_result%notfound;
+    dbms_output.put_line('PRODUCT_ID    =>' || REC.PRODUCT_ID);
+	dbms_output.put_line('PRODUCT_NAME  =>' || REC.PRODUCT_NAME);
+	dbms_output.put_line('QUANTITY      =>' || REC.QUANTITY);
+	dbms_output.put_line('--------------------------------------------');
+  end loop;
+
+END;
+/
+

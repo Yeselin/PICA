@@ -31,6 +31,8 @@ CREATE OR REPLACE PACKAGE ORDERTB.PK_ORDER Is
     Ln_Step                         Number                 := 0;
     lv_successfull                  Varchar2(1);
     Lv_Comment_                     Varchar2(4000)         := Null;
+	-- Declaring a REF_CUR_TYP Cursor Type
+    TYPE REF_CUR_TYP IS REF CURSOR;
     
     /* =============================================================================
      Procedure : PR_CREATE
@@ -228,6 +230,39 @@ CREATE OR REPLACE PACKAGE ORDERTB.PK_ORDER Is
 						     P_RESPONSE_ID                 OUT INTEGER,
                              P_RESPONSE_DESC               OUT VARCHAR2
 					    );
+						
+    /* =============================================================================
+     Funcion  : FN_READ_RANK_PRODUCT
+     Proposito:  Ranking de los productos más vendidos en un rango de fechas dado
+	             , es decir, los productos ordenados desde el que más ha participado en órdenes de pedido
+     ----------- --------- ---------------------------------------------------------
+     Fecha       Iniciales Descripcion
+     ----------- --------- ---------------------------------------------------------
+     08-OCT-2018 GERARDO HERRERA     Creacion de la Funcion
+     ----------- --------- ---------------------------------------------------------
+    ============================================================================= */					
+   FUNCTION FN_READ_RANK_PRODUCT(P_ORDER_DATE_INI IN DATE DEFAULT TO_DATE('19000101','YYYYMMDD'), 
+								 P_ORDER_DATE_END IN DATE DEFAULT LAST_DAY(TRUNC(SYSDATE))+1
+								 ) RETURN SYS_REFCURSOR;
+								 
+								 
+    /* =============================================================================
+     Procedure : PR_READ_RANK_PRODUCT
+     Proposito:  Ranking de los productos más vendidos en un rango de fechas dado
+	             , es decir, los productos ordenados desde el que más ha participado en órdenes de pedido
+     ----------- --------- ---------------------------------------------------------
+     Fecha       Iniciales Descripcion
+     ----------- --------- ---------------------------------------------------------
+     08-OCT-2018 GERARDO HERRERA     Creacion del procedimiento
+     ----------- --------- ---------------------------------------------------------
+    ============================================================================= */					
+   PROCEDURE PR_READ_RANK_PRODUCT(P_ORDER_DATE_INI IN DATE DEFAULT TO_DATE('19000101','YYYYMMDD'), 
+								  P_ORDER_DATE_END IN DATE DEFAULT LAST_DAY(TRUNC(SYSDATE))+1,
+								  P_OUT_RESULTS OUT REF_CUR_TYP,
+                                  P_RESPONSE_ID                 OUT INTEGER,
+                                  P_RESPONSE_DESC               OUT VARCHAR2
+								  );
+
 END PK_ORDER;
 /
 
@@ -1065,5 +1100,72 @@ BEGIN
    --Lv_Comment_              := substr(dbms_utility.format_error_backtrace || '. ' || Lv_Comment_||' '||to_char(sqlcode)||': '||sqlerrm,1,500);
    COMMIT;
 END PR_DELETE_ITEM;
+
+FUNCTION FN_READ_RANK_PRODUCT(P_ORDER_DATE_INI IN DATE DEFAULT TO_DATE('19000101','YYYYMMDD'), 
+							  P_ORDER_DATE_END IN DATE DEFAULT LAST_DAY(TRUNC(SYSDATE))+1
+								 ) RETURN SYS_REFCURSOR IS
+      v_result SYS_REFCURSOR;
+   BEGIN
+   
+      OPEN v_result FOR
+		SELECT 
+		PRODUCT_ID,
+		PRODUCT_NAME,
+		QUANTITY
+		FROM (
+		SELECT B.PRODUCT_ID, 
+			   B.PRODUCT_NAME, 
+			   COUNT(B.QUANTITY) QUANTITY 
+		FROM ORDERTB.SALES_ORDER A 
+		INNER JOIN ORDERTB.ORDER_ITEM B ON (B.SALES_ORDER_ID = A.ID)
+		WHERE A.ORDER_DATE >= P_ORDER_DATE_INI
+		  AND A.ORDER_DATE < P_ORDER_DATE_END
+		GROUP BY B.PRODUCT_ID, B.PRODUCT_NAME
+		) ORDER BY QUANTITY DESC;
+
+      RETURN v_result;
+	  
+END FN_READ_RANK_PRODUCT;
+
+
+PROCEDURE PR_READ_RANK_PRODUCT(P_ORDER_DATE_INI IN DATE DEFAULT TO_DATE('19000101','YYYYMMDD'), 
+							   P_ORDER_DATE_END IN DATE DEFAULT LAST_DAY(TRUNC(SYSDATE))+1,
+							   P_OUT_RESULTS OUT REF_CUR_TYP,
+                               P_RESPONSE_ID                 OUT INTEGER,
+                               P_RESPONSE_DESC               OUT VARCHAR2)
+IS
+BEGIN
+	BEGIN
+	OPEN P_OUT_RESULTS FOR
+			SELECT 
+			PRODUCT_ID,
+			PRODUCT_NAME,
+			QUANTITY
+			FROM (
+			SELECT B.PRODUCT_ID, 
+				   B.PRODUCT_NAME, 
+				   COUNT(B.QUANTITY) QUANTITY 
+			FROM ORDERTB.SALES_ORDER A 
+			INNER JOIN ORDERTB.ORDER_ITEM B ON (B.SALES_ORDER_ID = A.ID)
+			WHERE A.ORDER_DATE >= P_ORDER_DATE_INI
+			  AND A.ORDER_DATE < P_ORDER_DATE_END
+			GROUP BY B.PRODUCT_ID, B.PRODUCT_NAME
+			) ORDER BY QUANTITY DESC;
+    exception When Others Then
+		Lv_Successfull           := 'N';
+		Lv_Comment_              := 'Error al obtener el Ranking de los productos mas vendidos';
+			COMMIT;
+			P_RESPONSE_ID:= -20001;
+			P_RESPONSE_DESC:= Lv_Comment_;
+			--raise_application_error(-20001, Lv_Comment_);
+			RAISE;
+   END;		
+   Lv_Successfull := 'Y';
+   P_RESPONSE_ID:= 20100;
+   P_RESPONSE_DESC:= 'OK';
+   exception When Others Then
+   Lv_Successfull           := 'N';
+END PR_READ_RANK_PRODUCT;
+
 End;
 /
