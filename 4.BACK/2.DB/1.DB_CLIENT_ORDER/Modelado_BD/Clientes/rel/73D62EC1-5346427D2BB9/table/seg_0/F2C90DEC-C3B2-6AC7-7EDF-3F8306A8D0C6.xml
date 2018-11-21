@@ -202,7 +202,7 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="document_type_id3" id="1C8D67AF-1B50-C9FB-932C-E8C6D20C2365">
+<Column name="document_type_id1" id="1C8D67AF-1B50-C9FB-932C-E8C6D20C2365">
 <createdBy>gherrers</createdBy>
 <createdTime>2018-10-01 19:01:39 UTC</createdTime>
 <generatorID>01DBD72C-D820-B901-3A98-0B1CC621151F</generatorID>
@@ -213,6 +213,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DC11253F-FF2A-5230-576B-99D4220ADB6C" referredColumn="60BE916E-A4D8-5586-4A2C-8F8A8E3EB4FC"/>
+</associations>
 </Column>
 <Column name="customer_category_id" id="ED258480-37C5-A04E-E53D-4F7C0C1CB016">
 <createdBy>gnsoft</createdBy>
@@ -226,7 +229,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="customer_category_id2" id="4F3C553F-8D4B-F591-561B-7FC253C3BB30">
+<Column name="customer_category_id1" id="4F3C553F-8D4B-F591-561B-7FC253C3BB30">
 <createdBy>gnsoft</createdBy>
 <createdTime>2018-10-08 03:22:17 UTC</createdTime>
 <generatorID>FF79844A-08D6-949F-BB93-F7573A24DAE9</generatorID>
@@ -237,6 +240,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9A74032D-D91B-4E46-C74F-BFCAC5990995" referredColumn="4F05B52F-CC51-A393-784E-3F4205BEDF8A"/>
+</associations>
 </Column>
 <Column name="customer_status_id" id="EF7ED4DD-20C9-8696-C825-ABD4157CBECE">
 <createdBy>gnsoft</createdBy>
@@ -249,9 +255,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="C39F241F-716B-78BB-0E8E-C56E3A7D70D4" referredColumn="462B1C9D-5B3C-7A8F-3A97-05E6F05EA36E"/>
-</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -334,15 +337,26 @@
 <colUsage columnID="EF7ED4DD-20C9-8696-C825-ABD4157CBECE"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="0FA6481A-3FA9-7AB7-A1BC-42213689769F" name="customer_customer_status_FK">
+<ind_PK_UK id="758BE063-31F1-3248-B159-35E53C0E1178" name="customer_document_type_FK">
 <createdBy>gnsoft</createdBy>
-<createdTime>2018-10-15 01:54:39 UTC</createdTime>
-<generatorID>94A5AEE7-4660-8C6A-06A7-A56380E343ED</generatorID>
+<createdTime>2018-11-21 04:32:19 UTC</createdTime>
+<generatorID>86809E1F-14F7-F000-082F-5B2D2D60750C</generatorID>
 <ownerDesignName>Clientes</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="EF7ED4DD-20C9-8696-C825-ABD4157CBECE"/>
+<colUsage columnID="1C8D67AF-1B50-C9FB-932C-E8C6D20C2365"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D5E2C671-2B53-F230-63C3-28F954184240" name="customer_customer_category_FK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 04:32:19 UTC</createdTime>
+<generatorID>26D2ACC1-E368-CE52-2005-F8FF68EDF92F</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4F3C553F-8D4B-F591-561B-7FC253C3BB30"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

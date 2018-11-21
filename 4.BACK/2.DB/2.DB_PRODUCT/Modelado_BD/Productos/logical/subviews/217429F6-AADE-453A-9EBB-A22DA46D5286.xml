@@ -26,9 +26,13 @@
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <bounds x="285" y="54" width="129" height="239"/>
 </OView>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="A3BD1689-8100-960E-3A5E-FCA59F819B10" otype="Entity" vid="BDCE9671-AD83-A5D0-DDB4-D57249FD4C44">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="480" y="180" width="112" height="166"/>
+</OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="A53A7094-B95C-16AC-D5AE-CD11F515E92A" otype="Entity" vid="88AF8EDC-12BC-B21A-EA0E-7E9BC2AD1DBF">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="493" y="196" width="89" height="105"/>
+<bounds x="308" y="341" width="89" height="105"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="E14B3DBE-1F95-79C0-7910-D99DF8894B9D" otype="Entity" vid="C9BDA558-26F5-C6A3-05A6-A80E40B3FE58">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
@@ -59,17 +63,17 @@
 <backgroundColor>-16777216</backgroundColor>
 <lineWidth>1</lineWidth>
 <points>
-<point x="493" y="244"/>
-<point x="414" y="244"/>
+<point x="352" y="341"/>
+<point x="352" y="293"/>
 </points>
 </Connector>
-<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="89B48728-933A-38BD-5808-7FBDD626CC21" otype="Relation" vid_source="B9095D93-3353-C1DC-4544-948D29DE6073" vid_target="AEC0D1BD-2677-8A74-20AB-88AD8402BD33">
+<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="B0C49111-04C0-2B52-7F49-4FCBB288B6C3" otype="Relation" vid_source="AEC0D1BD-2677-8A74-20AB-88AD8402BD33" vid_target="BDCE9671-AD83-A5D0-DDB4-D57249FD4C44">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <backgroundColor>-16777216</backgroundColor>
 <lineWidth>1</lineWidth>
 <points>
-<point x="222" y="114"/>
-<point x="285" y="114"/>
+<point x="414" y="236"/>
+<point x="480" y="236"/>
 </points>
 </Connector>
 <Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="F17E395D-126A-5F36-649F-9578B45A88BF" otype="Relation" vid_source="B9095D93-3353-C1DC-4544-948D29DE6073" vid_target="AEC0D1BD-2677-8A74-20AB-88AD8402BD33">

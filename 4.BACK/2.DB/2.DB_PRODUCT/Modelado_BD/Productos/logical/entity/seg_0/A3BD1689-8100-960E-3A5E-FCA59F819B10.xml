@@ -1,0 +1,185 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A3BD1689-8100-960E-3A5E-FCA59F819B10" name="campaña">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 06:19:32 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="1CA808B3-094E-5B4E-3788-3FAAC634CAC0">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 06:20:49 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="ABA52BCE-8EE8-67D5-A9B3-6F7FFF8A9748">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 06:21:09 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="percentage" id="356D5EE6-8EDD-DD68-83A7-8519EEC66CE6">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 06:21:15 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="create_date" id="E2708D63-D253-9AFB-2F94-6B937A1BC62D">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 06:21:28 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="update_date" id="DFE99E3E-7E0C-E0F0-81C2-0CBA1AA2A3CC">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 06:21:39 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="start_date" id="181AB3B3-881C-FC96-5515-F501341DD9E4">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 06:21:44 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="effective_date" id="D64F38D0-BA3A-503F-F11E-577C3F1CD904">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 06:21:52 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="image_ref" id="B700C0F9-3B36-337C-D657-5F32734EB98A">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 06:22:02 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="product_id" id="64D493FB-839A-5978-CEBA-D8CEC79E9663">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 06:22:08 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="is_active" id="51C7B4B0-564F-1D9A-03FF-BA795B6D0C87">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 06:22:13 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id1" id="7CFE1811-6734-337D-FDF4-1CFDF9515453">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 06:25:37 UTC</createdTime>
+<generatorID>B0C49111-04C0-2B52-7F49-4FCBB288B6C3</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<referedAttribute>7C4895CA-211F-A079-D10E-3B114E4B2B7F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id11" id="C198F200-FDBF-8BCE-F894-9445266A94C4">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 06:25:37 UTC</createdTime>
+<generatorID>B0C49111-04C0-2B52-7F49-4FCBB288B6C3</generatorID>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<referedAttribute>DD6B1433-E58B-D0C4-4A46-3FCF46A606EB</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="88465314-9EDB-0D94-C108-DAEB0AD2A9D6" name="campaña PK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 06:23:16 UTC</createdTime>
+<ownerDesignName>Productos</ownerDesignName>
+<engineerTo>
+<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>1CA808B3-094E-5B4E-3788-3FAAC634CAC0</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

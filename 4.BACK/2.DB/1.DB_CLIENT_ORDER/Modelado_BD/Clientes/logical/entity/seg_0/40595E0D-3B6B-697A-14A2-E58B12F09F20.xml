@@ -34,7 +34,6 @@
 <engineerTo>
 <item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
@@ -47,20 +46,18 @@
 <engineerTo>
 <item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="status" id="B89DB783-2FE7-F08D-048E-C39210870AAF">
+<Attribute name="status_id" id="B89DB783-2FE7-F08D-048E-C39210870AAF">
 <createdBy>gherrers</createdBy>
 <createdTime>2018-10-01 18:26:30 UTC</createdTime>
 <ownerDesignName>Clientes</ownerDesignName>
 <engineerTo>
 <item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -145,7 +142,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
 <dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="id1" id="3874C096-F5AB-A140-B4E9-5A55E731E645">
 <createdBy>gnsoft</createdBy>
@@ -156,6 +153,31 @@
 <item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
 </engineerTo>
 <referedAttribute>79104104-7FC3-27C7-85BA-1A5C2A417EF2</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="payment_id" id="E95B4D5C-2401-A79F-E3FB-E13B5E2A86D0">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 04:27:53 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="payment_status" id="00DCEB08-7D3B-6221-F993-D3A4E073163B">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 04:28:24 UTC</createdTime>
+<ownerDesignName>Clientes</ownerDesignName>
+<engineerTo>
+<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
+</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>

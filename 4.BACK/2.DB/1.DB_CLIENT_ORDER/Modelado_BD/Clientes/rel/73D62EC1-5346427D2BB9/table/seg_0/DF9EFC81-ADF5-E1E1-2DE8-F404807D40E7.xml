@@ -24,7 +24,6 @@
 <createdTime>2018-10-08 03:22:17 UTC</createdTime>
 <generatorID>791369ED-192F-975B-B5F5-CEA76CA9DB2D</generatorID>
 <ownerDesignName>Clientes</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
@@ -37,7 +36,6 @@
 <createdTime>2018-10-08 03:22:17 UTC</createdTime>
 <generatorID>1A6DFA9C-80D9-EF8E-480D-9A5FAD28D3DB</generatorID>
 <ownerDesignName>Clientes</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
@@ -50,7 +48,6 @@
 <createdTime>2018-10-08 03:22:17 UTC</createdTime>
 <generatorID>D6C35F3E-EFFB-4DC7-4A75-795B1CEE7CF2</generatorID>
 <ownerDesignName>Clientes</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
@@ -80,6 +77,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="56345B07-F255-261E-39BA-F76A1DB9B1C1" referredColumn="DBF0B67B-C3E7-1A3C-7B5A-99A9D634F4F3"/>
+</associations>
 </Column>
 <Column name="customer_document_id" id="C4D35179-229C-6FF2-1983-FB258400A231">
 <createdBy>gnsoft</createdBy>
@@ -93,6 +93,9 @@
 <ownDataTypeParameters>20,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="56345B07-F255-261E-39BA-F76A1DB9B1C1" referredColumn="556F2392-C108-23F1-12F0-151B0CF5997E"/>
+</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -115,6 +118,18 @@
 <indexState>Unique Plain Index</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <relationGeneratorID>26D2ACC1-E368-CE52-2005-F8FF68EDF92F</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="8BE50F06-5645-F913-539D-AE8B7C610340"/>
+<colUsage columnID="C4D35179-229C-6FF2-1983-FB258400A231"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BAAEE14F-B6AE-0DA7-8DCE-205E0492F27A" name="customer_category_customer_FK">
+<createdBy>gnsoft</createdBy>
+<createdTime>2018-11-21 04:32:19 UTC</createdTime>
+<generatorID>26D2ACC1-E368-CE52-2005-F8FF68EDF92F</generatorID>
+<ownerDesignName>Clientes</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="8BE50F06-5645-F913-539D-AE8B7C610340"/>
 <colUsage columnID="C4D35179-229C-6FF2-1983-FB258400A231"/>

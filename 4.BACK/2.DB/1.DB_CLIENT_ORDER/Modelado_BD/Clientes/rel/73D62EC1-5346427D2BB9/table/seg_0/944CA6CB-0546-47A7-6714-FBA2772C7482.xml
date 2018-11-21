@@ -24,7 +24,6 @@
 <createdTime>2018-10-15 01:54:39 UTC</createdTime>
 <generatorID>E3470E19-0142-FCB8-5391-347E53C5DCBC</generatorID>
 <ownerDesignName>Clientes</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
@@ -37,7 +36,6 @@
 <createdTime>2018-10-15 01:54:39 UTC</createdTime>
 <generatorID>9FCB6FCA-DB10-3E17-8217-71A901837D66</generatorID>
 <ownerDesignName>Clientes</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
@@ -50,7 +48,6 @@
 <createdTime>2018-10-15 01:54:39 UTC</createdTime>
 <generatorID>17FF2178-9AEA-F532-3271-46809B15F353</generatorID>
 <ownerDesignName>Clientes</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
@@ -80,9 +77,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="CCB8DFD5-4E6E-9A0E-CEBC-FF87BE76FC78" referredColumn="2FE81AC5-BCE4-FF1F-27C9-089949BCFB50"/>
-</associations>
 </Column>
 <Column name="sales_order_customer_document_type_id" id="EF368CDD-E8E5-9E54-EDD9-4B609204F1B9">
 <createdBy>gnsoft</createdBy>
@@ -95,9 +89,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="CCB8DFD5-4E6E-9A0E-CEBC-FF87BE76FC78" referredColumn="8E5B0F93-CD18-6435-C08B-6E5098646DC0"/>
-</associations>
 </Column>
 <Column name="sales_order_customer_document_id" id="379D5E6E-F468-CBED-A778-036F32182A4E">
 <createdBy>gnsoft</createdBy>
@@ -108,12 +99,9 @@
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
 <dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="CCB8DFD5-4E6E-9A0E-CEBC-FF87BE76FC78" referredColumn="FFB70B8E-CF02-A9B2-D332-2F48ED79E8E9"/>
-</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -136,19 +124,6 @@
 <indexState>Unique Plain Index</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <relationGeneratorID>A387FF27-9545-5945-1FBC-8ED506FA441B</relationGeneratorID>
-<indexColumnUsage>
-<colUsage columnID="A05062A2-7B36-D731-0DA9-F174959955F3"/>
-<colUsage columnID="EF368CDD-E8E5-9E54-EDD9-4B609204F1B9"/>
-<colUsage columnID="379D5E6E-F468-CBED-A778-036F32182A4E"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="748D068D-9C54-FAC1-8780-7B614661E88E" name="order_status_sales_order_FK">
-<createdBy>gnsoft</createdBy>
-<createdTime>2018-10-15 01:54:39 UTC</createdTime>
-<generatorID>A387FF27-9545-5945-1FBC-8ED506FA441B</generatorID>
-<ownerDesignName>Clientes</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="A05062A2-7B36-D731-0DA9-F174959955F3"/>
 <colUsage columnID="EF368CDD-E8E5-9E54-EDD9-4B609204F1B9"/>

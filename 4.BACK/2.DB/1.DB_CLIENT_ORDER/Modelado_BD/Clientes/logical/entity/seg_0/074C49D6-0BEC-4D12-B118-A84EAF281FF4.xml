@@ -96,20 +96,6 @@
 <dataTypeSize>50</dataTypeSize>
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="password" id="DF65A19B-A9EB-8FEB-E53D-24E81B949FD7">
-<createdBy>gnsoft</createdBy>
-<createdTime>2018-09-25 04:13:44 UTC</createdTime>
-<ownerDesignName>Clientes</ownerDesignName>
-<engineerTo>
-<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT037</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="customer_category_id" id="9B47E19A-4BCF-65AA-69D1-3605EE6009AB">
 <createdBy>gnsoft</createdBy>
 <createdTime>2018-10-08 03:16:51 UTC</createdTime>
@@ -122,33 +108,6 @@
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="creditcard_type_id" id="E48A515E-2B24-BA7B-F3DB-F2E9F80CCF03">
-<createdBy>gnsoft</createdBy>
-<createdTime>2018-09-25 04:14:33 UTC</createdTime>
-<ownerDesignName>Clientes</ownerDesignName>
-<engineerTo>
-<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="creditcard_number" id="78D5395F-8F98-B871-8565-BDA5705E9CAF">
-<createdBy>gnsoft</createdBy>
-<createdTime>2018-09-25 04:14:16 UTC</createdTime>
-<ownerDesignName>Clientes</ownerDesignName>
-<engineerTo>
-<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT037</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="status" id="095834D7-8FCB-A39C-F52D-2965C6D17882">
 <createdBy>gnsoft</createdBy>
@@ -187,20 +146,6 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id" id="F921A8DD-82D1-D941-7B95-DB5EDCADCA84">
-<createdBy>gherrers</createdBy>
-<createdTime>2018-10-01 18:59:38 UTC</createdTime>
-<generatorID>815BD60F-3E7D-6D39-8463-6F237783EB5D</generatorID>
-<ownerDesignName>Clientes</ownerDesignName>
-<engineerTo>
-<item key="73D62EC1-EACF-5767-8A2E-5346427D2BB9" value="true"/>
-</engineerTo>
-<referedAttribute>76746F5D-E673-E52C-E5E5-FED91F98668A</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="id1" id="01DBD72C-D820-B901-3A98-0B1CC621151F">

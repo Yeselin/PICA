@@ -34,7 +34,6 @@
 <engineerTo>
 <item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
@@ -48,7 +47,6 @@
 <engineerTo>
 <item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
@@ -100,7 +98,6 @@
 <engineerTo>
 <item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT027</logicalDatatype>
@@ -194,7 +191,6 @@
 <engineerTo>
 <item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT008</logicalDatatype>
@@ -269,20 +265,6 @@
 <logicalDatatype>LOGDT027</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id5" id="6AB8BCC5-A0F0-10C9-E724-DF7FE3E75143">
-<createdBy>gnsoft</createdBy>
-<createdTime>2018-09-26 05:12:23 UTC</createdTime>
-<generatorID>89B48728-933A-38BD-5808-7FBDD626CC21</generatorID>
-<ownerDesignName>Productos</ownerDesignName>
-<engineerTo>
-<item key="0C2E537F-AC77-C24A-BB91-ECD07179E186" value="true"/>
-</engineerTo>
-<referedAttribute>E95029A7-1AE4-FC51-07CF-73A68E5578BA</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT027</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="BF0A094E-6ACE-F35A-DF5A-8F7E71013AA0" name="product PK">
@@ -296,7 +278,6 @@
 <usedAttributes>
 <attributeRef>7C4895CA-211F-A079-D10E-3B114E4B2B7F</attributeRef>
 <attributeRef>DD6B1433-E58B-D0C4-4A46-3FCF46A606EB</attributeRef>
-<attributeRef>6AB8BCC5-A0F0-10C9-E724-DF7FE3E75143</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

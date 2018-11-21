@@ -37,7 +37,6 @@
 <createdTime>2018-09-25 04:50:07 UTC</createdTime>
 <generatorID>9AF1EFDF-4E1A-DE7F-F71F-0E910E522EDF</generatorID>
 <ownerDesignName>Clientes</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
@@ -50,7 +49,6 @@
 <createdTime>2018-09-25 04:50:07 UTC</createdTime>
 <generatorID>D0EA0A91-F9D6-5619-2580-432E063035F9</generatorID>
 <ownerDesignName>Clientes</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
@@ -63,7 +61,6 @@
 <createdTime>2018-09-25 04:50:07 UTC</createdTime>
 <generatorID>A5F0DF23-0884-D4D0-FE41-213110FCEECE</generatorID>
 <ownerDesignName>Clientes</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
@@ -89,7 +86,6 @@
 <createdTime>2018-09-25 04:50:07 UTC</createdTime>
 <generatorID>24F29847-1AE1-792D-FD28-71681512FA88</generatorID>
 <ownerDesignName>Clientes</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
@@ -102,7 +98,6 @@
 <createdTime>2018-10-01 18:50:00 UTC</createdTime>
 <generatorID>A9DE17B1-92DA-89B2-26AF-A6C69B50789D</generatorID>
 <ownerDesignName>Clientes</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>

@@ -24,7 +24,6 @@
 <createdTime>2018-10-15 01:54:39 UTC</createdTime>
 <generatorID>A865ED87-DE74-3D36-1BBD-1EC86AF4DE85</generatorID>
 <ownerDesignName>Clientes</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
@@ -37,7 +36,6 @@
 <createdTime>2018-10-15 01:54:39 UTC</createdTime>
 <generatorID>9A948D86-8B70-4653-C72C-F2620FACF2CC</generatorID>
 <ownerDesignName>Clientes</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
@@ -50,7 +48,6 @@
 <createdTime>2018-10-15 01:54:39 UTC</createdTime>
 <generatorID>9B3E2EC1-6DB3-B7BD-47D8-BBB90C58B496</generatorID>
 <ownerDesignName>Clientes</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
@@ -81,9 +78,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="C93970F2-D738-997B-59ED-18DA79CD49E4" referredColumn="421B0938-CAC2-8365-C949-376DD943C50C"/>
-</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -106,17 +100,6 @@
 <indexState>Unique Plain Index</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <relationGeneratorID>E7A45898-2FA4-515F-FFCC-D539EFA90CB3</relationGeneratorID>
-<indexColumnUsage>
-<colUsage columnID="C0ABCCBC-1858-EC07-CEFF-8DA32F1B9B13"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="68FAD971-6E86-F3CA-8332-0EE299CF664C" name="order_item_status_order_item_FK">
-<createdBy>gnsoft</createdBy>
-<createdTime>2018-10-15 01:54:39 UTC</createdTime>
-<generatorID>E7A45898-2FA4-515F-FFCC-D539EFA90CB3</generatorID>
-<ownerDesignName>Clientes</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="C0ABCCBC-1858-EC07-CEFF-8DA32F1B9B13"/>
 </indexColumnUsage>
