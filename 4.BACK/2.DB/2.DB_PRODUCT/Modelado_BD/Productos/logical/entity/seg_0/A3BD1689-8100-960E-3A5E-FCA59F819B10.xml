@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A3BD1689-8100-960E-3A5E-FCA59F819B10" name="campaña">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A3BD1689-8100-960E-3A5E-FCA59F819B10" name="campaign">
 <createdBy>gnsoft</createdBy>
 <createdTime>2018-11-21 06:19:32 UTC</createdTime>
 <ownerDesignName>Productos</ownerDesignName>

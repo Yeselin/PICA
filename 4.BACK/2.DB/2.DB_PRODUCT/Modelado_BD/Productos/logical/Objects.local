@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <oracle.dbtools.crest.model.design.logical.LogicalDesign>
-   <object objectType="Entity" objectID="A3BD1689-8100-960E-3A5E-FCA59F819B10" name="campaña" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="601DD18A-7B80-E298-5F00-D92ECE3CE837" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="A3BD1689-8100-960E-3A5E-FCA59F819B10" name="campaign" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="601DD18A-7B80-E298-5F00-D92ECE3CE837" propertySourceId="" propertyTargetId=""/>
    <object objectType="Entity" objectID="6C90EA80-93EC-576A-B79F-2A974052BEFE" name="city" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="601DD18A-7B80-E298-5F00-D92ECE3CE837" propertySourceId="" propertyTargetId=""/>
    <object objectType="Entity" objectID="39ACFB77-8859-2794-25B5-ADA5FC3BA882" name="lodging" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="601DD18A-7B80-E298-5F00-D92ECE3CE837" propertySourceId="" propertyTargetId=""/>
    <object objectType="Entity" objectID="81A973A2-F227-0535-057F-A26403168680" name="product" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="601DD18A-7B80-E298-5F00-D92ECE3CE837" propertySourceId="" propertyTargetId=""/>
